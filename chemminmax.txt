@@ -1,0 +1,59 @@
+postgres=# select min(arsenic_mean), max(arsenic_mean) from drf_ncwellwise_subset_20102019 where arsenic_mean != -999.99;
+ min  |  max
+------+-------
+ 2.97 | 32.88
+(1 row)
+
+postgres=# select min(arsenic_maximum), max(arsenic_maximum) from drf_ncwellwise_subset_20102019 where arsenic_maximum != -999.99;
+ min  | max
+------+-----
+ 3.54 | 484
+(1 row)
+
+postgres=# select min(cadmium_mean), max(cadmium_mean) from drf_ncwellwise_subset_20102019 where cadmium_mean != -999.99;
+ min  | max
+------+------
+ 0.71 | 9.96
+(1 row)
+
+postgres=# select min(cadmium_maximum), max(cadmium_maximum) from drf_ncwellwise_subset_20102019 where cadmium_maximum != -999.99;
+ min  | max 
+------+-----
+ 0.71 | 441
+(1 row)
+
+postgres=# select min(lead_mean), max(lead_mean) from drf_ncwellwise_subset_20102019 where lead_mean != -999.99;
+ min  |  max
+------+--------
+ 2.99 | 184.45
+(1 row)
+
+postgres=# select min(lead_maximum), max(lead_maximum) from drf_ncwellwise_subset_20102019 where lead_maximum != -999.99;
+ min  | max  
+------+------
+ 3.54 | 2740
+(1 row)
+
+postgres=# select min(manganese_mean), max(manganese_mean) from drf_ncwellwise_subset_20102019 where manganese_mean != -999.99;
+  min  |  max   
+-------+--------
+ 21.21 | 980.61
+
+postgres=# select min(manganese_maximum), max(manganese_maximum) from drf_ncwellwise_subset_20102019 where manganese_maximum != -999.99;
+  min  |  max  
+-------+-------
+ 21.21 | 60000
+(1 row)
+
+postgres=# select min(magnesium_mean), max(magnesium_mean) from drf_ncwellwise_subset_20102019 where magnesium_mean != -999.99;
+  min   |    max
+--------+-----------
+ 707.11 | 155567.51
+(1 row)
+
+postgres=# select min(magnesium_maximum), max(magnesium_maximum) from drf_ncwellwise_subset_20102019 where magnesium_maximum != -999.99;
+  min   |   max
+--------+---------
+ 707.11 | 1700000
+(1 row)
+

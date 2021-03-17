@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  database:
+    image: mdillon/postgis:11 
+    container_name: postgres
+    ports:
+      - 5432:${POSTGRES_PORT:-5432}
+
