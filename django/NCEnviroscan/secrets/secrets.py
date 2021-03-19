@@ -9,5 +9,5 @@
 SECRET_KEY = 'b932cf5c-aa26-4a6a-9ac9-0d77988ba880'
 PUBHOST_URL = '127.0.0.1:8080'
 AUTH0_DOMAIN= 'dev-chdfm872.auth0.com'
-API_IDENTIFIER= 'https://lassares'
+API_IDENTIFIER= 'https://ncenviroscan'
 

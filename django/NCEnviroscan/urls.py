@@ -1,4 +1,4 @@
-"""pfiProject URL Configuration
+"""NCEnviroscan URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -19,7 +19,6 @@ from django.conf.urls import include
 
 urlpatterns = [
 
-    path('meas/', include(('meas_web.urls','meas_web'), 'meas_web')), #new
     path('drf/', include(('drf.urls','drf'), 'drf')), #new
 
     # Django Admin

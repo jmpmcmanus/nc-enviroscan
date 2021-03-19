@@ -13,8 +13,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from six.moves.urllib import request as req
 from cryptography.x509 import load_pem_x509_certificate
 from cryptography.hazmat.backends import default_backend
-from .serializers import ncwellwise_subset_20102019_geom_Serializer, Powerline_Serializer, drf_mscnt_Serializer, drf_mscnt_Timestamp_Serializer, drf_mscnt_Jobid_Serializer, drf_gcmv_Serializer, drf_gcmv_Timestamp_Serializer, drf_gcmv_Jobid_Serializer
-from .models import ncwellwise_subset_20102019_geom, Powerline, drf_mscnt, drf_mscnt_Timestamp, drf_mscnt_Jobid, drf_gcmv, drf_gcmv_Timestamp, drf_gcmv_Jobid
+from .serializers import ncwellwise_subset_20102019_geom_Serializer
+from .models import ncwellwise_subset_20102019_geom
 from url_filter.integrations.drf import DjangoFilterBackend
 from rest_framework_gis.filters import InBBoxFilter
 
@@ -56,15 +56,15 @@ def requires_scope(required_scope):
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
-def powerline_list(request):
-    #List Powerlines, or create a new powerline.
+def ncwellwise_subset_20102019_geom_list(request):
+    #List ncwellwise_subset_20102019_geom, or create a new ncwellwise_subset_20102019_geom.
     if request.method == 'GET':
         data = []
         nextPage = 1
         previousPage = 1
-        powerlines = Powerline.objects.all()
+        ncwellwise_subset_20102019 = ncwellwise_subset_20102019_geom.objects.all()
         page = request.GET.get('page', 1)
-        paginator = Paginator(powerlines, 10)
+        paginator = Paginator(ncwellwise_subset_20102019, 10)
         try:
             data = paginator.page(page)
         except PageNotAnInteger:
@@ -72,47 +72,43 @@ def powerline_list(request):
         except EmptyPage:
             data = paginator.page(paginator.num_pages)
 
-        serializer = Powerline_Serializer(data,context={'request': request} ,many=True)
+        serializer = ncwellwise_subset_20102019_geom_Serializer(data,context={'request': request} ,many=True)
         if data.has_next():
             nextPage = data.next_page_number()
         if data.has_previous():
             previousPage = data.previous_page_number()
 
-        return Response({'data': serializer.data , 'count': paginator.count, 'numpages' : paginator.num_pages, 'nextlink': '/api/powerlines/?page=' + str(nextPage), 'prevlink': '/api/powerlines/?page=' + str(previousPage)})
+        return Response({'data': serializer.data , 'count': paginator.count, 'numpages' : paginator.num_pages, 'nextlink': '/api/ncwellwise_subset_20102019_geom/?page=' + str(nextPage), 'prevlink': '/api/ncwellwise_subset_20102019_geom/?page=' + str(previousPage)})
 
     elif request.method == 'POST':
-        serializer = Powerline_Serializer(data=request.data)
+        serializer = ncwellwise_subset_20102019_geom_Serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def powerline_detail(request, id):
-    #Retrieve, update or delete a powerline instance.
+def ncwellwise_subset_20102019_geom_detail(request, id):
+    #Retrieve, update or delete a ncwellwise_subset_20102019_geom instance.
     try:
-        powerline = Powerline.objects.get(id=id)
-    except Powerline.DoesNotExist:
+        ncwellwise_subset_20102019 = ncwellwise_subset_20102019_geom.objects.get(id=id)
+    except ncwellwise_subset_20102019.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = Powerline_Serializer(powerline,context={'request': request})
+        serializer = ncwellwise_subset_20102019_geom_Serializer(ncwellwise_subset_20102019, context={'request': request})
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = Powerline_Serializer(powerline,data=request.data,context={'request': request})
+        serializer = ncwellwise_subset_20102019_geom_Serializer(ncwellwise_subset_20102019, data=request.data,context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        powerline.delete()
+        ncwellwise_subset_20102019.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-class drf_Powerline_View(viewsets.ModelViewSet):
-    queryset = Powerline.objects.all()
-    serializer_class = Powerline_Serializer
 
 class drf_ncwellwise_subset_20102019_geom_View(viewsets.ModelViewSet):
     queryset = ncwellwise_subset_20102019_geom.objects.all()
@@ -121,44 +117,4 @@ class drf_ncwellwise_subset_20102019_geom_View(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, InBBoxFilter]
     fileter_fields = ['id', 'geoid10','arsenic_mean','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_minimum','manganese_maximum','manganese_std']
     bbox_filter_include_overlapping = True
-
-class drf_mscnt_View(viewsets.ModelViewSet):
-    queryset = drf_mscnt.objects.all()
-    serializer_class = drf_mscnt_Serializer
-    bbox_filter_field = 'geom'
-    filter_backends = [DjangoFilterBackend, InBBoxFilter]
-    filter_fields = ['id','job_id','bore_id','instrument','chemical_id','measurement_value','units','timestamp','status','comment']
-    bbox_filter_include_overlapping = True
-
-class drf_mscnt_Timestamp_View(viewsets.ModelViewSet):
-    queryset = drf_mscnt_Timestamp.objects.all()
-    serializer_class = drf_mscnt_Timestamp_Serializer
-    filter_backends = [DjangoFilterBackend]
-    filter_fields = ['id','label']
-
-class drf_mscnt_Jobid_View(viewsets.ModelViewSet):
-    queryset = drf_mscnt_Jobid.objects.all()
-    serializer_class = drf_mscnt_Jobid_Serializer
-    filter_backends = [DjangoFilterBackend]
-    filter_fields = ['id','label']
-
-class drf_gcmv_View(viewsets.ModelViewSet):
-    queryset = drf_gcmv.objects.all()
-    serializer_class = drf_gcmv_Serializer
-    bbox_filter_field = 'geom'
-    filter_backends = [DjangoFilterBackend, InBBoxFilter]
-    filter_fields = ['id','job_id','bore_id','instrument','chemical_id','measurement_value','units','timestamp','status','comment']
-    bbox_filter_include_overlapping = True
-
-class drf_gcmv_Timestamp_View(viewsets.ModelViewSet):
-    queryset = drf_gcmv_Timestamp.objects.all()
-    serializer_class = drf_gcmv_Timestamp_Serializer
-    filter_backends = [DjangoFilterBackend]
-    filter_fields = ['id','label']
-
-class drf_gcmv_Jobid_View(viewsets.ModelViewSet):
-    queryset = drf_gcmv_Jobid.objects.all()
-    serializer_class = drf_gcmv_Jobid_Serializer
-    filter_backends = [DjangoFilterBackend]
-    filter_fields = ['id','label']
 

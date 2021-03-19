@@ -21,16 +21,7 @@ router = routers.DefaultRouter()
 #router.register(r'ncwellwise_subset_20102019', views.ncwellwise_subset_20102019)
 #router.register(r'triangle_tracts', views.triangle_tracts_View)
 router.register(r'ncwellwise_subset_20102019_geom', views.drf_ncwellwise_subset_20102019_geom_View)
-router.register(r'powerline', views.drf_Powerline_View)
-router.register(r'mscnt', views.drf_mscnt_View)
-router.register(r'mscnttimestamp', views.drf_mscnt_Timestamp_View)
-router.register(r'mscntjobid', views.drf_mscnt_Jobid_View)
-router.register(r'gcmv', views.drf_gcmv_View)
-router.register(r'gcmvtimestamp', views.drf_gcmv_Timestamp_View)
-router.register(r'gcmvjobid', views.drf_gcmv_Jobid_View)
 
 urlpatterns = [
-    url(r'^api/powerlines/$', views.powerline_list),
-    url(r'^api/powerlines/(?P<id>[0-9]+)$', views.powerline_detail),
     url(r'^api/', include(router.urls)),
 ]
