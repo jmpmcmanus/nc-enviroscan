@@ -392,7 +392,7 @@
         <vl-view ref="view" :center.sync="center" :zoom.sync="zoom" :rotation.sync="rotation"></vl-view>
 
         <!--// click interactions -->
-        <vl-interaction-select ref="selectInteraction" :features.sync="selectedFeatures" v-if="drawType === undefined">
+        <vl-interaction-select ref="selectInteraction" :features.sync="selectedFeatures">
           <template slot-scope="select">
             <!--// select styles -->
             <vl-style-box>
@@ -476,7 +476,7 @@
         <vl-view ref="view" :center.sync="center" :zoom.sync="zoom" :rotation.sync="rotation"></vl-view>
 
         <!--// click interactions -->
-        <vl-interaction-select ref="selectInteraction" :features.sync="selectedFeatures" v-if="drawType === undefined">
+        <vl-interaction-select ref="selectInteraction" :features.sync="selectedFeatures">
           <template slot-scope="select">
             <!--// select styles -->
             <vl-style-box>
@@ -609,9 +609,6 @@
                 </template>
               </q-banner>
               <q-separator />
-              <q-card-section>
-                <q-btn label="Draw Polygon Around Features" type="Polygon" color="teal" class="text-black" @click="drawType = 'polygon'" v-close-popup />
-              </q-card-section>
             </q-card>
           </q-popup-proxy>
         </q-fab-action>
@@ -642,7 +639,6 @@ import Attribution from 'ol/control/Attribution'
 // other ol imports
 import { Style, Stroke, Fill } from 'ol/style'
 import { DEVICE_PIXEL_RATIO } from 'ol/has.js'
-import { toLonLat } from 'ol/proj.js'
 
 // pubhost and secrets import
 import pubhost from '../assets/pubhost.json'
@@ -1032,6 +1028,8 @@ export default {
       ncwellwiseCadmiumMax2Model: 'Not Selected',
       ncwellwiseLeadMax2Model: 'Not Selected',
       ncwellwiseMngMax2Model: 'Not Selected',
+      ttitle: undefined,
+      // stored and selected features
       storeFeatures: [],
       selectedFeatures: [],
       selectedFeaturesMaxBarBox: [],
@@ -1571,12 +1569,6 @@ export default {
           // this.selectedFeatures = []
         }
       }
-    },
-    selectLocation: function (event) {
-      let coordinates = toLonLat(event.feature.values_.geometry.flatCoordinates)
-      this.longitude = coordinates[0]
-      this.latitude = coordinates[1]
-      this.drawType = undefined
     },
     onUpdatePosition: function (coordinate) {
       // console.log(coordinate)
