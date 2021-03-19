@@ -361,78 +361,36 @@
           <!--// select styles -->
 
           <!--// selected feature popup -->
-          <div v-if="isBox === 'no'">
-            <vl-overlay class="feature-popup" v-for="feature in select.features" :key="feature.id" :id="feature.id"
-              :position="pointOnSurface(feature.geometry)" :auto-pan="true" :auto-pan-animation="{ duration: 300 }">
-              <div v-if="feature.id == undefined">
-                <!--// Interactions drawing polygon to select measurements for bar plot -->
-              </div>
-              <div v-else>
-                <q-card class="feature-popup">
-                  <q-card-section>
-                    <q-banner inline-actions class="text-black bg-white">
-                      <div class="text-h6">
-                        Feature GeoID {{ feature.properties['geoid10'] }}
-                      </div>
-                      <template v-slot:action>
-                        <q-btn flat round dense icon="close" @click="selectedFeatures = selectedFeatures.filter(f => f.id !== feature.id)" />
-                      </template>
-                    </q-banner>
-                    <!-- div v-if="pid == feature.properties['geoid10']">
-                      Arsenic Average Value: {{ feature.properties['arsenic_mean'] }}<br>
-                      Arsenic Maximum Value: {{ feature.properties['arsenic_maximum'] }}<br>
-                      Cadmium Average Value: {{ feature.properties['cadmium_mean'] }}<br>
-                      Cadmium Maximum Value: {{ feature.properties['cadmium_maximum'] }}<br>
-                      Lead Average Value: {{ feature.properties['lead_mean'] }}<br>
-                      Lead Maximum Value: {{ feature.properties['lead_maximum'] }}<br>
-                      Manganese Average Value: {{ feature.properties['manganese_mean'] }}<br>
-                      Manganese Maximum Value: {{ feature.properties['manganese_maximum'] }}
-                    </div -->
-                    <table class="table is-fullwidth">
-                      <div v-if="Object.keys(selectedFeaturesMaxBarBox).length > 0">
-                      <tr>
-                        <td>
-                          <apexchart width="400" type="radialBar" :options="apxmaxoptions" :series="selectedFeaturesMaxBarBox"></apexchart>
-                        </td>
-                      </tr>
-                      </div>
-                    </table>
-                  </q-card-section>
-                </q-card>
-              </div>
-            </vl-overlay>
-          </div>
-          <!--// selected feature popup -->
-
-          <!--// selected feature bar plot -->
-          <div v-else-if="isBox === 'yes'">
-            <vl-overlay class="barchart-popup" v-for="feature in select.features" :key="feature.id" :id="feature.id"
-              :position="pointOnSurface(barplotpoint)" :auto-pan="true" :auto-pan-animation="{ duration: 300 }">
-              <q-card class="barchart-popup">
+          <vl-overlay class="feature-popup" v-for="feature in select.features" :key="feature.id" :id="feature.id"
+            :position="pointOnSurface(feature.geometry)" :auto-pan="true" :auto-pan-animation="{ duration: 300 }">
+            <div v-if="feature.id == undefined">
+              <!--// Interactions drawing polygon to select measurements for bar plot -->
+            </div>
+            <div v-else>
+              <q-card class="feature-popup">
                 <q-card-section>
                   <q-banner inline-actions class="text-black bg-white">
-                    <b>
-                    </b>
+                    <div class="text-h6">
+                      Feature GeoID {{ feature.properties['geoid10'] }}
+                    </div>
                     <template v-slot:action>
-                      <q-btn flat round dense icon="close" @click="closeBarChart" />
+                      <q-btn flat round dense icon="close" @click="selectedFeatures = selectedFeatures.filter(f => f.id !== feature.id)" />
                     </template>
                   </q-banner>
                   <table class="table is-fullwidth">
-                    <div v-if="pid == chemical_id">
-                      <div v-if="Object.keys(selectedFeaturesMaxBarBox).length > 0">
-                        <tr>
-                          <td>
-                            <apexchart width="400" type="radialBar" :options="apxmaxoptions" :series="selectedFeaturesMaxBarBox"></apexchart>
-                          </td>
-                        </tr>
-                      </div>
+                    <div v-if="Object.keys(selectedFeaturesMaxBarBox).length > 0">
+                    <tr>
+                      <td>
+                        <apexchart width="400" type="radialBar" :options="apxmaxoptions" :series="selectedFeaturesMaxBarBox"></apexchart>
+                      </td>
+                    </tr>
                     </div>
                   </table>
                 </q-card-section>
               </q-card>
-            </vl-overlay>
-          </div>
-          <!--// selected features bar plot -->
+            </div>
+          </vl-overlay>
+          <!--// selected feature popup -->
         </template>
       </vl-interaction-select>
       <!--// click interactions -->
@@ -448,14 +406,6 @@
           </vl-feature>
         </template>
       </vl-geoloc>
-      <!-- vl-geoloc @update:accuracy="onUpdateAccuracy" enableHighAccuracy="true" maximumAge="0" timeout="Infinity" >
-        <template slot-scope="geoloc">
-          <vl-feature v-if="geoloc.accuracy" id="accuracy-feature">
-            <div :accuracy="geoloc.accuracy"></div>
-          </vl-feature>
-        </template>
-      </vl-geoloc -->
-      <!--// geolocation -->
 
       <!--// base layers -->
       <vl-layer-tile v-for="layer in baseLayers" :key="layer.name" :id="layer.name" :visible="layer.visible">
@@ -477,24 +427,6 @@
       </component>
       <!-- eslint-enable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
       <!--// other layers -->
-
-      <!-- draw components -->
-      <!-- vl-layer-vector id="draw-pane">
-        <vl-source-vector ref="drawSource" ident="draw-target" :features.sync="drawnFeatures"></vl-source-vector>
-      </vl-layer-vector>
-      <vl-interaction-draw v-if="drawType" @drawend="drawEnd" source="draw-target" :type="drawType"></vl-interaction-draw>
-      <vl-interaction-modify source="draw-target"></vl-interaction-modify>
-      <vl-interaction-snap source="draw-target" :priority="10"></vl-interaction-snap -->
-
-      <!--// draw components -->
-      <vl-layer-vector id="draw-pane">
-        <vl-source-vector ref="drawSource" ident="draw-target"></vl-source-vector>
-      </vl-layer-vector>
-
-      <vl-interaction-draw v-if="drawType" @drawend="drawEnd" source="draw-target" :type="drawType"></vl-interaction-draw>
-      <vl-interaction-modify source="draw-target"></vl-interaction-modify>
-      <vl-interaction-snap source="draw-target" :priority="10"></vl-interaction-snap>
-      <!--// draw components -->
     </vl-map>
     <!--// app map -->
 
@@ -554,9 +486,6 @@
               </q-banner>
               <q-separator />
               <q-card-section>
-                <!-- q-select color="teal" filled v-model="measurement.properties.instrument" id="instrument" label="Instrument *" hint="Instrument being used" :options="devoptions" / -->
-              </q-card-section>
-              <q-card-section>
                 <q-btn label="Draw Polygon Around Features" type="Polygon" color="teal" class="text-black" @click="drawType = 'polygon'" v-close-popup />
               </q-card-section>
             </q-card>
@@ -576,10 +505,8 @@
 
 <script>
 // quasar and vuelayers import
-// import { openURL, date } from 'quasar'
 import { openURL } from 'quasar'
-import { findPointOnSurface, writeGeoJsonFeature } from 'vuelayers/lib/ol-ext'
-// import { findPointOnSurface } from 'vuelayers/lib/ol-ext'
+import { findPointOnSurface } from 'vuelayers/lib/ol-ext'
 import { camelCase } from 'lodash'
 
 // ol controls import
@@ -591,9 +518,6 @@ import Attribution from 'ol/control/Attribution'
 // other ol imports
 import { Style, Stroke, Fill } from 'ol/style'
 import { toLonLat } from 'ol/proj.js'
-// import Select from 'ol/interaction/Select.js'
-
-// const fs = require('fs')
 
 // pubhost and secrets import
 import pubhost from '../assets/pubhost.json'
@@ -602,9 +526,6 @@ import secrets from '../assets/secrets.json'
 let gettoken = function () {
   return secrets[0].MB_KEY
 }
-
-// sleepy time for treeselections
-// const sleep = d => new Promise(resolve => setTimeout(resolve, d))
 
 export default {
   name: 'NC-Enviroscan',
@@ -949,8 +870,6 @@ export default {
           }
         }]
       },
-      loading: undefined,
-      caption: undefined,
       // map parameters
       // center: [-73.845, 40.72],
       center: [NaN, NaN],
@@ -959,11 +878,6 @@ export default {
       mapVisible: true,
       leftDrawerOpen: false,
       rightDrawerOpen: false,
-      // data input attributes
-      showCreateMessage: false,
-      showUpdateMessage: false,
-      creating: false,
-      updating: false,
       longitude: null,
       latitude: null,
       pid: undefined,
@@ -986,45 +900,16 @@ export default {
           'coordinates': [null, null]
         }
       },
-      ttitle: undefined,
-      // ncwellwise: undefined,
-      ptitle: undefined,
-      drawnFeatures: [],
-      storeFeatures: [],
       selectedFeatures: [],
       selectedFeaturesMaxBarBox: [],
       selectedFeaturesAvgBarBox: [],
       selectedFeaturesMinBarBox: [],
       selectedFeaturesStdBarBox: [],
-      isBox: undefined,
       // state attributes
       eventCoordinate: [NaN, NaN],
       deviceCoordinate: [NaN, NaN],
       coordinateAccuracy: undefined,
       boxCoordinate: undefined,
-      // draw controls
-      drawControls: [
-        {
-          type: 'point',
-          label: 'Draw Point',
-          icon: 'map-marker',
-          stopClick: true
-        },
-        {
-          type: 'polygon',
-          label: 'Draw Polygon',
-          icon: 'map-marker',
-          stopClick: true
-        },
-        {
-          type: undefined,
-          label: 'Stop drawing',
-          icon: 'times'
-        }
-      ],
-      drawType: undefined,
-      coordinates: [],
-      // bar plot options
       // baselayers config
       baselayer: 'osm',
       baseLayers: [
@@ -1121,24 +1006,6 @@ export default {
       .then(coordinates => {
         this.center = [coordinates.lng, coordinates.lat]
       })
-  },
-  watch: {
-    // watch for selected features
-    selectedFeatures: function (features) {
-      let i
-      let geometries = []
-      for (i = 0; i < features.length; i++) {
-        let coordinates = toLonLat([features[i].geometry.coordinates[0], features[i].geometry.coordinates[1]])
-        let geometry = {
-          'type': 'Point',
-          'coordinates': [coordinates[0], coordinates[1]]
-        }
-        geometries.push(geometry)
-      }
-      if (geometries.length > 0) {
-        this.barplotpoint = geometries[0]
-      }
-    }
   },
   methods: {
     openURL,
@@ -1328,48 +1195,6 @@ export default {
         })
       ])
     },
-    drawEnd: function (event) {
-      if (this.drawType === 'point') {
-        this.selectLocation(event)
-      } else if (this.drawType === 'polygon') {
-        this.selectInDrawnPolygon(event)
-      }
-    },
-    selectInDrawnPolygon: function (event) {
-      /* this.drawnFeatures = []
-      this.selectedFeatures = [] */
-      this.selectedFeaturesMaxBarBox = []
-      this.isBox = 'yes'
-      // only use source that have chemical_id
-      let vectorSource
-      let i
-      for (i = 0; i < this.$refs.layerSource.length; i++) {
-        let features = this.$refs.layerSource[i].getFeatures()
-        // console.log(features)
-        if (features[0] !== undefined) {
-          // if (features[0].values_.arsenic_mean === this.ncwellwise.properties.arsenic_mean) {
-          vectorSource = this.$refs.layerSource[i].$source
-          // }
-        }
-      }
-      const extent = event.feature.values_.geometry.extent_
-      // console.log(extent)
-      // console.log(vectorSource)
-      vectorSource.forEachFeatureIntersectingExtent(extent, feature => {
-        feature = writeGeoJsonFeature(feature)
-        // console.log(feature)
-        // this.selectedFeatures.push(feature)
-        // console.log(feature.properties['geoid10'])
-        // console.log(feature.properties['arsenic_mean'])
-        this.selectedFeaturesMaxBarBox.push({ x: feature.properties['geoid10'], y: feature.properties['arsenic_mean'] })
-        // this.chemical_id = feature.properties['chemical_id']
-        // this.pid = this.chemical_id */
-      })
-      this.drawType = undefined
-      /* var selectSource = Select.getLayer(event.feature).getSource()
-      console.log(selectSource)
-      selectSource.removeFeature(event.feature) */
-    },
     closeBarChart: function () {
       this.selectedFeatures = this.selectedFeatures.filter(f => f.id === 0)
       let drawFeatures = this.$refs.drawSource.getFeatures()
@@ -1408,7 +1233,6 @@ export default {
         this.selectedFeaturesMinBarBox = []
         this.selectedFeaturesStdBarBox = []
         this.selectedFeatures = []
-        this.isBox = 'no'
       } else if (features) {
         this.selectedFeaturesMaxBarBox = []
         this.selectedFeaturesAvgBarBox = []
@@ -1436,7 +1260,6 @@ export default {
             this.selectedFeaturesStdBarBox.push(properties['cadmium_std'])
             this.selectedFeaturesStdBarBox.push(properties['lead_std'])
             this.selectedFeaturesStdBarBox.push(properties['manganese_std'])
-            this.isBox = 'no'
           }
         } else {
           // this.selectedFeaturesMaxBarBox = []
@@ -1444,8 +1267,6 @@ export default {
           // this.selectedFeaturesMinBarBox = []
           // this.selectedFeaturesStdBarBox = []
           // this.selectedFeatures = []
-          // this.isBox = 'no'
-          // console.log(features)
         }
       }
     },
@@ -1688,17 +1509,6 @@ export default {
     width: 25px
     background-color: rgba(5, 97, 76, 0.65)
     display: inline-block
-
-  .chart
-    display: inline-block
-    width: 700px
-    height: 200px
-    margin-top: 0em
-
-  .q-datetimepicker.q-card
-    background: #e0f2f1;
-    .q-tab-panels
-      background: #e0f2f1;
 
   .q-input
     height: 4.0em;
