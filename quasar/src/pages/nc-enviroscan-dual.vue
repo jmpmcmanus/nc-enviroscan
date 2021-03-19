@@ -1572,235 +1572,243 @@ export default {
 }
 </script>
 
-<style lang="sass">
-  .ol-control button
-    color: black
-    background-color: rgb(0,128,128)
-
-  .ol-control button:hover
-  .ol-control button:focus
-    text-decoration: none
-    background-color: rgb(0,128,128)
-
-  .ol-control button:hover,
-  .ol-control button:focus
-    text-decoration: none
-    background-color: rgba(0,128,128,0.8)
-
-  .ol-scale-line
-    background: rgba(0,128,128,0.8)
-
-  a:hover
-    font-weight:bold
-
-  .wrapper
-    display: flex
-
-  .dualmap
-    margin: 0
-    padding: 1px
-    width: 50%
-    height: 100%
-
-  .view
-    margin: 0
-    padding: 0
-    width: 100%
-    height: 100%
-
-  .feature-popup
-    position: absolute
-    left: -20px
-    bottom: 12px
-    width: 32em
-    max-width: none
-
-    &:after, &:before
-      top: 100%
-      border: solid transparent
-      content: ' '
-      height: 0
-      width: 0
-      position: absolute
-      pointer-events: none
-    &:after
-      border-top-color: white
-      border-width: 10px
-      left: 48px
-      margin-left: -10px
-    &:before
-      border-top-color: #cccccc
-      border-width: 11px
-      left: 48px
-      margin-left: -11px
-
-    .card-content
-      max-height: 20em
-      overflow: auto
-
-    .content
-       word-break: break-all
-
-  .squfill
-    height: 25px
-    width: 25px
-    background-color: rgba(91, 95, 99, 0.65)
-    display: inline-block
-
-  .pbsqufill
-    height: 25px
-    width: 25px
-    background-color: rgba(50, 110, 219, 0.65)
-    display: inline-block
-
-  .assqu1
-    height: 25px
-    width: 25px
-    background-color: rgba(119, 52, 235, 0.65)
-    display: inline-block
-
-  .assqu2
-    height: 25px
-    width: 25px
-    background-color: rgba(143, 52, 235, 0.65)
-    display: inline-block
-
-  .assqu3
-    height: 25px
-    width: 25px
-    background-color: rgba(165, 52, 235, 0.65)
-    display: inline-block
-
-  .assqu4
-    height: 25px
-    width: 25px
-    background-color: rgba(186, 52, 235, 0.65)
-    display: inline-block
-
-  .assqu5
-    height: 25px
-    width: 25px
-    background-color: rgba(211, 52, 235, 0.65)
-    display: inline-block
-
-  .assqu6
-    height: 25px
-    width: 25px
-    background-color: rgba(235, 52, 220, 0.65)
-    display: inline-block
-
-  .cdsqu1
-    height: 25px
-    width: 25px
-    background-color: rgba(235, 89, 52, 0.65)
-    display: inline-block
-
-  .cdsqu2
-    height: 25px
-    width: 25px
-    background-color: rgba(235, 131, 52, 0.65)
-    display: inline-block
-
-  .cdsqu3
-    height: 25px
-    width: 25px
-    background-color: rgba(235, 162, 52, 0.65)
-    display: inline-block
-
-  .cdsqu4
-    height: 25px
-    width: 25px
-    background-color: rgba(235, 192, 52, 0.65)
-    display: inline-block
-
-  .cdsqu5
-    height: 25px
-    width: 25px
-    background-color: rgba(235, 220, 52, 0.65)
-    display: inline-block
-
-  .cdsqu6
-    height: 25px
-    width: 25px
-    background-color: rgba(223, 235, 52, 0.65)
-    display: inline-block
-
-  .pbsqu1
-    height: 25px
-    width: 25px
-    background-color: rgba(196, 200, 207, 0.65)
-    display: inline-block
-
-  .pbsqu2
-    height: 25px
-    width: 25px
-    background-color: rgba(156, 162, 173, 0.65)
-    display: inline-block
-
-  .pbsqu3
-    height: 25px
-    width: 25px
-    background-color: rgba(116, 121, 130, 0.65)
-    display: inline-block
-
-  .pbsqu4
-    height: 25px
-    width: 25px
-    background-color: rgba(79, 82, 89, 0.65)
-    display: inline-block
-
-  .pbsqu5
-    height: 25px
-    width: 25px
-    background-color: rgba(55, 58, 64, 0.65)
-    display: inline-block
-
-  .pbsqu6
-    height: 25px
-    width: 25px
-    background-color: rgba(39, 40, 43, 0.65)
-    display: inline-block
-
-  .mnsqu1
-    height: 25px
-    width: 25px
-    background-color: rgba(194, 232, 190, 0.65)
-    display: inline-block
-
-  .mnsqu2
-    height: 25px
-    width: 25px
-    background-color: rgba(81, 222, 67, 0.65)
-    display: inline-block
-
-  .mnsqu3
-    height: 25px
-    width: 25px
-    background-color: rgba(25, 128, 11, 0.65)
-    display: inline-block
-
-  .mnsqu4
-    height: 25px
-    width: 25px
-    background-color: rgba(14, 82, 5, 0.65)
-    display: inline-block
-
-  .mnsqu5
-    height: 25px
-    width: 25px
-    background-color: rgba(30, 138, 114, 0.65)
-    display: inline-block
-
-  .mnsqu6
-    height: 25px
-    width: 25px
-    background-color: rgba(5, 97, 76, 0.65)
-    display: inline-block
-
-  .q-input
+<style lang="scss">
+  .ol-control button {
+    color: black;
+    background-color: rgb(0,128,128);
+  }
+  .ol-control button:hover {
+    text-decoration: none;
+    background-color: rgb(0,128,128);
+  }
+  .ol-control button:focus {
+    text-decoration: none;
+    background-color: rgb(0,128,128);
+  }
+  .ol-control button:hover, {
+    text-decoration: none;
+    background-color: rgba(0,128,128,0.8);
+  }
+  .ol-control button:focus {
+    text-decoration: none;
+    background-color: rgba(0,128,128,0.8);
+  }
+  .ol-scale-line {
+    background: rgba(0,128,128,0.8);
+  }
+  a:hover {
+    font-weight:bold;
+  }
+  .wrapper {
+    display: flex;
+  }
+  .dualmap {
+    margin: 0;
+    padding: 1px;
+    width: 50%;
+    height: 100%;
+  }
+  .view {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .feature-popup {
+    position: absolute;
+    left: -20px;
+    bottom: 12px;
+    width: 32em;
+    max-width: none;
+  }
+  .feature-popup:after, .feature-popup:before {
+    top: 100%;
+    border: solid transparent;
+    content: ' ';
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .feature-popup:after {
+    border-top-color: white;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+  }
+  .feature-popup:before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+  }
+  .feature-popup .card-content {
+    max-height: 20em;
+    overflow: auto;
+  }
+  .feature-popup .content {
+    word-break: break-all;
+  }
+  .squfill {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(91, 95, 99, 0.65);
+    display: inline-block;
+  }
+  .pbsqufill {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(50, 110, 219, 0.65);
+    display: inline-block;
+  }
+  .assqu1 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(119, 52, 235, 0.65);
+    display: inline-block;
+  }
+  .assqu2 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(143, 52, 235, 0.65);
+    display: inline-block;
+  }
+  .assqu3 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(165, 52, 235, 0.65);
+    display: inline-block;
+  }
+  .assqu4 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(186, 52, 235, 0.65);
+    display: inline-block;
+  }
+  .assqu5 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(211, 52, 235, 0.65);
+    display: inline-block;
+  }
+  .assqu6 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(235, 52, 220, 0.65);
+    display: inline-block;
+  }
+  .cdsqu1 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(235, 89, 52, 0.65);
+    display: inline-block;
+  }
+  .cdsqu2 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(235, 131, 52, 0.65);
+    display: inline-block;
+  }
+  .cdsqu3 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(235, 162, 52, 0.65);
+    display: inline-block;
+  }
+  .cdsqu4 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(235, 192, 52, 0.65);
+    display: inline-block;
+  }
+  .cdsqu5 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(235, 220, 52, 0.65);
+    display: inline-block;
+  }
+  .cdsqu6 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(223, 235, 52, 0.65);
+    display: inline-block;
+  }
+  .pbsqu1 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(196, 200, 207, 0.65);
+    display: inline-block;
+  }
+  .pbsqu2 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(156, 162, 173, 0.65);
+    display: inline-block;
+  }
+  .pbsqu3 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(116, 121, 130, 0.65);
+    display: inline-block;
+  }
+  .pbsqu4 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(79, 82, 89, 0.65);
+    display: inline-block;
+  }
+  .pbsqu5 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(55, 58, 64, 0.65);
+    display: inline-block;
+  }
+  .pbsqu6 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(39, 40, 43, 0.65);
+    display: inline-block;
+  }
+  .mnsqu1 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(194, 232, 190, 0.65);
+    display: inline-block;
+  }
+  .mnsqu2 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(81, 222, 67, 0.65);
+    display: inline-block;
+  }
+  .mnsqu3 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(25, 128, 11, 0.65);
+    display: inline-block;
+  }
+  .mnsqu4 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(14, 82, 5, 0.65);
+    display: inline-block;
+  }
+  .mnsqu5 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(30, 138, 114, 0.65);
+    display: inline-block;
+  }
+  .mnsqu6 {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(5, 97, 76, 0.65);
+    display: inline-block;
+  }
+  .q-input {
     height: 4.0em;
-
-  .q-select
+  }
+  .q-select {
     height: 4.0em;
-
+  }
 </style>

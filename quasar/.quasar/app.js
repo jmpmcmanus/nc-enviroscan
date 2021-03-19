@@ -19,11 +19,15 @@ import App from 'app/src/App.vue'
 
 import createRouter from 'app/src/router/index'
 
-export default function () {
+
+
+
+
+export default async function () {
   // create store and router instances
   
   const router = typeof createRouter === 'function'
-    ? createRouter({Vue, })
+    ? await createRouter({Vue})
     : createRouter
   
 
