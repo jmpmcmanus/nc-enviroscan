@@ -82,7 +82,7 @@
         </q-expansion-item>
         <!-- // baselayers -->
 
-        <!-- // measurement, and powerlines layer -->
+        <!-- // NC wellwise layer -->
         <q-expansion-item default-opened expand-separator icon="list" label="Layers">
           <div class="q-pa-md q-gutter-y-sm column">
             <q-item tag="label" v-ripple>
@@ -122,7 +122,7 @@
             </q-item>
           </div>
         </q-expansion-item>
-        <!-- // measurement, and powerlines layer -->
+        <!-- // NC Wellwise layer -->
 
         <!-- // state -->
         <q-expansion-item expand-separator icon="list" label="State">
@@ -363,32 +363,27 @@
           <!--// selected feature popup -->
           <vl-overlay class="feature-popup" v-for="feature in select.features" :key="feature.id" :id="feature.id"
             :position="pointOnSurface(feature.geometry)" :auto-pan="true" :auto-pan-animation="{ duration: 300 }">
-            <div v-if="feature.id == undefined">
-              <!--// Interactions drawing polygon to select measurements for bar plot -->
-            </div>
-            <div v-else>
-              <q-card class="feature-popup">
-                <q-card-section>
-                  <q-banner inline-actions class="text-black bg-white">
-                    <div class="text-h6">
-                      Feature GeoID {{ feature.properties['geoid10'] }}
-                    </div>
-                    <template v-slot:action>
-                      <q-btn flat round dense icon="close" @click="selectedFeatures = selectedFeatures.filter(f => f.id !== feature.id)" />
-                    </template>
-                  </q-banner>
-                  <table class="table is-fullwidth">
-                    <div v-if="Object.keys(selectedFeaturesMaxBarBox).length > 0">
-                    <tr>
-                      <td>
-                        <apexchart width="400" type="radialBar" :options="apxmaxoptions" :series="selectedFeaturesMaxBarBox"></apexchart>
-                      </td>
-                    </tr>
-                    </div>
-                  </table>
-                </q-card-section>
-              </q-card>
-            </div>
+            <q-card class="feature-popup">
+              <q-card-section>
+                <q-banner inline-actions class="text-black bg-white">
+                  <div class="text-h6">
+                    Feature GeoID {{ feature.properties['geoid10'] }}
+                  </div>
+                  <template v-slot:action>
+                    <q-btn flat round dense icon="close" @click="selectedFeatures = selectedFeatures.filter(f => f.id !== feature.id)" />
+                  </template>
+                </q-banner>
+                <table class="table is-fullwidth">
+                  <div v-if="Object.keys(selectedFeaturesMaxBarBox).length > 0">
+                  <tr>
+                    <td>
+                      <apexchart width="400" type="radialBar" :options="apxmaxoptions" :series="selectedFeaturesMaxBarBox"></apexchart>
+                    </td>
+                  </tr>
+                  </div>
+                </table>
+              </q-card-section>
+            </q-card>
           </vl-overlay>
           <!--// selected feature popup -->
         </template>
