@@ -13,8 +13,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from six.moves.urllib import request as req
 from cryptography.x509 import load_pem_x509_certificate
 from cryptography.hazmat.backends import default_backend
-from .serializers import ncwellwise_subset_20102019_geom_Serializer
-from .models import ncwellwise_subset_20102019_geom
+from .serializers import ncwellwise_triangle_20102019_geom_Serializer, ncwellwise_subset_20102019_geom_Serializer, ltdb_std_2012_sample_subset_geom_Serializer, ejscreen_subset_geom_Serializer, nc_covid_zipcode_geom_Serializer
+from .models import ncwellwise_triangle_20102019_geom, ncwellwise_subset_20102019_geom, ltdb_std_2012_sample_subset_geom, ejscreen_subset_geom, nc_covid_zipcode_geom
 from url_filter.integrations.drf import DjangoFilterBackend
 from rest_framework_gis.filters import InBBoxFilter
 
@@ -110,11 +110,43 @@ def ncwellwise_subset_20102019_geom_detail(request, id):
         ncwellwise_subset_20102019.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+class drf_ncwellwise_triangle_20102019_geom_View(viewsets.ModelViewSet):
+    queryset = ncwellwise_triangle_20102019_geom.objects.all()
+    serializer_class = ncwellwise_triangle_20102019_geom_Serializer
+    bbox_filter_field = 'geom'
+    filter_backends = [DjangoFilterBackend, InBBoxFilter]
+    fileter_fields = ['id', 'geoid10','arsenic_mean','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_minimum','manganese_maximum','manganese_std']
+    bbox_filter_include_overlapping = True
+
 class drf_ncwellwise_subset_20102019_geom_View(viewsets.ModelViewSet):
     queryset = ncwellwise_subset_20102019_geom.objects.all()
     serializer_class = ncwellwise_subset_20102019_geom_Serializer
     bbox_filter_field = 'geom'
     filter_backends = [DjangoFilterBackend, InBBoxFilter]
     fileter_fields = ['id', 'geoid10','arsenic_mean','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_minimum','manganese_maximum','manganese_std']
+    bbox_filter_include_overlapping = True
+
+class drf_ltdb_std_2012_sample_subset_geom_View(viewsets.ModelViewSet):
+    queryset = ltdb_std_2012_sample_subset_geom.objects.all()
+    serializer_class = ltdb_std_2012_sample_subset_geom_Serializer
+    bbox_filter_field = 'geom'
+    filter_backends = [DjangoFilterBackend, InBBoxFilter]
+    fileter_fields = ['id', 'geoid10','pnhwht12','pnhblk12','phisp12','pasian12','pntv12','hincw12','hincb12','hinch12','hinca12','pwpov12','pbpov12','phpov12','papov12','pnapov12']
+    bbox_filter_include_overlapping = True
+
+class drf_ejscreen_subset_geom_View(viewsets.ModelViewSet):
+    queryset = ejscreen_subset_geom.objects.all()
+    serializer_class = ejscreen_subset_geom_Serializer
+    bbox_filter_field = 'geom'
+    filter_backends = [DjangoFilterBackend, InBBoxFilter]
+    fileter_fields = ['id','geoid10','d_ldpnt_2','d_dslpm_2','d_cancr_2','d_resp_2','d_ptraf_2','d_pwdis_2','d_pnpl_2','d_prmp_2','d_ptsdf_2','d_ozone_2','d_pm25_2']
+    bbox_filter_include_overlapping = True
+
+class drf_nc_covid_zipcode_geom_View(viewsets.ModelViewSet):
+    queryset = nc_covid_zipcode_geom.objects.all()
+    serializer_class = nc_covid_zipcode_geom_Serializer
+    bbox_filter_field = 'geom'
+    filter_backends = [DjangoFilterBackend, InBBoxFilter]
+    fileter_fields = ['id','zipcode','cases,cases_per_10000_res','cases_per_100000_res','deaths']
     bbox_filter_include_overlapping = True
 

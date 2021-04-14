@@ -7,10 +7,10 @@
       <q-space />
       <q-card class="q-pa-md bg-teal-1" style="max-width: 300px">
         <table class="table is-fullwidth">
-          <div v-if="Object.keys(selectedFeaturesAvgBarBox).length > 0">
+          <div v-if="Object.keys(selectedFeatureAvgBarBox).length > 0">
             <tr>
               <td>
-                <apexchart width="280" type="radialBar" :options="apxavgoptions" :series="selectedFeaturesAvgBarBox"></apexchart>
+                <apexchart width="280" type="radialBar" :options="apxavgoptions" :series="selectedFeatureAvgBarBox"></apexchart>
               </td>
             </tr>
           </div>
@@ -21,10 +21,10 @@
       <q-space />
       <q-card class="q-pa-md bg-teal-1" style="max-width: 300px">
         <table class="table is-fullwidth">
-          <div v-if="Object.keys(selectedFeaturesMinBarBox).length > 0">
+          <div v-if="Object.keys(selectedFeatureMinBarBox).length > 0">
             <tr>
               <td>
-                <apexchart width="280" type="radialBar" :options="apxminoptions" :series="selectedFeaturesMinBarBox"></apexchart>
+                <apexchart width="280" type="radialBar" :options="apxminoptions" :series="selectedFeatureMinBarBox"></apexchart>
               </td>
             </tr>
           </div>
@@ -35,10 +35,24 @@
       <q-space />
       <q-card class="q-pa-md bg-teal-1" style="max-width: 300px">
         <table class="table is-fullwidth">
-          <div v-if="Object.keys(selectedFeaturesStdBarBox).length > 0">
+          <div v-if="Object.keys(selectedFeatureMaxBarBox).length > 0">
             <tr>
               <td>
-                <apexchart width="280" type="radialBar" :options="apxstdoptions" :series="selectedFeaturesStdBarBox"></apexchart>
+                <apexchart width="280" type="radialBar" :options="apxmaxoptions" :series="selectedFeatureMaxBarBox"></apexchart>
+              </td>
+            </tr>
+          </div>
+        </table>
+      </q-card>
+      <q-space />
+      <q-separator />
+      <q-space />
+      <q-card class="q-pa-md bg-teal-1" style="max-width: 300px">
+        <table class="table is-fullwidth">
+          <div v-if="Object.keys(selectedFeatureStdBarBox).length > 0">
+            <tr>
+              <td>
+                <apexchart width="280" type="radialBar" :options="apxstdoptions" :series="selectedFeatureStdBarBox"></apexchart>
               </td>
             </tr>
           </div>
@@ -50,7 +64,7 @@
     <q-drawer side="right" v-model="rightDrawerOpen" show-if-above bordered content-class="teal bg-teal-1">
       <q-list bordered class="rounded-borders">
         <!-- // baselayers -->
-        <q-expansion-item default-opened expand-separator icon="list" label="Base Layers">
+        <q-expansion-item expand-separator icon="list" label="Base Layers">
           <div class="q-pa-md" style="min-width: 200px">
             <q-list link>
               <!--//
@@ -81,95 +95,759 @@
         <!-- // baselayers -->
 
         <!-- // map 1 layers -->
-        <q-expansion-item default-opened expand-separator icon="list" label="Top Map Layers">
+        <q-expansion-item default-opened expand-separator icon="list" label="Left Side Map Layers">
           <div class="q-pa-md q-gutter-y-sm column">
-            <q-toggle
-              :label="`Arsenic Maximum Layer ${ ncwellwiseArsenicMax1Model }`"
-              :key="layers1[0].id"
-              v-on:input="showMap1PanelLayer(layers)"
-              :class="{ 'is-active': layers1[0].visible }"
-              color="teal"
-              false-value="Not Selected"
-              true-value="Selected"
-              v-model="ncwellwiseArsenicMax1Model"
-            />
-            <q-toggle
-              :label="`Cadmium Maximum Layer ${ ncwellwiseCadmiumMax1Model }`"
-              :key="layers1[1].id"
-              v-on:input="showMap1PanelLayer(layers)"
-              :class="{ 'is-active': layers1[1].visible }"
-              color="teal"
-              false-value="Not Selected"
-              true-value="Selected"
-              v-model="ncwellwiseCadmiumMax1Model"
-            />
-            <q-toggle
-              :label="`Lead Maximum Layer ${ ncwellwiseLeadMax1Model }`"
-              :key="layers1[2].id"
-              v-on:input="showMap1PanelLayer(layers)"
-              :class="{ 'is-active': layers1[2].visible }"
-              color="teal"
-              false-value="Not Selected"
-              true-value="Selected"
-              v-model="ncwellwiseLeadMax1Model"
-            />
-            <q-toggle
-              :label="`Manganese Maximum Layer ${ ncwellwiseMngMax1Model }`"
-              :key="layers1[3].id"
-              v-on:input="showMap1PanelLayer(layers)"
-              :class="{ 'is-active': layers1[3].visible }"
-              color="teal"
-              false-value="Not Selected"
-              true-value="Selected"
-              v-model="ncwellwiseMngMax1Model"
-            />
+            <!-- // NC wellwise layers -->
+            <q-expansion-item default-opened expand-separator icon="list" label="NC Well Data Layers">
+              <div class="q-pa-md q-gutter-y-sm column">
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="ncwellwise_arsenic_max" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Arsenic Maximum</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="ncwellwise_cadmium_max" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Cadmium Maximum</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="ncwellwise_lead_max" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Lead Maximum</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="ncwellwise_mng_max" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Manganese Maximum</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </div>
+            </q-expansion-item>
+            <!-- // NC wellwise layers -->
+
+            <!-- // LTDB Census layers -->
+            <q-expansion-item expand-separator icon="list" label="Socioeconomic Layers, by Census Tracts">
+              <div class="q-pa-md q-gutter-y-sm column">
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="pnhwht12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Percent Non-Hispanic White</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="pnhblk12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Percent Non-Hispanic Black</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="phisp12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Percent Hispanic</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="pasian12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Percent Asian</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="pntv12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Percent Native American</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="hincw12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Median HH income, white</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="hincb12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Median HH income, black</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="hinch12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Median HH income, hispanic</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="hinca12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Median HH income, asian</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="pwpov12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>% in poverty, white</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="pbpov12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>% in poverty, black</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="phpov12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>% in poverty, hispanic</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="papov12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>% in poverty, asian</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="pnapov12" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>% in poverty, native American</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </div>
+            </q-expansion-item>
+            <!-- // LTDB Census layers -->
+
+            <!-- // EJScreen layers -->
+            <q-expansion-item expand-separator icon="list" label="Environmental Justice Layers, by Census Block Group">
+              <div class="q-pa-md q-gutter-y-sm column">
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="d_ldpnt_2" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for % pre-1960 housing (lead paint indicator)</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="d_dslpm_2" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Diesel particulate matter level in air</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="d_cancr_2" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Air toxics cancer risk</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="d_resp_2" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Air toxics respiratory hazard index</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="d_ptraf_2" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Traffic proximity and volume</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="d_pwdis_2" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Indicator for major direct dischargers to water</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="d_pnpl_2" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Proximity to National Priorities List (NPL) sites</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="d_prmp_2" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Proximity to Risk Management Plan (RMP) facilities</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="d_ptsdf_2" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Proximity to Treatment Storage and Disposal (TSDF) facilities</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="d_ozone_2" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Ozone level in air</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="d_pm25_2" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for PM2.5 level in air</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </div>
+            </q-expansion-item>
+            <!-- // EJScreen layers -->
+
+            <!-- // Health layers -->
+            <q-expansion-item expand-separator icon="list" label="Health Layers, by Zip Code">
+              <div class="q-pa-md q-gutter-y-sm column">
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="cases" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Covid-19 Total Cases</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="cases_per_10000_res" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Covid-19 Cases Per 10,000 Residents</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="cases_per_100000_res" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Covid-19 Cases Per 100,000 Residents-</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap1PanelLayer" val="deaths" v-model="currentlayer1" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Covid-19 Deaths</q-item-label>
+                  </q-item-section>
+                </q-item>
+               </div>
+            </q-expansion-item>
+            <!-- // Health layers -->
+
+            <!-- // Triangle wellwise layers -->
+            <q-expansion-item expand-separator icon="list" label="Triangle Well Data Layers">
+              <div class="q-pa-md q-gutter-y-sm column">
+                <q-toggle
+                  :label="`Arsenic Maximum Layer ${ triwellwiseArsenicMax1Model }`"
+                  :key="layers1[4].id"
+                  v-on:input="showMap1PanelLayer"
+                  :class="{ 'is-active': layers1[4].visible }"
+                  color="teal"
+                  false-value="Not Selected"
+                  true-value="Selected"
+                  v-model="triwellwiseArsenicMax1Model"
+                />
+                <q-toggle
+                  :label="`Cadmium Maximum Layer ${ triwellwiseCadmiumMax1Model }`"
+                  :key="layers1[5].id"
+                  v-on:input="showMap1PanelLayer"
+                  :class="{ 'is-active': layers1[5].visible }"
+                  color="teal"
+                  false-value="Not Selected"
+                  true-value="Selected"
+                  v-model="triwellwiseCadmiumMax1Model"
+                />
+              </div>
+            </q-expansion-item>
+            <!-- // triangle wellwise layers -->
           </div>
         </q-expansion-item>
         <!-- // map 1 layers -->
 
         <!-- // map 2 layers -->
-        <q-expansion-item default-opened expand-separator icon="list" label="Bottom Map Layers">
+        <q-expansion-item default-opened expand-separator icon="list" label="Right Side Map Layers">
           <div class="q-pa-md q-gutter-y-sm column">
-            <q-toggle
-              :label="`Arsenic Maximum Layer ${ ncwellwiseArsenicMax2Model }`"
-              :key="layers2[0].id"
-              v-on:input="showMap2PanelLayer(layers)"
-              :class="{ 'is-active': layers2[0].visible }"
-              color="teal"
-              false-value="Not Selected"
-              true-value="Selected"
-              v-model="ncwellwiseArsenicMax2Model"
-            />
-            <q-toggle
-              :label="`Cadmium Maximum Layer ${ ncwellwiseCadmiumMax2Model }`"
-              :key="layers2[1].id"
-              v-on:input="showMap2PanelLayer(layers)"
-              :class="{ 'is-active': layers2[1].visible }"
-              color="teal"
-              false-value="Not Selected"
-              true-value="Selected"
-              v-model="ncwellwiseCadmiumMax2Model"
-            />
-            <q-toggle
-              :label="`Lead Maximum Layer ${ ncwellwiseLeadMax2Model }`"
-              :key="layers2[2].id"
-              v-on:input="showMap2PanelLayer(layers)"
-              :class="{ 'is-active': layers2[2].visible }"
-              color="teal"
-              false-value="Not Selected"
-              true-value="Selected"
-              v-model="ncwellwiseLeadMax2Model"
-            />
-            <q-toggle
-              :label="`Manganese Maximum Layer ${ ncwellwiseMngMax2Model }`"
-              :key="layers2[3].id"
-              v-on:input="showMap2PanelLayer(layers)"
-              :class="{ 'is-active': layers2[3].visible }"
-              color="teal"
-              false-value="Not Selected"
-              true-value="Selected"
-              v-model="ncwellwiseMngMax2Model"
-            />
+            <!-- // NC wellwise layers -->
+            <q-expansion-item default-opened expand-separator icon="list" label="NC Well Data Layers">
+              <div class="q-pa-md q-gutter-y-sm column">
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="ncwellwise_arsenic_max" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Arsenic Maximum</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="ncwellwise_cadmium_max" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Cadmium Maximum</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="ncwellwise_lead_max" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Lead Maximum</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="ncwellwise_mng_max" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Manganese Maximum</q-item-label>
+                  </q-item-section>
+                </q-item>
+                <!-- q-toggle
+                  :label="`Arsenic Maximum Layer ${ ncwellwiseArsenicMax2Model }`"
+                  :key="layers2[0].id"
+                  v-on:input="showMap2PanelLayer(layers)"
+                  :class="{ 'is-active': layers2[0].visible }"
+                  color="teal"
+                  false-value="Not Selected"
+                  true-value="Selected"
+                  v-model="ncwellwiseArsenicMax2Model"
+                />
+                <q-toggle
+                  :label="`Cadmium Maximum Layer ${ ncwellwiseCadmiumMax2Model }`"
+                  :key="layers2[1].id"
+                  v-on:input="showMap2PanelLayer(layers)"
+                  :class="{ 'is-active': layers2[1].visible }"
+                  color="teal"
+                  false-value="Not Selected"
+                  true-value="Selected"
+                  v-model="ncwellwiseCadmiumMax2Model"
+                />
+                <q-toggle
+                  :label="`Lead Maximum Layer ${ ncwellwiseLeadMax2Model }`"
+                  :key="layers2[2].id"
+                  v-on:input="showMap2PanelLayer(layers)"
+                  :class="{ 'is-active': layers2[2].visible }"
+                  color="teal"
+                  false-value="Not Selected"
+                  true-value="Selected"
+                  v-model="ncwellwiseLeadMax2Model"
+                />
+                <q-toggle
+                  :label="`Manganese Maximum Layer ${ ncwellwiseMngMax2Model }`"
+                  :key="layers2[3].id"
+                  v-on:input="showMap2PanelLayer(layers)"
+                  :class="{ 'is-active': layers2[3].visible }"
+                  color="teal"
+                  false-value="Not Selected"
+                  true-value="Selected"
+                  v-model="ncwellwiseMngMax2Model"
+                / -->
+              </div>
+            </q-expansion-item>
+            <!-- // NC wellwise layers -->
+
+            <!-- // LTDB Census layers -->
+            <q-expansion-item expand-separator icon="list" label="Socioeconomic Layers, by Census Tracts">
+              <div class="q-pa-md q-gutter-y-sm column">
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="pnhwht12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Percent Non-Hispanic White</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="pnhblk12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Percent Non-Hispanic Black</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="phisp12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Percent Hispanic</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="pasian12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Percent Asian</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="pntv12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Percent Native American</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="hincw12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Median HH income, white</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="hincb12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Median HH income, black</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="hinch12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Median HH income, hispanic</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="hinca12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Median HH income, asian</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="pwpov12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>% in poverty, white</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="pbpov12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>% in poverty, black</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="phpov12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>% in poverty, hispanic</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="papov12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>% in poverty, asian</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="pnapov12" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>% in poverty, native American</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </div>
+            </q-expansion-item>
+            <!-- // LTDB Census layers -->
+
+            <!-- // EJScreen layers -->
+            <q-expansion-item expand-separator icon="list" label="Environmental Justice Layers, by Census Block Group">
+              <div class="q-pa-md q-gutter-y-sm column">
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="d_ldpnt_2" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for % pre-1960 housing (lead paint indicator)</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="d_dslpm_2" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Diesel particulate matter level in air</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="d_cancr_2" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Air toxics cancer risk</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="d_resp_2" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Air toxics respiratory hazard index</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="d_ptraf_2" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Traffic proximity and volume</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="d_pwdis_2" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Indicator for major direct dischargers to water</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="d_pnpl_2" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Proximity to National Priorities List (NPL) sites</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="d_prmp_2" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Proximity to Risk Management Plan (RMP) facilities</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="d_ptsdf_2" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Proximity to Treatment Storage and Disposal (TSDF) facilities</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="d_ozone_2" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for Ozone level in air</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="d_pm25_2" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>EJ Index for PM2.5 level in air</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </div>
+            </q-expansion-item>
+            <!-- // EJScreen layers -->
+
+            <!-- // Health layers -->
+            <q-expansion-item expand-separator icon="list" label="Health Layers, by Zip Code">
+              <div class="q-pa-md q-gutter-y-sm column">
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="cases" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Covid-19 Total Cases</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="cases_per_10000_res" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Covid-19 Cases Per 10,000 Residents</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="cases_per_100000_res" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Covid-19 Cases Per 100,000 Residents-</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item tag="label" v-ripple>
+                  <q-item-section avatar>
+                    <q-radio v-on:input="showMap2PanelLayer" val="deaths" v-model="currentlayer2" color="teal" />
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>Covid-19 Deaths</q-item-label>
+                  </q-item-section>
+                </q-item>
+               </div>
+            </q-expansion-item>
+            <!-- // Health layers -->
+
+            <!-- // Triangle wellwise layers -->
+            <q-expansion-item expand-separator icon="list" label="Triangle Well Data Layers">
+              <div class="q-pa-md q-gutter-y-sm column">
+                <q-toggle
+                  :label="`Lead Maximum Layer`"
+                  :key="layers2[4].id"
+                  v-on:input="showMap2PanelLayer"
+                  :class="{ 'is-active': layers2[4].visible }"
+                  color="teal"
+                  false-value="Not Selected"
+                  true-value="Selected"
+                  v-model="triwellwiseLeadMax2Model"
+                />
+                <!-- q-toggle
+                  :label="`Lead Maximum Layer ${ triwellwiseLeadMax2Model }`"
+                  :key="layers2[4].id"
+                  v-on:input="showMap2PanelLayer"
+                  :class="{ 'is-active': layers2[4].visible }"
+                  color="teal"
+                  false-value="Not Selected"
+                  true-value="Selected"
+                  v-model="triwellwiseLeadMax2Model"
+                / -->
+                <q-toggle
+                  :label="`Manganese Maximum Layer ${ triwellwiseManganeseMax2Model }`"
+                  :key="layers2[5].id"
+                  v-on:input="showMap2PanelLayer"
+                  :class="{ 'is-active': layers2[5].visible }"
+                  color="teal"
+                  false-value="Not Selected"
+                  true-value="Selected"
+                  v-model="triwellwiseManganeseMax2Model"
+                />
+              </div>
+            </q-expansion-item>
+            <!-- // triangle wellwise layers -->
           </div>
         </q-expansion-item>
         <!-- // map 2 layers -->
@@ -215,7 +893,7 @@
             <tr>
               <td id="nested">
                 <tr>
-                  <q-expansion-item expand-separator icon="list" label="Arsenic Maximum (ppm)">
+                  <q-expansion-item expand-separator icon="list" label="Arsenic Maximum (ppb)">
                     <q-markup-table class="bg-teal-1">
                       <tr>
                         <td id="nested">
@@ -253,7 +931,7 @@
                   </q-expansion-item>
                 </tr>
                 <tr>
-                  <q-expansion-item expand-separator icon="list" label="Cadmium Maximum (ppm)">
+                  <q-expansion-item expand-separator icon="list" label="Cadmium Maximum (ppb)">
                     <q-markup-table class="bg-teal-1">
                       <tr>
                         <td id="nested">
@@ -291,7 +969,7 @@
                   </q-expansion-item>
                 </tr>
                 <tr>
-                  <q-expansion-item expand-separator icon="list" label="Lead Maximum (ppm)">
+                  <q-expansion-item expand-separator icon="list" label="Lead Maximum (ppb)">
                     <q-markup-table class="bg-teal-1">
                       <tr>
                         <td id="nested">
@@ -329,7 +1007,7 @@
                   </q-expansion-item>
                 </tr>
                 <tr>
-                  <q-expansion-item expand-separator icon="list" label="Maganese Maximum (ppm)">
+                  <q-expansion-item expand-separator icon="list" label="Maganese Maximum (ppb)">
                     <q-markup-table class="bg-teal-1">
                       <tr>
                         <td id="nested">
@@ -392,7 +1070,8 @@
         <vl-view ref="view" :center.sync="center" :zoom.sync="zoom" :rotation.sync="rotation"></vl-view>
 
         <!--// click interactions -->
-        <vl-interaction-select ref="selectInteraction" :features.sync="selectedFeatures">
+        <!-- vl-interaction-select ref="selectInteraction" :features.sync="selectedFeature" -->
+        <vl-interaction-select ref="selectInteraction" :layers="layer => !(layer instanceof VectorTile)" :features.sync="selectedFeature">
           <template slot-scope="select">
             <!--// select styles -->
             <vl-style-box>
@@ -421,14 +1100,14 @@
                       Feature ID {{ feature.id }} Map 1
                     </div>
                     <template v-slot:action>
-                      <q-btn flat round dense icon="close" @click="selectedFeatures = selectedFeatures.filter(f => f.id !== feature.id)" />
+                      <q-btn flat round dense icon="close" @click="selectedFeature = selectedFeature.filter(f => f.id !== feature.id)" />
                     </template>
                   </q-banner>
                   <table class="table is-fullwidth">
-                    <div v-if="Object.keys(selectedFeaturesMaxBarBox).length > 0">
+                    <div v-if="Object.keys(selectedFeatureMaxBarBox).length > 0">
                     <tr>
                       <td>
-                        <apexchart width="400" type="radialBar" :options="apxmaxoptions" :series="selectedFeaturesMaxBarBox"></apexchart>
+                        <!-- apexchart width="400" type="radialBar" :options="apxmaxoptions" :series="selectedFeatureMaxBarBox"></apexchart -->
                       </td>
                     </tr>
                     </div>
@@ -438,29 +1117,26 @@
             </vl-overlay>
             <!--// selected feature popup -->
           </template>
-        </vl-interaction-select>
-        <!--// click interactions -->
+          </vl-interaction-select>
+          <!--// click interactions -->
 
-        <!--// base layers -->
-        <vl-layer-tile v-for="layer in baseLayers" :key="layer.name" :id="layer.name" :visible="layer.visible">
-          <component :is="'vl-source-' + layer.name" v-bind="layer"></component>
-        </vl-layer-tile>
-        <!--// base layers -->
+          <!--// base layers -->
+          <vl-layer-tile v-for="layer in baseLayers" :key="layer.name" :id="layer.name" :visible="layer.visible">
+            <component ref="baselayer" :is="'vl-source-' + layer.name" v-bind="layer"></component>
+          </vl-layer-tile>
+          <!--// base layers -->
 
-        <!--// other layers1 from config -->
-        <!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
-        <component v-for="layer in layers1" :is="layer.cmp" v-if="layer.visible" :key="layer.id" v-bind="layer">
-          <!--// add vl-source-* -->
-          <component ref="layer1Source" :is="layer.source.cmp" v-bind="layer.source">
-          </component>
-
-          <!--// add style components if provided -->
-          <!--// create vl-style-box or vl-style-func -->
-          <component v-if="layer.style" v-for="(style, i) in layer.style" :key="i" :is="style.cmp" v-bind="style">
-          </component>
-        </component>
-        <!-- eslint-enable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
-        <!--// other layers1 -->
+          <!--// other layers1 from config -->
+          <!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
+          <vl-layer-vector-tile v-for="layer in layers1" :is="layer.cmp" v-if="layer.visible" :key="layer.id" v-bind="layer">
+            <!--// add vl-source-* -->
+            <component :is="layer.source.cmp" v-bind="layer.source" ref="layer1Source" />
+            <!--// add style components if provided -->
+            <!--// create vl-style-box or vl-style-func -->
+            <component v-if="layer.style" v-for="(style, i) in layer.style" :key="i" :is="style.cmp" v-bind="style" ref="layer1Style" />
+          </vl-layer-vector-tile>
+          <!-- eslint-enable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
+          <!--// other layers1 -->
         </vl-map>
         <!--// app map1 -->
 
@@ -471,7 +1147,8 @@
         <vl-view ref="view" :center.sync="center" :zoom.sync="zoom" :rotation.sync="rotation"></vl-view>
 
         <!--// click interactions -->
-        <vl-interaction-select ref="selectInteraction" :features.sync="selectedFeatures">
+        <!-- vl-interaction-select ref="selectInteraction" :features.sync="selectedFeature" -->
+        <vl-interaction-select ref="selectInteraction" :layers="layer => !(layer instanceof VectorTile)" :features.sync="selectedFeature">
           <template slot-scope="select">
             <!--// select styles -->
             <vl-style-box>
@@ -500,14 +1177,14 @@
                       Feature ID {{ feature.id }} Map 2
                     </div>
                     <template v-slot:action>
-                      <q-btn flat round dense icon="close" @click="selectedFeatures = selectedFeatures.filter(f => f.id !== feature.id)" />
+                      <q-btn flat round dense icon="close" @click="selectedFeature = selectedFeature.filter(f => f.id !== feature.id)" />
                     </template>
                   </q-banner>
                   <table class="table is-fullwidth">
-                    <div v-if="Object.keys(selectedFeaturesMaxBarBox).length > 0">
+                    <div v-if="Object.keys(selectedFeatureMaxBarBox).length > 0">
                     <tr>
                       <td>
-                        <apexchart width="400" type="radialBar" :options="apxmaxoptions" :series="selectedFeaturesMaxBarBox"></apexchart>
+                        <apexchart width="400" type="radialBar" :options="apxmaxoptions" :series="selectedFeatureMaxBarBox"></apexchart>
                       </td>
                     </tr>
                     </div>
@@ -535,7 +1212,7 @@
 
           <!--// add style components if provided -->
           <!--// create vl-style-box or vl-style-func -->
-          <component v-if="layer.style" v-for="(style, i) in layer.style" :key="i" :is="style.cmp" v-bind="style">
+          <component ref="layer2Style" v-if="layer.style" v-for="(style, i) in layer.style" :key="i" :is="style.cmp" v-bind="style">
           </component>
         </component>
         <!-- eslint-enable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
@@ -559,13 +1236,13 @@
 
     <!--// ol map1 controls -->
     <q-page-sticky position="top-left" :offset="[18, 58]">
-      <div id="ZoomTarget"></div>
+      <div id="Zoom1Target"></div>
     </q-page-sticky>
     <q-page-sticky position="bottom-left" :offset="[8, 38]">
-      <div id="OverviewMapTarget"></div>
+      <div id="OverviewMap1Target"></div>
     </q-page-sticky>
     <q-page-sticky position="bottom-left" :offset="[15, 8]">
-      <div id="ScaleTarget"></div>
+      <div id="Scale1Target"></div>
     </q-page-sticky>
     <!--// ol map1 controls -->
 
@@ -617,7 +1294,7 @@
 <script>
 // quasar and vuelayers import
 import { openURL } from 'quasar'
-import { findPointOnSurface } from 'vuelayers/lib/ol-ext'
+import { findPointOnSurface, createStyle } from 'vuelayers/lib/ol-ext'
 import { camelCase } from 'lodash'
 
 // ol controls import
@@ -627,6 +1304,7 @@ import Zoom from 'ol/control/Zoom'
 import Attribution from 'ol/control/Attribution'
 
 // other ol imports
+import VectorTile from 'ol/layer/VectorTile'
 import { Style, Stroke, Fill } from 'ol/style'
 import { DEVICE_PIXEL_RATIO } from 'ol/has.js'
 
@@ -644,90 +1322,8 @@ export default {
   },
   data () {
     return {
-      apxmaxoptions: {
-        colors: ['#a534eb', '#eba234', '#747982', '#19800b'],
-        animations: {
-          enabled: true,
-          easing: 'easeinout',
-          speed: 1000
-        },
-        fill: {
-          type: 'gradient',
-          gradient: {
-            shade: 'dark',
-            type: 'vertical',
-            shadeIntensity: 0.05,
-            inverseColors: false,
-            opacityFrom: 1,
-            opacityTo: 0.9,
-            stops: [0, 100]
-          }
-        },
-        chart: {
-          toolbar: {
-            show: true
-          }
-        },
-        title: {
-          text: 'Multiple Radial Bars',
-          align: 'left',
-          style: {
-            color: '#FFF'
-          }
-        },
-        plotOptions: {
-          radialBar: {
-            offsetY: -10,
-            offsetX: 0,
-            startAngle: 0,
-            endAngle: 250,
-            hollow: {
-              margin: 5,
-              size: '30%',
-              background: 'transparent',
-              image: undefined
-            },
-            dataLabels: {
-              name: {
-                show: false
-
-              },
-              value: {
-                show: false
-              }
-            }
-          }
-        },
-        labels: ['Arsenic', 'Cadmium', 'Lead', 'Manganese'],
-        legend: {
-          show: true,
-          floating: true,
-          fontSize: '16px',
-          position: 'left',
-          offsetX: -20,
-          offsetY: 20,
-          labels: {
-            useSeriesColors: true
-          },
-          markers: {
-            size: 0
-          },
-          formatter: function (seriesName, opts) {
-            return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex] + ' ppm'
-          },
-          itemMargin: {
-            horizontal: 1
-          }
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            legend: {
-              show: false
-            }
-          }
-        }]
-      },
+      vtSelection: {},
+      vtIdProp: 'geoid10',
       apxavgoptions: {
         colors: ['#a534eb', '#eba234', '#747982', '#19800b'],
         animations: {
@@ -797,7 +1393,7 @@ export default {
             size: 0
           },
           formatter: function (seriesName, opts) {
-            return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex] + ' ppm'
+            return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex] + ' ppb'
           },
           itemMargin: {
             horizontal: 1
@@ -881,7 +1477,91 @@ export default {
             size: 0
           },
           formatter: function (seriesName, opts) {
-            return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex] + ' ppm'
+            return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex] + ' ppb'
+          },
+          itemMargin: {
+            horizontal: 1
+          }
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            legend: {
+              show: false
+            }
+          }
+        }]
+      },
+      apxmaxoptions: {
+        colors: ['#a534eb', '#eba234', '#747982', '#19800b'],
+        animations: {
+          enabled: true,
+          easing: 'easeinout',
+          speed: 1000
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shade: 'dark',
+            type: 'vertical',
+            shadeIntensity: 0.05,
+            inverseColors: false,
+            opacityFrom: 1,
+            opacityTo: 0.9,
+            stops: [0, 100]
+          }
+        },
+        chart: {
+          toolbar: {
+            show: true
+          }
+        },
+        title: {
+          text: 'Maximum Values',
+          align: 'left',
+          style: {
+            color: '#000'
+          }
+        },
+        plotOptions: {
+          radialBar: {
+            offsetY: -10,
+            offsetX: 0,
+            startAngle: 0,
+            endAngle: 250,
+            hollow: {
+              margin: 5,
+              size: '30%',
+              background: 'transparent',
+              image: undefined
+            },
+            dataLabels: {
+              name: {
+                show: false
+
+              },
+              value: {
+                show: false
+              }
+            }
+          }
+        },
+        labels: ['Arsenic', 'Cadmium', 'Lead', 'Manganese'],
+        legend: {
+          show: true,
+          floating: true,
+          fontSize: '16px',
+          position: 'left',
+          offsetX: -20,
+          offsetY: 20,
+          labels: {
+            useSeriesColors: true
+          },
+          markers: {
+            size: 0
+          },
+          formatter: function (seriesName, opts) {
+            return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex] + ' ppb'
           },
           itemMargin: {
             horizontal: 1
@@ -965,7 +1645,7 @@ export default {
             size: 0
           },
           formatter: function (seriesName, opts) {
-            return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex] + ' ppm'
+            return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex] + ' ppb'
           },
           itemMargin: {
             horizontal: 1
@@ -983,7 +1663,7 @@ export default {
       // map parameters
       // center: [-73.845, 40.72],
       center: [NaN, NaN],
-      zoom: 12,
+      zoom: 9,
       rotation: 0,
       mapVisible: true,
       leftDrawerOpen: false,
@@ -1010,22 +1690,18 @@ export default {
           'coordinates': [null, null]
         }
       },
-      ncwellwiseArsenicMax1Model: 'Selected',
-      ncwellwiseCadmiumMax1Model: 'Not Selected',
-      ncwellwiseLeadMax1Model: 'Not Selected',
-      ncwellwiseMngMax1Model: 'Not Selected',
-      ncwellwiseArsenicMax2Model: 'Selected',
-      ncwellwiseCadmiumMax2Model: 'Not Selected',
-      ncwellwiseLeadMax2Model: 'Not Selected',
-      ncwellwiseMngMax2Model: 'Not Selected',
+      triwellwiseArsenicMax1Model: 'Not Selected',
+      triwellwiseCadmiumMax1Model: 'Not Selected',
+      triwellwiseLeadMax2Model: 'Not Selected',
+      triwellwiseManganeseMax2Model: 'Not Selected',
       ttitle: undefined,
       // stored and selected features
       storeFeatures: [],
-      selectedFeatures: [],
-      selectedFeaturesMaxBarBox: [],
-      selectedFeaturesAvgBarBox: [],
-      selectedFeaturesMinBarBox: [],
-      selectedFeaturesStdBarBox: [],
+      selectedFeature: [],
+      selectedFeatureMaxBarBox: [],
+      selectedFeatureAvgBarBox: [],
+      selectedFeatureMinBarBox: [],
+      selectedFeatureStdBarBox: [],
       // state attributes
       eventCoordinate: [NaN, NaN],
       deviceCoordinate: [NaN, NaN],
@@ -1049,17 +1725,85 @@ export default {
         }
       ],
       // layers config
-      primelayer1: 'ncwellwise_arsenic_max',
-      primelayer2: 'ncwellwise_arsenic_max', // 'ncwellwise_arsenic_max',
+      currentlayer1: 'ncwellwise_arsenic_max',
+      currentlayer2: 'ncwellwise_arsenic_max',
+      currentvar2: 'lead_maximum',
       layers1: [
         {
-          id: 'ncwellwise_arsenic_max',
-          title: 'NC wellwise Arsenic Maximum',
-          cmp: 'vl-layer-vector',
+          id: this.getNCWellwiseLayer1ID(),
+          title: 'NC Wellwise Layer 1 Maximum',
+          // cmp: 'vl-layer-vector',
+          cmp: 'vl-layer-vector-tile',
           visible: true,
           source: {
+            // cmp: 'vl-source-vector',
+            cmp: 'vl-source-vector-tile',
+            // url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_subset_20102019_geom/?format=json'
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ncwellwise_subset_20102019_geom.mvt?tile={z}/{x}/{y}'
+          },
+          style: [
+            {
+              cmp: 'vl-style-func',
+              factory: this.getncwellwiseStyle1
+            }
+          ]
+        },
+        {
+          id: this.getLTDBCensusLayer1ID(),
+          title: 'LTDB Census',
+          cmp: 'vl-layer-vector-tile',
+          visible: false,
+          source: {
+            cmp: 'vl-source-vector-tile',
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ltdb_std_2012_sample_subset_geom.mvt?tile={z}/{x}/{y}'
+          },
+          style: [
+            {
+              cmp: 'vl-style-func',
+              factory: this.getltdbStyle1
+            }
+          ]
+        },
+        {
+          id: this.getEJScreenLayer1ID(),
+          title: 'EJScreen',
+          cmp: 'vl-layer-vector-tile',
+          visible: false,
+          source: {
+            cmp: 'vl-source-vector-tile',
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ejscreen_subset_geom.mvt?tile={z}/{x}/{y}'
+          },
+          style: [
+            {
+              cmp: 'vl-style-func',
+              factory: this.getejscreenStyle1
+            }
+          ]
+        },
+        {
+          id: this.getCovid19Layer1ID(),
+          title: 'Covid19',
+          cmp: 'vl-layer-vector-tile',
+          visible: false,
+          source: {
+            cmp: 'vl-source-vector-tile',
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/nc_covid_zipcode_geom.mvt?tile={z}/{x}/{y}'
+          },
+          style: [
+            {
+              cmp: 'vl-style-func',
+              factory: this.getcovid19Style1
+            }
+          ]
+        },
+        {
+          id: 'triwellwise_arsenic_max',
+          title: 'trianle wellwise Arsenic Maximum',
+          cmp: 'vl-layer-vector',
+          visible: false,
+          source: {
             cmp: 'vl-source-vector',
-            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_subset_20102019_geom/?format=json'
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_triangle_20102019_geom/?format=json'
           },
           style: [
             {
@@ -1069,90 +1813,93 @@ export default {
           ]
         },
         {
-          id: 'ncwellwise_cadmium_max',
-          title: 'NC Wellwise Cadmium Maximum',
+          id: 'triwellwise_cadmium_max',
+          title: 'Triangle Wellwise Cadmium Maximum',
           cmp: 'vl-layer-vector',
           visible: false,
           source: {
             cmp: 'vl-source-vector',
-            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_subset_20102019_geom/?format=json'
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_triangle_20102019_geom/?format=json'
           },
           style: [
             {
               cmp: 'vl-style-func',
               factory: this.getncwellwiseCadmiumMaxStyle
-            }
-          ]
-        },
-        {
-          id: 'ncwellwise_lead_max',
-          title: 'NC wellwise Lead Maximum',
-          cmp: 'vl-layer-vector',
-          visible: false,
-          source: {
-            cmp: 'vl-source-vector',
-            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_subset_20102019_geom/?format=json'
-          },
-          style: [
-            {
-              cmp: 'vl-style-func',
-              factory: this.getncwellwiseLeadMaxStyle
-            }
-          ]
-        },
-        {
-          id: 'ncwellwise_mng_max',
-          title: 'NC Wellwise Manganese Maximum',
-          cmp: 'vl-layer-vector',
-          visible: false,
-          source: {
-            cmp: 'vl-source-vector',
-            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_subset_20102019_geom/?format=json'
-          },
-          style: [
-            {
-              cmp: 'vl-style-func',
-              factory: this.getncwellwiseMngMaxStyle
             }
           ]
         }
       ],
       layers2: [
         {
-          id: 'ncwellwise_arsenic_max',
-          title: 'NC wellwise Arsenic Maximum',
-          cmp: 'vl-layer-vector',
+          id: this.getNCWellwiseLayer2ID(),
+          title: 'NC Wellwise Layer 2 Maximum',
+          // cmp: 'vl-layer-vector',
+          cmp: 'vl-layer-vector-tile',
           visible: true,
           source: {
-            cmp: 'vl-source-vector',
-            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_subset_20102019_geom/?format=json'
+            // cmp: 'vl-source-vector',
+            cmp: 'vl-source-vector-tile',
+            // url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_subset_20102019_geom/?format=json'
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ncwellwise_subset_20102019_geom.mvt?tile={z}/{x}/{y}'
           },
           style: [
             {
               cmp: 'vl-style-func',
-              factory: this.getncwellwiseArsenicMaxStyle
+              factory: this.getncwellwiseStyle2
             }
           ]
         },
         {
-          id: 'ncwellwise_cadmium_max',
-          title: 'NC Wellwise Cadmium Maximum',
-          cmp: 'vl-layer-vector',
+          id: this.getLTDBCensusLayer2ID(),
+          title: 'LTDB Census',
+          cmp: 'vl-layer-vector-tile',
           visible: false,
           source: {
-            cmp: 'vl-source-vector',
-            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_subset_20102019_geom/?format=json'
+            cmp: 'vl-source-vector-tile',
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ltdb_std_2012_sample_subset_geom.mvt?tile={z}/{x}/{y}'
           },
           style: [
             {
               cmp: 'vl-style-func',
-              factory: this.getncwellwiseCadmiumMaxStyle
+              factory: this.getltdbStyle2
             }
           ]
         },
         {
-          id: 'ncwellwise_lead_max',
-          title: 'NC wellwise Lead Maximum',
+          id: this.getEJScreenLayer2ID(),
+          title: 'EJScreen',
+          cmp: 'vl-layer-vector-tile',
+          visible: false,
+          source: {
+            cmp: 'vl-source-vector-tile',
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ejscreen_subset_geom.mvt?tile={z}/{x}/{y}'
+          },
+          style: [
+            {
+              cmp: 'vl-style-func',
+              factory: this.getejscreenStyle2
+            }
+          ]
+        },
+        {
+          id: this.getCovid19Layer2ID(),
+          title: 'Covid19',
+          cmp: 'vl-layer-vector-tile',
+          visible: false,
+          source: {
+            cmp: 'vl-source-vector-tile',
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/nc_covid_zipcode_geom.mvt?tile={z}/{x}/{y}'
+          },
+          style: [
+            {
+              cmp: 'vl-style-func',
+              factory: this.getcovid19Style2
+            }
+          ]
+        },
+        {
+          id: 'triwellwise_lead_max',
+          title: 'Trianel wellwise Lead Maximum',
           cmp: 'vl-layer-vector',
           visible: false,
           source: {
@@ -1167,8 +1914,8 @@ export default {
           ]
         },
         {
-          id: 'ncwellwise_mng_max',
-          title: 'NC Wellwise Manganese Maximum',
+          id: 'triwellwise_mng_max',
+          title: 'Triangle Wellwise Manganese Maximum',
           cmp: 'vl-layer-vector',
           visible: false,
           source: {
@@ -1196,25 +1943,584 @@ export default {
     openURL,
     camelCase,
     pointOnSurface: findPointOnSurface,
-    getncwellwiseArsenicMaxStyle: function () {
-      let canvas = document.createElement('canvas')
+    VectorTile,
+    getncwellwiseStyle1: function () {
+      /* let canvas = document.createElement('canvas')
       let context = canvas.getContext('2d')
       let pixelRatio = DEVICE_PIXEL_RATIO
-
+      let that = this
       function getPattern (color1) {
         canvas.width = 8 * pixelRatio
         canvas.height = 8 * pixelRatio
         let color2 = 'rgb(0, 0, 0, 0.0)'
         let numberOfStripes = 50
-        for (var i = 0; i < numberOfStripes * 2; i++) {
+        var i
+        var thickness
+        if (that.currentlayer1 === 'ncwellwise_arsenic_max') {
+          for (i = 0; i < numberOfStripes * 2; i++) {
+            thickness = 200 / numberOfStripes
+            context.beginPath()
+            context.strokeStyle = i % 2 ? color1 : color2
+            context.lineWidth = thickness
+            context.lineCap = 'round'
+
+            context.moveTo(i * thickness * pixelRatio + thickness / 2 - 300, 0)
+            context.lineTo(0 + i * thickness * pixelRatio + thickness / 2, 300)
+            context.stroke()
+          }
+        } else if (that.currentlayer1 === 'ncwellwise_cadmium_max') {
+          for (i = 0; i < numberOfStripes; i++) {
+            thickness = 200 / numberOfStripes
+            context.beginPath()
+            context.strokeStyle = i % 2 ? color1 : color2
+            context.lineWidth = thickness
+            context.lineCap = 'round'
+
+            context.moveTo(i * thickness + thickness / 2, 0)
+            context.lineTo(i * thickness + thickness / 2, 300)
+            context.stroke()
+          }
+        } else if (that.currentlayer1 === 'ncwellwise_lead_max') {
+          for (i = 0; i < numberOfStripes * 2; i++) {
+            thickness = 200 / numberOfStripes
+            context.beginPath()
+            context.strokeStyle = i % 2 ? color1 : color2
+            context.lineWidth = thickness
+            context.lineCap = 'round'
+
+            context.moveTo(i * thickness * pixelRatio + thickness / 2 - 300, 300)
+            context.lineTo(0 + i * thickness * pixelRatio + thickness / 2, 0)
+            context.stroke()
+          }
+        } else if (that.currentlayer1 === 'ncwellwise_mng_max') {
+          for (i = 0; i < numberOfStripes; i++) {
+            thickness = 200 / numberOfStripes
+            context.beginPath()
+            context.strokeStyle = i % 2 ? color1 : color2
+            context.lineWidth = thickness
+            context.lineCap = 'round'
+
+            context.moveTo(0, i * thickness + thickness / 2)
+            context.lineTo(300, i * thickness + thickness / 2)
+            context.stroke()
+          }
+        }
+        return context.createPattern(canvas, 'repeat')
+      } */
+      return feature => {
+        let data = feature.getProperties()
+        let color
+        if (this.currentlayer1 === 'ncwellwise_arsenic_max') {
+          if (data.arsenic_maximum === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data.arsenic_maximum < 4) {
+            color = 'rgba(119, 52, 235, 0.65)'
+          } else if (data.arsenic_maximum >= 4 && data.arsenic_maximum < 24) {
+            color = 'rgba(143, 52, 235, 0.65)'
+          } else if (data.arsenic_maximum >= 24 && data.arsenic_maximum < 32) {
+            color = 'rgba(165, 52, 235, 0.65)'
+          } else if (data.arsenic_maximum >= 32 && data.arsenic_maximum < 52) {
+            color = 'rgba(186, 52, 235, 0.65)'
+          } else if (data.arsenic_maximum >= 52 && data.arsenic_maximum < 62) {
+            color = 'rgba(211, 52, 235, 0.65)'
+          } else if (data.arsenic_maximum >= 62) {
+            color = 'rgba(235, 52, 220, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'ncwellwise_cadmium_max') {
+          if (data.cadmium_maximum === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data.cadmium_maximum < 5.0) {
+            color = 'rgba(235, 89, 52, 0.65)'
+          } else if (data.cadmium_maximum >= 5.0 && data.cadmium_maximum < 22.0) {
+            color = 'rgba(235, 131, 52, 0.65)'
+          } else if (data.cadmium_maximum >= 22.0 && data.cadmium_maximum < 33.0) {
+            color = 'rgba(235, 162, 52, 0.65)'
+          } else if (data.cadmium_maximum >= 33.0 && data.cadmium_maximum < 44.0) {
+            color = 'rgba(235, 192, 52, 0.65)'
+          } else if (data.cadmium_maximum >= 44.0 && data.cadmium_maximum < 55.0) {
+            color = 'rgba(235, 220, 52, 0.65)'
+          } else if (data.cadmium_maximum >= 55.0) {
+            color = 'rgba(223, 235, 52, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'ncwellwise_lead_max') {
+          if (data.lead_maximum === -999.99) {
+            color = 'rgba(50, 110, 219, 0.65)'
+          } else if (data.lead_maximum < 11.0) {
+            color = 'rgba(196, 200, 207, 0.65)'
+          } else if (data.lead_maximum >= 11.0 && data.lead_maximum < 30.0) {
+            color = 'rgba(156, 162, 173, 0.65)'
+          } else if (data.lead_maximum >= 30.0 && data.lead_maximum < 50.0) {
+            color = 'rgba(116, 121, 130, 0.65)'
+          } else if (data.lead_maximum >= 50.0 && data.lead_maximum < 80.0) {
+            color = 'rgba(79, 82, 89, 0.65)'
+          } else if (data.lead_maximum >= 80.0 && data.lead_maximum < 100.0) {
+            color = 'rgba(55, 58, 64, 0.65)'
+          } else if (data.lead_maximum >= 100.0) {
+            color = 'rgba(39, 40, 43, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'ncwellwise_mng_max') {
+          if (data.manganese_maximum === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data.manganese_maximum < 2800.0) {
+            color = 'rgba(194, 232, 190, 0.65)'
+          } else if (data.manganese_maximum >= 2800.0 && data.manganese_maximum < 5800.0) {
+            color = 'rgba(81, 222, 67, 0.65)'
+          } else if (data.manganese_maximum >= 5800.0 && data.manganese_maximum < 10800.0) {
+            color = 'rgba(25, 128, 11, 0.65)'
+          } else if (data.manganese_maximum >= 10800.0 && data.manganese_maximum < 20800.0) {
+            color = 'rgba(14, 82, 5, 0.65)'
+          } else if (data.manganese_maximum >= 20800.0 && data.manganese_maximum < 40800.0) {
+            color = 'rgba(30, 138, 114, 0.65)'
+          } else if (data.manganese_maximum >= 40800.0) {
+            color = 'rgba(5, 97, 76, 0.65)'
+          }
+        }
+        /* if (this.currentlayer1 === 'ncwellwise_arsenic_max') {
+          if (data.arsenic_maximum === -999.99) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data.arsenic_maximum < 4) {
+            color = getPattern('rgba(119, 52, 235, 0.65)')
+          } else if (data.arsenic_maximum >= 4 && data.arsenic_maximum < 24) {
+            color = getPattern('rgba(143, 52, 235, 0.65)')
+          } else if (data.arsenic_maximum >= 24 && data.arsenic_maximum < 32) {
+            color = getPattern('rgba(165, 52, 235, 0.65)')
+          } else if (data.arsenic_maximum >= 32 && data.arsenic_maximum < 52) {
+            color = getPattern('rgba(186, 52, 235, 0.65)')
+          } else if (data.arsenic_maximum >= 52 && data.arsenic_maximum < 62) {
+            color = getPattern('rgba(211, 52, 235, 0.65)')
+          } else if (data.arsenic_maximum >= 62) {
+            color = getPattern('rgba(235, 52, 220, 0.65)')
+          }
+        } else if (this.currentlayer1 === 'ncwellwise_cadmium_max') {
+          if (data.cadmium_maximum === -999.99) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data.cadmium_maximum < 5.0) {
+            color = getPattern('rgba(235, 89, 52, 0.65)')
+          } else if (data.cadmium_maximum >= 5.0 && data.cadmium_maximum < 22.0) {
+            color = getPattern('rgba(235, 131, 52, 0.65)')
+          } else if (data.cadmium_maximum >= 22.0 && data.cadmium_maximum < 33.0) {
+            color = getPattern('rgba(235, 162, 52, 0.65)')
+          } else if (data.cadmium_maximum >= 33.0 && data.cadmium_maximum < 44.0) {
+            color = getPattern('rgba(235, 192, 52, 0.65)')
+          } else if (data.cadmium_maximum >= 44.0 && data.cadmium_maximum < 55.0) {
+            color = getPattern('rgba(235, 220, 52, 0.65)')
+          } else if (data.cadmium_maximum >= 55.0) {
+            color = getPattern('rgba(223, 235, 52, 0.65)')
+          }
+        } else if (this.currentlayer1 === 'ncwellwise_lead_max') {
+          if (data.lead_maximum === -999.99) {
+            color = getPattern('rgba(50, 110, 219, 0.65)')
+          } else if (data.lead_maximum < 11.0) {
+            color = getPattern('rgba(196, 200, 207, 0.65)')
+          } else if (data.lead_maximum >= 11.0 && data.lead_maximum < 30.0) {
+            color = getPattern('rgba(156, 162, 173, 0.65)')
+          } else if (data.lead_maximum >= 30.0 && data.lead_maximum < 50.0) {
+            color = getPattern('rgba(116, 121, 130, 0.65)')
+          } else if (data.lead_maximum >= 50.0 && data.lead_maximum < 80.0) {
+            color = getPattern('rgba(79, 82, 89, 0.65)')
+          } else if (data.lead_maximum >= 80.0 && data.lead_maximum < 100.0) {
+            color = getPattern('rgba(55, 58, 64, 0.65)')
+          } else if (data.lead_maximum >= 100.0) {
+            color = getPattern('rgba(39, 40, 43, 0.65)')
+          }
+        } else if (this.currentlayer1 === 'ncwellwise_mng_max') {
+          if (data.manganese_maximum === -999.99) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data.manganese_maximum < 2800.0) {
+            color = getPattern('rgba(194, 232, 190, 0.65)')
+          } else if (data.manganese_maximum >= 2800.0 && data.manganese_maximum < 5800.0) {
+            color = getPattern('rgba(81, 222, 67, 0.65)')
+          } else if (data.manganese_maximum >= 5800.0 && data.manganese_maximum < 10800.0) {
+            color = getPattern('rgba(25, 128, 11, 0.65)')
+          } else if (data.manganese_maximum >= 10800.0 && data.manganese_maximum < 20800.0) {
+            color = getPattern('rgba(14, 82, 5, 0.65)')
+          } else if (data.manganese_maximum >= 20800.0 && data.manganese_maximum < 40800.0) {
+            color = getPattern('rgba(30, 138, 114, 0.65)')
+          } else if (data.manganese_maximum >= 40800.0) {
+            color = getPattern('rgba(5, 97, 76, 0.65)')
+          }
+        } */
+        const ncwellwise = [
+          createStyle({
+            strokeColor: '#000',
+            strokeWidth: (this.zoom / 8.0),
+            strokeLineCap: 'round',
+            strokeLineJoin: 'bevel',
+            fillColor: color
+          })
+        ]
+        return ncwellwise
+      }
+    },
+    getltdbStyle1: function () {
+      return feature => {
+        let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
+        let data = feature.getProperties()
+        let color
+        if (this.currentlayer1.substring(0, 4) === 'hinc') {
+          if (data[this.currentlayer1] === -999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < 10000) {
+            color = 'rgba(252, 210, 211, 0.65)'
+          } else if (data[this.currentlayer1] >= 10000 && data[this.currentlayer1] < 30000) {
+            color = 'rgba(252, 109, 114, 0.65)'
+          } else if (data[this.currentlayer1] >= 30000 && data[this.currentlayer1] < 50000) {
+            color = 'rgba(247, 59, 66, 0.65)'
+          } else if (data[this.currentlayer1] >= 50000 && data[this.currentlayer1] < 70000) {
+            color = 'rgba(250, 2, 11, 0.65)'
+          } else if (data[this.currentlayer1] >= 70000 && data[this.currentlayer1] < 1000000) {
+            color = 'rgba(181, 2, 6, 0.65)'
+          } else if (data[this.currentlayer1] >= 1000000) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else {
+          if (data[this.currentlayer1] === -999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < 15) {
+            color = 'rgba(252, 210, 211, 0.65)'
+          } else if (data[this.currentlayer1] >= 15 && data[this.currentlayer1] < 30) {
+            color = 'rgba(252, 109, 114, 0.65)'
+          } else if (data[this.currentlayer1] >= 30 && data[this.currentlayer1] < 45) {
+            color = 'rgba(247, 59, 66, 0.65)'
+          } else if (data[this.currentlayer1] >= 45 && data[this.currentlayer1] < 60) {
+            color = 'rgba(250, 2, 11, 0.65)'
+          } else if (data[this.currentlayer1] >= 60 && data[this.currentlayer1] < 75) {
+            color = 'rgba(181, 2, 6, 0.65)'
+          } else if (data[this.currentlayer1] >= 75) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        }
+        return [
+          new Style({
+            stroke: new Stroke({
+              color: selected ? 'rgba(200,20,20,0.8)' : 'black',
+              width: selected ? 2 : (this.zoom / 8.0)
+            }),
+            fill: new Fill({
+              color: selected ? 'rgba(200,20,20,0.2)' : color
+            })
+          })
+          /* createStyle({
+            strokeColor: '#000',
+            strokeWidth: (this.zoom / 8.0),
+            strokeLineCap: 'round',
+            strokeLineJoin: 'bevel',
+            fillColor: color
+          }) */
+        ]
+      }
+    },
+    getejscreenStyle1: function () {
+      return feature => {
+        let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
+        let data = feature.getProperties()
+        let color
+        if (this.currentlayer1 === 'd_ldpnt_2') {
+          if (data[this.currentlayer1] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < -200.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -200.0 && data[this.currentlayer1] < 0.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 0.0 && data[this.currentlayer1] < 200.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 200.0 && data[this.currentlayer1] < 400.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 400.0 && data[this.currentlayer1] < 600.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 600.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'd_dslpm_2') {
+          if (data[this.currentlayer1] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < -300.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -300.0 && data[this.currentlayer1] < 0.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 0.0 && data[this.currentlayer1] < 280.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 280.0 && data[this.currentlayer1] < 580.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 580.0 && data[this.currentlayer1] < 850.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 850.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'd_cancr_2') {
+          if (data[this.currentlayer1] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < -45000.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -45000.0 && data[this.currentlayer1] < -20000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -20000.0 && data[this.currentlayer1] < 5000.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 5000.0 && data[this.currentlayer1] < 30000.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 30000.0 && data[this.currentlayer1] < 55000.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 55000.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'd_resp_2') {
+          if (data[this.currentlayer1] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < -600.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -600.0 && data[this.currentlayer1] < -250) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -250.0 && data[this.currentlayer1] < 100.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 100.0 && data[this.currentlayer1] < 450.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 450.0 && data[this.currentlayer1] < 800.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 800.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'd_ptraf_2') {
+          if (data[this.currentlayer1] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < 800000.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 800000.0 && data[this.currentlayer1] < 1700000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 1700000.0 && data[this.currentlayer1] < 1700000.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 2600000.0 && data[this.currentlayer1] < 2600000.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 3500000.0 && data[this.currentlayer1] < 4400000.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 4400000.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'd_pwdis_2') {
+          if (data[this.currentlayer1] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < -47000.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -47000.0 && data[this.currentlayer1] < -35000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -35000.0 && data[this.currentlayer1] < -22000.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -22000.0 && data[this.currentlayer1] < -10000.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -10000.0 && data[this.currentlayer1] < 200.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 200.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'd_pnpl_2') {
+          if (data[this.currentlayer1] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < -400.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -400.0 && data[this.currentlayer1] < -120.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -120.0 && data[this.currentlayer1] < 150.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 150.0 && data[this.currentlayer1] < 420.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 420.0 && data[this.currentlayer1] < 690.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 690.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'd_prmp_2') {
+          if (data[this.currentlayer1] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < -450.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -450.0 && data[this.currentlayer1] < 1000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 1000.0 && data[this.currentlayer1] < 2450.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 2450.0 && data[this.currentlayer1] < 3900.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 3900.0 && data[this.currentlayer1] < 5350.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 5350.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'd_ptsdf_2') {
+          if (data[this.currentlayer1] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < -3200.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -3200.0 && data[this.currentlayer1] < -1000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -1000.0 && data[this.currentlayer1] < 1800.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 1800.0 && data[this.currentlayer1] < 4600.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 4600.0 && data[this.currentlayer1] < 7300.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 7300.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'd_ozone_2') {
+          if (data[this.currentlayer1] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < -58000.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -58000.0 && data[this.currentlayer1] < -28000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -28000.0 && data[this.currentlayer1] < 600.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 600.0 && data[this.currentlayer1] < 38000.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 38000.0 && data[this.currentlayer1] < 70000.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 70000.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'd_pm25_2') {
+          if (data[this.currentlayer1] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < -11000.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -11000.0 && data[this.currentlayer1] < -5500.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= -5500.0 && data[this.currentlayer1] < 1000.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 1000.0 && data[this.currentlayer1] < 7500.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 7500.0 && data[this.currentlayer1] < 15000.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer1] >= 15000.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        }
+        return [
+          new Style({
+            stroke: new Stroke({
+              color: selected ? 'rgba(200,20,20,0.8)' : 'black',
+              width: selected ? 2 : (this.zoom / 8.0)
+            }),
+            fill: new Fill({
+              color: selected ? 'rgba(200,20,20,0.2)' : color
+            })
+          })
+          /* createStyle({
+            strokeColor: '#000',
+            strokeWidth: (this.zoom / 8.0),
+            strokeLineCap: 'round',
+            strokeLineJoin: 'bevel',
+            fillColor: color
+          }) */
+        ]
+      }
+    },
+    getcovid19Style1: function () {
+      return feature => {
+        let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
+        let data = feature.getProperties()
+        let color
+        if (this.currentlayer1 === 'cases') {
+          if (data[this.currentlayer1] === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < 1328) {
+            color = 'rgba(34, 240, 219, 0.65)'
+          } else if (data[this.currentlayer1] >= 1328 && data[this.currentlayer1] < 2656) {
+            color = 'rgba(34, 223, 240, 0.65)'
+          } else if (data[this.currentlayer1] >= 2656 && data[this.currentlayer1] < 3984) {
+            color = 'rgba(34, 185, 240, 0.65)'
+          } else if (data[this.currentlayer1] >= 3984 && data[this.currentlayer1] < 5416) {
+            color = 'rgba(22, 141, 245, 0.65)'
+          } else if (data[this.currentlayer1] >= 5416 && data[this.currentlayer1] < 6644) {
+            color = 'rgba(22, 74, 245, 0.65)'
+          } else if (data[this.currentlayer1] >= 6644) {
+            color = 'rgba(23, 2, 247, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'cases_per_10000_res') {
+          if (data[this.currentlayer1] === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < 586.0) {
+            color = 'rgba(34, 240, 219, 0.65)'
+          } else if (data[this.currentlayer1] >= 586.0 && data[this.currentlayer1] < 1172.0) {
+            color = 'rgba(34, 223, 240, 0.65)'
+          } else if (data[this.currentlayer1] >= 1172.0 && data[this.currentlayer1] < 1758.0) {
+            color = 'rgba(34, 185, 240, 0.65)'
+          } else if (data[this.currentlayer1] >= 1758.0 && data[this.currentlayer1] < 2344.0) {
+            color = 'rgba(22, 141, 245, 0.65)'
+          } else if (data[this.currentlayer1] >= 2344.0 && data[this.currentlayer1] < 2930.0) {
+            color = 'rgba(22, 74, 245, 0.65)'
+          } else if (data[this.currentlayer1] >= 2930.0) {
+            color = 'rgba(23, 2, 247, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'cases_per_100000_res') {
+          if (data[this.currentlayer1] === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < 5859.0) {
+            color = 'rgba(34, 240, 219, 0.65)'
+          } else if (data[this.currentlayer1] >= 5859.0 && data[this.currentlayer1] < 11718.0) {
+            color = 'rgba(34, 223, 240, 0.65)'
+          } else if (data[this.currentlayer1] >= 11718.0 && data[this.currentlayer1] < 17577.0) {
+            color = 'rgba(34, 185, 240, 0.65)'
+          } else if (data[this.currentlayer1] >= 17577.0 && data[this.currentlayer1] < 23436.0) {
+            color = 'rgba(22, 141, 245, 0.65)'
+          } else if (data[this.currentlayer1] >= 23436.0 && data[this.currentlayer1] < 29295.0) {
+            color = 'rgba(22, 74, 245, 0.65)'
+          } else if (data[this.currentlayer1] >= 29295.0) {
+            color = 'rgba(23, 2, 247, 0.65)'
+          }
+        } else if (this.currentlayer1 === 'deaths') {
+          if (data[this.currentlayer1] === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer1] < 17) {
+            color = 'rgba(34, 240, 219, 0.65)'
+          } else if (data[this.currentlayer1] >= 17 && data[this.currentlayer1] < 34) {
+            color = 'rgba(34, 223, 240, 0.65)'
+          } else if (data[this.currentlayer1] >= 34 && data[this.currentlayer1] < 51) {
+            color = 'rgba(34, 185, 240, 0.65)'
+          } else if (data[this.currentlayer1] >= 51 && data[this.currentlayer1] < 65) {
+            color = 'rgba(22, 141, 245, 0.65)'
+          } else if (data[this.currentlayer1] >= 65 && data[this.currentlayer1] < 85) {
+            color = 'rgba(22, 74, 245, 0.65)'
+          } else if (data[this.currentlayer1] >= 85) {
+            color = 'rgba(23, 2, 247, 0.65)'
+          }
+        }
+        return [
+          new Style({
+            stroke: new Stroke({
+              color: selected ? 'rgba(200,20,20,0.8)' : 'black',
+              width: selected ? 2 : (this.zoom / 8.0)
+            }),
+            fill: new Fill({
+              color: selected ? 'rgba(200,20,20,0.2)' : color
+            })
+          })
+          /* createStyle({
+            strokeColor: '#000',
+            strokeWidth: (this.zoom / 8.0),
+            strokeLineCap: 'round',
+            strokeLineJoin: 'bevel',
+            fillColor: color
+          }) */
+        ]
+      }
+    },
+    getncwellwiseArsenicMaxStyle: function () {
+      let canvas = document.createElement('canvas')
+      let context = canvas.getContext('2d')
+      let pixelRatio = DEVICE_PIXEL_RATIO
+
+      function getPattern (color2) {
+        canvas.width = 8 * pixelRatio
+        canvas.height = 8 * pixelRatio
+        let color1 = 'rgb(0, 0, 0, 0.0)'
+        let numberOfStripes = 50
+        for (var i = 0; i < numberOfStripes; i++) {
           var thickness = 200 / numberOfStripes
           context.beginPath()
           context.strokeStyle = i % 2 ? color1 : color2
           context.lineWidth = thickness
           context.lineCap = 'round'
 
-          context.moveTo(i * thickness * pixelRatio + thickness / 2 - 300, 0)
-          context.lineTo(0 + i * thickness * pixelRatio + thickness / 2, 300)
+          context.moveTo(i * thickness + thickness / 2, 0)
+          context.lineTo(i * thickness + thickness / 2, 300)
           context.stroke()
         }
         return context.createPattern(canvas, 'repeat')
@@ -1223,19 +2529,19 @@ export default {
         let data = feature.getProperties()
         let color
         if (data.arsenic_maximum === -999.99) {
-          color = 'rgba(91, 95, 99, 0.65)'
+          color = 'rgba(91, 95, 99, 1.0)'
         } else if (data.arsenic_maximum < 4) {
-          color = getPattern('rgba(119, 52, 235, 0.65)')
+          color = getPattern('rgba(119, 52, 235, 1.0)')
         } else if (data.arsenic_maximum >= 4 && data.arsenic_maximum < 24) {
-          color = getPattern('rgba(143, 52, 235, 0.65)')
+          color = getPattern('rgba(143, 52, 235, 1.)')
         } else if (data.arsenic_maximum >= 24 && data.arsenic_maximum < 32) {
-          color = getPattern('rgba(165, 52, 235, 0.65)')
+          color = getPattern('rgba(165, 52, 235, 1.0)')
         } else if (data.arsenic_maximum >= 32 && data.arsenic_maximum < 52) {
-          color = getPattern('rgba(186, 52, 235, 0.65)')
+          color = getPattern('rgba(186, 52, 235, 1.0)')
         } else if (data.arsenic_maximum >= 52 && data.arsenic_maximum < 62) {
-          color = getPattern('rgba(211, 52, 235, 0.65)')
+          color = getPattern('rgba(211, 52, 235, 1.0)')
         } else if (data.arsenic_maximum >= 62) {
-          color = getPattern('rgba(235, 52, 220, 0.65)')
+          color = getPattern('rgba(235, 52, 220, 1.0)')
         }
         return [
           new Style({
@@ -1279,19 +2585,19 @@ export default {
         let data = feature.getProperties()
         let color
         if (data.cadmium_maximum === -999.99) {
-          color = 'rgba(91, 95, 99, 0.65)'
+          color = 'rgba(91, 95, 99, 1.0)'
         } else if (data.cadmium_maximum < 5.0) {
-          color = getPattern('rgba(235, 89, 52, 0.65)')
+          color = getPattern('rgba(235, 89, 52, 1.0)')
         } else if (data.cadmium_maximum >= 5.0 && data.cadmium_maximum < 22.0) {
-          color = getPattern('rgba(235, 131, 52, 0.65)')
+          color = getPattern('rgba(235, 131, 52, 1.0)')
         } else if (data.cadmium_maximum >= 22.0 && data.cadmium_maximum < 33.0) {
-          color = getPattern('rgba(235, 162, 52, 0.65)')
+          color = getPattern('rgba(235, 162, 52, 1.0)')
         } else if (data.cadmium_maximum >= 33.0 && data.cadmium_maximum < 44.0) {
-          color = getPattern('rgba(235, 192, 52, 0.65)')
+          color = getPattern('rgba(235, 192, 52, 1.0)')
         } else if (data.cadmium_maximum >= 44.0 && data.cadmium_maximum < 55.0) {
-          color = getPattern('rgba(235, 220, 52, 0.65)')
+          color = getPattern('rgba(235, 220, 52, 1.0)')
         } else if (data.cadmium_maximum >= 55.0) {
-          color = getPattern('rgba(223, 235, 52, 0.65)')
+          color = getPattern('rgba(223, 235, 52, 1.0)')
         }
         return [
           new Style({
@@ -1305,67 +2611,423 @@ export default {
               color: color
             })
           })
+        ]
+      }
+    },
+    getncwellwiseStyle2: function () {
+      return feature => {
+        let data = feature.getProperties()
+        let color
+        if (this.currentlayer2 === 'ncwellwise_arsenic_max') {
+          if (data.arsenic_maximum === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data.arsenic_maximum < 4) {
+            color = 'rgba(119, 52, 235, 0.65)'
+          } else if (data.arsenic_maximum >= 4 && data.arsenic_maximum < 24) {
+            color = 'rgba(143, 52, 235, 0.65)'
+          } else if (data.arsenic_maximum >= 24 && data.arsenic_maximum < 32) {
+            color = 'rgba(165, 52, 235, 0.65)'
+          } else if (data.arsenic_maximum >= 32 && data.arsenic_maximum < 52) {
+            color = 'rgba(186, 52, 235, 0.65)'
+          } else if (data.arsenic_maximum >= 52 && data.arsenic_maximum < 62) {
+            color = 'rgba(211, 52, 235, 0.65)'
+          } else if (data.arsenic_maximum >= 62) {
+            color = 'rgba(235, 52, 220, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'ncwellwise_cadmium_max') {
+          if (data.cadmium_maximum === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data.cadmium_maximum < 5.0) {
+            color = 'rgba(235, 89, 52, 0.65)'
+          } else if (data.cadmium_maximum >= 5.0 && data.cadmium_maximum < 22.0) {
+            color = 'rgba(235, 131, 52, 0.65)'
+          } else if (data.cadmium_maximum >= 22.0 && data.cadmium_maximum < 33.0) {
+            color = 'rgba(235, 162, 52, 0.65)'
+          } else if (data.cadmium_maximum >= 33.0 && data.cadmium_maximum < 44.0) {
+            color = 'rgba(235, 192, 52, 0.65)'
+          } else if (data.cadmium_maximum >= 44.0 && data.cadmium_maximum < 55.0) {
+            color = 'rgba(235, 220, 52, 0.65)'
+          } else if (data.cadmium_maximum >= 55.0) {
+            color = 'rgba(223, 235, 52, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'ncwellwise_lead_max') {
+          if (data.lead_maximum === -999.99) {
+            color = 'rgba(50, 110, 219, 0.65)'
+          } else if (data.lead_maximum < 11.0) {
+            color = 'rgba(196, 200, 207, 0.65)'
+          } else if (data.lead_maximum >= 11.0 && data.lead_maximum < 30.0) {
+            color = 'rgba(156, 162, 173, 0.65)'
+          } else if (data.lead_maximum >= 30.0 && data.lead_maximum < 50.0) {
+            color = 'rgba(116, 121, 130, 0.65)'
+          } else if (data.lead_maximum >= 50.0 && data.lead_maximum < 80.0) {
+            color = 'rgba(79, 82, 89, 0.65)'
+          } else if (data.lead_maximum >= 80.0 && data.lead_maximum < 100.0) {
+            color = 'rgba(55, 58, 64, 0.65)'
+          } else if (data.lead_maximum >= 100.0) {
+            color = 'rgba(39, 40, 43, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'ncwellwise_mng_max') {
+          if (data.manganese_maximum === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data.manganese_maximum < 2800.0) {
+            color = 'rgba(194, 232, 190, 0.65)'
+          } else if (data.manganese_maximum >= 2800.0 && data.manganese_maximum < 5800.0) {
+            color = 'rgba(81, 222, 67, 0.65)'
+          } else if (data.manganese_maximum >= 5800.0 && data.manganese_maximum < 10800.0) {
+            color = 'rgba(25, 128, 11, 0.65)'
+          } else if (data.manganese_maximum >= 10800.0 && data.manganese_maximum < 20800.0) {
+            color = 'rgba(14, 82, 5, 0.65)'
+          } else if (data.manganese_maximum >= 20800.0 && data.manganese_maximum < 40800.0) {
+            color = 'rgba(30, 138, 114, 0.65)'
+          } else if (data.manganese_maximum >= 40800.0) {
+            color = 'rgba(5, 97, 76, 0.65)'
+          }
+        }
+        const ncwellwise = [
+          createStyle({
+            strokeColor: '#000',
+            strokeWidth: (this.zoom / 8.0),
+            strokeLineCap: 'round',
+            strokeLineJoin: 'bevel',
+            fillColor: color
+          })
+        ]
+        return ncwellwise
+      }
+    },
+    getltdbStyle2: function () {
+      return feature => {
+        let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
+        let data = feature.getProperties()
+        let color
+        if (this.currentlayer2.substring(0, 4) === 'hinc') {
+          if (data[this.currentlayer2] === -999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < 10000) {
+            color = 'rgba(252, 210, 211, 0.65)'
+          } else if (data[this.currentlayer2] >= 10000 && data[this.currentlayer2] < 30000) {
+            color = 'rgba(252, 109, 114, 0.65)'
+          } else if (data[this.currentlayer2] >= 30000 && data[this.currentlayer2] < 50000) {
+            color = 'rgba(247, 59, 66, 0.65)'
+          } else if (data[this.currentlayer2] >= 50000 && data[this.currentlayer2] < 70000) {
+            color = 'rgba(250, 2, 11, 0.65)'
+          } else if (data[this.currentlayer2] >= 70000 && data[this.currentlayer2] < 1000000) {
+            color = 'rgba(181, 2, 6, 0.65)'
+          } else if (data[this.currentlayer2] >= 1000000) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else {
+          if (data[this.currentlayer2] === -999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < 15) {
+            color = 'rgba(252, 210, 211, 0.65)'
+          } else if (data[this.currentlayer2] >= 15 && data[this.currentlayer2] < 30) {
+            color = 'rgba(252, 109, 114, 0.65)'
+          } else if (data[this.currentlayer2] >= 30 && data[this.currentlayer2] < 45) {
+            color = 'rgba(247, 59, 66, 0.65)'
+          } else if (data[this.currentlayer2] >= 45 && data[this.currentlayer2] < 60) {
+            color = 'rgba(250, 2, 11, 0.65)'
+          } else if (data[this.currentlayer2] >= 60 && data[this.currentlayer2] < 75) {
+            color = 'rgba(181, 2, 6, 0.65)'
+          } else if (data[this.currentlayer2] >= 75) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        }
+        return [
+          new Style({
+            stroke: new Stroke({
+              color: selected ? 'rgba(200,20,20,0.8)' : 'black',
+              width: selected ? 2 : (this.zoom / 8.0)
+            }),
+            fill: new Fill({
+              color: selected ? 'rgba(200,20,20,0.2)' : color
+            })
+          })
+
+        ]
+      }
+    },
+    getejscreenStyle2: function () {
+      return feature => {
+        let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
+        let data = feature.getProperties()
+        let color
+        if (this.currentlayer2 === 'd_ldpnt_2') {
+          if (data[this.currentlayer2] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < -200.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -200.0 && data[this.currentlayer2] < 0.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 0.0 && data[this.currentlayer2] < 200.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 200.0 && data[this.currentlayer2] < 400.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 400.0 && data[this.currentlayer2] < 600.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 600.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'd_dslpm_2') {
+          if (data[this.currentlayer2] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < -300.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -300.0 && data[this.currentlayer2] < 0.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 0.0 && data[this.currentlayer2] < 280.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 280.0 && data[this.currentlayer2] < 580.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 580.0 && data[this.currentlayer2] < 850.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 850.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'd_cancr_2') {
+          if (data[this.currentlayer2] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < -45000.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -45000.0 && data[this.currentlayer2] < -20000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -20000.0 && data[this.currentlayer2] < 5000.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 5000.0 && data[this.currentlayer2] < 30000.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 30000.0 && data[this.currentlayer2] < 55000.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 55000.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'd_resp_2') {
+          if (data[this.currentlayer2] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < -600.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -600.0 && data[this.currentlayer2] < -250) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -250.0 && data[this.currentlayer2] < 100.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 100.0 && data[this.currentlayer2] < 450.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 450.0 && data[this.currentlayer2] < 800.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 800.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'd_ptraf_2') {
+          if (data[this.currentlayer2] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < 800000.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 800000.0 && data[this.currentlayer2] < 1700000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 1700000.0 && data[this.currentlayer2] < 1700000.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 2600000.0 && data[this.currentlayer2] < 2600000.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 3500000.0 && data[this.currentlayer2] < 4400000.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 4400000.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'd_pwdis_2') {
+          if (data[this.currentlayer2] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < -47000.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -47000.0 && data[this.currentlayer2] < -35000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -35000.0 && data[this.currentlayer2] < -22000.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -22000.0 && data[this.currentlayer2] < -10000.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -10000.0 && data[this.currentlayer2] < 200.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 200.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'd_pnpl_2') {
+          if (data[this.currentlayer2] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < -400.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -400.0 && data[this.currentlayer2] < -120.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -120.0 && data[this.currentlayer2] < 150.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 150.0 && data[this.currentlayer2] < 420.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 420.0 && data[this.currentlayer2] < 690.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 690.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'd_prmp_2') {
+          if (data[this.currentlayer2] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < -450.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -450.0 && data[this.currentlayer2] < 1000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 1000.0 && data[this.currentlayer2] < 2450.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 2450.0 && data[this.currentlayer2] < 3900.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 3900.0 && data[this.currentlayer2] < 5350.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 5350.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'd_ptsdf_2') {
+          if (data[this.currentlayer2] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < -3200.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -3200.0 && data[this.currentlayer2] < -1000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -1000.0 && data[this.currentlayer2] < 1800.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 1800.0 && data[this.currentlayer2] < 4600.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 4600.0 && data[this.currentlayer2] < 7300.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 7300.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'd_ozone_2') {
+          if (data[this.currentlayer2] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < -58000.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -58000.0 && data[this.currentlayer2] < -28000.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -28000.0 && data[this.currentlayer2] < 600.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 600.0 && data[this.currentlayer2] < 38000.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 38000.0 && data[this.currentlayer2] < 70000.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 70000.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'd_pm25_2') {
+          if (data[this.currentlayer2] === -99999.9999) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < -11000.0) {
+            color = 'rgba(235, 252, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -11000.0 && data[this.currentlayer2] < -5500.0) {
+            color = 'rgba(252, 227, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= -5500.0 && data[this.currentlayer2] < 1000.0) {
+            color = 'rgba(252, 186, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 1000.0 && data[this.currentlayer2] < 7500.0) {
+            color = 'rgba(252, 128, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 7500.0 && data[this.currentlayer2] < 15000.0) {
+            color = 'rgba(252, 82, 3, 0.65)'
+          } else if (data[this.currentlayer2] >= 15000.0) {
+            color = 'rgba(140, 1, 5, 0.65)'
+          }
+        }
+        return [
+          new Style({
+            stroke: new Stroke({
+              color: selected ? 'rgba(200,20,20,0.8)' : 'black',
+              width: selected ? 2 : (this.zoom / 8.0)
+            }),
+            fill: new Fill({
+              color: selected ? 'rgba(200,20,20,0.2)' : color
+            })
+          })
+
+        ]
+      }
+    },
+    getcovid19Style2: function () {
+      return feature => {
+        let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
+        let data = feature.getProperties()
+        let color
+        if (this.currentlayer2 === 'cases') {
+          if (data[this.currentlayer2] === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < 1328) {
+            color = 'rgba(34, 240, 219, 0.65)'
+          } else if (data[this.currentlayer2] >= 1328 && data[this.currentlayer2] < 2656) {
+            color = 'rgba(34, 223, 240, 0.65)'
+          } else if (data[this.currentlayer2] >= 2656 && data[this.currentlayer2] < 3984) {
+            color = 'rgba(34, 185, 240, 0.65)'
+          } else if (data[this.currentlayer2] >= 3984 && data[this.currentlayer2] < 5416) {
+            color = 'rgba(22, 141, 245, 0.65)'
+          } else if (data[this.currentlayer2] >= 5416 && data[this.currentlayer2] < 6644) {
+            color = 'rgba(22, 74, 245, 0.65)'
+          } else if (data[this.currentlayer2] >= 6644) {
+            color = 'rgba(23, 2, 247, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'cases_per_10000_res') {
+          if (data[this.currentlayer2] === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < 586.0) {
+            color = 'rgba(34, 240, 219, 0.65)'
+          } else if (data[this.currentlayer2] >= 586.0 && data[this.currentlayer2] < 1172.0) {
+            color = 'rgba(34, 223, 240, 0.65)'
+          } else if (data[this.currentlayer2] >= 1172.0 && data[this.currentlayer2] < 1758.0) {
+            color = 'rgba(34, 185, 240, 0.65)'
+          } else if (data[this.currentlayer2] >= 1758.0 && data[this.currentlayer2] < 2344.0) {
+            color = 'rgba(22, 141, 245, 0.65)'
+          } else if (data[this.currentlayer2] >= 2344.0 && data[this.currentlayer2] < 2930.0) {
+            color = 'rgba(22, 74, 245, 0.65)'
+          } else if (data[this.currentlayer2] >= 2930.0) {
+            color = 'rgba(23, 2, 247, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'cases_per_100000_res') {
+          if (data[this.currentlayer2] === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < 5859.0) {
+            color = 'rgba(34, 240, 219, 0.65)'
+          } else if (data[this.currentlayer2] >= 5859.0 && data[this.currentlayer2] < 11718.0) {
+            color = 'rgba(34, 223, 240, 0.65)'
+          } else if (data[this.currentlayer2] >= 11718.0 && data[this.currentlayer2] < 17577.0) {
+            color = 'rgba(34, 185, 240, 0.65)'
+          } else if (data[this.currentlayer2] >= 17577.0 && data[this.currentlayer2] < 23436.0) {
+            color = 'rgba(22, 141, 245, 0.65)'
+          } else if (data[this.currentlayer2] >= 23436.0 && data[this.currentlayer2] < 29295.0) {
+            color = 'rgba(22, 74, 245, 0.65)'
+          } else if (data[this.currentlayer2] >= 29295.0) {
+            color = 'rgba(23, 2, 247, 0.65)'
+          }
+        } else if (this.currentlayer2 === 'deaths') {
+          if (data[this.currentlayer2] === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data[this.currentlayer2] < 17) {
+            color = 'rgba(34, 240, 219, 0.65)'
+          } else if (data[this.currentlayer2] >= 17 && data[this.currentlayer2] < 34) {
+            color = 'rgba(34, 223, 240, 0.65)'
+          } else if (data[this.currentlayer2] >= 34 && data[this.currentlayer2] < 51) {
+            color = 'rgba(34, 185, 240, 0.65)'
+          } else if (data[this.currentlayer2] >= 51 && data[this.currentlayer2] < 65) {
+            color = 'rgba(22, 141, 245, 0.65)'
+          } else if (data[this.currentlayer2] >= 65 && data[this.currentlayer2] < 85) {
+            color = 'rgba(22, 74, 245, 0.65)'
+          } else if (data[this.currentlayer2] >= 85) {
+            color = 'rgba(23, 2, 247, 0.65)'
+          }
+        }
+        return [
+          new Style({
+            stroke: new Stroke({
+              color: selected ? 'rgba(200,20,20,0.8)' : 'black',
+              width: selected ? 2 : (this.zoom / 8.0)
+            }),
+            fill: new Fill({
+              color: selected ? 'rgba(200,20,20,0.2)' : color
+            })
+          })
+
         ]
       }
     },
     getncwellwiseLeadMaxStyle: function () {
-      let canvas = document.createElement('canvas')
-      let context = canvas.getContext('2d')
-      let pixelRatio = DEVICE_PIXEL_RATIO
-
-      function getPattern (color1) {
-        canvas.width = 8 * pixelRatio
-        canvas.height = 8 * pixelRatio
-        let color2 = 'rgb(0, 0, 0, 0.0)'
-        let numberOfStripes = 50
-        for (var i = 0; i < numberOfStripes * 2; i++) {
-          var thickness = 200 / numberOfStripes
-          context.beginPath()
-          context.strokeStyle = i % 2 ? color1 : color2
-          context.lineWidth = thickness
-          context.lineCap = 'round'
-
-          context.moveTo(i * thickness * pixelRatio + thickness / 2 - 300, 300)
-          context.lineTo(0 + i * thickness * pixelRatio + thickness / 2, 0)
-          context.stroke()
-        }
-        return context.createPattern(canvas, 'repeat')
-      }
-
-      return feature => {
-        let data = feature.getProperties()
-        let color
-        if (data.lead_maximum === -999.99) {
-          color = 'rgba(50, 110, 219, 0.65)'
-        } else if (data.lead_maximum < 11.0) {
-          color = getPattern('rgba(196, 200, 207, 0.65)')
-        } else if (data.lead_maximum >= 11.0 && data.lead_maximum < 30.0) {
-          color = getPattern('rgba(156, 162, 173, 0.65)')
-        } else if (data.lead_maximum >= 30.0 && data.lead_maximum < 50.0) {
-          color = getPattern('rgba(116, 121, 130, 0.65)')
-        } else if (data.lead_maximum >= 50.0 && data.lead_maximum < 80.0) {
-          color = getPattern('rgba(79, 82, 89, 0.65)')
-        } else if (data.lead_maximum >= 80.0 && data.lead_maximum < 100.0) {
-          color = getPattern('rgba(55, 58, 64, 0.65)')
-        } else if (data.lead_maximum >= 100.0) {
-          color = getPattern('rgba(39, 40, 43, 0.65)')
-        }
-        return [
-          new Style({
-            stroke: new Stroke({
-              color: '#000',
-              width: (this.zoom / 8.0),
-              lineCap: 'round',
-              lineJoin: 'bevel'
-            }),
-            fill: new Fill({
-              color: color
-            })
-          })
-        ]
-      }
-    },
-    getncwellwiseMngMaxStyle: function () {
       let canvas = document.createElement('canvas')
       let context = canvas.getContext('2d')
       let pixelRatio = DEVICE_PIXEL_RATIO
@@ -1388,23 +3050,24 @@ export default {
         }
         return context.createPattern(canvas, 'repeat')
       }
+
       return feature => {
         let data = feature.getProperties()
         let color
-        if (data.manganese_maximum === -999.99) {
-          color = 'rgba(91, 95, 99, 0.65)'
-        } else if (data.manganese_maximum < 2800.0) {
-          color = getPattern('rgba(194, 232, 190, 0.65)')
-        } else if (data.manganese_maximum >= 2800.0 && data.manganese_maximum < 5800.0) {
-          color = getPattern('rgba(81, 222, 67, 0.65)')
-        } else if (data.manganese_maximum >= 5800.0 && data.manganese_maximum < 10800.0) {
-          color = getPattern('rgba(25, 128, 11, 0.65)')
-        } else if (data.manganese_maximum >= 10800.0 && data.manganese_maximum < 20800.0) {
-          color = getPattern('rgba(14, 82, 5, 0.65)')
-        } else if (data.manganese_maximum >= 20800.0 && data.manganese_maximum < 40800.0) {
-          color = getPattern('rgba(30, 138, 114, 0.65)')
-        } else if (data.manganese_maximum >= 40800.0) {
-          color = getPattern('rgba(5, 97, 76, 0.65)')
+        if (data.lead_maximum === -999.99) {
+          color = 'rgba(50, 110, 219, 1.0)'
+        } else if (data.lead_maximum < 11.0) {
+          color = getPattern('rgba(196, 200, 207, 1.0)')
+        } else if (data.lead_maximum >= 11.0 && data.lead_maximum < 30.0) {
+          color = getPattern('rgba(156, 162, 173, 1.0)')
+        } else if (data.lead_maximum >= 30.0 && data.lead_maximum < 50.0) {
+          color = getPattern('rgba(116, 121, 130, 1.0)')
+        } else if (data.lead_maximum >= 50.0 && data.lead_maximum < 80.0) {
+          color = getPattern('rgba(79, 82, 89, 1.0)')
+        } else if (data.lead_maximum >= 80.0 && data.lead_maximum < 100.0) {
+          color = getPattern('rgba(55, 58, 64, 1.0)')
+        } else if (data.lead_maximum >= 100.0) {
+          color = getPattern('rgba(39, 40, 43, 1.0)')
         }
         return [
           new Style({
@@ -1421,31 +3084,127 @@ export default {
         ]
       }
     },
+    getncwellwiseMngMaxStyle: function () {
+      let canvas = document.createElement('canvas')
+      let context = canvas.getContext('2d')
+      let pixelRatio = DEVICE_PIXEL_RATIO
+
+      function getPattern (color2) {
+        canvas.width = 8 * pixelRatio
+        canvas.height = 8 * pixelRatio
+        let color1 = 'rgb(0, 0, 0, 0.0)'
+        let numberOfStripes = 50
+        for (var i = 0; i < numberOfStripes; i++) {
+          var thickness = 200 / numberOfStripes
+          context.beginPath()
+          context.strokeStyle = i % 2 ? color1 : color2
+          context.lineWidth = thickness
+          context.lineCap = 'round'
+
+          context.moveTo(0, i * thickness + thickness / 2)
+          context.lineTo(300, i * thickness + thickness / 2)
+          context.stroke()
+        }
+        return context.createPattern(canvas, 'repeat')
+      }
+      return feature => {
+        let data = feature.getProperties()
+        let color
+        if (data.manganese_maximum === -999.99) {
+          color = 'rgba(91, 95, 99, 1.0)'
+        } else if (data.manganese_maximum < 2800.0) {
+          color = getPattern('rgba(194, 232, 190, 1.0)')
+        } else if (data.manganese_maximum >= 2800.0 && data.manganese_maximum < 5800.0) {
+          color = getPattern('rgba(81, 222, 67, 1.0)')
+        } else if (data.manganese_maximum >= 5800.0 && data.manganese_maximum < 10800.0) {
+          color = getPattern('rgba(25, 128, 11, 1.0)')
+        } else if (data.manganese_maximum >= 10800.0 && data.manganese_maximum < 20800.0) {
+          color = getPattern('rgba(14, 82, 5, 1.0)')
+        } else if (data.manganese_maximum >= 20800.0 && data.manganese_maximum < 40800.0) {
+          color = getPattern('rgba(30, 138, 114, 1.0)')
+        } else if (data.manganese_maximum >= 40800.0) {
+          color = getPattern('rgba(5, 97, 76, 1.0)')
+        }
+        return [
+          new Style({
+            stroke: new Stroke({
+              color: '#000',
+              width: (this.zoom / 8.0),
+              lineCap: 'round',
+              lineJoin: 'bevel'
+            }),
+            fill: new Fill({
+              color: color
+            })
+          })
+        ]
+      }
+    },
+    getNCWellwiseLayer1ID: function () {
+      return 'ncwellwise_layer1'
+    },
+    getLTDBCensusLayer1ID: function () {
+      return 'ltdb_census_layer1'
+    },
+    getEJScreenLayer1ID: function () {
+      return 'ejscreen_layer1'
+    },
+    getCovid19Layer1ID: function () {
+      return 'covid19_layer1'
+    },
+    getNCWellwiseLayer2ID: function () {
+      return 'ncwellwise_layer2'
+    },
+    getLTDBCensusLayer2ID: function () {
+      return 'ltdb_census_layer2'
+    },
+    getEJScreenLayer2ID: function () {
+      return 'ejscreen_layer2'
+    },
+    getCovid19Layer2ID: function () {
+      return 'covid19_layer2'
+    },
     onMapMounted: function (map1) {
       // now ol.Map instance is ready and we can work with it directly
       this.$refs.map1.$map.getControls().extend([
         new Zoom({
-          target: 'ZoomTarget'
-        })
-      ])
-      this.$refs.map2.$map.getControls().extend([
+          target: 'Zoom1Target'
+        }),
         new ScaleLine({
-          target: 'ScaleTarget'
+          target: 'Scale1Target'
         }),
         new OverviewMap({
           collapsed: false,
           collapsible: true,
-          target: 'OverviewMapTarget'
+          target: 'OverviewMap1Target'
         }),
         new Attribution({
           collapsed: false,
           collapsible: false,
-          target: 'AttributionTarget'
+          target: 'Attribution1Target'
         })
+      ])
+      this.$refs.map2.$map.getControls().extend([
+        /* new Zoom({
+          target: 'Zoom2Target'
+        }),
+        new ScaleLine({
+          target: 'Scale2Target'
+        }),
+        new OverviewMap({
+          collapsed: false,
+          collapsible: true,
+          target: 'OverviewMap2Target'
+        }),
+        new Attribution({
+          collapsed: false,
+          collapsible: false,
+          target: 'Attribution2Target'
+        }) */
       ])
     },
     closeBarChart: function () {
-      this.selectedFeatures = this.selectedFeatures.filter(f => f.id === 0)
+      this.selectedFeature = this.selectedFeature.filter(f => f.id === 0)
       let drawFeatures = this.$refs.drawSource.getFeatures()
       this.$refs.drawSource.removeFeatures(drawFeatures)
     },
@@ -1462,104 +3221,353 @@ export default {
       }
     },
     showMap1PanelLayer: function () {
-      let alayer = this.layers1[0]
-      if (this.ncwellwiseArsenicMax1Model === 'Selected') {
+      let layer = this.layers1.find(layer => layer.visible)
+      if (layer != null) {
+        layer.visible = false
+      }
+
+      if (this.currentlayer1 === 'ncwellwise_arsenic_max') {
+        layer = this.layers1.find(layer => layer.id === 'ncwellwise_layer1')
+        this.$refs.layer1Style[0].refresh()
+      } else if (this.currentlayer1 === 'ncwellwise_cadmium_max') {
+        layer = this.layers1.find(layer => layer.id === 'ncwellwise_layer1')
+        this.$refs.layer1Style[0].refresh()
+      } else if (this.currentlayer1 === 'ncwellwise_lead_max') {
+        layer = this.layers1.find(layer => layer.id === 'ncwellwise_layer1')
+        this.$refs.layer1Style[0].refresh()
+      } else if (this.currentlayer1 === 'ncwellwise_mng_max') {
+        layer = this.layers1.find(layer => layer.id === 'ncwellwise_layer1')
+        this.$refs.layer1Style[0].refresh()
+      } else if (this.currentlayer1 === 'pnhwht12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'pnhblk12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'phisp12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'pasian12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'pntv12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'hincw12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'hincb12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'hinch12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'hinca12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'pwpov12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'pbpov12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'phpov12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'papov12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'pnapov12') {
+        layer = this.layers1.find(layer => layer.id === 'ltdb_census_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'd_ldpnt_2') {
+        layer = this.layers1.find(layer => layer.id === 'ejscreen_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'd_dslpm_2') {
+        layer = this.layers1.find(layer => layer.id === 'ejscreen_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'd_cancr_2') {
+        layer = this.layers1.find(layer => layer.id === 'ejscreen_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'd_resp_2') {
+        layer = this.layers1.find(layer => layer.id === 'ejscreen_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'd_ptraf_2') {
+        layer = this.layers1.find(layer => layer.id === 'ejscreen_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'd_pwdis_2') {
+        layer = this.layers1.find(layer => layer.id === 'ejscreen_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'd_pnpl_2') {
+        layer = this.layers1.find(layer => layer.id === 'ejscreen_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'd_prmp_2') {
+        layer = this.layers1.find(layer => layer.id === 'ejscreen_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'd_ptsdf_2') {
+        layer = this.layers1.find(layer => layer.id === 'ejscreen_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'd_ozone_2') {
+        layer = this.layers1.find(layer => layer.id === 'ejscreen_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'd_pm25_2') {
+        layer = this.layers1.find(layer => layer.id === 'ejscreen_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'cases') {
+        layer = this.layers1.find(layer => layer.id === 'covid19_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'cases_per_10000_res') {
+        layer = this.layers1.find(layer => layer.id === 'covid19_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'cases_per_100000_res') {
+        layer = this.layers1.find(layer => layer.id === 'covid19_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      } else if (this.currentlayer1 === 'deaths') {
+        layer = this.layers1.find(layer => layer.id === 'covid19_layer1')
+        this.$refs.layer1Style[0].refresh()
+        // this.$refs.layer1Style.refresh()
+      }
+
+      if (layer != null) {
+        layer.visible = true
+      }
+
+      let alayer = this.layers1[4]
+      if (this.triwellwiseArsenicMax1Model === 'Selected') {
         alayer.visible = true
-      } else if (this.ncwellwiseArsenicMax1Model === 'Not Selected') {
+      } else if (this.triwellwiseArsenicMax1Model === 'Not Selected') {
         alayer.visible = false
       }
-      let clayer = this.layers1[1]
-      if (this.ncwellwiseCadmiumMax1Model === 'Selected') {
+      let clayer = this.layers1[5]
+      if (this.triwellwiseCadmiumMax1Model === 'Selected') {
         clayer.visible = true
-      } else if (this.ncwellwiseCadmiumMax1Model === 'Not Selected') {
+      } else if (this.triwellwiseCadmiumMax1Model === 'Not Selected') {
         clayer.visible = false
-      }
-      let llayer = this.layers1[2]
-      if (this.ncwellwiseLeadMax1Model === 'Selected') {
-        llayer.visible = true
-      } else if (this.ncwellwiseLeadMax1Model === 'Not Selected') {
-        llayer.visible = false
-      }
-      let mlayer = this.layers1[3]
-      if (this.ncwellwiseMngMax1Model === 'Selected') {
-        mlayer.visible = true
-      } else if (this.ncwellwiseMngMax1Model === 'Not Selected') {
-        mlayer.visible = false
       }
     },
     showMap2PanelLayer: function () {
-      let alayer = this.layers2[0]
-      if (this.ncwellwiseArsenicMax2Model === 'Selected') {
-        alayer.visible = true
-      } else if (this.ncwellwiseArsenicMax2Model === 'Not Selected') {
-        alayer.visible = false
+      let layer = this.layers2.find(layer => layer.visible)
+      if (layer != null) {
+        layer.visible = false
       }
-      let clayer = this.layers2[1]
-      if (this.ncwellwiseCadmiumMax2Model === 'Selected') {
-        clayer.visible = true
-      } else if (this.ncwellwiseCadmiumMax2Model === 'Not Selected') {
-        clayer.visible = false
+
+      if (this.currentlayer2 === 'ncwellwise_arsenic_max') {
+        layer = this.layers2.find(layer => layer.id === 'ncwellwise_layer2')
+        this.$refs.layer2Style[0].refresh()
+      } else if (this.currentlayer2 === 'ncwellwise_cadmium_max') {
+        layer = this.layers2.find(layer => layer.id === 'ncwellwise_layer2')
+        this.$refs.layer2Style[0].refresh()
+      } else if (this.currentlayer2 === 'ncwellwise_lead_max') {
+        layer = this.layers2.find(layer => layer.id === 'ncwellwise_layer2')
+        this.$refs.layer2Style[0].refresh()
+      } else if (this.currentlayer2 === 'ncwellwise_mng_max') {
+        layer = this.layers2.find(layer => layer.id === 'ncwellwise_layer2')
+        this.$refs.layer2Style[0].refresh()
+      } else if (this.currentlayer2 === 'pnhwht12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'pnhblk12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'phisp12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'pasian12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'pntv12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'hincw12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'hincb12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'hinch12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'hinca12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'pwpov12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'pbpov12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'phpov12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'papov12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'pnapov12') {
+        layer = this.layers2.find(layer => layer.id === 'ltdb_census_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'd_ldpnt_2') {
+        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'd_dslpm_2') {
+        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'd_cancr_2') {
+        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'd_resp_2') {
+        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'd_ptraf_2') {
+        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'd_pwdis_2') {
+        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'd_pnpl_2') {
+        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'd_prmp_2') {
+        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'd_ptsdf_2') {
+        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'd_ozone_2') {
+        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'd_pm25_2') {
+        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'cases') {
+        layer = this.layers2.find(layer => layer.id === 'covid19_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'cases_per_10000_res') {
+        layer = this.layers2.find(layer => layer.id === 'covid19_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'cases_per_100000_res') {
+        layer = this.layers2.find(layer => layer.id === 'covid19_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
+      } else if (this.currentlayer2 === 'deaths') {
+        layer = this.layers2.find(layer => layer.id === 'covid19_layer2')
+        this.$refs.layer2Style[0].refresh()
+        // this.$refs.layer2Style.refresh()
       }
-      let llayer = this.layers2[2]
-      if (this.ncwellwiseLeadMax2Model === 'Selected') {
+
+      if (layer != null) {
+        layer.visible = true
+      }
+
+      let llayer = this.layers2[4]
+      if (this.triwellwiseLeadMax2Model === 'Selected') {
         llayer.visible = true
-      } else if (this.ncwellwiseLeadMax2Model === 'Not Selected') {
+      } else if (this.triwellwiseLeadMax2Model === 'Not Selected') {
         llayer.visible = false
       }
-      let mlayer = this.layers2[3]
-      if (this.ncwellwiseMngMax2Model === 'Selected') {
+      let mlayer = this.layers2[5]
+      if (this.triwellwiseManganeseMax2Model === 'Selected') {
         mlayer.visible = true
-      } else if (this.ncwellwiseMngMax2Model === 'Not Selected') {
+      } else if (this.triwellwiseManganeseMax2Model === 'Not Selected') {
         mlayer.visible = false
       }
     },
     onMapClick: function (event) {
       let pixel = event.pixel
       let features = this.$refs.map1.$map.getFeaturesAtPixel(pixel)
-
+      let layer1 = this.layers1.find(layer1 => layer1.visible)
+      let layer2 = this.layers2.find(layer2 => layer2.visible)
       if (!features) {
-        this.selectedFeaturesMaxBarBox = []
-        this.selectedFeaturesAvgBarBox = []
-        this.selectedFeaturesMinBarBox = []
-        this.selectedFeaturesStdBarBox = []
-        this.selectedFeatures = []
+        this.selectedFeatureMaxBarBox = []
+        this.selectedFeatureAvgBarBox = []
+        this.selectedFeatureMinBarBox = []
+        this.selectedFeatureStdBarBox = []
+        this.selectedFeature = []
       } else if (features) {
-        this.selectedFeaturesMaxBarBox = []
-        this.selectedFeaturesAvgBarBox = []
-        this.selectedFeaturesMinBarBox = []
-        this.selectedFeaturesStdBarBox = []
-        this.eventCoordinate = event.coordinate
-        let feature = features[0]
-        if (feature.id_ !== undefined) {
+        if (layer1.id === 'ncwellwise_layer1' || layer2.id === 'ncwellwise_layer2') {
+          this.selectedFeatureMaxBarBox = []
+          this.selectedFeatureAvgBarBox = []
+          this.selectedFeatureMinBarBox = []
+          this.selectedFeatureStdBarBox = []
+          this.eventCoordinate = event.coordinate
+          let feature = features[0]
           let properties = feature.getProperties()
           if (properties['geoid10']) {
             this.pid = properties['geoid10']
-            this.selectedFeaturesMaxBarBox.push(properties['arsenic_maximum'])
-            this.selectedFeaturesMaxBarBox.push(properties['cadmium_maximum'])
-            this.selectedFeaturesMaxBarBox.push(properties['lead_maximum'])
-            this.selectedFeaturesMaxBarBox.push(properties['manganese_maximum'])
-            this.selectedFeaturesAvgBarBox.push(properties['arsenic_mean'])
-            this.selectedFeaturesAvgBarBox.push(properties['cadmium_mean'])
-            this.selectedFeaturesAvgBarBox.push(properties['lead_mean'])
-            this.selectedFeaturesAvgBarBox.push(properties['manganese_mean'])
-            this.selectedFeaturesMinBarBox.push(properties['arsenic_minimum'])
-            this.selectedFeaturesMinBarBox.push(properties['cadmium_minimum'])
-            this.selectedFeaturesMinBarBox.push(properties['lead_minimum'])
-            this.selectedFeaturesMinBarBox.push(properties['manganese_minimum'])
-            this.selectedFeaturesStdBarBox.push(properties['arsenic_std'])
-            this.selectedFeaturesStdBarBox.push(properties['cadmium_std'])
-            this.selectedFeaturesStdBarBox.push(properties['lead_std'])
-            this.selectedFeaturesStdBarBox.push(properties['manganese_std'])
+            this.selectedFeatureMaxBarBox.push(properties['arsenic_maximum'])
+            this.selectedFeatureMaxBarBox.push(properties['cadmium_maximum'])
+            this.selectedFeatureMaxBarBox.push(properties['lead_maximum'])
+            this.selectedFeatureMaxBarBox.push(properties['manganese_maximum'])
+            this.selectedFeatureAvgBarBox.push(properties['arsenic_mean'])
+            this.selectedFeatureAvgBarBox.push(properties['cadmium_mean'])
+            this.selectedFeatureAvgBarBox.push(properties['lead_mean'])
+            this.selectedFeatureAvgBarBox.push(properties['manganese_mean'])
+            this.selectedFeatureMinBarBox.push(properties['arsenic_minimum'])
+            this.selectedFeatureMinBarBox.push(properties['cadmium_minimum'])
+            this.selectedFeatureMinBarBox.push(properties['lead_minimum'])
+            this.selectedFeatureMinBarBox.push(properties['manganese_minimum'])
+            this.selectedFeatureStdBarBox.push(properties['arsenic_std'])
+            this.selectedFeatureStdBarBox.push(properties['cadmium_std'])
+            this.selectedFeatureStdBarBox.push(properties['lead_std'])
+            this.selectedFeatureStdBarBox.push(properties['manganese_std'])
           }
-        } else {
-          // this.selectedFeaturesMaxBarBox = []
-          // this.selectedFeaturesAvgBarBox = []
-          // this.selectedFeaturesMinBarBox = []
-          // this.selectedFeaturesStdBarBox = []
-          // this.selectedFeatures = []
         }
       }
-    },
+    } /* ,
     onUpdatePosition: function (coordinate) {
       // console.log(coordinate)
       this.deviceCoordinate = coordinate
@@ -1567,7 +3575,7 @@ export default {
     },
     onUpdateAccuracy: function (accuracy) {
       this.coordinateAccuracy = accuracy
-    }
+    } */
   }
 }
 </script>

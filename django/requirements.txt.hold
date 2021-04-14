@@ -23,3 +23,5 @@ six
 psycopg2-binary
 python-dotenv
 pytz
+uwsgi
+django-allauth

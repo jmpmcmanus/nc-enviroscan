@@ -23,12 +23,11 @@
     "eventemitter3": "^4.0.0",
     "lodash": "^4.17.21",
     "node-sass": "^4.12.0",
-    "nominatim-geocoder": "^0.1.4",
     "quasar": "^1.0.0",
     "sass-loader": "7.1.0",
     "vue-apexcharts": "^1.6.0",
     "vue-browser-geolocation": "^1.8.0",
-    "vuelayers": "^0.11.31"
+    "vuelayers": "0.11.4"
   },
   "devDependencies": {
     "@quasar/app": "^1.5.3",

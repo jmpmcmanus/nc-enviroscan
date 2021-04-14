@@ -29,16 +29,12 @@ import 'quasar/dist/quasar.styl'
 
 import 'src/css/app.styl'
 
-import 'quasar-app-extension-qdatetimepicker/src/component/datetime-picker.styl'
-
 
 import Vue from 'vue'
 import createApp from './app.js'
 
 
 
-
-import qboot_Quasarappextensionqdatetimepickersrcbootqdatetimepickerjs from 'quasar-app-extension-qdatetimepicker/src/boot/qdatetimepicker.js'
 
 import qboot_Bootapex from 'boot/apex'
 
@@ -72,7 +68,7 @@ async function start () {
   }
 
   const urlPath = window.location.href.replace(window.location.origin, '')
-  const bootFiles = [qboot_Quasarappextensionqdatetimepickersrcbootqdatetimepickerjs,qboot_Bootapex]
+  const bootFiles = [qboot_Bootapex]
 
   for (let i = 0; routeUnchanged === true && i < bootFiles.length; i++) {
     if (typeof bootFiles[i] !== 'function') {
