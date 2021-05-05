@@ -38,6 +38,7 @@ module.exports = function (ctx) {
         'QSeparator',
         'QSpace',
         'QDrawer',
+	'QMenu',
         'QBtn',
         'QBtnDropdown',
         'QInput',

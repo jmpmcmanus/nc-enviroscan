@@ -13,8 +13,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from six.moves.urllib import request as req
 from cryptography.x509 import load_pem_x509_certificate
 from cryptography.hazmat.backends import default_backend
-from .serializers import ncwellwise_triangle_20102019_geom_Serializer, ncwellwise_subset_20102019_geom_Serializer, ltdb_std_2012_sample_subset_geom_Serializer, ejscreen_subset_geom_Serializer, nc_covid_zipcode_geom_Serializer
-from .models import ncwellwise_triangle_20102019_geom, ncwellwise_subset_20102019_geom, ltdb_std_2012_sample_subset_geom, ejscreen_subset_geom, nc_covid_zipcode_geom
+from .serializers import ncwellwise_triangle_20102019_geom_Serializer, ncwellwise_subset_20102019_geom_Serializer, ltdb_std_2012_sample_subset_geom_Serializer, ejscreen_subset_geom_Serializer, nc_covid_zipcode_geom_Serializer, ncdot_county_boundaries_Serializer
+from .models import ncwellwise_triangle_20102019_geom, ncwellwise_subset_20102019_geom, ltdb_std_2012_sample_subset_geom, ejscreen_subset_geom, nc_covid_zipcode_geom, ncdot_county_boundaries
 from url_filter.integrations.drf import DjangoFilterBackend
 from rest_framework_gis.filters import InBBoxFilter
 
@@ -115,7 +115,7 @@ class drf_ncwellwise_triangle_20102019_geom_View(viewsets.ModelViewSet):
     serializer_class = ncwellwise_triangle_20102019_geom_Serializer
     bbox_filter_field = 'geom'
     filter_backends = [DjangoFilterBackend, InBBoxFilter]
-    fileter_fields = ['id', 'geoid10','arsenic_mean','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_minimum','manganese_maximum','manganese_std']
+    fileter_fields = ['id', 'geoid10','arsenic_mean','arsenic_med','arsenic_prcast','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_med','cadmium_prcast','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_med','lead_prcast','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_med','manganese_prcast','manganese_minimum','manganese_maximum','manganese_std']
     bbox_filter_include_overlapping = True
 
 class drf_ncwellwise_subset_20102019_geom_View(viewsets.ModelViewSet):
@@ -123,7 +123,7 @@ class drf_ncwellwise_subset_20102019_geom_View(viewsets.ModelViewSet):
     serializer_class = ncwellwise_subset_20102019_geom_Serializer
     bbox_filter_field = 'geom'
     filter_backends = [DjangoFilterBackend, InBBoxFilter]
-    fileter_fields = ['id', 'geoid10','arsenic_mean','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_minimum','manganese_maximum','manganese_std']
+    fileter_fields = ['id', 'geoid10','arsenic_mean','arsenic_med','arsenic_prcast','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_med','cadmium_prcast','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_med','lead_prcast','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_med','manganese_prcast','manganese_minimum','manganese_maximum','manganese_std']
     bbox_filter_include_overlapping = True
 
 class drf_ltdb_std_2012_sample_subset_geom_View(viewsets.ModelViewSet):
@@ -148,5 +148,13 @@ class drf_nc_covid_zipcode_geom_View(viewsets.ModelViewSet):
     bbox_filter_field = 'geom'
     filter_backends = [DjangoFilterBackend, InBBoxFilter]
     fileter_fields = ['id','zipcode','cases,cases_per_10000_res','cases_per_100000_res','deaths']
+    bbox_filter_include_overlapping = True
+
+class drf_ncdot_county_boundaries_View(viewsets.ModelViewSet):
+    queryset = ncdot_county_boundaries.objects.all()
+    serializer_class = ncdot_county_boundaries_Serializer
+    bbox_filter_field = 'geom'
+    filter_backends = [DjangoFilterBackend, InBBoxFilter]
+    fileter_fields = ['id','objectid','fips','countyname','uppercount','sapcountyi','dotdistric','dotdivisio','sap_cnty_n','cnty_nbr','dstrct_nbr','div_nbr','name','shapestare','shapestlen']
     bbox_filter_include_overlapping = True
 

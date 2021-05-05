@@ -7,6 +7,20 @@
       <q-space />
       <q-card class="q-pa-md bg-teal-1" style="max-width: 300px">
         <table class="table is-fullwidth">
+          <div v-if="Object.keys(selectedFeatureMedBarBox).length > 0">
+            <tr>
+              <td>
+                <apexchart width="280" type="radialBar" :options="apxmedoptions" :series="selectedFeatureMedBarBox" />
+              </td>
+            </tr>
+          </div>
+        </table>
+      </q-card>
+      <q-space />
+      <q-separator />
+      <q-space />
+      <q-card class="q-pa-md bg-teal-1" style="max-width: 300px">
+        <table class="table is-fullwidth">
           <div v-if="Object.keys(selectedFeatureAvgBarBox).length > 0">
             <tr>
               <td>
@@ -64,7 +78,6 @@
     <!--// right side drawer Starts -->
     <q-drawer side="right" v-model="rightDrawerOpen" show-if-above bordered content-class="teal bg-teal-1">
       <q-list bordered class="rounded-borders">
-
         <!-- // baselayers -->
         <q-expansion-item default-opened expand-separator icon="list" label="Base Layers">
           <div class="q-pa-md" style="min-width: 200px">
@@ -101,37 +114,46 @@
           <div class="q-pa-md q-gutter-y-sm column">
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="ncwellwise_arsenic_max" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_arsenic_med" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
-                <q-item-label>Arsenic Maximum</q-item-label>
+                <q-item-label>Arsenic Median</q-item-label>
               </q-item-section>
             </q-item>
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="ncwellwise_cadmium_max" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_arsenic_mean" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
-                <q-item-label>Cadmium Maximum</q-item-label>
+                <q-item-label>Arsenic Mean</q-item-label>
               </q-item-section>
             </q-item>
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="ncwellwise_lead_max" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_cadmium_med" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
-                <q-item-label>Lead Maximum</q-item-label>
+                <q-item-label>Cadmium Median</q-item-label>
               </q-item-section>
             </q-item>
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="ncwellwise_mng_max" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_lead_med" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
-                <q-item-label>Manganese Maximum</q-item-label>
+                <q-item-label>Lead Median</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item tag="label" v-ripple>
+              <q-item-section avatar>
+                <q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_mng_med" v-model="currentlayer" color="teal" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>Manganese Median</q-item-label>
               </q-item-section>
             </q-item>
           </div>
@@ -143,7 +165,7 @@
           <div class="q-pa-md q-gutter-y-sm column">
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="pnhwht12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="pnhwht12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Non-Hispanic White</q-item-label>
@@ -152,7 +174,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="pnhblk12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="pnhblk12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Non-Hispanic Black</q-item-label>
@@ -161,7 +183,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="phisp12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="phisp12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Hispanic</q-item-label>
@@ -170,7 +192,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="pasian12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="pasian12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Asian</q-item-label>
@@ -179,7 +201,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="pntv12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="pntv12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Native American</q-item-label>
@@ -188,7 +210,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="hincw12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="hincw12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Median HH income, white</q-item-label>
@@ -197,7 +219,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="hincb12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="hincb12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Median HH income, black</q-item-label>
@@ -206,7 +228,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="hinch12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="hinch12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Median HH income, hispanic</q-item-label>
@@ -215,7 +237,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="hinca12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="hinca12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Median HH income, asian</q-item-label>
@@ -224,7 +246,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="pwpov12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="pwpov12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>% in poverty, white</q-item-label>
@@ -233,7 +255,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="pbpov12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="pbpov12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>% in poverty, black</q-item-label>
@@ -242,7 +264,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="phpov12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="phpov12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>% in poverty, hispanic</q-item-label>
@@ -251,7 +273,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="papov12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="papov12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>% in poverty, asian</q-item-label>
@@ -260,7 +282,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="pnapov12" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="pnapov12" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>% in poverty, native American</q-item-label>
@@ -275,7 +297,7 @@
           <div class="q-pa-md q-gutter-y-sm column">
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="d_ldpnt_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ldpnt_2" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for % pre-1960 housing (lead paint indicator)</q-item-label>
@@ -284,7 +306,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="d_dslpm_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_dslpm_2" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Diesel particulate matter level in air</q-item-label>
@@ -293,7 +315,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="d_cancr_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_cancr_2" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Air toxics cancer risk</q-item-label>
@@ -302,7 +324,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="d_resp_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_resp_2" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Air toxics respiratory hazard index</q-item-label>
@@ -311,7 +333,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="d_ptraf_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ptraf_2" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Traffic proximity and volume</q-item-label>
@@ -320,7 +342,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="d_pwdis_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_pwdis_2" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Indicator for major direct dischargers to water</q-item-label>
@@ -329,7 +351,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="d_pnpl_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_pnpl_2" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Proximity to National Priorities List (NPL) sites</q-item-label>
@@ -338,7 +360,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="d_prmp_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_prmp_2" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Proximity to Risk Management Plan (RMP) facilities</q-item-label>
@@ -347,7 +369,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="d_ptsdf_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ptsdf_2" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Proximity to Treatment Storage and Disposal (TSDF) facilities</q-item-label>
@@ -356,7 +378,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="d_ozone_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ozone_2" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Ozone level in air</q-item-label>
@@ -365,7 +387,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="d_pm25_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_pm25_2" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for PM2.5 level in air</q-item-label>
@@ -380,7 +402,7 @@
           <div class="q-pa-md q-gutter-y-sm column">
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="cases" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="cases" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Covid-19 Total Cases</q-item-label>
@@ -389,7 +411,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="cases_per_10000_res" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="cases_per_10000_res" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Covid-19 Cases Per 10,000 Residents</q-item-label>
@@ -398,7 +420,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="cases_per_100000_res" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="cases_per_100000_res" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Covid-19 Cases Per 100,000 Residents-</q-item-label>
@@ -407,7 +429,7 @@
 
             <q-item tag="label" v-ripple>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelLayer" val="deaths" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="deaths" v-model="currentlayer" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Covid-19 Deaths</q-item-label>
@@ -416,6 +438,23 @@
            </div>
         </q-expansion-item>
         <!-- // Health layers -->
+
+        <!-- // Ancillary layers -->
+        <q-expansion-item expand-separator icon="list" label="Ancillary Layers">
+          <div class="q-pa-md q-gutter-y-sm column">
+            <q-toggle
+              :label="`North Carolina Counties ${ ncCountiesModel }`"
+              :key="layers[4].id"
+              v-on:input="showMapPanelToggleLayer(layers)"
+              :class="{ 'is-active': layers[4].visible }"
+              color="teal"
+              false-value="Not Selected"
+              true-value="Selected"
+              v-model="ncCountiesModel"
+            />
+           </div>
+        </q-expansion-item>
+        <!-- // Ancilary layers -->
 
         <!-- // state -->
         <q-expansion-item expand-separator icon="list" label="State">
@@ -468,27 +507,23 @@
                           </tr>
                           <tr>
                             <td style="padding:5px"><span class="assqu1"></span></td>
-                            <td>&gt; 4</td>
+                            <td>&gt; 5</td>
                           </tr>
                           <tr>
                             <td style="padding:5px"><span class="assqu2"></span></td>
-                            <td>&ge; 4 &amp; &lt; 24</td>
+                            <td>&ge; 5 &amp; &lt; 9</td>
                           </tr>
                           <tr>
                             <td style="padding:5px"><span class="assqu3"></span></td>
-                            <td>&ge; 24 &amp; &lt; 32</td>
+                            <td>&ge; 9 &amp; &lt; 12</td>
                           </tr>
                           <tr>
                             <td style="padding:5px"><span class="assqu4"></span></td>
-                            <td>&ge; 32 &amp; &lt; 52</td>
+                            <td>&ge; 12 &amp; &lt; 16</td>
                           </tr>
                           <tr>
                             <td style="padding:5px"><span class="assqu5"></span></td>
-                            <td>&ge; 52 &amp; &lt; 62</td>
-                          </tr>
-                          <tr>
-                            <td style="padding:5px"><span class="assqu6"></span></td>
-                            <td>&ge; 62</td>
+                            <td>&ge; 16</td>
                           </tr>
                         </td>
                       </tr>
@@ -708,7 +743,7 @@
         <vl-source-vector-tile :url="vtUrl"></vl-source-vector-tile -->
         <!-- vl-source-vector-tile :format-factory="createMvtFormat" :url="vtUrl"></vl-source-vector-tile -->
         <!-- vl-source-vector-tile :format-factory="vtFormatFactory" :url="vtUrl"></vl-source-vector-tile -->
-        <!-- vl-style-func ref="layerStyle" :factory="getncwellwiseMaxStyle"></vl-style-func>
+        <!-- vl-style-func ref="layerStyle" :factory="getncwellwiseStyle"></vl-style-func>
       </vl-layer-vector-tile -->
       <!--// other layers from config -->
       <!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
@@ -763,6 +798,71 @@
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <q-tooltip>Tools</q-tooltip>
       <q-fab icon="keyboard_arrow_up" direction="up" color="teal text-black">
+        <q-tooltip>Test Menu</q-tooltip>
+        <q-fab-action color="teal" class="text-black" icon="fas fa-map-marked-alt">
+          <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
+            <q-card class="bg-teal-1">
+              <q-banner inline-actions class="bg-teal-1">
+                <q-btn color="primary" label="Click me">
+                  <q-menu>
+                    <q-list dense style="min-width: 100px">
+                      <q-item clickable v-close-popup>
+                        <q-item-section>Open...</q-item-section>
+                      </q-item>
+                      <q-item clickable v-close-popup>
+                        <q-item-section>New</q-item-section>
+                      </q-item>
+                      <q-separator></q-separator>
+                      <q-item clickable>
+                        <q-item-section>Preferences</q-item-section>
+                        <q-item-section side>
+                          <q-icon name="keyboard_arrow_right"></q-icon>
+                        </q-item-section>
+
+                        <q-menu anchor="top end" self="top start">
+                          <q-list>
+                            <q-item
+                              v-for="n in 3"
+                              :key="n"
+                              dense
+                              clickable
+                            >
+                              <q-item-section>Submenu Label</q-item-section>
+                              <q-item-section side>
+                                <q-icon name="keyboard_arrow_right"></q-icon>
+                              </q-item-section>
+                              <q-menu auto-close anchor="top end" self="top start">
+                                <q-list>
+                                  <q-item
+                                    v-for="n in 3"
+                                    :key="n"
+                                    dense
+                                    clickable
+                                  >
+                                    <q-item-section>3rd level Label</q-item-section>
+                                  </q-item>
+                                </q-list>
+                              </q-menu>
+                            </q-item>
+                          </q-list>
+                        </q-menu>
+
+                      </q-item>
+                      <q-separator></q-separator>
+                      <q-item clickable v-close-popup>
+                        <q-item-section>Quit</q-item-section>
+                      </q-item>
+                    </q-list>
+                  </q-menu>
+                </q-btn>
+                <template align="right" v-slot:action>
+                  <q-btn flat round dense icon="close" color="teal" v-close-popup />
+                </template>
+              </q-banner>
+              <q-separator />
+            </q-card>
+          </q-popup-proxy>
+        </q-fab-action>
         <q-tooltip>Change Location</q-tooltip>
         <q-fab-action color="teal" class="text-black" icon="fas fa-map-marked-alt">
           <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
@@ -802,8 +902,7 @@
 <script>
 // quasar and vuelayers import
 import { openURL } from 'quasar'
-// import { findPointOnSurface, createStyle } from 'vuelayers/lib/ol-ext'
-import { findPointOnSurface } from 'vuelayers/lib/ol-ext'
+import { findPointOnSurface, createStyle } from 'vuelayers/lib/ol-ext'
 import { camelCase } from 'lodash'
 
 // ol controls import
@@ -842,6 +941,7 @@ export default {
   },
   data () {
     return {
+      ncCountiesModel: 'Not Selected',
       address: null,
       acceptaddress: false,
       vtSelection: {},
@@ -872,6 +972,90 @@ export default {
         },
         title: {
           text: 'Average Values',
+          align: 'left',
+          style: {
+            color: '#000'
+          }
+        },
+        plotOptions: {
+          radialBar: {
+            offsetY: 0,
+            offsetX: 0,
+            startAngle: 0,
+            endAngle: 250,
+            hollow: {
+              margin: 0,
+              size: '25%',
+              background: 'transparent',
+              image: undefined
+            },
+            dataLabels: {
+              name: {
+                show: false
+
+              },
+              value: {
+                show: false
+              }
+            }
+          }
+        },
+        labels: ['Arsenic', 'Cadmium', 'Lead', 'Manganese'],
+        legend: {
+          show: true,
+          floating: true,
+          fontSize: '12px',
+          position: 'left',
+          offsetX: -20,
+          offsetY: 15,
+          labels: {
+            useSeriesColors: true
+          },
+          markers: {
+            size: 0
+          },
+          formatter: function (seriesName, opts) {
+            return seriesName + ':  ' + opts.w.globals.series[opts.seriesIndex] + ' ppb'
+          },
+          itemMargin: {
+            horizontal: 1
+          }
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            legend: {
+              show: false
+            }
+          }
+        }]
+      },
+      apxmedoptions: {
+        colors: ['#a534eb', '#eba234', '#747982', '#19800b'],
+        animations: {
+          enabled: true,
+          easing: 'easeinout',
+          speed: 1000
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shade: 'dark',
+            type: 'vertical',
+            shadeIntensity: 0.05,
+            inverseColors: false,
+            opacityFrom: 1,
+            opacityTo: 0.9,
+            stops: [0, 100]
+          }
+        },
+        chart: {
+          toolbar: {
+            show: true
+          }
+        },
+        title: {
+          text: 'Median Values',
           align: 'left',
           style: {
             color: '#000'
@@ -1194,16 +1378,20 @@ export default {
       latitude: null,
       pid: undefined,
       // ncwellwise attributes
-      ncwellwise: {
+      /* ncwellwise: {
         'type': 'Feature',
         'properties': {
           'geoid10': undefined,
+          'arsenic_med': undefined,
           'arsenic_mean': undefined,
           'arsenic_maximum': undefined,
+          'cadmium_med': undefined,
           'cadmium_mean': undefined,
           'cadmium_maximum': undefined,
+          'lead_med': undefined,
           'lead_mean': undefined,
           'lead_maximum': undefined,
+          'manganese_med': undefined,
           'manganese_mean': undefined,
           'manganese_maximum': undefined
         },
@@ -1211,11 +1399,12 @@ export default {
           'type': 'MultiPolygonGeom',
           'coordinates': [null, null]
         }
-      },
+      }, */
       selectedFeature: [],
-      selectedFeatureMaxBarBox: [],
       selectedFeatureAvgBarBox: [],
+      selectedFeatureMedBarBox: [],
       selectedFeatureMinBarBox: [],
+      selectedFeatureMaxBarBox: [],
       selectedFeatureStdBarBox: [],
       // state attributes
       eventCoordinate: [NaN, NaN],
@@ -1240,9 +1429,9 @@ export default {
         }
       ],
       // layers config
-      // ncwellwise_arsenic_max: '',
-      // ncwellwise_cadmium_max: '',
-      currentlayer: 'ncwellwise_arsenic_max',
+      // ncwellwise_arsenic_med: '',
+      // ncwellwise_cadmium_med: '',
+      currentlayer: 'ncwellwise_arsenic_med',
       ltdblayer: 'pnhblk12',
       // vtUrl: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ncwellwise_subset_20102019_geom.mvt?tile={z}/{x}/{y}',
       layers: [
@@ -1261,7 +1450,7 @@ export default {
           style: [
             {
               cmp: 'vl-style-func',
-              factory: this.getncwellwiseMaxStyle
+              factory: this.getncwellwiseStyle
             }
           ]
         },
@@ -1310,6 +1499,22 @@ export default {
             {
               cmp: 'vl-style-func',
               factory: this.getcovid19Style
+            }
+          ]
+        },
+        {
+          id: 'ncCounties',
+          title: 'NC Counties',
+          cmp: 'vl-layer-vector-tile',
+          visible: false,
+          source: {
+            cmp: 'vl-source-vector-tile',
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ncdot_county_boundaries.mvt?tile={z}/{x}/{y}'
+          },
+          style: [
+            {
+              cmp: 'vl-style-func',
+              factory: this.getNCCountiesStyle
             }
           ]
         }
@@ -1376,46 +1581,58 @@ export default {
           break
       }
     },
-    getncwellwiseMaxStyle: function () {
+    getncwellwiseStyle: function () {
       // console.log(this.currentlayer)
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         // console.log(selected)
         let data = feature.getProperties()
         let color
-        if (this.currentlayer === 'ncwellwise_arsenic_max') {
-          if (data.arsenic_maximum === -999.99) {
+        if (this.currentlayer === 'ncwellwise_arsenic_med') {
+          if (data.arsenic_med === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data.arsenic_maximum < 4) {
-            color = 'rgba(119, 52, 235, 0.65)'
-          } else if (data.arsenic_maximum >= 4 && data.arsenic_maximum < 24) {
-            color = 'rgba(143, 52, 235, 0.65)'
-          } else if (data.arsenic_maximum >= 24 && data.arsenic_maximum < 32) {
-            color = 'rgba(165, 52, 235, 0.65)'
-          } else if (data.arsenic_maximum >= 32 && data.arsenic_maximum < 52) {
-            color = 'rgba(186, 52, 235, 0.65)'
-          } else if (data.arsenic_maximum >= 52 && data.arsenic_maximum < 62) {
-            color = 'rgba(211, 52, 235, 0.65)'
-          } else if (data.arsenic_maximum >= 62) {
+          } else if (data.arsenic_med < 5) {
             color = 'rgba(235, 52, 220, 0.65)'
+          } else if (data.arsenic_med >= 5 && data.arsenic_med < 9) {
+            color = 'rgba(186, 52, 235, 0.65)'
+          } else if (data.arsenic_med >= 9 && data.arsenic_med < 12) {
+            color = 'rgba(165, 52, 235, 0.65)'
+          } else if (data.arsenic_med >= 12 && data.arsenic_med < 16) {
+            color = 'rgba(143, 52, 235, 0.65)'
+          } else if (data.arsenic_med >= 16) {
+            color = 'rgba(119, 52, 235, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_cadmium_max') {
-          if (data.cadmium_maximum === -999.99) {
+        } else if (this.currentlayer === 'ncwellwise_arsenic_mean') {
+          if (data.arsenic_mean === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data.cadmium_maximum < 5.0) {
+          } else if (data.arsenic_mean < 5) {
+            color = 'rgba(235, 52, 220, 0.65)'
+          } else if (data.arsenic_mean >= 5 && data.arsenic_mean < 9) {
+            color = 'rgba(186, 52, 235, 0.65)'
+          } else if (data.arsenic_mean >= 9 && data.arsenic_mean < 12) {
+            color = 'rgba(165, 52, 235, 0.65)'
+          } else if (data.arsenic_mean >= 12 && data.arsenic_mean < 16) {
+            color = 'rgba(143, 52, 235, 0.65)'
+          } else if (data.arsenic_mean >= 16) {
+            color = 'rgba(119, 52, 235, 0.65)'
+          }
+        } else if (this.currentlayer === 'ncwellwise_cadmium_med') {
+          if (data.cadmium_med === -999.99) {
+            color = 'rgba(91, 95, 99, 0.65)'
+          } else if (data.cadmium_med < 5.0) {
             color = 'rgba(235, 89, 52, 0.65)'
-          } else if (data.cadmium_maximum >= 5.0 && data.cadmium_maximum < 22.0) {
+          } else if (data.cadmium_med >= 5.0 && data.cadmium_med < 22.0) {
             color = 'rgba(235, 131, 52, 0.65)'
-          } else if (data.cadmium_maximum >= 22.0 && data.cadmium_maximum < 33.0) {
+          } else if (data.cadmium_med >= 22.0 && data.cadmium_med < 33.0) {
             color = 'rgba(235, 162, 52, 0.65)'
-          } else if (data.cadmium_maximum >= 33.0 && data.cadmium_maximum < 44.0) {
+          } else if (data.cadmium_med >= 33.0 && data.cadmium_med < 44.0) {
             color = 'rgba(235, 192, 52, 0.65)'
-          } else if (data.cadmium_maximum >= 44.0 && data.cadmium_maximum < 55.0) {
+          } else if (data.cadmium_med >= 44.0 && data.cadmium_med < 55.0) {
             color = 'rgba(235, 220, 52, 0.65)'
-          } else if (data.cadmium_maximum >= 55.0) {
+          } else if (data.cadmium_med >= 55.0) {
             color = 'rgba(223, 235, 52, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_lead_max') {
+        } else if (this.currentlayer === 'ncwellwise_lead_med') {
           if (data.lead_maximum === -999.99) {
             color = 'rgba(50, 110, 219, 0.65)'
           } else if (data.lead_maximum < 11.0) {
@@ -1431,7 +1648,7 @@ export default {
           } else if (data.lead_maximum >= 100.0) {
             color = 'rgba(39, 40, 43, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_mng_max') {
+        } else if (this.currentlayer === 'ncwellwise_mng_med') {
           if (data.manganese_maximum === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
           } else if (data.manganese_maximum < 2800.0) {
@@ -1821,6 +2038,18 @@ export default {
         ]
       }
     },
+    getNCCountiesStyle: function () {
+      return feature => {
+        return [
+          createStyle({
+            strokeColor: '#FFFFFF', // '#000',
+            strokeWidth: (this.zoom / 8.0),
+            strokeLineCap: 'round',
+            strokeLineJoin: 'bevel'
+          })
+        ]
+      }
+    },
     getNCWellwiseLayerID: function () {
       return 'ncwellwise'
     },
@@ -1872,26 +2101,66 @@ export default {
         layer.visible = true
       }
     },
-    showMapPanelLayer: function () {
+    showMapPanelToggleLayer: function () {
+      let cntlayer = this.layers[4]
+      if (this.ncCountiesModel === 'Selected') {
+        cntlayer.visible = true
+      } else if (this.ncCountiesModel === 'Not Selected') {
+        cntlayer.visible = false
+      }
+    },
+    showMapPanelRadioLayer: function () {
       let layer = this.layers.find(layer => layer.visible)
 
       if (layer != null) {
         layer.visible = false
       }
 
-      if (this.currentlayer === 'ncwellwise_arsenic_max') {
+      if (this.currentlayer === 'ncwellwise_arsenic_med') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         this.$refs.layerStyle[0].refresh()
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_cadmium_max') {
+      } else if (this.currentlayer === 'ncwellwise_arsenic_mean') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         this.$refs.layerStyle[0].refresh()
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_lead_max') {
+      } else if (this.currentlayer === 'ncwellwise_arsenic_prcast') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         this.$refs.layerStyle[0].refresh()
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_mng_max') {
+      } else if (this.currentlayer === 'ncwellwise_cadmium_med') {
+        layer = this.layers.find(layer => layer.id === 'ncwellwise')
+        this.$refs.layerStyle[0].refresh()
+        // this.$refs.layerStyle.refresh()
+      } else if (this.currentlayer === 'ncwellwise_cadmium_mean') {
+        layer = this.layers.find(layer => layer.id === 'ncwellwise')
+        this.$refs.layerStyle[0].refresh()
+        // this.$refs.layerStyle.refresh()
+      } else if (this.currentlayer === 'ncwellwise_cadmium_prcast') {
+        layer = this.layers.find(layer => layer.id === 'ncwellwise')
+        this.$refs.layerStyle[0].refresh()
+        // this.$refs.layerStyle.refresh()
+      } else if (this.currentlayer === 'ncwellwise_lead_med') {
+        layer = this.layers.find(layer => layer.id === 'ncwellwise')
+        this.$refs.layerStyle[0].refresh()
+        // this.$refs.layerStyle.refresh()
+      } else if (this.currentlayer === 'ncwellwise_lead_mean') {
+        layer = this.layers.find(layer => layer.id === 'ncwellwise')
+        this.$refs.layerStyle[0].refresh()
+        // this.$refs.layerStyle.refresh()
+      } else if (this.currentlayer === 'ncwellwise_lead_prcast') {
+        layer = this.layers.find(layer => layer.id === 'ncwellwise')
+        this.$refs.layerStyle[0].refresh()
+        // this.$refs.layerStyle.refresh()
+      } else if (this.currentlayer === 'ncwellwise_mng_med') {
+        layer = this.layers.find(layer => layer.id === 'ncwellwise')
+        this.$refs.layerStyle[0].refresh()
+        // this.$refs.layerStyle.refresh()
+      } else if (this.currentlayer === 'ncwellwise_mng_mean') {
+        layer = this.layers.find(layer => layer.id === 'ncwellwise')
+        this.$refs.layerStyle[0].refresh()
+        // this.$refs.layerStyle.refresh()
+      } else if (this.currentlayer === 'ncwellwise_mng_prcast') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         this.$refs.layerStyle[0].refresh()
         // this.$refs.layerStyle.refresh()
@@ -2024,8 +2293,9 @@ export default {
       if (!features) {
         this.vtSelection = {}
         this.selectedFeatureAvgBarBox = []
-        this.selectedFeatureMaxBarBox = []
+        this.selectedFeatureMedBarBox = []
         this.selectedFeatureMinBarBox = []
+        this.selectedFeatureMaxBarBox = []
         this.selectedFeatureStdBarBox = []
         this.selectedFeature = []
         this.$refs.layerStyle[0].refresh()
@@ -2034,8 +2304,9 @@ export default {
         if (layer.id === 'ncwellwise') {
           this.vtSelection = {}
           this.selectedFeatureAvgBarBox = []
-          this.selectedFeatureMaxBarBox = []
+          this.selectedFeatureMedBarBox = []
           this.selectedFeatureMinBarBox = []
+          this.selectedFeatureMaxBarBox = []
           this.selectedFeatureStdBarBox = []
           this.eventCoordinate = event.coordinate
           let feature = features[0]
@@ -2044,18 +2315,22 @@ export default {
           let properties = feature.getProperties()
           if (properties['geoid10']) {
             this.pid = properties['geoid10']
+            this.selectedFeatureMedBarBox.push(properties['arsenic_med'])
+            this.selectedFeatureMedBarBox.push(properties['cadmium_med'])
+            this.selectedFeatureMedBarBox.push(properties['lead_med'])
+            this.selectedFeatureMedBarBox.push(properties['manganese_med'])
             this.selectedFeatureAvgBarBox.push(properties['arsenic_mean'])
             this.selectedFeatureAvgBarBox.push(properties['cadmium_mean'])
             this.selectedFeatureAvgBarBox.push(properties['lead_mean'])
             this.selectedFeatureAvgBarBox.push(properties['manganese_mean'])
-            this.selectedFeatureMaxBarBox.push(properties['arsenic_maximum'])
-            this.selectedFeatureMaxBarBox.push(properties['cadmium_maximum'])
-            this.selectedFeatureMaxBarBox.push(properties['lead_maximum'])
-            this.selectedFeatureMaxBarBox.push(properties['manganese_maximum'])
             this.selectedFeatureMinBarBox.push(properties['arsenic_minimum'])
             this.selectedFeatureMinBarBox.push(properties['cadmium_minimum'])
             this.selectedFeatureMinBarBox.push(properties['lead_minimum'])
             this.selectedFeatureMinBarBox.push(properties['manganese_minimum'])
+            this.selectedFeatureMaxBarBox.push(properties['arsenic_maximum'])
+            this.selectedFeatureMaxBarBox.push(properties['cadmium_med'])
+            this.selectedFeatureMaxBarBox.push(properties['lead_maximum'])
+            this.selectedFeatureMaxBarBox.push(properties['manganese_maximum'])
             this.selectedFeatureStdBarBox.push(properties['arsenic_std'])
             this.selectedFeatureStdBarBox.push(properties['cadmium_std'])
             this.selectedFeatureStdBarBox.push(properties['lead_std'])
@@ -2169,13 +2444,13 @@ export default {
   .assqu1 {
     height: 25px;
     width: 25px;
-    background-color: rgba(119, 52, 235, 0.65);
+    background-color: rgba(235, 52, 220, 0.65);
     display: inline-block;
   }
   .assqu2 {
     height: 25px;
     width: 25px;
-    background-color: rgba(143, 52, 235, 0.65);
+    background-color: rgba(186, 52, 235, 0.65);
     display: inline-block;
   }
   .assqu3 {
@@ -2187,19 +2462,13 @@ export default {
   .assqu4 {
     height: 25px;
     width: 25px;
-    background-color: rgba(186, 52, 235, 0.65);
+    background-color: rgba(143, 52, 235, 0.65);
     display: inline-block;
   }
   .assqu5 {
     height: 25px;
     width: 25px;
-    background-color: rgba(211, 52, 235, 0.65);
-    display: inline-block;
-  }
-  .assqu6 {
-    height: 25px;
-    width: 25px;
-    background-color: rgba(235, 52, 220, 0.65);
+    background-color: rgba(119, 52, 235, 0.65);
     display: inline-block;
   }
   .cdsqu1 {

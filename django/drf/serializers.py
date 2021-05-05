@@ -1,14 +1,14 @@
 #from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 from rest_framework.serializers import ModelSerializer
-from .models import ncwellwise_subset_20102019, ltdb_std_2012_sample_subset, ejscreen_subset, nc_covid_zipcode, triangle_tracts, nc_census_tracks_4326, nc_census_bg_4326, ncwellwise_triangle_20102019_geom, ncwellwise_subset_20102019_geom, ltdb_std_2012_sample_subset_geom, ejscreen_subset_geom, nc_covid_zipcode_geom
+from .models import ncwellwise_subset_20102019, ltdb_std_2012_sample_subset, ejscreen_subset, nc_covid_zipcode, triangle_tracts, nc_census_tracks_4326, nc_census_bg_4326, ncwellwise_triangle_20102019_geom, ncwellwise_subset_20102019_geom, ltdb_std_2012_sample_subset_geom, ejscreen_subset_geom, nc_covid_zipcode_geom, ncdot_county_boundaries
 from drf_queryfields import QueryFieldsMixin
 
 class ncwellwise_subset_20102019_Serializer(QueryFieldsMixin,):
     class Meta:
         model = ncwellwise_subset_20102019
         id_field = 'id'
-        fields = ('id', 'geoid10','arsenic_mean','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_minimum','manganese_maximum','manganese_std')
+        fields = ('id', 'geoid10','arsenic_mean','arsenic_med','arsenic_prcast','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_med','cadmium_prcast','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_med','lead_prcast','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_med','manganese_prcast','manganese_minimum','manganese_maximum','manganese_std')
 
 class ltdb_std_2012_sample_subset_Serializer(QueryFieldsMixin,GeoFeatureModelSerializer):
     class Meta:
@@ -53,14 +53,14 @@ class ncwellwise_triangle_20102019_geom_Serializer(QueryFieldsMixin,GeoFeatureMo
         model = ncwellwise_triangle_20102019_geom
         geo_field = 'geom'
         id_field = 'id'
-        fields = ('id', 'geoid10','arsenic_mean','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_minimum','manganese_maximum','manganese_std')
+        fields = ('id', 'geoid10','arsenic_mean','arsenic_med','arsenic_prcast','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_med','cadmium_prcast','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_med','lead_prcast','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_med','manganese_prcast','manganese_minimum','manganese_maximum','manganese_std')
 
 class ncwellwise_subset_20102019_geom_Serializer(QueryFieldsMixin,GeoFeatureModelSerializer):
     class Meta:
         model = ncwellwise_subset_20102019_geom
         geo_field = 'geom'
         id_field = 'id'
-        fields = ('id', 'geoid10','arsenic_mean','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_minimum','manganese_maximum','manganese_std')
+        fields = ('id', 'geoid10','arsenic_mean','arsenic_med','arsenic_prcast','arsenic_minimum','arsenic_maximum','arsenic_std','cadmium_mean','cadmium_med','cadmium_prcast','cadmium_minimum','cadmium_maximum','cadmium_std','lead_mean','lead_med','lead_prcast','lead_minimum','lead_maximum','lead_std','manganese_mean','manganese_med','manganese_prcast','manganese_minimum','manganese_maximum','manganese_std')
 
 class ltdb_std_2012_sample_subset_geom_Serializer(QueryFieldsMixin,GeoFeatureModelSerializer):
     class Meta:
@@ -81,4 +81,11 @@ class nc_covid_zipcode_geom_Serializer(QueryFieldsMixin,GeoFeatureModelSerialize
     geo_field = 'geom'
     id_field = 'id'
     fields = ('id','zipcode','cases,cases_per_10000_res','cases_per_100000_res','deaths')
+
+class ncdot_county_boundaries_Serializer(QueryFieldsMixin,GeoFeatureModelSerializer):
+    class Meta:
+        model = ncdot_county_boundaries
+        geo_field = 'geom'
+        id_field = 'id'
+        fields = ('id','objectid','fips','countyname','uppercount','sapcountyi','dotdistric','dotdivisio','sap_cnty_n','cnty_nbr','dstrct_nbr','div_nbr','name','shapestare','shapestlen')
 
