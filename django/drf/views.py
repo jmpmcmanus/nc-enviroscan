@@ -13,8 +13,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from six.moves.urllib import request as req
 from cryptography.x509 import load_pem_x509_certificate
 from cryptography.hazmat.backends import default_backend
-from .serializers import ncwellwise_triangle_20102019_geom_Serializer, ncwellwise_subset_20102019_geom_Serializer, ltdb_std_2012_sample_subset_geom_Serializer, ejscreen_subset_geom_Serializer, nc_covid_zipcode_geom_Serializer, ncdot_county_boundaries_Serializer
-from .models import ncwellwise_triangle_20102019_geom, ncwellwise_subset_20102019_geom, ltdb_std_2012_sample_subset_geom, ejscreen_subset_geom, nc_covid_zipcode_geom, ncdot_county_boundaries
+from .serializers import ncwellwise_triangle_20102019_geom_Serializer, ncwellwise_subset_20102019_geom_Serializer, ltdb_std_2012_sample_subset_geom_Serializer, acs_2019_5y_estimates_geom_Serializer, ejscreen_subset_geom_Serializer, nc_covid_zipcode_geom_Serializer, ncdot_county_boundaries_Serializer
+from .models import ncwellwise_triangle_20102019_geom, ncwellwise_subset_20102019_geom, ltdb_std_2012_sample_subset_geom, acs_2019_5y_estimates_geom, ejscreen_subset_geom, nc_covid_zipcode_geom, ncdot_county_boundaries
 from url_filter.integrations.drf import DjangoFilterBackend
 from rest_framework_gis.filters import InBBoxFilter
 
@@ -132,6 +132,14 @@ class drf_ltdb_std_2012_sample_subset_geom_View(viewsets.ModelViewSet):
     bbox_filter_field = 'geom'
     filter_backends = [DjangoFilterBackend, InBBoxFilter]
     fileter_fields = ['id', 'geoid10','pnhwht12','pnhblk12','phisp12','pasian12','pntv12','hincw12','hincb12','hinch12','hinca12','pwpov12','pbpov12','phpov12','papov12','pnapov12']
+    bbox_filter_include_overlapping = True
+
+class drf_acs_2019_5y_estimates_geom_View(viewsets.ModelViewSet):
+    queryset = acs_2019_5y_estimates_geom.objects.all()
+    serializer_class = acs_2019_5y_estimates_geom_Serializer
+    bbox_filter_field = 'geom'
+    filter_backends = [DjangoFilterBackend, InBBoxFilter]
+    fileter_fields = ['id', 'geoid10','percent_below_poverty_level','speak_a_language_other_than_english','two_or_more_races','asian_alone','american_indian_and_alaska_native_alone','native_hawaiian_and_other_pacific_islander_alone','white_alone','black_or_african_american_alone','not_hispanic_or_latino','hispanic_or_latino_of_any_race']
     bbox_filter_include_overlapping = True
 
 class drf_ejscreen_subset_geom_View(viewsets.ModelViewSet):

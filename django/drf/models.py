@@ -54,6 +54,19 @@ class ltdb_std_2012_sample_subset(models.Model):
     papov12 = models.FloatField(null=True)
     pnapov12 = models.FloatField(null=True)
 
+class acs_2019_5y_estimates(models.Model):
+    geoid10 = models.TextField(2,null=False)
+    percent_below_poverty_level = models.FloatField(null=True)
+    speak_a_language_other_than_english = models.FloatField(null=True)
+    two_or_more_races = models.FloatField(null=True)
+    asian_alone = models.FloatField(null=True)
+    american_indian_and_alaska_native_alone = models.FloatField(null=True)
+    native_hawaiian_and_other_pacific_islander_alone = models.FloatField(null=True)
+    white_alone = models.FloatField(null=True)
+    black_or_african_american_alone = models.FloatField(null=True)
+    not_hispanic_or_latino = models.FloatField(null=True)
+    hispanic_or_latino_of_any_race = models.FloatField(null=True)
+
 class ejscreen_subset(models.Model):
     geoid10 = models.TextField(12,null=False)
     d_ldpnt_2 = models.FloatField(null=True)
@@ -237,6 +250,26 @@ class ltdb_std_2012_sample_subset_geom(models.Model):
     class Meta:
         managed = False
         db_table = "drf_ltdb_std_2012_sample_subset_geom"
+
+class acs_2019_5y_estimates_geom(models.Model):
+    geoid10 = models.TextField(2,null=False)
+    percent_below_poverty_level = models.FloatField(null=True)
+    speak_a_language_other_than_english = models.FloatField(null=True)
+    two_or_more_races = models.FloatField(null=True)
+    asian_alone = models.FloatField(null=True)
+    american_indian_and_alaska_native_alone = models.FloatField(null=True)
+    native_hawaiian_and_other_pacific_islander_alone = models.FloatField(null=True)
+    white_alone = models.FloatField(null=True)
+    black_or_african_american_alone = models.FloatField(null=True)
+    not_hispanic_or_latino = models.FloatField(null=True)
+    hispanic_or_latino_of_any_race = models.FloatField(null=True)
+    geom = models.MultiPolygonField(null=True)
+    objects = models.Manager()
+    vector_tiles = MVTManager()
+
+    class Meta:
+        managed = False
+        db_table = "drf_acs_2019_5y_estimates_geom"
 
 class ejscreen_subset_geom(models.Model):
     geoid10 = models.TextField(12,null=False)
