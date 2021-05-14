@@ -127,6 +127,7 @@
         <q-expansion-item default-opened dense dense-toggle expand-separator icon="list" label="NC Well Data Layers, by Census Tracts">
           <div class="q-pa-md q-gutter-y-sm column">
             <q-item dense tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Arsenic (ppb and %)</q-tooltip>
               <table cellspacing="0" cellpadding="0" style="width:100%">
                 <caption style="text-align:left">Arsenic</caption>
                 <tr>
@@ -151,8 +152,8 @@
                       <!-- tr>
                         <td id="nested" -->
                           <tr>
-                             <td style="text-align:center;" colspan="2">Median</td>
-                             <td style="text-align:center;" >Mean</td>
+                             <td style="text-align:center;" colspan="2">Median (ppb)</td>
+                             <td style="text-align:center;" >Mean (ppb)</td>
                              <td style="text-align:center;" >% of Standard</td>
                           </tr>
                           <tr>
@@ -199,6 +200,7 @@
             </q-item>
 
             <q-item dense tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Cadmium (ppb and %)</q-tooltip>
               <table cellspacing="0" cellpadding="0" style="width:100%">
                 <caption style="text-align:left">Cadmium</caption>
                 <tr>
@@ -223,8 +225,8 @@
                       <!-- tr>
                         <td id="nested" -->
                           <tr>
-                             <td style="text-align:center;" colspan="2">Median</td>
-                             <td style="text-align:center;" >Mean</td>
+                             <td style="text-align:center;" colspan="2">Median (ppb)</td>
+                             <td style="text-align:center;" >Mean (ppb)</td>
                              <td style="text-align:center;" >% of Standard</td>
                           </tr>
                           <tr>
@@ -271,6 +273,7 @@
             </q-item>
 
             <q-item dense tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Lead (ppb and %)</q-tooltip>
               <table cellspacing="0" cellpadding="0" style="width:100%">
                 <caption style="text-align:left">Lead</caption>
                 <tr>
@@ -295,8 +298,8 @@
                       <!-- tr>
                         <td id="nested" -->
                           <tr>
-                             <td style="text-align:center;" colspan="2">Median</td>
-                             <td style="text-align:center;" >Mean</td>
+                             <td style="text-align:center;" colspan="2">Median (ppb)</td>
+                             <td style="text-align:center;" >Mean (ppb)</td>
                              <td style="text-align:center;" >% of Standard</td>
                           </tr>
                           <tr>
@@ -343,6 +346,7 @@
             </q-item>
 
             <q-item dense ag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Maganese (ppb and %)</q-tooltip>
               <table cellspacing="0" cellpadding="0" style="width:100%">
                 <caption style="text-align:left">Manganese</caption>
                 <tr>
@@ -367,8 +371,8 @@
                       <!-- tr>
                         <td id="nested" -->
                           <tr>
-                             <td style="text-align:center;" colspan="2">Median</td>
-                             <td style="text-align:center;" >Mean</td>
+                             <td style="text-align:center;" colspan="2">Median (ppb)</td>
+                             <td style="text-align:center;" >Mean (ppb)</td>
                              <td style="text-align:center;" >% of Standard</td>
                           </tr>
                           <tr>
@@ -463,6 +467,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="percent_below_poverty_level" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -472,6 +477,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="american_indian_and_alaska_native_alone" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -481,6 +487,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="asian_alone" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -490,6 +497,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="black_or_african_american_alone" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -499,6 +507,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="native_hawaiian_and_other_pacific_islander_alone" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -508,6 +517,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="white_alone" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -517,6 +527,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="two_or_more_races" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -526,6 +537,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="hispanic_or_latino_of_any_race" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -535,6 +547,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="not_hispanic_or_latino" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -544,6 +557,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="speak_a_language_other_than_english" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -678,6 +692,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="d_ldpnt_2" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -687,6 +702,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="d_dslpm_2" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -696,6 +712,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="d_cancr_2" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -705,6 +722,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="d_resp_2" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -714,6 +732,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="d_ptraf_2" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -723,6 +742,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="d_pwdis_2" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -732,6 +752,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="d_pnpl_2" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -741,6 +762,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="d_prmp_2" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -750,6 +772,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="d_ptsdf_2" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -759,6 +782,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="d_ozone_2" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -768,6 +792,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="d_pm25_2" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -853,6 +878,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From North Carolina Department of Health and Human Services</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="cases" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -862,6 +888,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From North Carolina Department of Health and Human Services</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="cases_per_10000_res" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -871,6 +898,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From North Carolina Department of Health and Human Services</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="cases_per_100000_res" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -880,6 +908,7 @@
             </q-item>
 
             <q-item tag="label" v-ripple>
+              <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From North Carolina Department of Health and Human Services</q-tooltip>
               <q-item-section avatar>
                 <q-radio v-on:input="showMapPanelRadioLayer" val="deaths" v-model="currentlayer" color="teal" />
               </q-item-section>
@@ -893,6 +922,7 @@
 
         <!-- // Ancillary layers -->
         <q-expansion-item dense dense-toggle expand-separator icon="list" label="Ancillary Layers">
+          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From North Carolina One Map</q-tooltip>
           <div class="q-pa-md q-gutter-y-sm column">
             <q-toggle
               :label="`North Carolina Counties ${ ncCountiesModel }`"
@@ -904,7 +934,7 @@
               true-value="Selected"
               v-model="ncCountiesModel"
             />
-           </div>
+          </div>
         </q-expansion-item>
         <!-- // Ancilary layers -->
 
@@ -954,12 +984,12 @@
       <vl-view ref="view" :center.sync="center" :zoom.sync="zoom" :rotation.sync="rotation"></vl-view>
 
       <!--// click interactions -->
-      <vl-interaction-select ref="selectInteraction" :layers="layer => !(layer instanceof VectorTile)" :features.sync="selectedFeature">
+      <!-- vl-interaction-select ref="selectInteraction" :layers="layer => !(layer instanceof VectorTile)" :features.sync="selectedFeature" -->
       <!-- vl-interaction-select ref="selectInteraction" :filter="(feature, layer) => feature instanceof Feature" :features.sync="selectedFeature" -->
       <!-- vl-interaction-select ref="selectInteraction" :features.sync="selectedFeature" -->
-        <template slot-scope="select">
+        <!-- template slot-scope="select" -->
           <!--// select styles -->
-          <vl-style-box>
+          <!-- vl-style-box>
             <vl-style-stroke color="#33201e" :width="7"></vl-style-stroke>
             <vl-style-fill :color="[254, 178, 76, 0.7]"></vl-style-fill>
             <vl-style-circle :radius="5">
@@ -972,11 +1002,11 @@
             <vl-style-circle :radius="5">
               <vl-style-stroke color="#d43f45" :width="2"></vl-style-stroke>
             </vl-style-circle>
-          </vl-style-box>
+          </vl-style-box -->
           <!--// select styles -->
 
           <!--// selected feature popup -->
-          <vl-overlay class="feature-popup" v-for="feature in select.features" :key="feature.id" :id="feature.id"
+          <!-- vl-overlay class="feature-popup" v-for="feature in select.features" :key="feature.id" :id="feature.id"
             :position="pointOnSurface(feature.geometry)" :auto-pan="true" :auto-pan-animation="{ duration: 300 }">
             <q-card class="feature-popup">
               <q-card-section>
@@ -992,18 +1022,22 @@
                   <div v-if="Object.keys(selectedFeatureMaxBarBox).length > 0">
                   <tr>
                     <td>
-                      <!-- apexchart width="400" type="radialBar" :options="apxmeanoptions" :series="selectedFeatureMeanBarBox" / -->
-                      <!-- apexchart type="radialBar" :options="apxmeanoptions" :series="selectedFeatureMeanBarBox" / -->
+                      <apexchart width="400" type="radialBar" :options="apxmeanoptions" :series="selectedFeatureMeanBarBox" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <apexchart type="radialBar" :options="apxmeanoptions" :series="selectedFeatureMeanBarBox" />
                     </td>
                   </tr>
                   </div>
                 </table>
               </q-card-section>
             </q-card>
-          </vl-overlay>
+          </vl-overlay -->
           <!--// selected feature popup -->
-        </template>
-      </vl-interaction-select>
+        <!-- /template -->
+      <!-- /vl-interaction-select -->
       <!--// click interactions -->
 
       <!--// geolocation -->
@@ -1032,11 +1066,11 @@
       </vl-layer-vector-tile -->
       <!--// other layers from config -->
       <!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
-      <component v-for="layer in layers" :is="layer.cmp" v-if="layer.visible" :key="layer.id" v-bind="layer">
+      <vl-layer-vector-tile v-for="layer in layers" :is="layer.cmp" v-if="layer.visible" :key="layer.id" v-bind="layer">
         <component ref="layerSource" :is="layer.source.cmp" v-bind="layer.source" />
         <!-- component ref="layerSource" :is="layer.source.cmp" v-bind="layer.source" :format-factory="createMvtFormat" / -->
         <component ref="layerStyle" v-if="layer.style" v-for="(style, i) in layer.style" :key="i" :is="style.cmp" v-bind="style" />
-      </component>
+      </vl-layer-vector-tile>
       <!-- eslint-enable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
     </vl-map>
     <!--// app map -->
@@ -1079,76 +1113,11 @@
     </q-page-sticky>
     <!--// right side drawer button -->
 
-    <!--// select bar plot tool -->
+    <!--// select location tool -->
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
-      <q-tooltip>Tools</q-tooltip>
+      <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Tools</q-tooltip>
       <q-fab icon="keyboard_arrow_up" direction="up" color="teal text-black">
-        <q-tooltip>Test Menu</q-tooltip>
-        <q-fab-action color="teal" class="text-black" icon="fas fa-map-marked-alt">
-          <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
-            <q-card class="bg-teal-1">
-              <q-banner inline-actions class="bg-teal-1">
-                <q-btn color="primary" label="Click me">
-                  <q-menu color="teal">
-                    <q-list dense style="min-width: 100px">
-                      <q-item clickable v-close-popup>
-                        <q-item-section>Open...</q-item-section>
-                      </q-item>
-                      <q-item clickable v-close-popup>
-                        <q-item-section>New</q-item-section>
-                      </q-item>
-                      <q-separator></q-separator>
-                      <q-item clickable>
-                        <q-item-section>Preferences</q-item-section>
-                        <q-item-section side>
-                          <q-icon name="keyboard_arrow_right"></q-icon>
-                        </q-item-section>
-
-                        <q-menu anchor="top end" self="top start">
-                          <q-list>
-                            <q-item
-                              v-for="n in 3"
-                              :key="n"
-                              dense
-                              clickable
-                            >
-                              <q-item-section>Submenu Label</q-item-section>
-                              <q-item-section side>
-                                <q-icon name="keyboard_arrow_right"></q-icon>
-                              </q-item-section>
-                              <q-menu auto-close anchor="top end" self="top start">
-                                <q-list>
-                                  <q-item
-                                    v-for="n in 3"
-                                    :key="n"
-                                    dense
-                                    clickable
-                                  >
-                                    <q-item-section>3rd level Label</q-item-section>
-                                  </q-item>
-                                </q-list>
-                              </q-menu>
-                            </q-item>
-                          </q-list>
-                        </q-menu>
-
-                      </q-item>
-                      <q-separator></q-separator>
-                      <q-item clickable v-close-popup>
-                        <q-item-section>Quit</q-item-section>
-                      </q-item>
-                    </q-list>
-                  </q-menu>
-                </q-btn>
-                <template align="right" v-slot:action>
-                  <q-btn flat round dense icon="close" color="teal" v-close-popup />
-                </template>
-              </q-banner>
-              <q-separator />
-            </q-card>
-          </q-popup-proxy>
-        </q-fab-action>
-        <q-tooltip>Change Location</q-tooltip>
+        <q-tooltip anchor="top left" self="top right" :offset="[10, 10]">Change Location</q-tooltip>
         <q-fab-action color="teal" class="text-black" icon="fas fa-map-marked-alt">
           <q-popup-proxy transition-show="flip-up" transition-hide="flip-down">
             <q-card class="bg-teal-1">
@@ -1174,7 +1143,7 @@
         </q-fab-action>
       </q-fab>
     </q-page-sticky>
-    <!--// select bar plot tool -->
+    <!--// select location tool -->
 
     <!--// base layer map attribution -->
     <q-page-sticky position="bottom-left" :offset="[200, 38]">
@@ -1198,8 +1167,8 @@ import Attribution from 'ol/control/Attribution'
 
 // Other ol imports
 import VectorTile from 'ol/layer/VectorTile'
-import Feature from 'ol/Feature'
-import MVT from 'ol/format/MVT'
+// import Feature from 'ol/Feature'
+// import MVT from 'ol/format/MVT'
 import { Style, Stroke, Fill } from 'ol/style'
 
 // geocoder
@@ -1782,7 +1751,7 @@ export default {
       layers: [
         {
           id: this.getNCWellwiseLayerID(),
-          title: 'NC Wellwise Maximum',
+          title: 'NC Wellwise',
           // cmp: 'vl-layer-vector',
           cmp: 'vl-layer-vector-tile',
           visible: true,
@@ -1878,7 +1847,7 @@ export default {
     camelCase,
     pointOnSurface: findPointOnSurface,
     VectorTile,
-    Feature,
+    /* Feature,
     createMvtFormat () {
       return new MVT({
         featureClass: Feature
@@ -1886,7 +1855,7 @@ export default {
     },
     vtFormatFactory () {
       return new MVT()
-    },
+    }, */
     address2Geoloc () {
       // 1 East Edenton St, Raleigh, NC, USA
       geocoder.search({ q: this.address })
@@ -1901,7 +1870,7 @@ export default {
       this.address = null
       this.acceptaddress = false
     },
-    onRadarChartAction (params) {
+    /* onRadarChartAction (params) {
       // console.log(params)
       const { origin, act, payload } = params
       let dothing
@@ -1925,7 +1894,7 @@ export default {
         default:
           break
       }
-    },
+    }, */
     getncwellwiseStyle: function () {
       // console.log(this.currentlayer)
       return feature => {
@@ -2461,8 +2430,8 @@ export default {
       return feature => {
         return [
           createStyle({
-            strokeColor: '#FFFFFF', // '#000',
-            strokeWidth: (this.zoom / 8.0),
+            strokeColor: '#000',
+            strokeWidth: (this.zoom / 4.0),
             strokeLineCap: 'round',
             strokeLineJoin: 'bevel'
           })
@@ -2535,160 +2504,161 @@ export default {
         layer.visible = false
       }
 
+      var i
       if (this.currentlayer === 'ncwellwise_arsenic_med') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'ncwellwise_arsenic_mean') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'ncwellwise_arsenic_prcast') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'ncwellwise_cadmium_med') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'ncwellwise_cadmium_mean') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'ncwellwise_cadmium_prcast') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'ncwellwise_lead_med') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'ncwellwise_lead_mean') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'ncwellwise_lead_prcast') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'ncwellwise_mng_med') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'ncwellwise_mng_mean') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'ncwellwise_mng_prcast') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'percent_below_poverty_level') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'percent_below_poverty_level') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'speak_a_language_other_than_english') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'two_or_more_races') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'asian_alone') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'american_indian_and_alaska_native_alone') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'native_hawaiian_and_other_pacific_islander_alone') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'white_alone') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'black_or_african_american_alone') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'not_hispanic_or_latino') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'hispanic_or_latino_of_any_race') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'd_ldpnt_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'd_dslpm_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'd_cancr_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'd_resp_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'd_ptraf_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'd_pwdis_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'd_pnpl_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'd_prmp_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'd_ptsdf_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'd_ozone_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'd_pm25_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'cases') {
         layer = this.layers.find(layer => layer.id === 'covid19')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'cases_per_10000_res') {
         layer = this.layers.find(layer => layer.id === 'covid19')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'cases_per_100000_res') {
         layer = this.layers.find(layer => layer.id === 'covid19')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       } else if (this.currentlayer === 'deaths') {
         layer = this.layers.find(layer => layer.id === 'covid19')
-        this.$refs.layerStyle[0].refresh()
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       }
-
+      // console.log(this.$refs.layerStyle)
       if (layer != null) {
         layer.visible = true
       }
