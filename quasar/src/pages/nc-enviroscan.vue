@@ -136,9 +136,9 @@
                   <td>% of Standard</td>
                 </tr>
                 <tr>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_arsenic_med" v-model="currentlayer" color="teal" /></td>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_arsenic_mean" v-model="currentlayer" color="teal" /></td>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_arsenic_prcast" v-model="currentlayer" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_arsenic_med" v-model="currentvariable" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_arsenic_mean" v-model="currentvariable" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_arsenic_prcast" v-model="currentvariable" color="teal" /></td>
                 </tr>
               </table>
             </q-item>
@@ -209,9 +209,9 @@
                   <td>% of Standard</td>
                 </tr>
                 <tr>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_cadmium_med" v-model="currentlayer" color="teal" /></td>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_cadmium_mean" v-model="currentlayer" color="teal" /></td>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_cadmium_prcast" v-model="currentlayer" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_cadmium_med" v-model="currentvariable" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_cadmium_mean" v-model="currentvariable" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_cadmium_prcast" v-model="currentvariable" color="teal" /></td>
                 </tr>
               </table>
             </q-item>
@@ -282,9 +282,9 @@
                   <td>% of Standard</td>
                 </tr>
                 <tr>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_lead_med" v-model="currentlayer" color="teal" /></td>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_lead_mean" v-model="currentlayer" color="teal" /></td>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_lead_prcast" v-model="currentlayer" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_lead_med" v-model="currentvariable" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_lead_mean" v-model="currentvariable" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_lead_prcast" v-model="currentvariable" color="teal" /></td>
                 </tr>
               </table>
             </q-item>
@@ -355,9 +355,9 @@
                   <td>% of Standard</td>
                 </tr>
                 <tr>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_mng_med" v-model="currentlayer" color="teal" /></td>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_mng_mean" v-model="currentlayer" color="teal" /></td>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_mng_prcast" v-model="currentlayer" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_mng_med" v-model="currentvariable" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_mng_mean" v-model="currentvariable" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_mng_prcast" v-model="currentvariable" color="teal" /></td>
                 </tr>
               </table>
             </q-item>
@@ -469,7 +469,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="percent_below_poverty_level" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="percent_below_poverty_level" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Below the Poverty Level</q-item-label>
@@ -479,7 +479,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="american_indian_and_alaska_native_alone" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="american_indian_and_alaska_native_alone" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Native American</q-item-label>
@@ -489,7 +489,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="asian_alone" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="asian_alone" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Asian</q-item-label>
@@ -499,7 +499,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="black_or_african_american_alone" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="black_or_african_american_alone" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Non-Hispanic Black</q-item-label>
@@ -509,7 +509,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="native_hawaiian_and_other_pacific_islander_alone" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="native_hawaiian_and_other_pacific_islander_alone" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Non-Hispanic Native Hawaiian and other Pacific Islander</q-item-label>
@@ -519,7 +519,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="white_alone" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="white_alone" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Non-Hispanic White</q-item-label>
@@ -529,7 +529,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="two_or_more_races" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="two_or_more_races" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Two or more Races</q-item-label>
@@ -539,7 +539,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="hispanic_or_latino_of_any_race" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="hispanic_or_latino_of_any_race" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Hispanic</q-item-label>
@@ -549,7 +549,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="not_hispanic_or_latino" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="not_hispanic_or_latino" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent Non-Hispanic</q-item-label>
@@ -559,7 +559,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From US Census American Community Survey, 2019 5 year estimate</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="speak_a_language_other_than_english" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="speak_a_language_other_than_english" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Percent of Population, 5 Years and Over, who Speak a language other than English</q-item-label>
@@ -694,7 +694,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ldpnt_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ldpnt_2" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for % pre-1960 housing (lead paint indicator)</q-item-label>
@@ -704,7 +704,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="d_dslpm_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_dslpm_2" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Diesel particulate matter level in air</q-item-label>
@@ -714,7 +714,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="d_cancr_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_cancr_2" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Air toxics cancer risk</q-item-label>
@@ -724,7 +724,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="d_resp_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_resp_2" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Air toxics respiratory hazard index</q-item-label>
@@ -734,7 +734,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ptraf_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ptraf_2" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Traffic proximity and volume</q-item-label>
@@ -744,7 +744,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="d_pwdis_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_pwdis_2" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Indicator for major direct dischargers to water</q-item-label>
@@ -754,7 +754,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="d_pnpl_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_pnpl_2" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Proximity to National Priorities List (NPL) sites</q-item-label>
@@ -764,7 +764,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="d_prmp_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_prmp_2" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Proximity to Risk Management Plan (RMP) facilities</q-item-label>
@@ -774,7 +774,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ptsdf_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ptsdf_2" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Proximity to Treatment Storage and Disposal (TSDF) facilities</q-item-label>
@@ -784,7 +784,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ozone_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_ozone_2" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for Ozone level in air</q-item-label>
@@ -794,7 +794,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="d_pm25_2" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="d_pm25_2" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>EJ Index for PM2.5 level in air</q-item-label>
@@ -880,7 +880,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From North Carolina Department of Health and Human Services</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="cases" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="cases" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Covid-19 Total Cases</q-item-label>
@@ -890,7 +890,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From North Carolina Department of Health and Human Services</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="cases_per_10000_res" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="cases_per_10000_res" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Covid-19 Cases Per 10,000 Residents</q-item-label>
@@ -900,7 +900,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From North Carolina Department of Health and Human Services</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="cases_per_100000_res" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="cases_per_100000_res" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Covid-19 Cases Per 100,000 Residents-</q-item-label>
@@ -910,7 +910,7 @@
             <q-item tag="label" v-ripple>
               <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From North Carolina Department of Health and Human Services</q-tooltip>
               <q-item-section avatar>
-                <q-radio v-on:input="showMapPanelRadioLayer" val="deaths" v-model="currentlayer" color="teal" />
+                <q-radio v-on:input="showMapPanelRadioLayer" val="deaths" v-model="currentvariable" color="teal" />
               </q-item-section>
               <q-item-section>
                 <q-item-label>Covid-19 Deaths</q-item-label>
@@ -1746,7 +1746,7 @@ export default {
         }
       ],
       // layers config
-      currentlayer: 'ncwellwise_arsenic_med',
+      currentvariable: 'ncwellwise_arsenic_med',
       // vtUrl: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ncwellwise_subset_20102019_geom.mvt?tile={z}/{x}/{y}',
       layers: [
         {
@@ -1896,13 +1896,13 @@ export default {
       }
     }, */
     getncwellwiseStyle: function () {
-      // console.log(this.currentlayer)
+      // console.log(this.currentvariable)
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         // console.log(selected)
         let data = feature.getProperties()
         let color
-        if (this.currentlayer === 'ncwellwise_arsenic_med') {
+        if (this.currentvariable === 'ncwellwise_arsenic_med') {
           if (data.arsenic_med === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
           } else if (data.arsenic_med < 6.83) {
@@ -1916,7 +1916,7 @@ export default {
           } else if (data.arsenic_med >= 16.71) {
             color = 'rgba(119, 52, 235, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_arsenic_mean') {
+        } else if (this.currentvariable === 'ncwellwise_arsenic_mean') {
           if (data.arsenic_mean === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
           } else if (data.arsenic_mean < 8.95) {
@@ -1930,7 +1930,7 @@ export default {
           } else if (data.arsenic_mean >= 26.9) {
             color = 'rgba(119, 52, 235, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_arsenic_prcast') {
+        } else if (this.currentvariable === 'ncwellwise_arsenic_prcast') {
           if (data.arsenic_prcast === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
           } else if (data.arsenic_prcast < 16.0) {
@@ -1944,7 +1944,7 @@ export default {
           } else if (data.arsenic_prcast >= 64.0) {
             color = 'rgba(119, 52, 235, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_cadmium_med') {
+        } else if (this.currentvariable === 'ncwellwise_cadmium_med') {
           if (data.cadmium_med === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
           } else if (data.cadmium_med < 0.74) {
@@ -1958,7 +1958,7 @@ export default {
           } else if (data.cadmium_med >= 0.82) {
             color = 'rgba(235, 89, 52, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_cadmium_mean') {
+        } else if (this.currentvariable === 'ncwellwise_cadmium_mean') {
           if (data.cadmium_mean === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
           } else if (data.cadmium_mean < 2.71) {
@@ -1972,7 +1972,7 @@ export default {
           } else if (data.cadmium_mean >= 8.73) {
             color = 'rgba(235, 89, 52, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_cadmium_prcast') {
+        } else if (this.currentvariable === 'ncwellwise_cadmium_prcast') {
           if (data.cadmium_prcast === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
           } else if (data.cadmium_prcast < 4.0) {
@@ -1986,7 +1986,7 @@ export default {
           } else if (data.cadmium_prcast >= 16.0) {
             color = 'rgba(235, 89, 52, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_lead_med') {
+        } else if (this.currentvariable === 'ncwellwise_lead_med') {
           if (data.lead_med === -999.99) {
             color = 'rgba(50, 110, 219, 0.65)'
           } else if (data.lead_med < 11.69) {
@@ -2000,7 +2000,7 @@ export default {
           } else if (data.lead_med >= 36.12) {
             color = 'rgba(39, 40, 43, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_lead_mean') {
+        } else if (this.currentvariable === 'ncwellwise_lead_mean') {
           if (data.lead_mean === -999.99) {
             color = 'rgba(50, 110, 219, 0.65)'
           } else if (data.lead_mean < 39.22) {
@@ -2014,7 +2014,7 @@ export default {
           } else if (data.lead_mean >= 148.14) {
             color = 'rgba(39, 40, 43, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_lead_prcast') {
+        } else if (this.currentvariable === 'ncwellwise_lead_prcast') {
           if (data.lead_prcast === -999.99) {
             color = 'rgba(50, 110, 219, 0.65)'
           } else if (data.lead_prcast < 20.0) {
@@ -2028,7 +2028,7 @@ export default {
           } else if (data.lead_prcast >= 80.0) {
             color = 'rgba(39, 40, 43, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_mng_med') {
+        } else if (this.currentvariable === 'ncwellwise_mng_med') {
           if (data.manganese_med === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
           } else if (data.manganese_med < 184.4) {
@@ -2042,7 +2042,7 @@ export default {
           } else if (data.manganese_med >= 683.6) {
             color = 'rgba(5, 97, 76, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_mng_mean') {
+        } else if (this.currentvariable === 'ncwellwise_mng_mean') {
           if (data.manganese_mean === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
           } else if (data.manganese_mean < 213.09) {
@@ -2056,7 +2056,7 @@ export default {
           } else if (data.manganese_mean >= 788.73) {
             color = 'rgba(5, 97, 76, 0.65)'
           }
-        } else if (this.currentlayer === 'ncwellwise_mng_prcast') {
+        } else if (this.currentvariable === 'ncwellwise_mng_prcast') {
           if (data.manganese_prcast === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
           } else if (data.manganese_prcast < 20.0) {
@@ -2092,24 +2092,24 @@ export default {
       }
     },
     getacsStyle: function () {
-      // console.log(this.currentlayer)
+      // console.log(this.currentvariable)
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
         let color
-        if (data[this.currentlayer] === -999.99) {
+        if (data[this.currentvariable] === -999.99) {
           color = 'rgba(91, 95, 99, 0.65)'
-        } else if (data[this.currentlayer] < 15) {
+        } else if (data[this.currentvariable] < 15) {
           color = 'rgba(252, 210, 211, 0.65)'
-        } else if (data[this.currentlayer] >= 15 && data[this.currentlayer] < 30) {
+        } else if (data[this.currentvariable] >= 15 && data[this.currentvariable] < 30) {
           color = 'rgba(252, 109, 114, 0.65)'
-        } else if (data[this.currentlayer] >= 30 && data[this.currentlayer] < 45) {
+        } else if (data[this.currentvariable] >= 30 && data[this.currentvariable] < 45) {
           color = 'rgba(247, 59, 66, 0.65)'
-        } else if (data[this.currentlayer] >= 45 && data[this.currentlayer] < 60) {
+        } else if (data[this.currentvariable] >= 45 && data[this.currentvariable] < 60) {
           color = 'rgba(250, 2, 11, 0.65)'
-        } else if (data[this.currentlayer] >= 60 && data[this.currentlayer] < 75) {
+        } else if (data[this.currentvariable] >= 60 && data[this.currentvariable] < 75) {
           color = 'rgba(181, 2, 6, 0.65)'
-        } else if (data[this.currentlayer] >= 75) {
+        } else if (data[this.currentvariable] >= 75) {
           color = 'rgba(140, 1, 5, 0.65)'
         }
         return [
@@ -2133,185 +2133,185 @@ export default {
       }
     },
     getejscreenStyle: function () {
-      // console.log(this.currentlayer)
+      // console.log(this.currentvariable)
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
         let color
-        if (this.currentlayer === 'd_ldpnt_2') {
-          if (data[this.currentlayer] === -99999.9999) {
+        if (this.currentvariable === 'd_ldpnt_2') {
+          if (data[this.currentvariable] === -99999.9999) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < -200.0) {
+          } else if (data[this.currentvariable] < -200.0) {
             color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -200.0 && data[this.currentlayer] < 0.0) {
+          } else if (data[this.currentvariable] >= -200.0 && data[this.currentvariable] < 0.0) {
             color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 0.0 && data[this.currentlayer] < 200.0) {
+          } else if (data[this.currentvariable] >= 0.0 && data[this.currentvariable] < 200.0) {
             color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 200.0 && data[this.currentlayer] < 400.0) {
+          } else if (data[this.currentvariable] >= 200.0 && data[this.currentvariable] < 400.0) {
             color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 400.0 && data[this.currentlayer] < 600.0) {
+          } else if (data[this.currentvariable] >= 400.0 && data[this.currentvariable] < 600.0) {
             color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 600.0) {
+          } else if (data[this.currentvariable] >= 600.0) {
             color = 'rgba(140, 1, 5, 0.65)'
           }
-        } else if (this.currentlayer === 'd_dslpm_2') {
-          if (data[this.currentlayer] === -99999.9999) {
+        } else if (this.currentvariable === 'd_dslpm_2') {
+          if (data[this.currentvariable] === -99999.9999) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < -300.0) {
+          } else if (data[this.currentvariable] < -300.0) {
             color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -300.0 && data[this.currentlayer] < 0.0) {
+          } else if (data[this.currentvariable] >= -300.0 && data[this.currentvariable] < 0.0) {
             color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 0.0 && data[this.currentlayer] < 280.0) {
+          } else if (data[this.currentvariable] >= 0.0 && data[this.currentvariable] < 280.0) {
             color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 280.0 && data[this.currentlayer] < 580.0) {
+          } else if (data[this.currentvariable] >= 280.0 && data[this.currentvariable] < 580.0) {
             color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 580.0 && data[this.currentlayer] < 850.0) {
+          } else if (data[this.currentvariable] >= 580.0 && data[this.currentvariable] < 850.0) {
             color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 850.0) {
+          } else if (data[this.currentvariable] >= 850.0) {
             color = 'rgba(140, 1, 5, 0.65)'
           }
-        } else if (this.currentlayer === 'd_cancr_2') {
-          if (data[this.currentlayer] === -99999.9999) {
+        } else if (this.currentvariable === 'd_cancr_2') {
+          if (data[this.currentvariable] === -99999.9999) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < -45000.0) {
+          } else if (data[this.currentvariable] < -45000.0) {
             color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -45000.0 && data[this.currentlayer] < -20000.0) {
+          } else if (data[this.currentvariable] >= -45000.0 && data[this.currentvariable] < -20000.0) {
             color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -20000.0 && data[this.currentlayer] < 5000.0) {
+          } else if (data[this.currentvariable] >= -20000.0 && data[this.currentvariable] < 5000.0) {
             color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 5000.0 && data[this.currentlayer] < 30000.0) {
+          } else if (data[this.currentvariable] >= 5000.0 && data[this.currentvariable] < 30000.0) {
             color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 30000.0 && data[this.currentlayer] < 55000.0) {
+          } else if (data[this.currentvariable] >= 30000.0 && data[this.currentvariable] < 55000.0) {
             color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 55000.0) {
+          } else if (data[this.currentvariable] >= 55000.0) {
             color = 'rgba(140, 1, 5, 0.65)'
           }
-        } else if (this.currentlayer === 'd_resp_2') {
-          if (data[this.currentlayer] === -99999.9999) {
+        } else if (this.currentvariable === 'd_resp_2') {
+          if (data[this.currentvariable] === -99999.9999) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < -600.0) {
+          } else if (data[this.currentvariable] < -600.0) {
             color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -600.0 && data[this.currentlayer] < -250) {
+          } else if (data[this.currentvariable] >= -600.0 && data[this.currentvariable] < -250) {
             color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -250.0 && data[this.currentlayer] < 100.0) {
+          } else if (data[this.currentvariable] >= -250.0 && data[this.currentvariable] < 100.0) {
             color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 100.0 && data[this.currentlayer] < 450.0) {
+          } else if (data[this.currentvariable] >= 100.0 && data[this.currentvariable] < 450.0) {
             color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 450.0 && data[this.currentlayer] < 800.0) {
+          } else if (data[this.currentvariable] >= 450.0 && data[this.currentvariable] < 800.0) {
             color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 800.0) {
+          } else if (data[this.currentvariable] >= 800.0) {
             color = 'rgba(140, 1, 5, 0.65)'
           }
-        } else if (this.currentlayer === 'd_ptraf_2') {
-          if (data[this.currentlayer] === -99999.9999) {
+        } else if (this.currentvariable === 'd_ptraf_2') {
+          if (data[this.currentvariable] === -99999.9999) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < 800000.0) {
+          } else if (data[this.currentvariable] < 800000.0) {
             color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 800000.0 && data[this.currentlayer] < 1700000.0) {
+          } else if (data[this.currentvariable] >= 800000.0 && data[this.currentvariable] < 1700000.0) {
             color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 1700000.0 && data[this.currentlayer] < 1700000.0) {
+          } else if (data[this.currentvariable] >= 1700000.0 && data[this.currentvariable] < 1700000.0) {
             color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 2600000.0 && data[this.currentlayer] < 2600000.0) {
+          } else if (data[this.currentvariable] >= 2600000.0 && data[this.currentvariable] < 2600000.0) {
             color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 3500000.0 && data[this.currentlayer] < 4400000.0) {
+          } else if (data[this.currentvariable] >= 3500000.0 && data[this.currentvariable] < 4400000.0) {
             color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 4400000.0) {
+          } else if (data[this.currentvariable] >= 4400000.0) {
             color = 'rgba(140, 1, 5, 0.65)'
           }
-        } else if (this.currentlayer === 'd_pwdis_2') {
-          if (data[this.currentlayer] === -99999.9999) {
+        } else if (this.currentvariable === 'd_pwdis_2') {
+          if (data[this.currentvariable] === -99999.9999) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < -47000.0) {
+          } else if (data[this.currentvariable] < -47000.0) {
             color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -47000.0 && data[this.currentlayer] < -35000.0) {
+          } else if (data[this.currentvariable] >= -47000.0 && data[this.currentvariable] < -35000.0) {
             color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -35000.0 && data[this.currentlayer] < -22000.0) {
+          } else if (data[this.currentvariable] >= -35000.0 && data[this.currentvariable] < -22000.0) {
             color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -22000.0 && data[this.currentlayer] < -10000.0) {
+          } else if (data[this.currentvariable] >= -22000.0 && data[this.currentvariable] < -10000.0) {
             color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -10000.0 && data[this.currentlayer] < 200.0) {
+          } else if (data[this.currentvariable] >= -10000.0 && data[this.currentvariable] < 200.0) {
             color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 200.0) {
+          } else if (data[this.currentvariable] >= 200.0) {
             color = 'rgba(140, 1, 5, 0.65)'
           }
-        } else if (this.currentlayer === 'd_pnpl_2') {
-          if (data[this.currentlayer] === -99999.9999) {
+        } else if (this.currentvariable === 'd_pnpl_2') {
+          if (data[this.currentvariable] === -99999.9999) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < -400.0) {
+          } else if (data[this.currentvariable] < -400.0) {
             color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -400.0 && data[this.currentlayer] < -120.0) {
+          } else if (data[this.currentvariable] >= -400.0 && data[this.currentvariable] < -120.0) {
             color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -120.0 && data[this.currentlayer] < 150.0) {
+          } else if (data[this.currentvariable] >= -120.0 && data[this.currentvariable] < 150.0) {
             color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 150.0 && data[this.currentlayer] < 420.0) {
+          } else if (data[this.currentvariable] >= 150.0 && data[this.currentvariable] < 420.0) {
             color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 420.0 && data[this.currentlayer] < 690.0) {
+          } else if (data[this.currentvariable] >= 420.0 && data[this.currentvariable] < 690.0) {
             color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 690.0) {
+          } else if (data[this.currentvariable] >= 690.0) {
             color = 'rgba(140, 1, 5, 0.65)'
           }
-        } else if (this.currentlayer === 'd_prmp_2') {
-          if (data[this.currentlayer] === -99999.9999) {
+        } else if (this.currentvariable === 'd_prmp_2') {
+          if (data[this.currentvariable] === -99999.9999) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < -450.0) {
+          } else if (data[this.currentvariable] < -450.0) {
             color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -450.0 && data[this.currentlayer] < 1000.0) {
+          } else if (data[this.currentvariable] >= -450.0 && data[this.currentvariable] < 1000.0) {
             color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 1000.0 && data[this.currentlayer] < 2450.0) {
+          } else if (data[this.currentvariable] >= 1000.0 && data[this.currentvariable] < 2450.0) {
             color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 2450.0 && data[this.currentlayer] < 3900.0) {
+          } else if (data[this.currentvariable] >= 2450.0 && data[this.currentvariable] < 3900.0) {
             color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 3900.0 && data[this.currentlayer] < 5350.0) {
+          } else if (data[this.currentvariable] >= 3900.0 && data[this.currentvariable] < 5350.0) {
             color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 5350.0) {
+          } else if (data[this.currentvariable] >= 5350.0) {
             color = 'rgba(140, 1, 5, 0.65)'
           }
-        } else if (this.currentlayer === 'd_ptsdf_2') {
-          if (data[this.currentlayer] === -99999.9999) {
+        } else if (this.currentvariable === 'd_ptsdf_2') {
+          if (data[this.currentvariable] === -99999.9999) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < -3200.0) {
+          } else if (data[this.currentvariable] < -3200.0) {
             color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -3200.0 && data[this.currentlayer] < -1000.0) {
+          } else if (data[this.currentvariable] >= -3200.0 && data[this.currentvariable] < -1000.0) {
             color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -1000.0 && data[this.currentlayer] < 1800.0) {
+          } else if (data[this.currentvariable] >= -1000.0 && data[this.currentvariable] < 1800.0) {
             color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 1800.0 && data[this.currentlayer] < 4600.0) {
+          } else if (data[this.currentvariable] >= 1800.0 && data[this.currentvariable] < 4600.0) {
             color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 4600.0 && data[this.currentlayer] < 7300.0) {
+          } else if (data[this.currentvariable] >= 4600.0 && data[this.currentvariable] < 7300.0) {
             color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 7300.0) {
+          } else if (data[this.currentvariable] >= 7300.0) {
             color = 'rgba(140, 1, 5, 0.65)'
           }
-        } else if (this.currentlayer === 'd_ozone_2') {
-          if (data[this.currentlayer] === -99999.9999) {
+        } else if (this.currentvariable === 'd_ozone_2') {
+          if (data[this.currentvariable] === -99999.9999) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < -58000.0) {
+          } else if (data[this.currentvariable] < -58000.0) {
             color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -58000.0 && data[this.currentlayer] < -28000.0) {
+          } else if (data[this.currentvariable] >= -58000.0 && data[this.currentvariable] < -28000.0) {
             color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -28000.0 && data[this.currentlayer] < 600.0) {
+          } else if (data[this.currentvariable] >= -28000.0 && data[this.currentvariable] < 600.0) {
             color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 600.0 && data[this.currentlayer] < 38000.0) {
+          } else if (data[this.currentvariable] >= 600.0 && data[this.currentvariable] < 38000.0) {
             color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 38000.0 && data[this.currentlayer] < 70000.0) {
+          } else if (data[this.currentvariable] >= 38000.0 && data[this.currentvariable] < 70000.0) {
             color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 70000.0) {
+          } else if (data[this.currentvariable] >= 70000.0) {
             color = 'rgba(140, 1, 5, 0.65)'
           }
-        } else if (this.currentlayer === 'd_pm25_2') {
-          if (data[this.currentlayer] === -99999.9999) {
+        } else if (this.currentvariable === 'd_pm25_2') {
+          if (data[this.currentvariable] === -99999.9999) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < -11000.0) {
+          } else if (data[this.currentvariable] < -11000.0) {
             color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -11000.0 && data[this.currentlayer] < -5500.0) {
+          } else if (data[this.currentvariable] >= -11000.0 && data[this.currentvariable] < -5500.0) {
             color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentlayer] >= -5500.0 && data[this.currentlayer] < 1000.0) {
+          } else if (data[this.currentvariable] >= -5500.0 && data[this.currentvariable] < 1000.0) {
             color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 1000.0 && data[this.currentlayer] < 7500.0) {
+          } else if (data[this.currentvariable] >= 1000.0 && data[this.currentvariable] < 7500.0) {
             color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 7500.0 && data[this.currentlayer] < 15000.0) {
+          } else if (data[this.currentvariable] >= 7500.0 && data[this.currentvariable] < 15000.0) {
             color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentlayer] >= 15000.0) {
+          } else if (data[this.currentvariable] >= 15000.0) {
             color = 'rgba(140, 1, 5, 0.65)'
           }
         }
@@ -2336,73 +2336,73 @@ export default {
       }
     },
     getcovid19Style: function () {
-      // console.log(this.currentlayer)
+      // console.log(this.currentvariable)
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
         let color
-        if (this.currentlayer === 'cases') {
-          if (data[this.currentlayer] === -999.99) {
+        if (this.currentvariable === 'cases') {
+          if (data[this.currentvariable] === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < 1328) {
+          } else if (data[this.currentvariable] < 1328) {
             color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentlayer] >= 1328 && data[this.currentlayer] < 2656) {
+          } else if (data[this.currentvariable] >= 1328 && data[this.currentvariable] < 2656) {
             color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentlayer] >= 2656 && data[this.currentlayer] < 3984) {
+          } else if (data[this.currentvariable] >= 2656 && data[this.currentvariable] < 3984) {
             color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentlayer] >= 3984 && data[this.currentlayer] < 5416) {
+          } else if (data[this.currentvariable] >= 3984 && data[this.currentvariable] < 5416) {
             color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentlayer] >= 5416 && data[this.currentlayer] < 6644) {
+          } else if (data[this.currentvariable] >= 5416 && data[this.currentvariable] < 6644) {
             color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentlayer] >= 6644) {
+          } else if (data[this.currentvariable] >= 6644) {
             color = 'rgba(23, 2, 247, 0.65)'
           }
-        } else if (this.currentlayer === 'cases_per_10000_res') {
-          if (data[this.currentlayer] === -999.99) {
+        } else if (this.currentvariable === 'cases_per_10000_res') {
+          if (data[this.currentvariable] === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < 586.0) {
+          } else if (data[this.currentvariable] < 586.0) {
             color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentlayer] >= 586.0 && data[this.currentlayer] < 1172.0) {
+          } else if (data[this.currentvariable] >= 586.0 && data[this.currentvariable] < 1172.0) {
             color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentlayer] >= 1172.0 && data[this.currentlayer] < 1758.0) {
+          } else if (data[this.currentvariable] >= 1172.0 && data[this.currentvariable] < 1758.0) {
             color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentlayer] >= 1758.0 && data[this.currentlayer] < 2344.0) {
+          } else if (data[this.currentvariable] >= 1758.0 && data[this.currentvariable] < 2344.0) {
             color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentlayer] >= 2344.0 && data[this.currentlayer] < 2930.0) {
+          } else if (data[this.currentvariable] >= 2344.0 && data[this.currentvariable] < 2930.0) {
             color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentlayer] >= 2930.0) {
+          } else if (data[this.currentvariable] >= 2930.0) {
             color = 'rgba(23, 2, 247, 0.65)'
           }
-        } else if (this.currentlayer === 'cases_per_100000_res') {
-          if (data[this.currentlayer] === -999.99) {
+        } else if (this.currentvariable === 'cases_per_100000_res') {
+          if (data[this.currentvariable] === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < 5859.0) {
+          } else if (data[this.currentvariable] < 5859.0) {
             color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentlayer] >= 5859.0 && data[this.currentlayer] < 11718.0) {
+          } else if (data[this.currentvariable] >= 5859.0 && data[this.currentvariable] < 11718.0) {
             color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentlayer] >= 11718.0 && data[this.currentlayer] < 17577.0) {
+          } else if (data[this.currentvariable] >= 11718.0 && data[this.currentvariable] < 17577.0) {
             color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentlayer] >= 17577.0 && data[this.currentlayer] < 23436.0) {
+          } else if (data[this.currentvariable] >= 17577.0 && data[this.currentvariable] < 23436.0) {
             color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentlayer] >= 23436.0 && data[this.currentlayer] < 29295.0) {
+          } else if (data[this.currentvariable] >= 23436.0 && data[this.currentvariable] < 29295.0) {
             color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentlayer] >= 29295.0) {
+          } else if (data[this.currentvariable] >= 29295.0) {
             color = 'rgba(23, 2, 247, 0.65)'
           }
-        } else if (this.currentlayer === 'deaths') {
-          if (data[this.currentlayer] === -999.99) {
+        } else if (this.currentvariable === 'deaths') {
+          if (data[this.currentvariable] === -999.99) {
             color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentlayer] < 17) {
+          } else if (data[this.currentvariable] < 17) {
             color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentlayer] >= 17 && data[this.currentlayer] < 34) {
+          } else if (data[this.currentvariable] >= 17 && data[this.currentvariable] < 34) {
             color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentlayer] >= 34 && data[this.currentlayer] < 51) {
+          } else if (data[this.currentvariable] >= 34 && data[this.currentvariable] < 51) {
             color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentlayer] >= 51 && data[this.currentlayer] < 65) {
+          } else if (data[this.currentvariable] >= 51 && data[this.currentvariable] < 65) {
             color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentlayer] >= 65 && data[this.currentlayer] < 85) {
+          } else if (data[this.currentvariable] >= 65 && data[this.currentvariable] < 85) {
             color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentlayer] >= 85) {
+          } else if (data[this.currentvariable] >= 85) {
             color = 'rgba(23, 2, 247, 0.65)'
           }
         }
@@ -2505,155 +2505,155 @@ export default {
       }
 
       var i
-      if (this.currentlayer === 'ncwellwise_arsenic_med') {
+      if (this.currentvariable === 'ncwellwise_arsenic_med') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_arsenic_mean') {
+      } else if (this.currentvariable === 'ncwellwise_arsenic_mean') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_arsenic_prcast') {
+      } else if (this.currentvariable === 'ncwellwise_arsenic_prcast') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_cadmium_med') {
+      } else if (this.currentvariable === 'ncwellwise_cadmium_med') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_cadmium_mean') {
+      } else if (this.currentvariable === 'ncwellwise_cadmium_mean') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_cadmium_prcast') {
+      } else if (this.currentvariable === 'ncwellwise_cadmium_prcast') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_lead_med') {
+      } else if (this.currentvariable === 'ncwellwise_lead_med') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_lead_mean') {
+      } else if (this.currentvariable === 'ncwellwise_lead_mean') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_lead_prcast') {
+      } else if (this.currentvariable === 'ncwellwise_lead_prcast') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_mng_med') {
+      } else if (this.currentvariable === 'ncwellwise_mng_med') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_mng_mean') {
+      } else if (this.currentvariable === 'ncwellwise_mng_mean') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'ncwellwise_mng_prcast') {
+      } else if (this.currentvariable === 'ncwellwise_mng_prcast') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'percent_below_poverty_level') {
+      } else if (this.currentvariable === 'percent_below_poverty_level') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'percent_below_poverty_level') {
+      } else if (this.currentvariable === 'percent_below_poverty_level') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'speak_a_language_other_than_english') {
+      } else if (this.currentvariable === 'speak_a_language_other_than_english') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'two_or_more_races') {
+      } else if (this.currentvariable === 'two_or_more_races') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'asian_alone') {
+      } else if (this.currentvariable === 'asian_alone') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'american_indian_and_alaska_native_alone') {
+      } else if (this.currentvariable === 'american_indian_and_alaska_native_alone') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'native_hawaiian_and_other_pacific_islander_alone') {
+      } else if (this.currentvariable === 'native_hawaiian_and_other_pacific_islander_alone') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'white_alone') {
+      } else if (this.currentvariable === 'white_alone') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'black_or_african_american_alone') {
+      } else if (this.currentvariable === 'black_or_african_american_alone') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'not_hispanic_or_latino') {
+      } else if (this.currentvariable === 'not_hispanic_or_latino') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'hispanic_or_latino_of_any_race') {
+      } else if (this.currentvariable === 'hispanic_or_latino_of_any_race') {
         layer = this.layers.find(layer => layer.id === 'acs_census')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'd_ldpnt_2') {
+      } else if (this.currentvariable === 'd_ldpnt_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'd_dslpm_2') {
+      } else if (this.currentvariable === 'd_dslpm_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'd_cancr_2') {
+      } else if (this.currentvariable === 'd_cancr_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'd_resp_2') {
+      } else if (this.currentvariable === 'd_resp_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'd_ptraf_2') {
+      } else if (this.currentvariable === 'd_ptraf_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'd_pwdis_2') {
+      } else if (this.currentvariable === 'd_pwdis_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'd_pnpl_2') {
+      } else if (this.currentvariable === 'd_pnpl_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'd_prmp_2') {
+      } else if (this.currentvariable === 'd_prmp_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'd_ptsdf_2') {
+      } else if (this.currentvariable === 'd_ptsdf_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'd_ozone_2') {
+      } else if (this.currentvariable === 'd_ozone_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'd_pm25_2') {
+      } else if (this.currentvariable === 'd_pm25_2') {
         layer = this.layers.find(layer => layer.id === 'ejscreen')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'cases') {
+      } else if (this.currentvariable === 'cases') {
         layer = this.layers.find(layer => layer.id === 'covid19')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'cases_per_10000_res') {
+      } else if (this.currentvariable === 'cases_per_10000_res') {
         layer = this.layers.find(layer => layer.id === 'covid19')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'cases_per_100000_res') {
+      } else if (this.currentvariable === 'cases_per_100000_res') {
         layer = this.layers.find(layer => layer.id === 'covid19')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentlayer === 'deaths') {
+      } else if (this.currentvariable === 'deaths') {
         layer = this.layers.find(layer => layer.id === 'covid19')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
