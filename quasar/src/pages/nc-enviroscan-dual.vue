@@ -393,9 +393,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Below the Poverty Level ${ povertyModel1 }`"
-                          :key="layers1[1].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[1],'percent_below_poverty_level')"
-                          :class="{ 'is-active': layers1[1].visible }"
+                          v-on:input="showMap1PanelToggleLayer('percent_below_poverty_level')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -408,9 +406,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Native American ${ nativeModel1 }`"
-                          :key="layers1[1].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[1],'american_indian_and_alaska_native_alone')"
-                          :class="{ 'is-active': layers1[1].visible }"
+                          v-on:input="showMap1PanelToggleLayer('american_indian_and_alaska_native_alone')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -423,9 +419,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Asian ${ asianModel1 }`"
-                          :key="layers1[1].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[1],'asian_alone')"
-                          :class="{ 'is-active': layers1[1].visible }"
+                          v-on:input="showMap1PanelToggleLayer('asian_alone')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -438,9 +432,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Non-Hispanic Black ${ blackModel1 }`"
-                          :key="layers1[1].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[1],'black_or_african_american_alone')"
-                          :class="{ 'is-active': layers1[1].visible }"
+                          v-on:input="showMap1PanelToggleLayer('black_or_african_american_alone')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -453,9 +445,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Non-Hispanic Native Hawaiian and other Pacific Islander ${ polyModel1 }`"
-                          :key="layers1[1].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[1],'native_hawaiian_and_other_pacific_islander_alone')"
-                          :class="{ 'is-active': layers1[1].visible }"
+                          v-on:input="showMap1PanelToggleLayer('native_hawaiian_and_other_pacific_islander_alone')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -468,9 +458,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Non-Hispanic White ${ whiteModel1 }`"
-                          :key="layers1[1].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[1],'white_alone')"
-                          :class="{ 'is-active': layers1[1].visible }"
+                          v-on:input="showMap1PanelToggleLayer('white_alone')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -483,9 +471,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Two or more Races ${ tworacesModel1 }`"
-                          :key="layers1[1].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[1],'two_or_more_races')"
-                          :class="{ 'is-active': layers1[1].visible }"
+                          v-on:input="showMap1PanelToggleLayer('two_or_more_races')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -498,9 +484,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Hispanic ${ hispModel1 }`"
-                          :key="layers1[1].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[1],'hispanic_or_latino_of_any_race')"
-                          :class="{ 'is-active': layers1[1].visible }"
+                          v-on:input="showMap1PanelToggleLayer('hispanic_or_latino_of_any_race')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -513,9 +497,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Non-Hispanic ${ nothispModel1 }`"
-                          :key="layers1[1].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[1],'not_hispanic_or_latino')"
-                          :class="{ 'is-active': layers1[1].visible }"
+                          v-on:input="showMap1PanelToggleLayer('not_hispanic_or_latino')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -528,9 +510,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent of Population, 5 Years and Over, who Speak a language other than English ${ langModel1 }`"
-                          :key="layers1[1].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[1],'speak_a_language_other_than_english')"
-                          :class="{ 'is-active': layers1[1].visible }"
+                          v-on:input="showMap1PanelToggleLayer('speak_a_language_other_than_english')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -671,9 +651,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`EJ Index for % pre-1960 housing (lead paint indicator) ${ d_ldpnt_2Model1 }`"
-                          :key="layers1[2].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[2],'d_ldpnt_2')"
-                          :class="{ 'is-active': layers1[2].visible }"
+                          v-on:input="showMap1PanelToggleLayer('d_ldpnt_2')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -686,9 +664,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`EJ Index for Diesel particulate matter level in air ${ d_dslpm_2Model1 }`"
-                          :key="layers1[2].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[2],'d_dslpm_2')"
-                          :class="{ 'is-active': layers1[2].visible }"
+                          v-on:input="showMap1PanelToggleLayer('d_dslpm_2')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -701,9 +677,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`EJ Index for Air toxics cancer risk ${ d_cancr_2Model1 }`"
-                          :key="layers1[2].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[2],'d_cancr_2')"
-                          :class="{ 'is-active': layers1[2].visible }"
+                          v-on:input="showMap1PanelToggleLayer('d_cancr_2')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -716,9 +690,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`EJ Index for Air toxics respiratory hazard index ${ d_resp_2Model1 }`"
-                          :key="layers1[2].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[2],'d_resp_2')"
-                          :class="{ 'is-active': layers1[2].visible }"
+                          v-on:input="showMap1PanelToggleLayer('d_resp_2')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -726,14 +698,12 @@
                         >
                           <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
                         </q-toggle>
-                      </q-item>>
+                      </q-item>
 
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`EJ Index for Traffic proximity and volume ${ d_ptraf_2Model1 }`"
-                          :key="layers1[2].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[2],'d_ptraf_2')"
-                          :class="{ 'is-active': layers1[2].visible }"
+                          v-on:input="showMap1PanelToggleLayer('d_ptraf_2')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -746,9 +716,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`EJ Index for Indicator for major direct dischargers to water ${ d_pwdis_2Model1 }`"
-                          :key="layers1[2].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[2],'d_pwdis_2')"
-                          :class="{ 'is-active': layers1[2].visible }"
+                          v-on:input="showMap1PanelToggleLayer('d_pwdis_2')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -761,9 +729,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`EJ Index for Proximity to National Priorities List (NPL) sites ${ d_pnpl_2Model1 }`"
-                          :key="layers1[2].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[2],'d_pnpl_2')"
-                          :class="{ 'is-active': layers1[2].visible }"
+                          v-on:input="showMap1PanelToggleLayer('d_pnpl_2')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -776,9 +742,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`EJ Index for Proximity to Risk Management Plan (RMP) facilities ${ d_prmp_2Model1 }`"
-                          :key="layers1[2].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[2],'d_prmp_2')"
-                          :class="{ 'is-active': layers1[2].visible }"
+                          v-on:input="showMap1PanelToggleLayer('d_prmp_2')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -791,9 +755,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`EJ Index for Proximity to Treatment Storage and Disposal (TSDF) facilities ${ d_ptsdf_2Model1 }`"
-                          :key="layers1[2].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[2],'d_ptsdf_2')"
-                          :class="{ 'is-active': layers1[2].visible }"
+                          v-on:input="showMap1PanelToggleLayer('d_ptsdf_2')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -806,9 +768,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`EJ Index for Ozone level in air ${ d_ozone_2Model1 }`"
-                          :key="layers1[2].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[2],'d_ozone_2')"
-                          :class="{ 'is-active': layers1[2].visible }"
+                          v-on:input="showMap1PanelToggleLayer('d_ozone_2')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -821,9 +781,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`EJ Index for PM2.5 level in air ${ d_pm25_2Model1 }`"
-                          :key="layers1[2].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1[2],'d_pm25_2')"
-                          :class="{ 'is-active': layers1[2].visible }"
+                          v-on:input="showMap1PanelToggleLayer('d_pm25_2')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -955,6 +913,7 @@
                     </q-list>
                   </q-menu>
                 </q-item>
+
                 <q-item clickable>
                   <q-item-section>Ancillary Layers</q-item-section>
                   <q-item-section side>
@@ -967,9 +926,7 @@
                       <div class="q-pa-md q-gutter-y-sm column">
                         <q-toggle
                           :label="`North Carolina Counties ${ ncCountiesModel1 }`"
-                          :key="layers1[4].id"
-                          v-on:input="showMap1PanelToggleLayer(layers1)"
-                          :class="{ 'is-active': layers1[4].visible }"
+                          v-on:input="showMap1PanelToggleLayer('nccounties')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -1380,9 +1337,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Below the Poverty Level ${ povertyModel2 }`"
-                          :key="layers2[1].id"
-                          v-on:input="showMap2PanelToggleLayer(layers2[1],'percent_below_poverty_level')"
-                          :class="{ 'is-active': layers2[1].visible }"
+                          v-on:input="showMap2PanelToggleLayer('percent_below_poverty_level')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -1395,9 +1350,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Native American ${ nativeModel2 }`"
-                          :key="layers2[1].id"
-                          v-on:input="showMap2PanelToggleLayer(layers2[1],'american_indian_and_alaska_native_alone')"
-                          :class="{ 'is-active': layers2[1].visible }"
+                          v-on:input="showMap2PanelToggleLayer('american_indian_and_alaska_native_alone')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -1410,9 +1363,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Asian ${ asianModel2 }`"
-                          :key="layers2[1].id"
-                          v-on:input="showMap2PanelToggleLayer(layers2[1],'asian_alone')"
-                          :class="{ 'is-active': layers2[1].visible }"
+                          v-on:input="showMap2PanelToggleLayer('asian_alone')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -1425,9 +1376,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Non-Hispanic Black ${ blackModel2 }`"
-                          :key="layers2[1].id"
-                          v-on:input="showMap2PanelToggleLayer(layers2[1],'black_or_african_american_alone')"
-                          :class="{ 'is-active': layers2[1].visible }"
+                          v-on:input="showMap2PanelToggleLayer('black_or_african_american_alone')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -1440,9 +1389,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Non-Hispanic Native Hawaiian and other Pacific Islander ${ polyModel2 }`"
-                          :key="layers2[1].id"
-                          v-on:input="showMap2PanelToggleLayer(layers2[1],'native_hawaiian_and_other_pacific_islander_alone')"
-                          :class="{ 'is-active': layers2[1].visible }"
+                          v-on:input="showMap2PanelToggleLayer('native_hawaiian_and_other_pacific_islander_alone')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -1455,9 +1402,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Non-Hispanic White ${ whiteModel2 }`"
-                          :key="layers2[1].id"
-                          v-on:input="showMap2PanelToggleLayer(layers2[1],'white_alone')"
-                          :class="{ 'is-active': layers2[1].visible }"
+                          v-on:input="showMap2PanelToggleLayer('white_alone')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -1470,9 +1415,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Two or more Races ${ tworacesModel2 }`"
-                          :key="layers2[1].id"
-                          v-on:input="showMap2PanelToggleLayer(layers2[1],'two_or_more_races')"
-                          :class="{ 'is-active': layers2[1].visible }"
+                          v-on:input="showMap2PanelToggleLayer('two_or_more_races')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -1485,9 +1428,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Hispanic ${ hispModel2 }`"
-                          :key="layers2[1].id"
-                          v-on:input="showMap2PanelToggleLayer(layers2[1],'hispanic_or_latino_of_any_race')"
-                          :class="{ 'is-active': layers2[1].visible }"
+                          v-on:input="showMap2PanelToggleLayer('hispanic_or_latino_of_any_race')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -1500,9 +1441,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent Non-Hispanic ${ nothispModel2 }`"
-                          :key="layers2[1].id"
-                          v-on:input="showMap2PanelToggleLayer(layers2[1],'not_hispanic_or_latino')"
-                          :class="{ 'is-active': layers2[1].visible }"
+                          v-on:input="showMap2PanelToggleLayer('not_hispanic_or_latino')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -1515,9 +1454,7 @@
                       <q-item tag="label" v-ripple>
                         <q-toggle
                           :label="`Percent of Population, 5 Years and Over, who Speak a language other than English ${ langModel2 }`"
-                          :key="layers2[1].id"
-                          v-on:input="showMap2PanelToggleLayer(layers2[1],'speak_a_language_other_than_english')"
-                          :class="{ 'is-active': layers2[1].visible }"
+                          v-on:input="showMap2PanelToggleLayer('speak_a_language_other_than_english')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -1656,115 +1593,147 @@
                         </div>
                         <!-- // legend -->
                       </q-item>
-
                       <q-item tag="label" v-ripple>
-                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
-                        <q-item-section avatar>
-                          <q-radio v-on:input="showMap2PanelRadioLayer" val="d_ldpnt_2" v-model="currentradiovariable2" color="teal" />
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>EJ Index for % pre-1960 housing (lead paint indicator)</q-item-label>
-                        </q-item-section>
+                        <q-toggle
+                          :label="`EJ Index for % pre-1960 housing (lead paint indicator) ${ d_ldpnt_2Model2 }`"
+                          v-on:input="showMap2PanelToggleLayer('d_ldpnt_2')"
+                          color="teal"
+                          false-value="Not Selected"
+                          true-value="Selected"
+                          v-model="d_ldpnt_2Model2"
+                        >
+                          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
+                        </q-toggle>
                       </q-item>
 
                       <q-item tag="label" v-ripple>
-                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
-                        <q-item-section avatar>
-                          <q-radio v-on:input="showMap2PanelRadioLayer" val="d_dslpm_2" v-model="currentradiovariable2" color="teal" />
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>EJ Index for Diesel particulate matter level in air</q-item-label>
-                        </q-item-section>
+                        <q-toggle
+                          :label="`EJ Index for Diesel particulate matter level in air ${ d_dslpm_2Model2 }`"
+                          v-on:input="showMap2PanelToggleLayer('d_dslpm_2')"
+                          color="teal"
+                          false-value="Not Selected"
+                          true-value="Selected"
+                          v-model="d_dslpm_2Model2"
+                        >
+                          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
+                        </q-toggle>
                       </q-item>
 
                       <q-item tag="label" v-ripple>
-                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
-                        <q-item-section avatar>
-                          <q-radio v-on:input="showMap2PanelRadioLayer" val="d_cancr_2" v-model="currentradiovariable2" color="teal" />
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>EJ Index for Air toxics cancer risk</q-item-label>
-                        </q-item-section>
+                        <q-toggle
+                          :label="`EJ Index for Air toxics cancer risk ${ d_cancr_2Model2 }`"
+                          v-on:input="showMap2PanelToggleLayer('d_cancr_2')"
+                          color="teal"
+                          false-value="Not Selected"
+                          true-value="Selected"
+                          v-model="d_cancr_2Model2"
+                        >
+                          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
+                        </q-toggle>
                       </q-item>
 
                       <q-item tag="label" v-ripple>
-                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
-                        <q-item-section avatar>
-                          <q-radio v-on:input="showMap2PanelRadioLayer" val="d_resp_2" v-model="currentradiovariable2" color="teal" />
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>EJ Index for Air toxics respiratory hazard index</q-item-label>
-                        </q-item-section>
+                        <q-toggle
+                          :label="`EJ Index for Air toxics respiratory hazard index ${ d_resp_2Model2 }`"
+                          v-on:input="showMap2PanelToggleLayer('d_resp_2')"
+                          color="teal"
+                          false-value="Not Selected"
+                          true-value="Selected"
+                          v-model="d_resp_2Model2"
+                        >
+                          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
+                        </q-toggle>
                       </q-item>
 
                       <q-item tag="label" v-ripple>
-                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
-                        <q-item-section avatar>
-                          <q-radio v-on:input="showMap2PanelRadioLayer" val="d_ptraf_2" v-model="currentradiovariable2" color="teal" />
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>EJ Index for Traffic proximity and volume</q-item-label>
-                        </q-item-section>
+                        <q-toggle
+                          :label="`EJ Index for Traffic proximity and volume ${ d_ptraf_2Model2 }`"
+                          v-on:input="showMap2PanelToggleLayer('d_ptraf_2')"
+                          color="teal"
+                          false-value="Not Selected"
+                          true-value="Selected"
+                          v-model="d_ptraf_2Model2"
+                        >
+                          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
+                        </q-toggle>
                       </q-item>
 
                       <q-item tag="label" v-ripple>
-                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
-                        <q-item-section avatar>
-                          <q-radio v-on:input="showMap2PanelRadioLayer" val="d_pwdis_2" v-model="currentradiovariable2" color="teal" />
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>EJ Index for Indicator for major direct dischargers to water</q-item-label>
-                        </q-item-section>
+                        <q-toggle
+                          :label="`EJ Index for Indicator for major direct dischargers to water ${ d_pwdis_2Model2 }`"
+                          v-on:input="showMap2PanelToggleLayer('d_pwdis_2')"
+                          color="teal"
+                          false-value="Not Selected"
+                          true-value="Selected"
+                          v-model="d_pwdis_2Model2"
+                        >
+                          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
+                        </q-toggle>
                       </q-item>
 
                       <q-item tag="label" v-ripple>
-                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
-                        <q-item-section avatar>
-                          <q-radio v-on:input="showMap2PanelRadioLayer" val="d_pnpl_2" v-model="currentradiovariable2" color="teal" />
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>EJ Index for Proximity to National Priorities List (NPL) sites</q-item-label>
-                        </q-item-section>
+                        <q-toggle
+                          :label="`EJ Index for Proximity to National Priorities List (NPL) sites ${ d_pnpl_2Model2 }`"
+                          v-on:input="showMap2PanelToggleLayer('d_pnpl_2')"
+                          color="teal"
+                          false-value="Not Selected"
+                          true-value="Selected"
+                          v-model="d_pnpl_2Model2"
+                        >
+                          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
+                        </q-toggle>
                       </q-item>
 
                       <q-item tag="label" v-ripple>
-                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
-                        <q-item-section avatar>
-                          <q-radio v-on:input="showMap2PanelRadioLayer" val="d_prmp_2" v-model="currentradiovariable2" color="teal" />
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>EJ Index for Proximity to Risk Management Plan (RMP) facilities</q-item-label>
-                        </q-item-section>
+                        <q-toggle
+                          :label="`EJ Index for Proximity to Risk Management Plan (RMP) facilities ${ d_prmp_2Model2 }`"
+                          v-on:input="showMap2PanelToggleLayer('d_prmp_2')"
+                          color="teal"
+                          false-value="Not Selected"
+                          true-value="Selected"
+                          v-model="d_prmp_2Model2"
+                        >
+                          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
+                        </q-toggle>
                       </q-item>
 
                       <q-item tag="label" v-ripple>
-                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
-                        <q-item-section avatar>
-                          <q-radio v-on:input="showMap2PanelRadioLayer" val="d_ptsdf_2" v-model="currentradiovariable2" color="teal" />
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>EJ Index for Proximity to Treatment Storage and Disposal (TSDF) facilities</q-item-label>
-                        </q-item-section>
+                        <q-toggle
+                          :label="`EJ Index for Proximity to Treatment Storage and Disposal (TSDF) facilities ${ d_ptsdf_2Model2 }`"
+                          v-on:input="showMap2PanelToggleLayer('d_ptsdf_2')"
+                          color="teal"
+                          false-value="Not Selected"
+                          true-value="Selected"
+                          v-model="d_ptsdf_2Model2"
+                        >
+                          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
+                        </q-toggle>
                       </q-item>
 
                       <q-item tag="label" v-ripple>
-                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
-                        <q-item-section avatar>
-                          <q-radio v-on:input="showMap2PanelRadioLayer" val="d_ozone_2" v-model="currentradiovariable2" color="teal" />
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>EJ Index for Ozone level in air</q-item-label>
-                        </q-item-section>
+                        <q-toggle
+                          :label="`EJ Index for Ozone level in air ${ d_ozone_2Model2 }`"
+                          v-on:input="showMap2PanelToggleLayer('d_ozone_2')"
+                          color="teal"
+                          false-value="Not Selected"
+                          true-value="Selected"
+                          v-model="d_ozone_2Model2"
+                        >
+                          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
+                        </q-toggle>
                       </q-item>
 
                       <q-item tag="label" v-ripple>
-                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
-                        <q-item-section avatar>
-                          <q-radio v-on:input="showMap2PanelRadioLayer" val="d_pm25_2" v-model="currentradiovariable2" color="teal" />
-                        </q-item-section>
-                        <q-item-section>
-                          <q-item-label>EJ Index for PM2.5 level in air</q-item-label>
-                        </q-item-section>
+                        <q-toggle
+                          :label="`EJ Index for PM2.5 level in air ${ d_pm25_2Model2 }`"
+                          v-on:input="showMap2PanelToggleLayer('d_pm25_2')"
+                          color="teal"
+                          false-value="Not Selected"
+                          true-value="Selected"
+                          v-model="d_pm25_2Model2"
+                        >
+                          <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">From the US Environmental Protection Agency</q-tooltip>
+                        </q-toggle>
                       </q-item>
                     </q-list>
                   </q-menu>
@@ -1901,9 +1870,7 @@
                       <div class="q-pa-md q-gutter-y-sm column">
                         <q-toggle
                           :label="`North Carolina Counties ${ ncCountiesModel2 }`"
-                          :key="layers2[4].id"
-                          v-on:input="showMap2PanelToggleLayer(layers2[4],'nccounties')"
-                          :class="{ 'is-active': layers2[4].visible }"
+                          v-on:input="showMap2PanelToggleLayer('nccounties')"
                           color="teal"
                           false-value="Not Selected"
                           true-value="Selected"
@@ -2089,7 +2056,13 @@ export default {
       rotation: 0,
       mapVisible: true,
       // Other layers attributes
+      address: null,
+      acceptaddress: false,
+      vtSelection: {},
+      vtIdProp: 'geoid10',
+      cntlayer1: undefined,
       ncCountiesModel1: 'Not Selected',
+      acslayer1: undefined,
       povertyModel1: 'Not Selected',
       nativeModel1: 'Not Selected',
       asianModel1: 'Not Selected',
@@ -2100,6 +2073,7 @@ export default {
       hispModel1: 'Not Selected',
       nothispModel1: 'Not Selected',
       langModel1: 'Not Selected',
+      ejslayer1: undefined,
       d_ldpnt_2Model1: 'Not Selected',
       d_dslpm_2Model1: 'Not Selected',
       d_cancr_2Model1: 'Not Selected',
@@ -2114,7 +2088,9 @@ export default {
       casespertenModel1: 'Not Selected',
       casesperhundredModel1: 'Not Selected',
       deathsModel1: 'Not Selected',
+      cntlayer2: undefined,
       ncCountiesModel2: 'Not Selected',
+      acslayer2: undefined,
       povertyModel2: 'Not Selected',
       nativeModel2: 'Not Selected',
       asianModel2: 'Not Selected',
@@ -2125,13 +2101,21 @@ export default {
       hispModel2: 'Not Selected',
       nothispModel2: 'Not Selected',
       langModel2: 'Not Selected',
+      ejslayer2: undefined,
+      d_ldpnt_2Model2: 'Not Selected',
+      d_dslpm_2Model2: 'Not Selected',
+      d_cancr_2Model2: 'Not Selected',
+      d_resp_2Model2: 'Not Selected',
+      d_ptraf_2Model2: 'Not Selected',
+      d_pwdis_2Model2: 'Not Selected',
+      d_pnpl_2Model2: 'Not Selected',
+      d_prmp_2Model2: 'Not Selected',
+      d_ptsdf_2Model2: 'Not Selected',
+      d_ozone_2Model2: 'Not Selected',
+      d_pm25_2Model2: 'Not Selected',
       casespertenModel2: 'Not Selected',
       casesperhundredModel2: 'Not Selected',
       deathsModel2: 'Not Selected',
-      address: null,
-      acceptaddress: false,
-      vtSelection: {},
-      vtIdProp: 'geoid10',
       // baselayers config
       baselayer1: 'osm',
       baselayer2: 'osm',
@@ -3316,185 +3300,207 @@ export default {
       }
     },
     getejscreenStyle2: function () {
+      let canvas = document.createElement('canvas')
+      let context = canvas.getContext('2d')
+      let pixelRatio = DEVICE_PIXEL_RATIO
+
+      function getPattern (color1) {
+        canvas.width = 8 * pixelRatio
+        canvas.height = 8 * pixelRatio
+        let color2 = 'rgb(0, 0, 0, 0.0)'
+        let numberOfStripes = 50
+        for (var i = 0; i < numberOfStripes; i++) {
+          var thickness = 200 / numberOfStripes
+          context.beginPath()
+          context.strokeStyle = i % 2 ? color1 : color2
+          context.lineWidth = thickness
+          context.lineCap = 'round'
+
+          context.moveTo(i * thickness + thickness / 2, 0)
+          context.lineTo(i * thickness + thickness / 2, 300)
+          context.stroke()
+        }
+        return context.createPattern(canvas, 'repeat')
+      }
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
         let color
-        if (this.currentradiovariable2 === 'd_ldpnt_2') {
-          if (data[this.currentradiovariable2] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < -200.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -200.0 && data[this.currentradiovariable2] < 0.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 0.0 && data[this.currentradiovariable2] < 200.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 200.0 && data[this.currentradiovariable2] < 400.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 400.0 && data[this.currentradiovariable2] < 600.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 600.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
+        if (this.currentejsvariable2 === 'd_ldpnt_2') {
+          if (data[this.currentejsvariable2] === -99999.9999) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data[this.currentejsvariable2] < -200.0) {
+            color = getPattern('rgba(235, 252, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -200.0 && data[this.currentejsvariable2] < 0.0) {
+            color = getPattern('rgba(252, 227, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 0.0 && data[this.currentejsvariable2] < 200.0) {
+            color = getPattern('rgba(252, 186, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 200.0 && data[this.currentejsvariable2] < 400.0) {
+            color = getPattern('rgba(252, 128, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 400.0 && data[this.currentejsvariable2] < 600.0) {
+            color = getPattern('rgba(252, 82, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 600.0) {
+            color = getPattern('rgba(140, 1, 5, 0.65)')
           }
-        } else if (this.currentradiovariable2 === 'd_dslpm_2') {
-          if (data[this.currentradiovariable2] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < -300.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -300.0 && data[this.currentradiovariable2] < 0.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 0.0 && data[this.currentradiovariable2] < 280.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 280.0 && data[this.currentradiovariable2] < 580.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 580.0 && data[this.currentradiovariable2] < 850.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 850.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
+        } else if (this.currentejsvariable2 === 'd_dslpm_2') {
+          if (data[this.currentejsvariable2] === -99999.9999) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data[this.currentejsvariable2] < -300.0) {
+            color = getPattern('rgba(235, 252, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -300.0 && data[this.currentejsvariable2] < 0.0) {
+            color = getPattern('rgba(252, 227, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 0.0 && data[this.currentejsvariable2] < 280.0) {
+            color = getPattern('rgba(252, 186, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 280.0 && data[this.currentejsvariable2] < 580.0) {
+            color = getPattern('rgba(252, 128, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 580.0 && data[this.currentejsvariable2] < 850.0) {
+            color = getPattern('rgba(252, 82, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 850.0) {
+            color = getPattern('rgba(140, 1, 5, 0.65)')
           }
-        } else if (this.currentradiovariable2 === 'd_cancr_2') {
-          if (data[this.currentradiovariable2] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < -45000.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -45000.0 && data[this.currentradiovariable2] < -20000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -20000.0 && data[this.currentradiovariable2] < 5000.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 5000.0 && data[this.currentradiovariable2] < 30000.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 30000.0 && data[this.currentradiovariable2] < 55000.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 55000.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
+        } else if (this.currentejsvariable2 === 'd_cancr_2') {
+          if (data[this.currentejsvariable2] === -99999.9999) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data[this.currentejsvariable2] < -45000.0) {
+            color = getPattern('rgba(235, 252, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -45000.0 && data[this.currentejsvariable2] < -20000.0) {
+            color = getPattern('rgba(252, 227, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -20000.0 && data[this.currentejsvariable2] < 5000.0) {
+            color = getPattern('rgba(252, 186, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 5000.0 && data[this.currentejsvariable2] < 30000.0) {
+            color = getPattern('rgba(252, 128, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 30000.0 && data[this.currentejsvariable2] < 55000.0) {
+            color = getPattern('rgba(252, 82, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 55000.0) {
+            color = getPattern('rgba(140, 1, 5, 0.65)')
           }
-        } else if (this.currentradiovariable2 === 'd_resp_2') {
-          if (data[this.currentradiovariable2] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < -600.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -600.0 && data[this.currentradiovariable2] < -250) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -250.0 && data[this.currentradiovariable2] < 100.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 100.0 && data[this.currentradiovariable2] < 450.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 450.0 && data[this.currentradiovariable2] < 800.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 800.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
+        } else if (this.currentejsvariable2 === 'd_resp_2') {
+          if (data[this.currentejsvariable2] === -99999.9999) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data[this.currentejsvariable2] < -600.0) {
+            color = getPattern('rgba(235, 252, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -600.0 && data[this.currentejsvariable2] < -250) {
+            color = getPattern('rgba(252, 227, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -250.0 && data[this.currentejsvariable2] < 100.0) {
+            color = getPattern('rgba(252, 186, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 100.0 && data[this.currentejsvariable2] < 450.0) {
+            color = getPattern('rgba(252, 128, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 450.0 && data[this.currentejsvariable2] < 800.0) {
+            color = getPattern('rgba(252, 82, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 800.0) {
+            color = getPattern('rgba(140, 1, 5, 0.65)')
           }
-        } else if (this.currentradiovariable2 === 'd_ptraf_2') {
-          if (data[this.currentradiovariable2] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < 800000.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 800000.0 && data[this.currentradiovariable2] < 1700000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 1700000.0 && data[this.currentradiovariable2] < 1700000.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 2600000.0 && data[this.currentradiovariable2] < 2600000.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 3500000.0 && data[this.currentradiovariable2] < 4400000.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 4400000.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
+        } else if (this.currentejsvariable2 === 'd_ptraf_2') {
+          if (data[this.currentejsvariable2] === -99999.9999) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data[this.currentejsvariable2] < 800000.0) {
+            color = getPattern('rgba(235, 252, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 800000.0 && data[this.currentejsvariable2] < 1700000.0) {
+            color = getPattern('rgba(252, 227, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 1700000.0 && data[this.currentejsvariable2] < 1700000.0) {
+            color = getPattern('rgba(252, 186, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 2600000.0 && data[this.currentejsvariable2] < 2600000.0) {
+            color = getPattern('rgba(252, 128, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 3500000.0 && data[this.currentejsvariable2] < 4400000.0) {
+            color = getPattern('rgba(252, 82, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 4400000.0) {
+            color = getPattern('rgba(140, 1, 5, 0.65)')
           }
-        } else if (this.currentradiovariable2 === 'd_pwdis_2') {
-          if (data[this.currentradiovariable2] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < -47000.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -47000.0 && data[this.currentradiovariable2] < -35000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -35000.0 && data[this.currentradiovariable2] < -22000.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -22000.0 && data[this.currentradiovariable2] < -10000.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -10000.0 && data[this.currentradiovariable2] < 200.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 200.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
+        } else if (this.currentejsvariable2 === 'd_pwdis_2') {
+          if (data[this.currentejsvariable2] === -99999.9999) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data[this.currentejsvariable2] < -47000.0) {
+            color = getPattern('rgba(235, 252, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -47000.0 && data[this.currentejsvariable2] < -35000.0) {
+            color = getPattern('rgba(252, 227, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -35000.0 && data[this.currentejsvariable2] < -22000.0) {
+            color = getPattern('rgba(252, 186, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -22000.0 && data[this.currentejsvariable2] < -10000.0) {
+            color = getPattern('rgba(252, 128, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -10000.0 && data[this.currentejsvariable2] < 200.0) {
+            color = getPattern('rgba(252, 82, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 200.0) {
+            color = getPattern('rgba(140, 1, 5, 0.65)')
           }
-        } else if (this.currentradiovariable2 === 'd_pnpl_2') {
-          if (data[this.currentradiovariable2] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < -400.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -400.0 && data[this.currentradiovariable2] < -120.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -120.0 && data[this.currentradiovariable2] < 150.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 150.0 && data[this.currentradiovariable2] < 420.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 420.0 && data[this.currentradiovariable2] < 690.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 690.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
+        } else if (this.currentejsvariable2 === 'd_pnpl_2') {
+          if (data[this.currentejsvariable2] === -99999.9999) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data[this.currentejsvariable2] < -400.0) {
+            color = getPattern('rgba(235, 252, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -400.0 && data[this.currentejsvariable2] < -120.0) {
+            color = getPattern('rgba(252, 227, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -120.0 && data[this.currentejsvariable2] < 150.0) {
+            color = getPattern('rgba(252, 186, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 150.0 && data[this.currentejsvariable2] < 420.0) {
+            color = getPattern('rgba(252, 128, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 420.0 && data[this.currentejsvariable2] < 690.0) {
+            color = getPattern('rgba(252, 82, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 690.0) {
+            color = getPattern('rgba(140, 1, 5, 0.65)')
           }
-        } else if (this.currentradiovariable2 === 'd_prmp_2') {
-          if (data[this.currentradiovariable2] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < -450.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -450.0 && data[this.currentradiovariable2] < 1000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 1000.0 && data[this.currentradiovariable2] < 2450.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 2450.0 && data[this.currentradiovariable2] < 3900.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 3900.0 && data[this.currentradiovariable2] < 5350.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 5350.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
+        } else if (this.currentejsvariable2 === 'd_prmp_2') {
+          if (data[this.currentejsvariable2] === -99999.9999) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data[this.currentejsvariable2] < -450.0) {
+            color = getPattern('rgba(235, 252, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -450.0 && data[this.currentejsvariable2] < 1000.0) {
+            color = getPattern('rgba(252, 227, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 1000.0 && data[this.currentejsvariable2] < 2450.0) {
+            color = getPattern('rgba(252, 186, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 2450.0 && data[this.currentejsvariable2] < 3900.0) {
+            color = getPattern('rgba(252, 128, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 3900.0 && data[this.currentejsvariable2] < 5350.0) {
+            color = getPattern('rgba(252, 82, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 5350.0) {
+            color = getPattern('rgba(140, 1, 5, 0.65)')
           }
-        } else if (this.currentradiovariable2 === 'd_ptsdf_2') {
-          if (data[this.currentradiovariable2] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < -3200.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -3200.0 && data[this.currentradiovariable2] < -1000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -1000.0 && data[this.currentradiovariable2] < 1800.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 1800.0 && data[this.currentradiovariable2] < 4600.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 4600.0 && data[this.currentradiovariable2] < 7300.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 7300.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
+        } else if (this.currentejsvariable2 === 'd_ptsdf_2') {
+          if (data[this.currentejsvariable2] === -99999.9999) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data[this.currentejsvariable2] < -3200.0) {
+            color = getPattern('rgba(235, 252, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -3200.0 && data[this.currentejsvariable2] < -1000.0) {
+            color = getPattern('rgba(252, 227, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -1000.0 && data[this.currentejsvariable2] < 1800.0) {
+            color = getPattern('rgba(252, 186, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 1800.0 && data[this.currentejsvariable2] < 4600.0) {
+            color = getPattern('rgba(252, 128, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 4600.0 && data[this.currentejsvariable2] < 7300.0) {
+            color = getPattern('rgba(252, 82, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 7300.0) {
+            color = getPattern('rgba(140, 1, 5, 0.65)')
           }
-        } else if (this.currentradiovariable2 === 'd_ozone_2') {
-          if (data[this.currentradiovariable2] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < -58000.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -58000.0 && data[this.currentradiovariable2] < -28000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -28000.0 && data[this.currentradiovariable2] < 600.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 600.0 && data[this.currentradiovariable2] < 38000.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 38000.0 && data[this.currentradiovariable2] < 70000.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 70000.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
+        } else if (this.currentejsvariable2 === 'd_ozone_2') {
+          if (data[this.currentejsvariable2] === -99999.9999) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data[this.currentejsvariable2] < -58000.0) {
+            color = getPattern('rgba(235, 252, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -58000.0 && data[this.currentejsvariable2] < -28000.0) {
+            color = getPattern('rgba(252, 227, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -28000.0 && data[this.currentejsvariable2] < 600.0) {
+            color = getPattern('rgba(252, 186, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 600.0 && data[this.currentejsvariable2] < 38000.0) {
+            color = getPattern('rgba(252, 128, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 38000.0 && data[this.currentejsvariable2] < 70000.0) {
+            color = getPattern('rgba(252, 82, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 70000.0) {
+            color = getPattern('rgba(140, 1, 5, 0.65)')
           }
-        } else if (this.currentradiovariable2 === 'd_pm25_2') {
-          if (data[this.currentradiovariable2] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < -11000.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -11000.0 && data[this.currentradiovariable2] < -5500.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= -5500.0 && data[this.currentradiovariable2] < 1000.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 1000.0 && data[this.currentradiovariable2] < 7500.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 7500.0 && data[this.currentradiovariable2] < 15000.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 15000.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
+        } else if (this.currentejsvariable2 === 'd_pm25_2') {
+          if (data[this.currentejsvariable2] === -99999.9999) {
+            color = getPattern('rgba(91, 95, 99, 0.65)')
+          } else if (data[this.currentejsvariable2] < -11000.0) {
+            color = getPattern('rgba(235, 252, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -11000.0 && data[this.currentejsvariable2] < -5500.0) {
+            color = getPattern('rgba(252, 227, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= -5500.0 && data[this.currentejsvariable2] < 1000.0) {
+            color = getPattern('rgba(252, 186, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 1000.0 && data[this.currentejsvariable2] < 7500.0) {
+            color = getPattern('rgba(252, 128, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 7500.0 && data[this.currentejsvariable2] < 15000.0) {
+            color = getPattern('rgba(252, 82, 3, 0.65)')
+          } else if (data[this.currentejsvariable2] >= 15000.0) {
+            color = getPattern('rgba(140, 1, 5, 0.65)')
           }
         }
         return [
@@ -3507,7 +3513,13 @@ export default {
               color: selected ? 'rgba(200,20,20,0.2)' : color
             })
           })
-
+          /* createStyle({
+            strokeColor: '#000',
+            strokeWidth: (this.zoom / 8.0),
+            strokeLineCap: 'round',
+            strokeLineJoin: 'bevel',
+            fillColor: color
+          }) */
         ]
       }
     },
@@ -3694,271 +3706,447 @@ export default {
         layer.visible = true
       }
     },
-    showMap1PanelToggleLayer: function (layer, variable) {
+    showMap1PanelToggleLayer: function (variable) {
       if (variable === 'nccounties') {
-        let cntlayer = layer
+        if (this.cntlayer1 === undefined) {
+          this.cntlayer1 = this.layers1[4]
+        }
         if (this.ncCountiesModel1 === 'Selected') {
-          cntlayer.visible = true
+          this.cntlayer1.visible = true
         } else if (this.ncCountiesModel1 === 'Not Selected') {
-          cntlayer.visible = false
+          this.cntlayer1.visible = false
         }
       } else if (variable === 'percent_below_poverty_level') {
-        let acslayer = layer
+        if (this.acslayer1 === undefined) {
+          this.acslayer1 = this.layers1[1]
+        }
         if (this.povertyModel1 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer1.visible = true
           this.currentacsvariable1 = variable
         } else if (this.povertyModel1 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer1.visible = false
         }
       } else if (variable === 'american_indian_and_alaska_native_alone') {
-        let acslayer = layer
+        if (this.acslayer1 === undefined) {
+          this.acslayer1 = this.layers1[1]
+        }
         if (this.nativeModel1 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer1.visible = true
           this.currentacsvariable1 = variable
         } else if (this.nativeModel1 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer1.visible = false
         }
       } else if (variable === 'asian_alone') {
-        let acslayer = layer
+        if (this.acslayer1 === undefined) {
+          this.acslayer1 = this.layers1[1]
+        }
         if (this.asianModel1 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer1.visible = true
           this.currentacsvariable1 = variable
         } else if (this.asianModel1 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer1.visible = false
         }
       } else if (variable === 'black_or_african_american_alone') {
-        let acslayer = layer
+        if (this.acslayer1 === undefined) {
+          this.acslayer1 = this.layers1[1]
+        }
         if (this.blackModel1 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer1.visible = true
           this.currentacsvariable1 = variable
         } else if (this.blackModel1 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer1.visible = false
         }
       } else if (variable === 'native_hawaiian_and_other_pacific_islander_alone') {
-        let acslayer = layer
+        if (this.acslayer1 === undefined) {
+          this.acslayer1 = this.layers1[1]
+        }
         if (this.polyModel1 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer1.visible = true
           this.currentacsvariable1 = variable
         } else if (this.polyModel1 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer1.visible = false
         }
       } else if (variable === 'white_alone') {
-        let acslayer = layer
+        if (this.acslayer1 === undefined) {
+          this.acslayer1 = this.layers1[1]
+        }
         if (this.whiteModel1 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer1.visible = true
           this.currentacsvariable1 = variable
         } else if (this.whiteModel1 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer1.visible = false
         }
       } else if (variable === 'two_or_more_races') {
-        let acslayer = layer
+        if (this.acslayer1 === undefined) {
+          this.acslayer1 = this.layers1[1]
+        }
         if (this.tworacesModel1 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer1.visible = true
           this.currentacsvariable1 = variable
         } else if (this.tworacesModel1 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer1.visible = false
         }
       } else if (variable === 'hispanic_or_latino_of_any_race') {
-        let acslayer = layer
+        if (this.acslayer1 === undefined) {
+          this.acslayer1 = this.layers1[1]
+        }
         if (this.hispModel1 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer1.visible = true
           this.currentacsvariable1 = variable
         } else if (this.hispModel1 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer1.visible = false
         }
       } else if (variable === 'not_hispanic_or_latino') {
-        let acslayer = layer
+        if (this.acslayer1 === undefined) {
+          this.acslayer1 = this.layers1[1]
+        }
         if (this.nothispModel1 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer1.visible = true
           this.currentacsvariable1 = variable
         } else if (this.nothispModel1 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer1.visible = false
         }
       } else if (variable === 'speak_a_language_other_than_english') {
-        let acslayer = layer
+        if (this.acslayer1 === undefined) {
+          this.acslayer1 = this.layers1[1]
+        }
         if (this.langModel1 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer1.visible = true
           this.currentacsvariable1 = variable
         } else if (this.langModel1 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer1.visible = false
         }
       } else if (variable === 'd_ldpnt_2') {
-        let ejslayer = layer
+        if (this.ejslayer1 === undefined) {
+          this.ejslayer1 = this.layers1[2]
+        }
         if (this.d_ldpnt_2Model1 === 'Selected') {
-          ejslayer.visible = true
+          this.ejslayer1.visible = true
           this.currentejsvariable1 = variable
         } else if (this.d_ldpnt_2Model1 === 'Not Selected') {
-          ejslayer.visible = false
+          this.ejslayer1.visible = false
         }
       } else if (variable === 'd_dslpm_2') {
-        let ejslayer = layer
+        if (this.ejslayer1 === undefined) {
+          this.ejslayer1 = this.layers1[2]
+        }
         if (this.d_dslpm_2Model1 === 'Selected') {
-          ejslayer.visible = true
+          this.ejslayer1.visible = true
           this.currentejsvariable1 = variable
         } else if (this.d_dslpm_2Model1 === 'Not Selected') {
-          ejslayer.visible = false
+          this.ejslayer1.visible = false
         }
       } else if (variable === 'd_cancr_2') {
-        let ejslayer = layer
+        if (this.ejslayer1 === undefined) {
+          this.ejslayer1 = this.layers1[2]
+        }
         if (this.d_cancr_2Model1 === 'Selected') {
-          ejslayer.visible = true
+          this.ejslayer1.visible = true
           this.currentejsvariable1 = variable
         } else if (this.d_cancr_2Model1 === 'Not Selected') {
-          ejslayer.visible = false
+          this.ejslayer1.visible = false
         }
       } else if (variable === 'd_resp_2') {
-        let ejslayer = layer
+        if (this.ejslayer1 === undefined) {
+          this.ejslayer1 = this.layers1[2]
+        }
         if (this.d_resp_2Model1 === 'Selected') {
-          ejslayer.visible = true
+          this.ejslayer1.visible = true
           this.currentejsvariable1 = variable
         } else if (this.d_resp_2Model1 === 'Not Selected') {
-          ejslayer.visible = false
+          this.ejslayer1.visible = false
         }
       } else if (variable === 'd_ptraf_2') {
-        let ejslayer = layer
+        if (this.ejslayer1 === undefined) {
+          this.ejslayer1 = this.layers1[2]
+        }
         if (this.d_ptraf_2Model1 === 'Selected') {
-          ejslayer.visible = true
+          this.ejslayer1.visible = true
           this.currentejsvariable1 = variable
         } else if (this.d_ptraf_2Model1 === 'Not Selected') {
-          ejslayer.visible = false
+          this.ejslayer1.visible = false
         }
       } else if (variable === 'd_pwdis_2') {
-        let ejslayer = layer
+        if (this.ejslayer1 === undefined) {
+          this.ejslayer1 = this.layers1[2]
+        }
         if (this.d_pwdis_2Model1 === 'Selected') {
-          ejslayer.visible = true
+          this.ejslayer1.visible = true
           this.currentejsvariable1 = variable
         } else if (this.d_pwdis_2Model1 === 'Not Selected') {
-          ejslayer.visible = false
+          this.ejslayer1.visible = false
         }
       } else if (variable === 'd_pnpl_2') {
-        let ejslayer = layer
+        if (this.ejslayer1 === undefined) {
+          this.ejslayer1 = this.layers1[2]
+        }
         if (this.d_pnpl_2Model1 === 'Selected') {
-          ejslayer.visible = true
+          this.ejslayer1.visible = true
           this.currentejsvariable1 = variable
         } else if (this.d_pnpl_2Model1 === 'Not Selected') {
-          ejslayer.visible = false
+          this.ejslayer1.visible = false
         }
       } else if (variable === 'd_prmp_2') {
-        let ejslayer = layer
+        if (this.ejslayer1 === undefined) {
+          this.ejslayer1 = this.layers1[2]
+        }
         if (this.d_prmp_2Model1 === 'Selected') {
-          ejslayer.visible = true
+          this.ejslayer1.visible = true
           this.currentejsvariable1 = variable
         } else if (this.d_prmp_2Model1 === 'Not Selected') {
-          ejslayer.visible = false
+          this.ejslayer1.visible = false
         }
       } else if (variable === 'd_ptsdf_2') {
-        let ejslayer = layer
+        if (this.ejslayer1 === undefined) {
+          this.ejslayer1 = this.layers1[2]
+        }
         if (this.d_ptsdf_2Model1 === 'Selected') {
-          ejslayer.visible = true
+          this.ejslayer1.visible = true
           this.currentejsvariable1 = variable
         } else if (this.d_ptsdf_2Model1 === 'Not Selected') {
-          ejslayer.visible = false
+          this.ejslayer1.visible = false
         }
       } else if (variable === 'd_ozone_2') {
-        let ejslayer = layer
+        if (this.ejslayer1 === undefined) {
+          this.ejslayer1 = this.layers1[2]
+        }
         if (this.d_ozone_2Model1 === 'Selected') {
-          ejslayer.visible = true
+          this.ejslayer1.visible = true
           this.currentejsvariable1 = variable
         } else if (this.d_ozone_2Model1 === 'Not Selected') {
-          ejslayer.visible = false
+          this.ejslayer1.visible = false
         }
       } else if (variable === 'd_pm25_2') {
-        let ejslayer = layer
+        if (this.ejslayer1 === undefined) {
+          this.ejslayer1 = this.layers1[2]
+        }
         if (this.d_pm25_2Model1 === 'Selected') {
-          ejslayer.visible = true
+          this.ejslayer1.visible = true
           this.currentejsvariable1 = variable
         } else if (this.d_pm25_2Model1 === 'Not Selected') {
-          ejslayer.visible = false
+          this.ejslayer1.visible = false
         }
       }
     },
-    showMap2PanelToggleLayer: function (layer, variable) {
+    showMap2PanelToggleLayer: function (variable) {
       if (variable === 'nccounties') {
-        let cntlayer = layer
+        if (this.cntlayer2 === undefined) {
+          this.cntlayer2 = this.layers2[4]
+        }
         if (this.ncCountiesModel2 === 'Selected') {
-          cntlayer.visible = true
+          this.cntlayer2.visible = true
         } else if (this.ncCountiesModel2 === 'Not Selected') {
-          cntlayer.visible = false
+          this.cntlayer2.visible = false
         }
       } else if (variable === 'percent_below_poverty_level') {
-        let acslayer = layer
+        if (this.acslayer2 === undefined) {
+          this.acslayer2 = this.layers2[1]
+        }
         if (this.povertyModel2 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer2.visible = true
           this.currentacsvariable2 = variable
         } else if (this.povertyModel2 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer2.visible = false
         }
       } else if (variable === 'american_indian_and_alaska_native_alone') {
-        let acslayer = layer
+        if (this.acslayer2 === undefined) {
+          this.acslayer2 = this.layers2[1]
+        }
         if (this.nativeModel2 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer2.visible = true
           this.currentacsvariable2 = variable
         } else if (this.nativeModel2 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer2.visible = false
         }
       } else if (variable === 'asian_alone') {
-        let acslayer = layer
+        if (this.acslayer2 === undefined) {
+          this.acslayer2 = this.layers2[1]
+        }
         if (this.asianModel2 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer2.visible = true
           this.currentacsvariable2 = variable
         } else if (this.asianModel2 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer2.visible = false
         }
       } else if (variable === 'black_or_african_american_alone') {
-        let acslayer = layer
+        if (this.acslayer2 === undefined) {
+          this.acslayer2 = this.layers2[1]
+        }
         if (this.blackModel2 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer2.visible = true
           this.currentacsvariable2 = variable
         } else if (this.blackModel2 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer2.visible = false
         }
       } else if (variable === 'native_hawaiian_and_other_pacific_islander_alone') {
-        let acslayer = layer
+        if (this.acslayer2 === undefined) {
+          this.acslayer2 = this.layers2[1]
+        }
         if (this.polyModel2 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer2.visible = true
           this.currentacsvariable2 = variable
         } else if (this.polyModel2 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer2.visible = false
         }
       } else if (variable === 'white_alone') {
-        let acslayer = layer
+        if (this.acslayer2 === undefined) {
+          this.acslayer2 = this.layers2[1]
+        }
         if (this.whiteModel2 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer2.visible = true
           this.currentacsvariable2 = variable
         } else if (this.whiteModel2 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer2.visible = false
         }
       } else if (variable === 'two_or_more_races') {
-        let acslayer = layer
+        if (this.acslayer2 === undefined) {
+          this.acslayer2 = this.layers2[1]
+        }
         if (this.tworacesModel2 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer2.visible = true
           this.currentacsvariable2 = variable
         } else if (this.tworacesModel2 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer2.visible = false
         }
       } else if (variable === 'hispanic_or_latino_of_any_race') {
-        let acslayer = layer
+        if (this.acslayer2 === undefined) {
+          this.acslayer2 = this.layers2[1]
+        }
         if (this.hispModel2 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer2.visible = true
           this.currentacsvariable2 = variable
         } else if (this.hispModel2 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer2.visible = false
         }
       } else if (variable === 'not_hispanic_or_latino') {
-        let acslayer = layer
+        if (this.acslayer2 === undefined) {
+          this.acslayer2 = this.layers2[1]
+        }
         if (this.nothispModel2 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer2.visible = true
           this.currentacsvariable2 = variable
         } else if (this.nothispModel2 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer2.visible = false
         }
       } else if (variable === 'speak_a_language_other_than_english') {
-        let acslayer = layer
+        if (this.acslayer2 === undefined) {
+          this.acslayer2 = this.layers2[1]
+        }
         if (this.langModel2 === 'Selected') {
-          acslayer.visible = true
+          this.acslayer2.visible = true
           this.currentacsvariable2 = variable
         } else if (this.langModel2 === 'Not Selected') {
-          acslayer.visible = false
+          this.acslayer2.visible = false
+        }
+      } else if (variable === 'd_ldpnt_2') {
+        if (this.ejslayer2 === undefined) {
+          this.ejslayer2 = this.layers2[2]
+        }
+        if (this.d_ldpnt_2Model2 === 'Selected') {
+          this.ejslayer2.visible = true
+          this.currentejsvariable2 = variable
+        } else if (this.d_ldpnt_2Model2 === 'Not Selected') {
+          this.ejslayer2.visible = false
+        }
+      } else if (variable === 'd_dslpm_2') {
+        if (this.ejslayer2 === undefined) {
+          this.ejslayer2 = this.layers2[2]
+        }
+        if (this.d_dslpm_2Model2 === 'Selected') {
+          this.ejslayer2.visible = true
+          this.currentejsvariable2 = variable
+        } else if (this.d_dslpm_2Model2 === 'Not Selected') {
+          this.ejslayer2.visible = false
+        }
+      } else if (variable === 'd_cancr_2') {
+        if (this.ejslayer2 === undefined) {
+          this.ejslayer2 = this.layers2[2]
+        }
+        if (this.d_cancr_2Model2 === 'Selected') {
+          this.ejslayer2.visible = true
+          this.currentejsvariable2 = variable
+        } else if (this.d_cancr_2Model2 === 'Not Selected') {
+          this.ejslayer2.visible = false
+        }
+      } else if (variable === 'd_resp_2') {
+        if (this.ejslayer2 === undefined) {
+          this.ejslayer2 = this.layers2[2]
+        }
+        if (this.d_resp_2Model2 === 'Selected') {
+          this.ejslayer2.visible = true
+          this.currentejsvariable2 = variable
+        } else if (this.d_resp_2Model2 === 'Not Selected') {
+          this.ejslayer2.visible = false
+        }
+      } else if (variable === 'd_ptraf_2') {
+        if (this.ejslayer2 === undefined) {
+          this.ejslayer2 = this.layers2[2]
+        }
+        if (this.d_ptraf_2Model2 === 'Selected') {
+          this.ejslayer2.visible = true
+          this.currentejsvariable2 = variable
+        } else if (this.d_ptraf_2Model2 === 'Not Selected') {
+          this.ejslayer2.visible = false
+        }
+      } else if (variable === 'd_pwdis_2') {
+        if (this.ejslayer2 === undefined) {
+          this.ejslayer2 = this.layers2[2]
+        }
+        if (this.d_pwdis_2Model2 === 'Selected') {
+          this.ejslayer2.visible = true
+          this.currentejsvariable2 = variable
+        } else if (this.d_pwdis_2Model2 === 'Not Selected') {
+          this.ejslayer2.visible = false
+        }
+      } else if (variable === 'd_pnpl_2') {
+        if (this.ejslayer2 === undefined) {
+          this.ejslayer2 = this.layers2[2]
+        }
+        if (this.d_pnpl_2Model2 === 'Selected') {
+          this.ejslayer2.visible = true
+          this.currentejsvariable2 = variable
+        } else if (this.d_pnpl_2Model2 === 'Not Selected') {
+          this.ejslayer2.visible = false
+        }
+      } else if (variable === 'd_prmp_2') {
+        if (this.ejslayer2 === undefined) {
+          this.ejslayer2 = this.layers2[2]
+        }
+        if (this.d_prmp_2Model2 === 'Selected') {
+          this.ejslayer2.visible = true
+          this.currentejsvariable2 = variable
+        } else if (this.d_prmp_2Model2 === 'Not Selected') {
+          this.ejslayer2.visible = false
+        }
+      } else if (variable === 'd_ptsdf_2') {
+        if (this.ejslayer2 === undefined) {
+          this.ejslayer2 = this.layers2[2]
+        }
+        if (this.d_ptsdf_2Model2 === 'Selected') {
+          this.ejslayer2.visible = true
+          this.currentejsvariable2 = variable
+        } else if (this.d_ptsdf_2Model2 === 'Not Selected') {
+          this.ejslayer2.visible = false
+        }
+      } else if (variable === 'd_ozone_2') {
+        if (this.ejslayer2 === undefined) {
+          this.ejslayer2 = this.layers2[2]
+        }
+        if (this.d_ozone_2Model2 === 'Selected') {
+          this.ejslayer2.visible = true
+          this.currentejsvariable2 = variable
+        } else if (this.d_ozone_2Model2 === 'Not Selected') {
+          this.ejslayer2.visible = false
+        }
+      } else if (variable === 'd_pm25_2') {
+        if (this.ejslayer2 === undefined) {
+          this.ejslayer2 = this.layers2[2]
+        }
+        if (this.d_pm25_2Model2 === 'Selected') {
+          this.ejslayer2.visible = true
+          this.currentejsvariable2 = variable
+        } else if (this.d_pm25_2Model2 === 'Not Selected') {
+          this.ejslayer2.visible = false
         }
       }
     },
@@ -4095,50 +4283,6 @@ export default {
         // this.$refs.layer2Style.refresh()
       } else if (this.currentradiovariable2 === 'ncwellwise_mng_prcast') {
         layer = this.layers2.find(layer => layer.id === 'ncwellwise_layer2')
-        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
-        // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'd_ldpnt_2') {
-        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
-        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
-        // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'd_dslpm_2') {
-        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
-        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
-        // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'd_cancr_2') {
-        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
-        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
-        // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'd_resp_2') {
-        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
-        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
-        // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'd_ptraf_2') {
-        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
-        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
-        // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'd_pwdis_2') {
-        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
-        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
-        // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'd_pnpl_2') {
-        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
-        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
-        // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'd_prmp_2') {
-        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
-        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
-        // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'd_ptsdf_2') {
-        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
-        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
-        // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'd_ozone_2') {
-        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
-        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
-        // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'd_pm25_2') {
-        layer = this.layers2.find(layer => layer.id === 'ejscreen_layer2')
         for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
         // this.$refs.layer2Style.refresh()
       } else if (this.currentradiovariable2 === 'cases') {
