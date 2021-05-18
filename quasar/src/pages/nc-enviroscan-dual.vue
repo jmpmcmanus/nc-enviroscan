@@ -37,6 +37,33 @@
                     </q-list>
                   </q-menu>
                 </q-item>
+                <q-separator></q-separator>
+
+                <q-item clickable>
+                  <q-item-section>No Layer</q-item-section>
+                  <q-item-section side>
+                    <q-icon name="keyboard_arrow_right"></q-icon>
+                  </q-item-section>
+
+                  <q-menu anchor="top end" self="top start" content-class="bg-teal-1">
+                    <q-list>
+                      <!-- // nolayer -->
+                      <div class="q-pa-md" style="min-width: 200px">
+                        <q-list link>
+                          <q-item tag="label" v-ripple>
+                            <q-item-section avatar>
+                              <q-radio v-on:input="showMap1PanelRadioLayer" val="nolayer1" v-model="currentradiovariable1" color="teal" />
+                            </q-item-section>
+                            <q-item-section>
+                              <q-item-label>No Layer</q-item-label>
+                            </q-item-section>
+                          </q-item>
+                        </q-list>
+                      </div>
+                      <!-- // nolayer -->
+                    </q-list>
+                  </q-menu>
+                </q-item>
 
                 <q-separator></q-separator>
                 <q-item clickable>
@@ -948,7 +975,7 @@
         <!-- // Map One Toolbar and Menu -->
 
         <!-- // Map Two Toolbar and Menu -->
-        <q-toolbar class="col-5 text-black">
+        <q-toolbar class="col-7 text-black">
           <q-space />
           <q-btn flat round dense icon="menu" class="q-mr-sm text-black">
             <q-tooltip>Map Two Menu</q-tooltip>
@@ -978,6 +1005,33 @@
                           <q-item-label>MapBox Satellite</q-item-label>
                         </q-item-section>
                       </q-item>
+                    </q-list>
+                  </q-menu>
+                </q-item>
+                <q-separator></q-separator>
+
+                <q-item clickable>
+                  <q-item-section>No Layer</q-item-section>
+                  <q-item-section side>
+                    <q-icon name="keyboard_arrow_right"></q-icon>
+                  </q-item-section>
+
+                  <q-menu anchor="top end" self="top start" content-class="bg-teal-1">
+                    <q-list>
+                      <!-- // nolayer -->
+                      <div class="q-pa-md" style="min-width: 200px">
+                        <q-list link>
+                          <q-item tag="label" v-ripple>
+                            <q-item-section avatar>
+                              <q-radio v-on:input="showMap2PanelRadioLayer" val="nolayer2" v-model="currentradiovariable2" color="teal" />
+                            </q-item-section>
+                            <q-item-section>
+                              <q-item-label>No Layer</q-item-label>
+                            </q-item-section>
+                          </q-item>
+                        </q-list>
+                      </div>
+                      <!-- // nolayer -->
                     </q-list>
                   </q-menu>
                 </q-item>
@@ -1888,6 +1942,10 @@
             </q-menu>
           </q-btn>
           <q-toolbar-title class="text-black">NC-Enviroscan Dual Map Two</q-toolbar-title>
+          <q-tabs v-model="mapsynctab" v-on:input="MapSyncing()" no-caps class="bg-teal text-black">
+            <q-tab name="syncmaps" label="Sync Maps" />
+            <q-tab name="unsyncmaps" label="Unsync Maps" />
+          </q-tabs>
         </q-toolbar>
         <!-- // Map Two Toolbar and Menu -->
         </div>
@@ -1898,7 +1956,12 @@
         <vl-map v-if="mapVisible" class="dualmap" ref="map1" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
           data-projection="EPSG:4326" @mounted="onMapMounted" :controls="false" style="height:1200px">
           <!--//map1 view aka ol.View -->
-          <vl-view ref="view" :center.sync="center" :zoom.sync="zoom" :rotation.sync="rotation"></vl-view>
+          <div v-if="mapSync === 'False'">
+            <vl-view ref="view1" :center.sync="center1" :zoom.sync="zoom1" :rotation.sync="rotation"></vl-view>
+          </div>
+          <div v-else>
+            <vl-view ref="view1" :center.sync="center" :zoom.sync="zoom" :rotation.sync="rotation"></vl-view>
+          </div>
             <!--// base layers -->
             <vl-layer-tile v-for="layer in baseLayers1" :key="layer.name" :id="layer.name" :visible="layer.visible">
               <component ref="baselayer1" :is="'vl-source-' + layer.name" v-bind="layer"></component>
@@ -1923,7 +1986,12 @@
         <vl-map v-if="mapVisible" class="dualmap" ref="map2" :load-tiles-while-animating="true" :load-tiles-while-interacting="true"
           data-projection="EPSG:4326" @mounted="onMapMounted" :controls="false" style="height:1200px">
            <!--// map2 view aka ol.View -->
-          <vl-view ref="view" :center.sync="center" :zoom.sync="zoom" :rotation.sync="rotation"></vl-view>
+          <div v-if="mapSync === 'False'">
+            <vl-view ref="view2" :center.sync="center2" :zoom.sync="zoom2" :rotation.sync="rotation"></vl-view>
+          </div>
+          <div v-else>
+            <vl-view ref="view2" :center.sync="center" :zoom.sync="zoom" :rotation.sync="rotation"></vl-view>
+          </div>
           <!--// base layers2 -->
           <vl-layer-tile v-for="layer in baseLayers2" :key="layer.name" :id="layer.name" :visible="layer.visible">
             <component  ref="baselayer2" :is="'vl-source-' + layer.name" v-bind="layer"></component>
@@ -1957,9 +2025,9 @@
       <!-- q-page-sticky position="top-left" :offset="[18, 58]">
         <div id="Zoom1Target"></div>
       </q-page-sticky -->
-      <q-page-sticky position="bottom-left" :offset="[8, 38]">
+      <!-- q-page-sticky position="bottom-left" :offset="[8, 38]">
         <div id="OverviewMap1Target"></div>
-      </q-page-sticky>
+      </q-page-sticky -->
       <q-page-sticky position="bottom-left" :offset="[15, 8]">
         <div id="Scale1Target"></div>
       </q-page-sticky>
@@ -2023,8 +2091,8 @@ import { camelCase } from 'lodash'
 
 // ol controls import
 import ScaleLine from 'ol/control/ScaleLine'
-import OverviewMap from 'ol/control/OverviewMap'
-import Zoom from 'ol/control/Zoom'
+// import OverviewMap from 'ol/control/OverviewMap'
+// import Zoom from 'ol/control/Zoom'
 import Attribution from 'ol/control/Attribution'
 
 // other ol imports
@@ -2051,8 +2119,14 @@ export default {
     return {
       // map parameters
       // center: [-73.845, 40.72],
+      mapsynctab: 'syncmaps',
+      mapSync: 'True',
       center: [NaN, NaN],
+      center1: [NaN, NaN],
+      center2: [NaN, NaN],
       zoom: 9,
+      zoom1: 9,
+      zoom2: 9,
       rotation: 0,
       mapVisible: true,
       // Other layers attributes
@@ -2240,34 +2314,18 @@ export default {
           ]
         },
         {
-          id: 'triwellwise_arsenic_max',
-          title: 'triangle wellwise Arsenic Maximum',
-          cmp: 'vl-layer-vector',
+          id: 'noLayer1',
+          title: 'No Layer1',
+          cmp: 'vl-layer-vector-tile',
           visible: false,
           source: {
-            cmp: 'vl-source-vector',
-            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_triangle_20102019_geom/?format=json'
+            cmp: 'vl-source-vector-tile',
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ncdot_county_boundaries.mvt?tile={z}/{x}/{y}'
           },
           style: [
             {
               cmp: 'vl-style-func',
-              factory: this.getncwellwiseArsenicMaxStyle
-            }
-          ]
-        },
-        {
-          id: 'triwellwise_cadmium_max',
-          title: 'Triangle Wellwise Cadmium Maximum',
-          cmp: 'vl-layer-vector',
-          visible: false,
-          source: {
-            cmp: 'vl-source-vector',
-            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_triangle_20102019_geom/?format=json'
-          },
-          style: [
-            {
-              cmp: 'vl-style-func',
-              factory: this.getncwellwiseCadmiumMaxStyle
+              factory: this.getNoLayerStyle
             }
           ]
         }
@@ -2357,34 +2415,18 @@ export default {
           ]
         },
         {
-          id: 'triwellwise_lead_max',
-          title: 'Triangle wellwise Lead Maximum',
-          cmp: 'vl-layer-vector',
+          id: 'noLayer2',
+          title: 'No Layer2',
+          cmp: 'vl-layer-vector-tile',
           visible: false,
           source: {
-            cmp: 'vl-source-vector',
-            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_subset_20102019_geom/?format=json'
+            cmp: 'vl-source-vector-tile',
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ncdot_county_boundaries.mvt?tile={z}/{x}/{y}'
           },
           style: [
             {
               cmp: 'vl-style-func',
-              factory: this.getncwellwiseLeadMaxStyle
-            }
-          ]
-        },
-        {
-          id: 'triwellwise_mng_max',
-          title: 'Triangle Wellwise Manganese Maximum',
-          cmp: 'vl-layer-vector',
-          visible: false,
-          source: {
-            cmp: 'vl-source-vector',
-            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/api/ncwellwise_subset_20102019_geom/?format=json'
-          },
-          style: [
-            {
-              cmp: 'vl-style-func',
-              factory: this.getncwellwiseMngMaxStyle
+              factory: this.getNoLayerStyle
             }
           ]
         }
@@ -2396,16 +2438,47 @@ export default {
     this.$getLocation()
       .then(coordinates => {
         this.center = [coordinates.lng, coordinates.lat]
+        this.center1 = [coordinates.lng, coordinates.lat]
+        this.center2 = [coordinates.lng, coordinates.lat]
       })
   },
   methods: {
     openURL,
     camelCase,
+    MapSyncing () {
+      if (this.mapsynctab === 'syncmaps') {
+        this.mapSync = 'True'
+      } else if (this.mapsynctab === 'unsyncmaps') {
+        this.mapSync = 'False'
+      }
+    },
+    getZoom1 () {
+      let zoom
+      if (this.mapSync === 'True') {
+        zoom = this.zoom
+        this.zoom1 = this.zoom
+      } else if (this.mapSync === 'False') {
+        zoom = this.zoom1
+      }
+      return zoom
+    },
+    getZoom2 () {
+      let zoom
+      if (this.mapSync === 'True') {
+        zoom = this.zoom
+        this.zoom1 = this.zoom
+      } else if (this.mapSync === 'False') {
+        zoom = this.zoom2
+      }
+      return zoom
+    },
     address2Geoloc () {
       // 1 East Edenton St, Raleigh, NC, USA
       geocoder.search({ q: this.address })
         .then((response) => {
           this.center = [Number(response[0].lon), Number(response[0].lat)]
+          this.center1 = [Number(response[0].lon), Number(response[0].lat)]
+          this.center2 = [Number(response[0].lon), Number(response[0].lat)]
         })
         .catch((error) => {
           console.log(error)
@@ -2415,29 +2488,51 @@ export default {
       this.address = null
       this.acceptaddress = false
     },
-    getncwellwiseStyle1: function () {
+    getPattern1: function (color2) {
       let canvas = document.createElement('canvas')
       let context = canvas.getContext('2d')
       let pixelRatio = DEVICE_PIXEL_RATIO
+      canvas.width = 8 * pixelRatio
+      canvas.height = 8 * pixelRatio
+      let color1 = 'rgb(0, 0, 0, 0.0)'
+      let numberOfStripes = 50
+      for (var i = 0; i < numberOfStripes; i++) {
+        var thickness = 200 / numberOfStripes
+        context.beginPath()
+        context.strokeStyle = i % 2 ? color1 : color2
+        context.lineWidth = thickness
+        context.lineCap = 'round'
 
-      function getPattern (color2) {
-        canvas.width = 8 * pixelRatio
-        canvas.height = 8 * pixelRatio
-        let color1 = 'rgb(0, 0, 0, 0.0)'
-        let numberOfStripes = 50
-        for (var i = 0; i < numberOfStripes; i++) {
-          var thickness = 200 / numberOfStripes
-          context.beginPath()
-          context.strokeStyle = i % 2 ? color1 : color2
-          context.lineWidth = thickness
-          context.lineCap = 'round'
-
-          context.moveTo(i * thickness + thickness / 2, 0)
-          context.lineTo(i * thickness + thickness / 2, 300)
-          context.stroke()
-        }
-        return context.createPattern(canvas, 'repeat')
+        context.moveTo(i * thickness + thickness / 2, 0)
+        context.lineTo(i * thickness + thickness / 2, 300)
+        context.stroke()
       }
+      return context.createPattern(canvas, 'repeat')
+    },
+    getPattern2: function (color1) {
+      let canvas = document.createElement('canvas')
+      let context = canvas.getContext('2d')
+      let pixelRatio = DEVICE_PIXEL_RATIO
+      canvas.width = 8 * pixelRatio
+      canvas.height = 8 * pixelRatio
+      let color2 = 'rgb(0, 0, 0, 0.0)'
+      let numberOfStripes = 50
+      for (var i = 0; i < numberOfStripes; i++) {
+        var thickness = 200 / numberOfStripes
+        context.beginPath()
+        context.strokeStyle = i % 2 ? color1 : color2
+        context.lineWidth = thickness
+        context.lineCap = 'round'
+
+        context.moveTo(i * thickness + thickness / 2, 0)
+        context.lineTo(i * thickness + thickness / 2, 300)
+        context.stroke()
+      }
+      return context.createPattern(canvas, 'repeat')
+    },
+    getncwellwiseStyle1: function () {
+      let getPattern = this.getPattern1
+      // let zoom = this.getZoom1() // this.zoom
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         // console.log(selected)
@@ -2633,28 +2728,8 @@ export default {
       }
     },
     getacsStyle1: function () {
-      let canvas = document.createElement('canvas')
-      let context = canvas.getContext('2d')
-      let pixelRatio = DEVICE_PIXEL_RATIO
-
-      function getPattern (color1) {
-        canvas.width = 8 * pixelRatio
-        canvas.height = 8 * pixelRatio
-        let color2 = 'rgb(0, 0, 0, 0.0)'
-        let numberOfStripes = 50
-        for (var i = 0; i < numberOfStripes; i++) {
-          var thickness = 200 / numberOfStripes
-          context.beginPath()
-          context.strokeStyle = i % 2 ? color1 : color2
-          context.lineWidth = thickness
-          context.lineCap = 'round'
-
-          context.moveTo(i * thickness + thickness / 2, 0)
-          context.lineTo(i * thickness + thickness / 2, 300)
-          context.stroke()
-        }
-        return context.createPattern(canvas, 'repeat')
-      }
+      let getPattern = this.getPattern2
+      // let zoom = this.getZoom1() // this.zoom
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
@@ -2695,28 +2770,8 @@ export default {
       }
     },
     getejscreenStyle1: function () {
-      let canvas = document.createElement('canvas')
-      let context = canvas.getContext('2d')
-      let pixelRatio = DEVICE_PIXEL_RATIO
-
-      function getPattern (color1) {
-        canvas.width = 8 * pixelRatio
-        canvas.height = 8 * pixelRatio
-        let color2 = 'rgb(0, 0, 0, 0.0)'
-        let numberOfStripes = 50
-        for (var i = 0; i < numberOfStripes; i++) {
-          var thickness = 200 / numberOfStripes
-          context.beginPath()
-          context.strokeStyle = i % 2 ? color1 : color2
-          context.lineWidth = thickness
-          context.lineCap = 'round'
-
-          context.moveTo(i * thickness + thickness / 2, 0)
-          context.lineTo(i * thickness + thickness / 2, 300)
-          context.stroke()
-        }
-        return context.createPattern(canvas, 'repeat')
-      }
+      let getPattern = this.getPattern2
+      // let zoom = this.getZoom1() // this.zoom
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
@@ -2919,6 +2974,7 @@ export default {
       }
     },
     getcovid19Style1: function () {
+      // let zoom = this.getZoom1() // this.zoom
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
@@ -3009,6 +3065,7 @@ export default {
       }
     },
     getNCCountiesStyle1: function () {
+      // let zoom = this.getZoom1() // this.zoom
       return feature => {
         return [
           createStyle({
@@ -3021,28 +3078,8 @@ export default {
       }
     },
     getncwellwiseStyle2: function () {
-      let canvas = document.createElement('canvas')
-      let context = canvas.getContext('2d')
-      let pixelRatio = DEVICE_PIXEL_RATIO
-
-      function getPattern (color2) {
-        canvas.width = 8 * pixelRatio
-        canvas.height = 8 * pixelRatio
-        let color1 = 'rgb(0, 0, 0, 0.0)'
-        let numberOfStripes = 50
-        for (var i = 0; i < numberOfStripes; i++) {
-          var thickness = 200 / numberOfStripes
-          context.beginPath()
-          context.strokeStyle = i % 2 ? color1 : color2
-          context.lineWidth = thickness
-          context.lineCap = 'round'
-
-          context.moveTo(i * thickness + thickness / 2, 0)
-          context.lineTo(i * thickness + thickness / 2, 300)
-          context.stroke()
-        }
-        return context.createPattern(canvas, 'repeat')
-      }
+      let getPattern = this.getPattern1
+      // let zoom = this.getZoom2() // this.zoom
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         // console.log(selected)
@@ -3238,28 +3275,8 @@ export default {
       }
     },
     getacsStyle2: function () {
-      let canvas = document.createElement('canvas')
-      let context = canvas.getContext('2d')
-      let pixelRatio = DEVICE_PIXEL_RATIO
-
-      function getPattern (color1) {
-        canvas.width = 8 * pixelRatio
-        canvas.height = 8 * pixelRatio
-        let color2 = 'rgb(0, 0, 0, 0.0)'
-        let numberOfStripes = 50
-        for (var i = 0; i < numberOfStripes; i++) {
-          var thickness = 200 / numberOfStripes
-          context.beginPath()
-          context.strokeStyle = i % 2 ? color1 : color2
-          context.lineWidth = thickness
-          context.lineCap = 'round'
-
-          context.moveTo(i * thickness + thickness / 2, 0)
-          context.lineTo(i * thickness + thickness / 2, 300)
-          context.stroke()
-        }
-        return context.createPattern(canvas, 'repeat')
-      }
+      let getPattern = this.getPattern2
+      // let zoom = this.getZoom2() // this.zoom
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
@@ -3300,28 +3317,8 @@ export default {
       }
     },
     getejscreenStyle2: function () {
-      let canvas = document.createElement('canvas')
-      let context = canvas.getContext('2d')
-      let pixelRatio = DEVICE_PIXEL_RATIO
-
-      function getPattern (color1) {
-        canvas.width = 8 * pixelRatio
-        canvas.height = 8 * pixelRatio
-        let color2 = 'rgb(0, 0, 0, 0.0)'
-        let numberOfStripes = 50
-        for (var i = 0; i < numberOfStripes; i++) {
-          var thickness = 200 / numberOfStripes
-          context.beginPath()
-          context.strokeStyle = i % 2 ? color1 : color2
-          context.lineWidth = thickness
-          context.lineCap = 'round'
-
-          context.moveTo(i * thickness + thickness / 2, 0)
-          context.lineTo(i * thickness + thickness / 2, 300)
-          context.stroke()
-        }
-        return context.createPattern(canvas, 'repeat')
-      }
+      let getPattern = this.getPattern2
+      // let zoom = this.getZoom2() // this.zoom
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
@@ -3524,6 +3521,7 @@ export default {
       }
     },
     getcovid19Style2: function () {
+      // let zoom = this.getZoom2() // this.zoom
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
@@ -3608,11 +3606,25 @@ export default {
       }
     },
     getNCCountiesStyle2: function () {
+      // let zoom = this.getZoom2() // this.zoom
       return feature => {
         return [
           createStyle({
             strokeColor: '#000',
             strokeWidth: (this.zoom / 4.0),
+            strokeLineCap: 'round',
+            strokeLineJoin: 'bevel'
+          })
+        ]
+      }
+    },
+    getNoLayerStyle: function () {
+      // let zoom = this.getZoom2() // this.zoom
+      return feature => {
+        return [
+          createStyle({
+            strokeColor: 'rgba(200,20,20,0.0)',
+            strokeWidth: (this.zoom / 10.0),
             strokeLineCap: 'round',
             strokeLineJoin: 'bevel'
           })
@@ -3646,17 +3658,17 @@ export default {
     onMapMounted: function (map1) {
       // now ol.Map instance is ready and we can work with it directly
       this.$refs.map1.$map.getControls().extend([
-        new Zoom({
+        /* new Zoom({
           target: 'Zoom1Target'
-        }),
+        }), */
         new ScaleLine({
           target: 'Scale1Target'
         }),
-        new OverviewMap({
+        /* new OverviewMap({
           collapsed: false,
           collapsible: true,
           target: 'OverviewMap1Target'
-        }),
+        }), */
         new Attribution({
           collapsed: false,
           collapsible: false,
@@ -4222,6 +4234,10 @@ export default {
         layer = this.layers1.find(layer => layer.id === 'covid19_layer1')
         for (i = 0; i < this.$refs.layer1Style.length; i++) { this.$refs.layer1Style[i].refresh() }
         // this.$refs.layer1Style.refresh()
+      } else if (this.currentradiovariable1 === 'nolayer1') {
+        layer = this.layers1.find(layer => layer.id === 'noLayer1')
+        for (i = 0; i < this.$refs.layer1Style.length; i++) { this.$refs.layer1Style[i].refresh() }
+        // this.$refs.layer1Style.refresh()
       }
 
       if (layer != null) {
@@ -4229,7 +4245,6 @@ export default {
       }
     },
     showMap2PanelRadioLayer: function () {
-      console.log(this.$refs)
       let layer = this.layers2.find(layer => layer.visible)
 
       if (layer != null) {
@@ -4301,6 +4316,10 @@ export default {
         layer = this.layers2.find(layer => layer.id === 'covid19_layer2')
         for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
         // this.$refs.layer2Style.refresh()
+      } else if (this.currentradiovariable2 === 'nolayer2') {
+        layer = this.layers2.find(layer => layer.id === 'noLayer2')
+        for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
+        // this.$refs.layer2Style.refresh()
       }
 
       if (layer != null) {
@@ -4347,12 +4366,12 @@ export default {
     width: 50%;
     height: 100%;
   }
-  .view {
+  /* .view {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-  }
+  } */
   .feature-popup {
     position: absolute;
     left: -20px;

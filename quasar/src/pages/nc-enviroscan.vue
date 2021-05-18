@@ -123,6 +123,23 @@
         </q-expansion-item>
         <!-- // baselayers -->
 
+        <!-- // nolayer -->
+        <q-expansion-item expand-separator icon="list" label="No Layer">
+          <div class="q-pa-md" style="min-width: 200px">
+            <q-list link>
+              <q-item tag="label" v-ripple>
+                <q-item-section avatar>
+                  <q-radio v-on:input="showMapPanelRadioLayer" val="nolayer" v-model="currentvariable" color="teal" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label>No Layer</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </div>
+        </q-expansion-item>
+        <!-- // nolayer -->
+
         <!-- // NC wellwise layers -->
         <q-expansion-item default-opened dense dense-toggle expand-separator icon="list" label="NC Well Data Layers, by Census Tracts">
           <div class="q-pa-md q-gutter-y-sm column">
@@ -1831,6 +1848,22 @@ export default {
               factory: this.getNCCountiesStyle
             }
           ]
+        },
+        {
+          id: 'noLayer',
+          title: 'No Layer',
+          cmp: 'vl-layer-vector-tile',
+          visible: false,
+          source: {
+            cmp: 'vl-source-vector-tile',
+            url: 'http://' + pubhost[0].PUBHOST_URL + '/drf/apimvt/v1/data/ncdot_county_boundaries.mvt?tile={z}/{x}/{y}'
+          },
+          style: [
+            {
+              cmp: 'vl-style-func',
+              factory: this.getNoLayerStyle
+            }
+          ]
         }
       ]
     }
@@ -2438,6 +2471,18 @@ export default {
         ]
       }
     },
+    getNoLayerStyle: function () {
+      return feature => {
+        return [
+          createStyle({
+            strokeColor: 'rgba(200,20,20,0.0)',
+            strokeWidth: (this.zoom / 10.0),
+            strokeLineCap: 'round',
+            strokeLineJoin: 'bevel'
+          })
+        ]
+      }
+    },
     getNCWellwiseLayerID: function () {
       return 'ncwellwise'
     },
@@ -2655,6 +2700,10 @@ export default {
         // this.$refs.layerStyle.refresh()
       } else if (this.currentvariable === 'deaths') {
         layer = this.layers.find(layer => layer.id === 'covid19')
+        for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
+        // this.$refs.layerStyle.refresh()
+      } else if (this.currentvariable === 'nolayer') {
+        layer = this.layers.find(layer => layer.id === 'noLayer')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
       }
