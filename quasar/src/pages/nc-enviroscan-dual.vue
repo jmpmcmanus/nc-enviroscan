@@ -75,6 +75,22 @@
                   <q-menu anchor="top end" self="top start" content-class="bg-teal-1">
                     <q-list>
                       <q-item dense tag="label" v-ripple>
+                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Select Map Style</q-tooltip>
+                        <table cellspacing="1" cellpadding="1" style="width:100%">
+                          <caption style="text-align:left">Select Map Style</caption>
+                          <tr>
+                            <td>No Pattern</td>
+                            <td>Pattern One</td>
+                            <td>Pattern Two</td>
+                          </tr>
+                          <tr>
+                            <td><q-radio val="nopattern" v-model="ncwellmap1style" color="teal" /></td>
+                            <td><q-radio val="pattern1" v-model="ncwellmap1style" color="teal" /></td>
+                            <td><q-radio val="pattern2" v-model="ncwellmap1style" color="teal" /></td>
+                          </tr>
+                        </table>
+                      </q-item>
+                      <q-item dense tag="label" v-ripple>
                         <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Arsenic (ppb and %)</q-tooltip>
                         <table cellspacing="1" cellpadding="1" style="width:100%">
                           <caption style="text-align:left">Arsenic</caption>
@@ -302,9 +318,9 @@
                             <td>% of Standard</td>
                           </tr>
                           <tr>
-                            <td><q-radio v-on:input="showMap1PanelRadioLayer" val="ncwellwise_mng_med" v-model="currentradiovariable1" color="teal" /></td>
-                            <td><q-radio v-on:input="showMap1PanelRadioLayer" val="ncwellwise_mng_mean" v-model="currentradiovariable1" color="teal" /></td>
-                            <td><q-radio v-on:input="showMap1PanelRadioLayer" val="ncwellwise_mng_prcast" v-model="currentradiovariable1" color="teal" /></td>
+                            <td><q-radio v-on:input="showMap1PanelRadioLayer" val="ncwellwise_manganese_med" v-model="currentradiovariable1" color="teal" /></td>
+                            <td><q-radio v-on:input="showMap1PanelRadioLayer" val="ncwellwise_manganese_mean" v-model="currentradiovariable1" color="teal" /></td>
+                            <td><q-radio v-on:input="showMap1PanelRadioLayer" val="ncwellwise_manganese_prcast" v-model="currentradiovariable1" color="teal" /></td>
                           </tr>
                         </table>
                       </q-item>
@@ -375,6 +391,22 @@
 
                   <q-menu anchor="top end" self="top start" content-class="bg-teal-1">
                     <q-list>
+                      <q-item dense tag="label" v-ripple>
+                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Select Map Style</q-tooltip>
+                        <table cellspacing="1" cellpadding="1" style="width:100%">
+                          <caption style="text-align:left">Select Map Style</caption>
+                          <tr>
+                            <td>No Pattern</td>
+                            <td>Pattern One</td>
+                            <td>Pattern Two</td>
+                          </tr>
+                          <tr>
+                            <td><q-radio val="nopattern" v-model="acsmap1style" color="teal" /></td>
+                            <td><q-radio val="pattern1" v-model="acsmap1style" color="teal" /></td>
+                            <td><q-radio val="pattern2" v-model="acsmap1style" color="teal" /></td>
+                          </tr>
+                        </table>
+                      </q-item>
                       <q-item dense tag="label" v-ripple>
                         <!-- // legend -->
                         <div class="q-pa-md q-gutter-y-sm column">
@@ -557,6 +589,22 @@
 
                   <q-menu anchor="top end" self="top start" content-class="bg-teal-1">
                     <q-list>
+                      <q-item dense tag="label" v-ripple>
+                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Select Map Style</q-tooltip>
+                        <table cellspacing="1" cellpadding="1" style="width:100%">
+                          <caption style="text-align:left">Select Map Style</caption>
+                          <tr>
+                            <td>No Pattern</td>
+                            <td>Pattern One</td>
+                            <td>Pattern Two</td>
+                          </tr>
+                          <tr>
+                            <td><q-radio val="nopattern" v-model="ejsmap1style" color="teal" /></td>
+                            <td><q-radio val="pattern1" v-model="ejsmap1style" color="teal" /></td>
+                            <td><q-radio val="pattern2" v-model="ejsmap1style" color="teal" /></td>
+                          </tr>
+                        </table>
+                      </q-item>
                       <q-item dense tag="label" v-ripple>
                         <!-- // legend -->
                         <div class="q-pa-md q-gutter-y-sm column">
@@ -1046,6 +1094,22 @@
                   <q-menu anchor="top end" self="top start" content-class="bg-teal-1">
                     <q-list>
                       <q-item dense tag="label" v-ripple>
+                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Select Map Style</q-tooltip>
+                        <table cellspacing="1" cellpadding="1" style="width:100%">
+                          <caption style="text-align:left">Select Map Style</caption>
+                          <tr>
+                            <td>No Pattern</td>
+                            <td>Pattern One</td>
+                            <td>Pattern Two</td>
+                          </tr>
+                          <tr>
+                            <td><q-radio val="nopattern" v-model="ncwellmap2style" color="teal" /></td>
+                            <td><q-radio val="pattern1" v-model="ncwellmap2style" color="teal" /></td>
+                            <td><q-radio val="pattern2" v-model="ncwellmap2style" color="teal" /></td>
+                          </tr>
+                        </table>
+                      </q-item>
+                      <q-item dense tag="label" v-ripple>
                         <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Arsenic (ppb and %)</q-tooltip>
                         <table cellspacing="1" cellpadding="1" style="width:100%">
                           <caption style="text-align:left">Arsenic</caption>
@@ -1273,9 +1337,9 @@
                             <td>% of Standard</td>
                           </tr>
                           <tr>
-                            <td><q-radio v-on:input="showMap2PanelRadioLayer" val="ncwellwise_mng_med" v-model="currentradiovariable2" color="teal" /></td>
-                            <td><q-radio v-on:input="showMap2PanelRadioLayer" val="ncwellwise_mng_mean" v-model="currentradiovariable2" color="teal" /></td>
-                            <td><q-radio v-on:input="showMap2PanelRadioLayer" val="ncwellwise_mng_prcast" v-model="currentradiovariable2" color="teal" /></td>
+                            <td><q-radio v-on:input="showMap2PanelRadioLayer" val="ncwellwise_manganese_med" v-model="currentradiovariable2" color="teal" /></td>
+                            <td><q-radio v-on:input="showMap2PanelRadioLayer" val="ncwellwise_manganese_mean" v-model="currentradiovariable2" color="teal" /></td>
+                            <td><q-radio v-on:input="showMap2PanelRadioLayer" val="ncwellwise_manganese_prcast" v-model="currentradiovariable2" color="teal" /></td>
                           </tr>
                         </table>
                       </q-item>
@@ -1346,6 +1410,22 @@
 
                   <q-menu anchor="top end" self="top start" content-class="bg-teal-1">
                     <q-list>
+                      <q-item dense tag="label" v-ripple>
+                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Select Map Style</q-tooltip>
+                        <table cellspacing="1" cellpadding="1" style="width:100%">
+                          <caption style="text-align:left">Select Map Style</caption>
+                          <tr>
+                            <td>No Pattern</td>
+                            <td>Pattern One</td>
+                            <td>Pattern Two</td>
+                          </tr>
+                          <tr>
+                            <td><q-radio val="nopattern" v-model="acsmap2style" color="teal" /></td>
+                            <td><q-radio val="pattern1" v-model="acsmap2style" color="teal" /></td>
+                            <td><q-radio val="pattern2" v-model="acsmap2style" color="teal" /></td>
+                          </tr>
+                        </table>
+                      </q-item>
                       <q-item dense tag="label" v-ripple>
                         <!-- // legend -->
                         <div class="q-pa-md q-gutter-y-sm column">
@@ -1529,6 +1609,22 @@
 
                   <q-menu anchor="top end" self="top start" content-class="bg-teal-1">
                     <q-list>
+                      <q-item dense tag="label" v-ripple>
+                        <q-tooltip anchor="center left" self="center right" :offset="[10, 10]">Select Map Style</q-tooltip>
+                        <table cellspacing="1" cellpadding="1" style="width:100%">
+                          <caption style="text-align:left">Select Map Style</caption>
+                          <tr>
+                            <td>No Pattern</td>
+                            <td>Pattern One</td>
+                            <td>Pattern Two</td>
+                          </tr>
+                          <tr>
+                            <td><q-radio val="nopattern" v-model="ejsmap2style" color="teal" /></td>
+                            <td><q-radio val="pattern1" v-model="ejsmap2style" color="teal" /></td>
+                            <td><q-radio val="pattern2" v-model="ejsmap2style" color="teal" /></td>
+                          </tr>
+                        </table>
+                      </q-item>
                       <q-item dense tag="label" v-ripple>
                         <!-- // legend -->
                         <div class="q-pa-md q-gutter-y-sm column">
@@ -2190,6 +2286,28 @@ export default {
       casespertenModel2: 'Not Selected',
       casesperhundredModel2: 'Not Selected',
       deathsModel2: 'Not Selected',
+      // variable colors
+      ncwellmap1style: 'nopattern',
+      ncwellmap2style: 'nopattern',
+      acsmap1style: 'nopattern',
+      acsmap2style: 'nopattern',
+      ejsmap1style: 'nopattern',
+      ejsmap2style: 'nopattern',
+      varcolor: null,
+      arsncolors: ['rgba(91, 95, 99, 0.65)', 'rgba(235, 52, 220, 0.65)', 'rgba(186, 52, 235, 0.65)', 'rgba(165, 52, 235, 0.65)',
+        'rgba(143, 52, 235, 0.65)', 'rgba(119, 52, 235, 0.65)'],
+      cadmcolors: ['rgba(91, 95, 99, 0.65)', 'rgba(223, 235, 52, 0.65)', 'rgba(235, 192, 52, 0.65)', 'rgba(235, 162, 52, 0.65)',
+        'rgba(235, 131, 52, 0.65)', 'rgba(235, 89, 52, 0.65)'],
+      leadcolors: ['rgba(50, 110, 219, 0.65)', 'rgba(196, 200, 207, 0.65)', 'rgba(156, 162, 173, 0.65)', 'rgba(116, 121, 130, 0.65)',
+        'rgba(79, 82, 89, 0.65)', 'rgba(39, 40, 43, 0.65)'],
+      mngncolors: ['rgba(91, 95, 99, 0.65)', 'rgba(194, 232, 190, 0.65)', 'rgba(81, 222, 67, 0.65)', 'rgba(25, 128, 11, 0.65)',
+        'rgba(14, 82, 5, 0.65)', 'rgba(5, 97, 76, 0.65)'],
+      acscolors: ['rgba(91, 95, 99, 0.65)', 'rgba(252, 210, 211, 0.65)', 'rgba(252, 109, 114, 0.65)', 'rgba(247, 59, 66, 0.65)',
+        'rgba(250, 2, 11, 0.65)', 'rgba(181, 2, 6, 0.65)', 'rgba(140, 1, 5, 0.65)'],
+      ejscolors: ['rgba(91, 95, 99, 0.65)', 'rgba(235, 252, 3, 0.65)', 'rgba(252, 227, 3, 0.65)', 'rgba(252, 186, 3, 0.65)',
+        'rgba(252, 128, 3, 0.65)', 'rgba(252, 82, 3, 0.65)', 'rgba(140, 1, 5, 0.65)'],
+      covidcolors: ['rgba(91, 95, 99, 0.65)', 'rgba(34, 240, 219, 0.65)', 'rgba(34, 223, 240, 0.65)', 'rgba(34, 185, 240, 0.65)',
+        'rgba(22, 141, 245, 0.65)', 'rgba(22, 74, 245, 0.65)', 'rgba(23, 2, 247, 0.65)'],
       // baselayers config
       baselayer1: 'osm',
       baselayer2: 'osm',
@@ -2309,7 +2427,7 @@ export default {
           style: [
             {
               cmp: 'vl-style-func',
-              factory: this.getNCCountiesStyle1
+              factory: this.getNCCountiesStyle
             }
           ]
         },
@@ -2410,7 +2528,7 @@ export default {
           style: [
             {
               cmp: 'vl-style-func',
-              factory: this.getNCCountiesStyle2
+              factory: this.getNCCountiesStyle
             }
           ]
         },
@@ -2530,182 +2648,162 @@ export default {
       }
       return context.createPattern(canvas, 'repeat')
     },
+    getColors: function (data, values, colors, variable, layer) {
+      if (colors.length === 7) {
+        if (data[variable] === values[0]) {
+          this.varcolor = colors[0]
+        } else if (data[variable] < values[1]) {
+          this.varcolor = colors[1]
+        } else if (data[variable] >= values[1] && data[variable] < values[2]) {
+          this.varcolor = colors[2]
+        } else if (data[variable] >= values[2] && data[variable] < values[3]) {
+          this.varcolor = colors[3]
+        } else if (data[variable] >= values[3] && data[variable] < values[4]) {
+          this.varcolor = colors[4]
+        } else if (data[variable] >= values[4] && data[variable] < values[5]) {
+          this.varcolor = colors[5]
+        } else if (data[variable] >= values[5]) {
+          this.varcolor = colors[6]
+        }
+      } else if (colors.length === 6) {
+        if (data[variable.substring(11)] === values[0]) {
+          this.varcolor = colors[0]
+        } else if (data[variable.substring(11)] < values[1]) {
+          this.varcolor = colors[1]
+        } else if (data[variable.substring(11)] >= values[1] && data[variable.substring(11)] < values[2]) {
+          this.varcolor = colors[2]
+        } else if (data[variable.substring(11)] >= values[2] && data[variable.substring(11)] < values[3]) {
+          this.varcolor = colors[3]
+        } else if (data[variable.substring(11)] >= values[3] && data[variable.substring(11)] < values[4]) {
+          this.varcolor = colors[4]
+        } else if (data[variable.substring(11)] >= values[4]) {
+          this.varcolor = colors[5]
+        }
+      }
+    },
+    getPatternColors: function (data, values, colors, variable, layer) {
+      if (colors.length === 7) {
+        let getPattern
+        if (layer === 'acslayer1') {
+          if (this.acsmap1style === 'pattern1') {
+            getPattern = this.getPattern1
+          } else if (this.acsmap1style === 'pattern2') {
+            getPattern = this.getPattern2
+          }
+        } else if (layer === 'acslayer2') {
+          if (this.acsmap2style === 'pattern1') {
+            getPattern = this.getPattern1
+          } else if (this.acsmap2style === 'pattern2') {
+            getPattern = this.getPattern2
+          }
+        } else if (layer === 'ejslayer1') {
+          if (this.ejsmap1style === 'pattern1') {
+            getPattern = this.getPattern1
+          } else if (this.ejsmap1style === 'pattern2') {
+            getPattern = this.getPattern2
+          }
+        } else if (layer === 'ejslayer2') {
+          if (this.ejsmap2style === 'pattern1') {
+            getPattern = this.getPattern1
+          } else if (this.ejsmap2style === 'pattern2') {
+            getPattern = this.getPattern2
+          }
+        }
+        if (data[variable] === values[0]) {
+          this.varcolor = getPattern(colors[0])
+        } else if (data[variable] < values[1]) {
+          this.varcolor = getPattern(colors[1])
+        } else if (data[variable] >= values[1] && data[variable] < values[2]) {
+          this.varcolor = getPattern(colors[2])
+        } else if (data[variable] >= values[2] && data[variable] < values[3]) {
+          this.varcolor = getPattern(colors[3])
+        } else if (data[variable] >= values[3] && data[variable] < values[4]) {
+          this.varcolor = getPattern(colors[4])
+        } else if (data[variable] >= values[4] && data[variable] < values[5]) {
+          this.varcolor = getPattern(colors[5])
+        } else if (data[variable] >= values[5]) {
+          this.varcolor = getPattern(colors[6])
+        }
+      } else if (colors.length === 6) {
+        let getPattern
+        if (layer === 'ncwelllayer1') {
+          if (this.ncwellmap1style === 'pattern1') {
+            getPattern = this.getPattern1
+          } else if (this.ncwellmap1style === 'pattern2') {
+            getPattern = this.getPattern2
+          }
+        } else if (layer === 'ncwelllayer2') {
+          if (this.ncwellmap2style === 'pattern1') {
+            getPattern = this.getPattern1
+          } else if (this.ncwellmap2style === 'pattern2') {
+            getPattern = this.getPattern2
+          }
+        }
+        if (data[variable.substring(11)] === values[0]) {
+          this.varcolor = getPattern(colors[0])
+        } else if (data[variable.substring(11)] < values[1]) {
+          this.varcolor = getPattern(colors[1])
+        } else if (data[variable.substring(11)] >= values[1] && data[variable.substring(11)] < values[2]) {
+          this.varcolor = getPattern(colors[2])
+        } else if (data[variable.substring(11)] >= values[2] && data[variable.substring(11)] < values[3]) {
+          this.varcolor = getPattern(colors[3])
+        } else if (data[variable.substring(11)] >= values[3] && data[variable.substring(11)] < values[4]) {
+          this.varcolor = getPattern(colors[4])
+        } else if (data[variable.substring(11)] >= values[4]) {
+          this.varcolor = getPattern(colors[5])
+        }
+      }
+    },
     getncwellwiseStyle1: function () {
-      let getPattern = this.getPattern1
-      // let zoom = this.getZoom1() // this.zoom
+      let getStyle
+      if (this.ncwellmap1style === 'nopattern') {
+        getStyle = this.getColors
+      } else if (this.ncwellmap1style === 'pattern1') {
+        getStyle = this.getPatternColors
+      } else if (this.ncwellmap1style === 'pattern2') {
+        getStyle = this.getPatternColors
+      }
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
-        // console.log(selected)
         let data = feature.getProperties()
-        let color
-        if (this.currentradiovariable1 === 'ncwellwise_arsenic_med') {
-          if (data.arsenic_med === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.arsenic_med < 6.83) {
-            color = getPattern('rgba(235, 52, 220, 0.85)')
-          } else if (data.arsenic_med >= 6.83 && data.arsenic_med < 10.12) {
-            color = getPattern('rgba(186, 52, 235, 0.85)')
-          } else if (data.arsenic_med >= 10.12 && data.arsenic_med < 13.42) {
-            color = getPattern('rgba(165, 52, 235, 0.85)')
-          } else if (data.arsenic_med >= 13.42 && data.arsenic_med < 16.71) {
-            color = getPattern('rgba(143, 52, 235, 0.85)')
-          } else if (data.arsenic_med >= 16.71) {
-            color = getPattern('rgba(119, 52, 235, 0.85)')
-          }
-        } else if (this.currentradiovariable1 === 'ncwellwise_arsenic_mean') {
-          if (data.arsenic_mean === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.arsenic_mean < 8.95) {
-            color = getPattern('rgba(235, 52, 220, 0.85)')
-          } else if (data.arsenic_mean >= 8.95 && data.arsenic_mean < 14.93) {
-            color = getPattern('rgba(186, 52, 235, 0.85)')
-          } else if (data.arsenic_mean >= 14.93 && data.arsenic_mean < 20.93) {
-            color = getPattern('rgba(165, 52, 235, 0.85)')
-          } else if (data.arsenic_mean >= 20.93 && data.arsenic_mean < 26.9) {
-            color = getPattern('rgba(143, 52, 235, 0.85)')
-          } else if (data.arsenic_mean >= 26.9) {
-            color = getPattern('rgba(119, 52, 235, 0.85)')
-          }
-        } else if (this.currentradiovariable1 === 'ncwellwise_arsenic_prcast') {
-          if (data.arsenic_prcast === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.arsenic_prcast < 16.0) {
-            color = getPattern('rgba(235, 52, 220, 0.85)')
-          } else if (data.arsenic_prcast >= 16.0 && data.arsenic_prcast < 32.0) {
-            color = getPattern('rgba(186, 52, 235, 0.85)')
-          } else if (data.arsenic_prcast >= 32.0 && data.arsenic_prcast < 48.0) {
-            color = getPattern('rgba(165, 52, 235, 0.85)')
-          } else if (data.arsenic_prcast >= 48.0 && data.arsenic_prcast < 64.0) {
-            color = getPattern('rgba(143, 52, 235, 0.85)')
-          } else if (data.arsenic_prcast >= 64.0) {
-            color = getPattern('rgba(119, 52, 235, 0.85)')
-          }
-        } else if (this.currentradiovariable1 === 'ncwellwise_cadmium_med') {
-          if (data.cadmium_med === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.cadmium_med < 0.74) {
-            color = getPattern('rgba(223, 235, 52, 0.85)')
-          } else if (data.cadmium_med >= 0.74 && data.cadmium_med < 77.0) {
-            color = getPattern('rgba(235, 192, 52, 0.85)')
-          } else if (data.cadmium_med >= 0.77 && data.cadmium_med < 0.79) {
-            color = getPattern('rgba(235, 162, 52, 0.85)')
-          } else if (data.cadmium_med >= 0.79 && data.cadmium_med < 0.82) {
-            color = getPattern('rgba(235, 131, 52, 0.85)')
-          } else if (data.cadmium_med >= 0.82) {
-            color = getPattern('rgba(235, 89, 52, 0.85)')
-          }
-        } else if (this.currentradiovariable1 === 'ncwellwise_cadmium_mean') {
-          if (data.cadmium_mean === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.cadmium_mean < 2.71) {
-            color = getPattern('rgba(223, 235, 52, 0.85)')
-          } else if (data.cadmium_mean >= 2.71 && data.cadmium_mean < 4.72) {
-            color = getPattern('rgba(235, 192, 52, 0.85)')
-          } else if (data.cadmium_mean >= 4.72 && data.cadmium_mean < 6.72) {
-            color = getPattern('rgba(235, 162, 52, 0.85)')
-          } else if (data.cadmium_mean >= 6.71 && data.cadmium_mean < 8.73) {
-            color = getPattern('rgba(235, 131, 52, 0.85)')
-          } else if (data.cadmium_mean >= 8.73) {
-            color = getPattern('rgba(235, 89, 52, 0.85)')
-          }
-        } else if (this.currentradiovariable1 === 'ncwellwise_cadmium_prcast') {
-          if (data.cadmium_prcast === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.cadmium_prcast < 4.0) {
-            color = getPattern('rgba(223, 235, 52, 0.85)')
-          } else if (data.cadmium_prcast >= 4.0 && data.cadmium_prcast < 8.0) {
-            color = getPattern('rgba(235, 192, 52, 0.85)')
-          } else if (data.cadmium_prcast >= 8.0 && data.cadmium_prcast < 12.0) {
-            color = getPattern('rgba(235, 162, 52, 0.85)')
-          } else if (data.cadmium_prcast >= 12.0 && data.cadmium_prcast < 16.0) {
-            color = getPattern('rgba(235, 131, 52, 0.85)')
-          } else if (data.cadmium_prcast >= 16.0) {
-            color = getPattern('rgba(235, 89, 52, 0.85)')
-          }
-        } else if (this.currentradiovariable1 === 'ncwellwise_lead_med') {
-          if (data.lead_med === -999.99) {
-            color = getPattern('rgba(50, 110, 219, 0.85)')
-          } else if (data.lead_med < 11.69) {
-            color = getPattern('rgba(196, 200, 207, 0.85)')
-          } else if (data.lead_med >= 11.69 && data.lead_med < 30.0) {
-            color = getPattern('rgba(156, 162, 173, 0.85)')
-          } else if (data.lead_med >= 19.83 && data.lead_med < 50.0) {
-            color = getPattern('rgba(116, 121, 130, 0.85)')
-          } else if (data.lead_med >= 27.98 && data.lead_med < 80.0) {
-            color = getPattern('rgba(79, 82, 89, 0.85)')
-          } else if (data.lead_med >= 36.12) {
-            color = getPattern('rgba(39, 40, 43, 0.85)')
-          }
-        } else if (this.currentradiovariable1 === 'ncwellwise_lead_mean') {
-          if (data.lead_mean === -999.99) {
-            color = getPattern('rgba(50, 110, 219, 0.85)')
-          } else if (data.lead_mean < 39.22) {
-            color = getPattern('rgba(196, 200, 207, 0.85)')
-          } else if (data.lead_mean >= 39.22 && data.lead_mean < 75.53) {
-            color = getPattern('rgba(156, 162, 173, 0.85)')
-          } else if (data.lead_mean >= 75.53 && data.lead_mean < 111.83) {
-            color = getPattern('rgba(116, 121, 130, 0.85)')
-          } else if (data.lead_mean >= 111.93 && data.lead_mean < 148.14) {
-            color = getPattern('rgba(79, 82, 89, 0.85)')
-          } else if (data.lead_mean >= 148.14) {
-            color = getPattern('rgba(39, 40, 43, 0.85)')
-          }
-        } else if (this.currentradiovariable1 === 'ncwellwise_lead_prcast') {
-          if (data.lead_prcast === -999.99) {
-            color = getPattern('rgba(50, 110, 219, 0.85)')
-          } else if (data.lead_prcast < 20.0) {
-            color = getPattern('rgba(196, 200, 207, 0.85)')
-          } else if (data.lead_prcast >= 20.0 && data.lead_prcast < 40.0) {
-            color = getPattern('rgba(156, 162, 173, 0.85)')
-          } else if (data.lead_prcast >= 40.0 && data.lead_prcast < 60.0) {
-            color = getPattern('rgba(116, 121, 130, 0.85)')
-          } else if (data.lead_prcast >= 60.0 && data.lead_prcast < 80.0) {
-            color = getPattern('rgba(79, 82, 89, 0.85)')
-          } else if (data.lead_prcast >= 80.0) {
-            color = getPattern('rgba(39, 40, 43, 0.85)')
-          }
-        } else if (this.currentradiovariable1 === 'ncwellwise_mng_med') {
-          if (data.manganese_med === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.manganese_med < 184.4) {
-            color = getPattern('rgba(194, 232, 190, 0.85)')
-          } else if (data.manganese_med >= 184.4 && data.manganese_med < 350.8) {
-            color = getPattern('rgba(81, 222, 67, 0.85)')
-          } else if (data.manganese_med >= 350.8 && data.manganese_med < 517.2) {
-            color = getPattern('rgba(25, 128, 11, 0.85)')
-          } else if (data.manganese_med >= 517.2 && data.manganese_med < 683.6) {
-            color = getPattern('rgba(14, 82, 5, 0.85)')
-          } else if (data.manganese_med >= 683.6) {
-            color = getPattern('rgba(5, 97, 76, 0.85)')
-          }
-        } else if (this.currentradiovariable1 === 'ncwellwise_mng_mean') {
-          if (data.manganese_mean === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.manganese_mean < 213.09) {
-            color = getPattern('rgba(194, 232, 190, 0.85)')
-          } else if (data.manganese_mean >= 213.09 && data.manganese_mean < 404.97) {
-            color = getPattern('rgba(81, 222, 67, 0.85)')
-          } else if (data.manganese_mean >= 404.97 && data.manganese_mean < 596.85) {
-            color = getPattern('rgba(25, 128, 11, 0.85)')
-          } else if (data.manganese_mean >= 596.85 && data.manganese_mean < 788.73) {
-            color = getPattern('rgba(14, 82, 5, 0.85)')
-          } else if (data.manganese_mean >= 788.73) {
-            color = getPattern('rgba(5, 97, 76, 0.85)')
-          }
-        } else if (this.currentradiovariable1 === 'ncwellwise_mng_prcast') {
-          if (data.manganese_prcast === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.manganese_prcast < 20.0) {
-            color = getPattern('rgba(194, 232, 190, 0.85)')
-          } else if (data.manganese_prcast >= 20.0 && data.manganese_prcast < 40.0) {
-            color = getPattern('rgba(81, 222, 67, 0.85)')
-          } else if (data.manganese_prcast >= 40.0 && data.manganese_prcast < 60.0) {
-            color = getPattern('rgba(25, 128, 11, 0.85)')
-          } else if (data.manganese_prcast >= 60.0 && data.manganese_prcast < 80.0) {
-            color = getPattern('rgba(14, 82, 5, 0.85)')
-          } else if (data.manganese_prcast >= 80.0) {
-            color = getPattern('rgba(5, 97, 76, 0.85)')
-          }
+        let values
+        let variable = this.currentradiovariable1
+        if (variable === 'ncwellwise_arsenic_med') {
+          values = [-999.99, 6.83, 10.12, 13.42, 16.71]
+          getStyle(data, values, this.arsncolors, variable, 'ncwelllayer1')
+        } else if (variable === 'ncwellwise_arsenic_mean') {
+          values = [-999.99, 8.95, 14.93, 20.93, 26.9]
+          getStyle(data, values, this.arsncolors, variable, 'ncwelllayer1')
+        } else if (variable === 'ncwellwise_arsenic_prcast') {
+          values = [-999.99, 16.0, 32.0, 48.0, 64.0]
+          getStyle(data, values, this.arsncolors, variable, 'ncwelllayer1')
+        } else if (variable === 'ncwellwise_cadmium_med') {
+          values = [-999.99, 0.74, 0.77, 0.79, 0.82]
+          getStyle(data, values, this.cadmcolors, variable, 'ncwelllayer1')
+        } else if (variable === 'ncwellwise_cadmium_mean') {
+          values = [-999.99, 2.71, 4.72, 6.71, 8.73]
+          getStyle(data, values, this.cadmcolors, variable, 'ncwelllayer1')
+        } else if (variable === 'ncwellwise_cadmium_prcast') {
+          values = [-999.99, 4.0, 8.0, 12.0, 16.0]
+          getStyle(data, values, this.cadmcolors, variable, 'ncwelllayer1')
+        } else if (variable === 'ncwellwise_lead_med') {
+          values = [-999.99, 11.69, 19.83, 27.98, 36.12]
+          getStyle(data, values, this.leadcolors, variable, 'ncwelllayer1')
+        } else if (variable === 'ncwellwise_lead_mean') {
+          values = [-999.99, 39.22, 75.53, 111.93, 148.14]
+          getStyle(data, values, this.leadcolors, variable, 'ncwelllayer1')
+        } else if (variable === 'ncwellwise_lead_prcast') {
+          values = [-999.99, 20.0, 40.0, 60.0, 80.0]
+          getStyle(data, values, this.leadcolors, variable, 'ncwelllayer1')
+        } else if (variable === 'ncwellwise_manganese_med') {
+          values = [-999.99, 184.4, 350.8, 517.2, 683.6]
+          getStyle(data, values, this.mngncolors, variable, 'ncwelllayer1')
+        } else if (variable === 'ncwellwise_manganese_mean') {
+          values = [-999.99, 213.09, 404.97, 596.85, 788.73]
+          getStyle(data, values, this.mngncolors, variable, 'ncwelllayer1')
+        } else if (variable === 'ncwellwise_manganese_prcast') {
+          values = [-999.99, 20.0, 40.0, 60.0, 80.0]
+          getStyle(data, values, this.mngncolors, variable, 'ncwelllayer1')
         }
         return [
           new Style({
@@ -2714,41 +2812,27 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
           })
-          /* createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 8.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel',
-            fillColor: color
-          }) */
         ]
       }
     },
     getacsStyle1: function () {
-      let getPattern = this.getPattern2
-      // let zoom = this.getZoom1() // this.zoom
+      let getStyle
+      if (this.acsmap1style === 'nopattern') {
+        getStyle = this.getColors
+      } else if (this.acsmap1style === 'pattern1') {
+        getStyle = this.getPatternColors
+      } else if (this.acsmap1style === 'pattern2') {
+        getStyle = this.getPatternColors
+      }
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
-        let color
-        if (data[this.currentacsvariable1] === -999.99) {
-          color = getPattern('rgba(91, 95, 99, 0.65)')
-        } else if (data[this.currentacsvariable1] < 15) {
-          color = getPattern('rgba(252, 210, 211, 0.65)')
-        } else if (data[this.currentacsvariable1] >= 15 && data[this.currentacsvariable1] < 30) {
-          color = getPattern('rgba(252, 109, 114, 0.65)')
-        } else if (data[this.currentacsvariable1] >= 30 && data[this.currentacsvariable1] < 45) {
-          color = getPattern('rgba(247, 59, 66, 0.65)')
-        } else if (data[this.currentacsvariable1] >= 45 && data[this.currentacsvariable1] < 60) {
-          color = getPattern('rgba(250, 2, 11, 0.65)')
-        } else if (data[this.currentacsvariable1] >= 60 && data[this.currentacsvariable1] < 75) {
-          color = getPattern('rgba(181, 2, 6, 0.65)')
-        } else if (data[this.currentacsvariable1] >= 75) {
-          color = getPattern('rgba(140, 1, 5, 0.65)')
-        }
+        let values = [-999.99, 15, 30, 45, 60, 75]
+        let variable = this.currentacsvariable1
+        getStyle(data, values, this.acscolors, variable, 'acslayer1')
         return [
           new Style({
             stroke: new Stroke({
@@ -2756,202 +2840,59 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
           })
-          /* createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 8.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel',
-            fillColor: color
-          }) */
         ]
       }
     },
     getejscreenStyle1: function () {
-      let getPattern = this.getPattern2
-      // let zoom = this.getZoom1() // this.zoom
+      let getStyle
+      if (this.ejsmap1style === 'nopattern') {
+        getStyle = this.getColors
+      } else if (this.ejsmap1style === 'pattern1') {
+        getStyle = this.getPatternColors
+      } else if (this.ejsmap1style === 'pattern2') {
+        getStyle = this.getPatternColors
+      }
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
-        let color
-        if (this.currentejsvariable1 === 'd_ldpnt_2') {
-          if (data[this.currentejsvariable1] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable1] < -200.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -200.0 && data[this.currentejsvariable1] < 0.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 0.0 && data[this.currentejsvariable1] < 200.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 200.0 && data[this.currentejsvariable1] < 400.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 400.0 && data[this.currentejsvariable1] < 600.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 600.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable1 === 'd_dslpm_2') {
-          if (data[this.currentejsvariable1] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable1] < -300.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -300.0 && data[this.currentejsvariable1] < 0.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 0.0 && data[this.currentejsvariable1] < 280.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 280.0 && data[this.currentejsvariable1] < 580.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 580.0 && data[this.currentejsvariable1] < 850.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 850.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable1 === 'd_cancr_2') {
-          if (data[this.currentejsvariable1] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable1] < -45000.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -45000.0 && data[this.currentejsvariable1] < -20000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -20000.0 && data[this.currentejsvariable1] < 5000.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 5000.0 && data[this.currentejsvariable1] < 30000.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 30000.0 && data[this.currentejsvariable1] < 55000.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 55000.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable1 === 'd_resp_2') {
-          if (data[this.currentejsvariable1] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable1] < -600.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -600.0 && data[this.currentejsvariable1] < -250) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -250.0 && data[this.currentejsvariable1] < 100.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 100.0 && data[this.currentejsvariable1] < 450.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 450.0 && data[this.currentejsvariable1] < 800.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 800.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable1 === 'd_ptraf_2') {
-          if (data[this.currentejsvariable1] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable1] < 800000.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 800000.0 && data[this.currentejsvariable1] < 1700000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 1700000.0 && data[this.currentejsvariable1] < 1700000.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 2600000.0 && data[this.currentejsvariable1] < 2600000.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 3500000.0 && data[this.currentejsvariable1] < 4400000.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 4400000.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable1 === 'd_pwdis_2') {
-          if (data[this.currentejsvariable1] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable1] < -47000.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -47000.0 && data[this.currentejsvariable1] < -35000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -35000.0 && data[this.currentejsvariable1] < -22000.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -22000.0 && data[this.currentejsvariable1] < -10000.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -10000.0 && data[this.currentejsvariable1] < 200.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 200.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable1 === 'd_pnpl_2') {
-          if (data[this.currentejsvariable1] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable1] < -400.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -400.0 && data[this.currentejsvariable1] < -120.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -120.0 && data[this.currentejsvariable1] < 150.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 150.0 && data[this.currentejsvariable1] < 420.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 420.0 && data[this.currentejsvariable1] < 690.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 690.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable1 === 'd_prmp_2') {
-          if (data[this.currentejsvariable1] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable1] < -450.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -450.0 && data[this.currentejsvariable1] < 1000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 1000.0 && data[this.currentejsvariable1] < 2450.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 2450.0 && data[this.currentejsvariable1] < 3900.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 3900.0 && data[this.currentejsvariable1] < 5350.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 5350.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable1 === 'd_ptsdf_2') {
-          if (data[this.currentejsvariable1] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable1] < -3200.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -3200.0 && data[this.currentejsvariable1] < -1000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -1000.0 && data[this.currentejsvariable1] < 1800.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 1800.0 && data[this.currentejsvariable1] < 4600.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 4600.0 && data[this.currentejsvariable1] < 7300.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 7300.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable1 === 'd_ozone_2') {
-          if (data[this.currentejsvariable1] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable1] < -58000.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -58000.0 && data[this.currentejsvariable1] < -28000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -28000.0 && data[this.currentejsvariable1] < 600.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 600.0 && data[this.currentejsvariable1] < 38000.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 38000.0 && data[this.currentejsvariable1] < 70000.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 70000.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable1 === 'd_pm25_2') {
-          if (data[this.currentejsvariable1] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable1] < -11000.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -11000.0 && data[this.currentejsvariable1] < -5500.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= -5500.0 && data[this.currentejsvariable1] < 1000.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 1000.0 && data[this.currentejsvariable1] < 7500.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 7500.0 && data[this.currentejsvariable1] < 15000.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable1] >= 15000.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
+        let values
+        let variable = this.currentejsvariable1
+        if (variable === 'd_ldpnt_2') {
+          values = [-99999.9999, -200.0, 0.0, 200.0, 400.0, 600.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer1')
+        } else if (variable === 'd_dslpm_2') {
+          values = [-99999.9999, -300.0, 0.0, 280.0, 580.0, 850.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer1')
+        } else if (variable === 'd_cancr_2') {
+          values = [-99999.9999, -45000.0, -20000.0, 5000.0, 30000.0, 55000.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer1')
+        } else if (variable === 'd_resp_2') {
+          values = [-99999.9999, -600.0, -250.0, 100.0, 450.0, 800.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer1')
+        } else if (variable === 'd_ptraf_2') {
+          values = [-99999.9999, 800000.0, 1700000.0, 2600000.0, 3500000.0, 4400000.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer1')
+        } else if (variable === 'd_pwdis_2') {
+          values = [-99999.9999, -47000.0, -35000.0, -22000.0, -10000.0, 200.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer1')
+        } else if (variable === 'd_pnpl_2') {
+          values = [-99999.9999, -400.0, -120.0, 150.0, 420.0, 690.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer1')
+        } else if (variable === 'd_prmp_2') {
+          values = [-99999.9999, -450.0, 1000.0, 2450.0, 3900.0, 5350.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer1')
+        } else if (variable === 'd_ptsdf_2') {
+          values = [-99999.9999, -3200.0, -1000.0, 1800.0, 4600.0, 7300.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer1')
+        } else if (variable === 'd_ozone_2') {
+          values = [-99999.9999, -58000.0, -28000.0, 600.0, 38000.0, 70000.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer1')
+        } else if (variable === 'd_pm25_2') {
+          values = [-99999.9999, -11000.0, -5500.0, 1000.0, 7500.0, 15000.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer1')
         }
         return [
           new Style({
@@ -2960,89 +2901,30 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
           })
-          /* createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 8.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel',
-            fillColor: color
-          }) */
         ]
       }
     },
     getcovid19Style1: function () {
-      // let zoom = this.getZoom1() // this.zoom
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
-        let color
-        if (this.currentradiovariable1 === 'cases') {
-          if (data[this.currentradiovariable1] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable1] < 1328) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 1328 && data[this.currentradiovariable1] < 2656) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 2656 && data[this.currentradiovariable1] < 3984) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 3984 && data[this.currentradiovariable1] < 5416) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 5416 && data[this.currentradiovariable1] < 6644) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 6644) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
-        } else if (this.currentradiovariable1 === 'cases_per_10000_res') {
-          if (data[this.currentradiovariable1] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable1] < 586.0) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 586.0 && data[this.currentradiovariable1] < 1172.0) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 1172.0 && data[this.currentradiovariable1] < 1758.0) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 1758.0 && data[this.currentradiovariable1] < 2344.0) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 2344.0 && data[this.currentradiovariable1] < 2930.0) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 2930.0) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
-        } else if (this.currentradiovariable1 === 'cases_per_100000_res') {
-          if (data[this.currentradiovariable1] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable1] < 5859.0) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 5859.0 && data[this.currentradiovariable1] < 11718.0) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 11718.0 && data[this.currentradiovariable1] < 17577.0) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 17577.0 && data[this.currentradiovariable1] < 23436.0) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 23436.0 && data[this.currentradiovariable1] < 29295.0) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 29295.0) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
-        } else if (this.currentradiovariable1 === 'deaths') {
-          if (data[this.currentradiovariable1] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable1] < 17) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 17 && data[this.currentradiovariable1] < 34) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 34 && data[this.currentradiovariable1] < 51) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 51 && data[this.currentradiovariable1] < 65) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 65 && data[this.currentradiovariable1] < 85) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentradiovariable1] >= 85) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
+        let values
+        let variable = this.currentradiovariable1
+        if (variable === 'cases') {
+          values = [-999.99, 1328, 2656, 3984, 5416, 6644]
+          this.getColors(data, values, this.covidcolors, variable, 'covidlayer1')
+        } else if (variable === 'cases_per_10000_res') {
+          values = [-999.99, 586.0, 1172.0, 1758.0, 2344.0, 2930.0]
+          this.getColors(data, values, this.covidcolors, variable, 'covidlayer1')
+        } else if (variable === 'cases_per_100000_res') {
+          values = [-999.99, 5859.0, 11718.0, 17577.0, 23436.0, 29295.0]
+          this.getColors(data, values, this.covidcolors, variable, 'covidlayer1')
+        } else if (variable === 'deaths') {
+          values = [-999.99, 17, 34, 51, 65, 85]
+          this.getColors(data, values, this.covidcolors, variable, 'covidlayer1')
         }
         return [
           new Style({
@@ -3051,208 +2933,62 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
-          })
-          /* createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 8.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel',
-            fillColor: color
-          }) */
-        ]
-      }
-    },
-    getNCCountiesStyle1: function () {
-      // let zoom = this.getZoom1() // this.zoom
-      return feature => {
-        return [
-          createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 4.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel'
           })
         ]
       }
     },
     getncwellwiseStyle2: function () {
-      let getPattern = this.getPattern1
-      // let zoom = this.getZoom2() // this.zoom
+      let getStyle
+      if (this.ncwellmap2style === 'nopattern') {
+        getStyle = this.getColors
+      } else if (this.ncwellmap2style === 'pattern1') {
+        getStyle = this.getPatternColors
+      } else if (this.ncwellmap2style === 'pattern2') {
+        getStyle = this.getPatternColors
+      }
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
-        // console.log(selected)
         let data = feature.getProperties()
-        let color
-        if (this.currentradiovariable2 === 'ncwellwise_arsenic_med') {
-          if (data.arsenic_med === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.arsenic_med < 6.83) {
-            color = getPattern('rgba(235, 52, 220, 0.85)')
-          } else if (data.arsenic_med >= 6.83 && data.arsenic_med < 10.12) {
-            color = getPattern('rgba(186, 52, 235, 0.85)')
-          } else if (data.arsenic_med >= 10.12 && data.arsenic_med < 13.42) {
-            color = getPattern('rgba(165, 52, 235, 0.85)')
-          } else if (data.arsenic_med >= 13.42 && data.arsenic_med < 16.71) {
-            color = getPattern('rgba(143, 52, 235, 0.85)')
-          } else if (data.arsenic_med >= 16.71) {
-            color = getPattern('rgba(119, 52, 235, 0.85)')
-          }
-        } else if (this.currentradiovariable2 === 'ncwellwise_arsenic_mean') {
-          if (data.arsenic_mean === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.arsenic_mean < 8.95) {
-            color = getPattern('rgba(235, 52, 220, 0.85)')
-          } else if (data.arsenic_mean >= 8.95 && data.arsenic_mean < 14.93) {
-            color = getPattern('rgba(186, 52, 235, 0.85)')
-          } else if (data.arsenic_mean >= 14.93 && data.arsenic_mean < 20.93) {
-            color = getPattern('rgba(165, 52, 235, 0.85)')
-          } else if (data.arsenic_mean >= 20.93 && data.arsenic_mean < 26.9) {
-            color = getPattern('rgba(143, 52, 235, 0.85)')
-          } else if (data.arsenic_mean >= 26.9) {
-            color = getPattern('rgba(119, 52, 235, 0.85)')
-          }
-        } else if (this.currentradiovariable2 === 'ncwellwise_arsenic_prcast') {
-          if (data.arsenic_prcast === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.arsenic_prcast < 16.0) {
-            color = getPattern('rgba(235, 52, 220, 0.85)')
-          } else if (data.arsenic_prcast >= 16.0 && data.arsenic_prcast < 32.0) {
-            color = getPattern('rgba(186, 52, 235, 0.85)')
-          } else if (data.arsenic_prcast >= 32.0 && data.arsenic_prcast < 48.0) {
-            color = getPattern('rgba(165, 52, 235, 0.85)')
-          } else if (data.arsenic_prcast >= 48.0 && data.arsenic_prcast < 64.0) {
-            color = getPattern('rgba(143, 52, 235, 0.85)')
-          } else if (data.arsenic_prcast >= 64.0) {
-            color = getPattern('rgba(119, 52, 235, 0.85)')
-          }
-        } else if (this.currentradiovariable2 === 'ncwellwise_cadmium_med') {
-          if (data.cadmium_med === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.cadmium_med < 0.74) {
-            color = getPattern('rgba(223, 235, 52, 0.85)')
-          } else if (data.cadmium_med >= 0.74 && data.cadmium_med < 77.0) {
-            color = getPattern('rgba(235, 192, 52, 0.85)')
-          } else if (data.cadmium_med >= 0.77 && data.cadmium_med < 0.79) {
-            color = getPattern('rgba(235, 162, 52, 0.85)')
-          } else if (data.cadmium_med >= 0.79 && data.cadmium_med < 0.82) {
-            color = getPattern('rgba(235, 131, 52, 0.85)')
-          } else if (data.cadmium_med >= 0.82) {
-            color = getPattern('rgba(235, 89, 52, 0.85)')
-          }
-        } else if (this.currentradiovariable2 === 'ncwellwise_cadmium_mean') {
-          if (data.cadmium_mean === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.cadmium_mean < 2.71) {
-            color = getPattern('rgba(223, 235, 52, 0.85)')
-          } else if (data.cadmium_mean >= 2.71 && data.cadmium_mean < 4.72) {
-            color = getPattern('rgba(235, 192, 52, 0.85)')
-          } else if (data.cadmium_mean >= 4.72 && data.cadmium_mean < 6.72) {
-            color = getPattern('rgba(235, 162, 52, 0.85)')
-          } else if (data.cadmium_mean >= 6.71 && data.cadmium_mean < 8.73) {
-            color = getPattern('rgba(235, 131, 52, 0.85)')
-          } else if (data.cadmium_mean >= 8.73) {
-            color = getPattern('rgba(235, 89, 52, 0.85)')
-          }
-        } else if (this.currentradiovariable2 === 'ncwellwise_cadmium_prcast') {
-          if (data.cadmium_prcast === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.cadmium_prcast < 4.0) {
-            color = getPattern('rgba(223, 235, 52, 0.85)')
-          } else if (data.cadmium_prcast >= 4.0 && data.cadmium_prcast < 8.0) {
-            color = getPattern('rgba(235, 192, 52, 0.85)')
-          } else if (data.cadmium_prcast >= 8.0 && data.cadmium_prcast < 12.0) {
-            color = getPattern('rgba(235, 162, 52, 0.85)')
-          } else if (data.cadmium_prcast >= 12.0 && data.cadmium_prcast < 16.0) {
-            color = getPattern('rgba(235, 131, 52, 0.85)')
-          } else if (data.cadmium_prcast >= 16.0) {
-            color = getPattern('rgba(235, 89, 52, 0.85)')
-          }
-        } else if (this.currentradiovariable2 === 'ncwellwise_lead_med') {
-          if (data.lead_med === -999.99) {
-            color = getPattern('rgba(50, 110, 219, 0.85)')
-          } else if (data.lead_med < 11.69) {
-            color = getPattern('rgba(196, 200, 207, 0.85)')
-          } else if (data.lead_med >= 11.69 && data.lead_med < 30.0) {
-            color = getPattern('rgba(156, 162, 173, 0.85)')
-          } else if (data.lead_med >= 19.83 && data.lead_med < 50.0) {
-            color = getPattern('rgba(116, 121, 130, 0.85)')
-          } else if (data.lead_med >= 27.98 && data.lead_med < 80.0) {
-            color = getPattern('rgba(79, 82, 89, 0.85)')
-          } else if (data.lead_med >= 36.12) {
-            color = getPattern('rgba(39, 40, 43, 0.85)')
-          }
-        } else if (this.currentradiovariable2 === 'ncwellwise_lead_mean') {
-          if (data.lead_mean === -999.99) {
-            color = getPattern('rgba(50, 110, 219, 0.85)')
-          } else if (data.lead_mean < 39.22) {
-            color = getPattern('rgba(196, 200, 207, 0.85)')
-          } else if (data.lead_mean >= 39.22 && data.lead_mean < 75.53) {
-            color = getPattern('rgba(156, 162, 173, 0.85)')
-          } else if (data.lead_mean >= 75.53 && data.lead_mean < 111.83) {
-            color = getPattern('rgba(116, 121, 130, 0.85)')
-          } else if (data.lead_mean >= 111.93 && data.lead_mean < 148.14) {
-            color = getPattern('rgba(79, 82, 89, 0.85)')
-          } else if (data.lead_mean >= 148.14) {
-            color = getPattern('rgba(39, 40, 43, 0.85)')
-          }
-        } else if (this.currentradiovariable2 === 'ncwellwise_lead_prcast') {
-          if (data.lead_prcast === -999.99) {
-            color = getPattern('rgba(50, 110, 219, 0.85)')
-          } else if (data.lead_prcast < 20.0) {
-            color = getPattern('rgba(196, 200, 207, 0.85)')
-          } else if (data.lead_prcast >= 20.0 && data.lead_prcast < 40.0) {
-            color = getPattern('rgba(156, 162, 173, 0.85)')
-          } else if (data.lead_prcast >= 40.0 && data.lead_prcast < 60.0) {
-            color = getPattern('rgba(116, 121, 130, 0.85)')
-          } else if (data.lead_prcast >= 60.0 && data.lead_prcast < 80.0) {
-            color = getPattern('rgba(79, 82, 89, 0.85)')
-          } else if (data.lead_prcast >= 80.0) {
-            color = getPattern('rgba(39, 40, 43, 0.85)')
-          }
-        } else if (this.currentradiovariable2 === 'ncwellwise_mng_med') {
-          if (data.manganese_med === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.manganese_med < 184.4) {
-            color = getPattern('rgba(194, 232, 190, 0.85)')
-          } else if (data.manganese_med >= 184.4 && data.manganese_med < 350.8) {
-            color = getPattern('rgba(81, 222, 67, 0.85)')
-          } else if (data.manganese_med >= 350.8 && data.manganese_med < 517.2) {
-            color = getPattern('rgba(25, 128, 11, 0.85)')
-          } else if (data.manganese_med >= 517.2 && data.manganese_med < 683.6) {
-            color = getPattern('rgba(14, 82, 5, 0.85)')
-          } else if (data.manganese_med >= 683.6) {
-            color = getPattern('rgba(5, 97, 76, 0.85)')
-          }
-        } else if (this.currentradiovariable2 === 'ncwellwise_mng_mean') {
-          if (data.manganese_mean === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.manganese_mean < 213.09) {
-            color = getPattern('rgba(194, 232, 190, 0.85)')
-          } else if (data.manganese_mean >= 213.09 && data.manganese_mean < 404.97) {
-            color = getPattern('rgba(81, 222, 67, 0.85)')
-          } else if (data.manganese_mean >= 404.97 && data.manganese_mean < 596.85) {
-            color = getPattern('rgba(25, 128, 11, 0.85)')
-          } else if (data.manganese_mean >= 596.85 && data.manganese_mean < 788.73) {
-            color = getPattern('rgba(14, 82, 5, 0.85)')
-          } else if (data.manganese_mean >= 788.73) {
-            color = getPattern('rgba(5, 97, 76, 0.85)')
-          }
-        } else if (this.currentradiovariable2 === 'ncwellwise_mng_prcast') {
-          if (data.manganese_prcast === -999.99) {
-            color = getPattern('rgba(91, 95, 99, 0.85)')
-          } else if (data.manganese_prcast < 20.0) {
-            color = getPattern('rgba(194, 232, 190, 0.85)')
-          } else if (data.manganese_prcast >= 20.0 && data.manganese_prcast < 40.0) {
-            color = getPattern('rgba(81, 222, 67, 0.85)')
-          } else if (data.manganese_prcast >= 40.0 && data.manganese_prcast < 60.0) {
-            color = getPattern('rgba(25, 128, 11, 0.85)')
-          } else if (data.manganese_prcast >= 60.0 && data.manganese_prcast < 80.0) {
-            color = getPattern('rgba(14, 82, 5, 0.85)')
-          } else if (data.manganese_prcast >= 80.0) {
-            color = getPattern('rgba(5, 97, 76, 0.85)')
-          }
+        let values
+        let variable = this.currentradiovariable2
+        if (variable === 'ncwellwise_arsenic_med') {
+          values = [-999.99, 6.83, 10.12, 13.42, 16.71]
+          getStyle(data, values, this.arsncolors, variable, 'ncwelllayer2')
+        } else if (variable === 'ncwellwise_arsenic_mean') {
+          values = [-999.99, 8.95, 14.93, 20.93, 26.9]
+          getStyle(data, values, this.arsncolors, variable, 'ncwelllayer2')
+        } else if (variable === 'ncwellwise_arsenic_prcast') {
+          values = [-999.99, 16.0, 32.0, 48.0, 64.0]
+          getStyle(data, values, this.arsncolors, variable, 'ncwelllayer2')
+        } else if (variable === 'ncwellwise_cadmium_med') {
+          values = [-999.99, 0.74, 0.77, 0.79, 0.82]
+          getStyle(data, values, this.cadmcolors, variable, 'ncwelllayer2')
+        } else if (variable === 'ncwellwise_cadmium_mean') {
+          values = [-999.99, 2.71, 4.72, 6.71, 8.73]
+          getStyle(data, values, this.cadmcolors, variable, 'ncwelllayer2')
+        } else if (variable === 'ncwellwise_cadmium_prcast') {
+          values = [-999.99, 4.0, 8.0, 12.0, 16.0]
+          getStyle(data, values, this.cadmcolors, variable, 'ncwelllayer2')
+        } else if (variable === 'ncwellwise_lead_med') {
+          values = [-999.99, 11.69, 19.83, 27.98, 36.12]
+          getStyle(data, values, this.leadcolors, variable, 'ncwelllayer2')
+        } else if (variable === 'ncwellwise_lead_mean') {
+          values = [-999.99, 39.22, 75.53, 111.93, 148.14]
+          getStyle(data, values, this.leadcolors, variable, 'ncwelllayer2')
+        } else if (variable === 'ncwellwise_lead_prcast') {
+          values = [-999.99, 20.0, 40.0, 60.0, 80.0]
+          getStyle(data, values, this.leadcolors, variable, 'ncwelllayer2')
+        } else if (variable === 'ncwellwise_manganese_med') {
+          values = [-999.99, 184.4, 350.8, 517.2, 683.6]
+          getStyle(data, values, this.mngncolors, variable, 'ncwelllayer2')
+        } else if (variable === 'ncwellwise_manganese_mean') {
+          values = [-999.99, 213.09, 404.97, 596.85, 788.73]
+          getStyle(data, values, this.mngncolors, variable, 'ncwelllayer2')
+        } else if (variable === 'ncwellwise_manganese_prcast') {
+          values = [-999.99, 20.0, 40.0, 60.0, 80.0]
+          getStyle(data, values, this.mngncolors, variable, 'ncwelllayer2')
         }
         return [
           new Style({
@@ -3261,41 +2997,27 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
           })
-          /* createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 8.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel',
-            fillColor: color
-          }) */
         ]
       }
     },
     getacsStyle2: function () {
-      let getPattern = this.getPattern2
-      // let zoom = this.getZoom2() // this.zoom
+      let getStyle
+      if (this.acsmap2style === 'nopattern') {
+        getStyle = this.getColors
+      } else if (this.acsmap2style === 'pattern1') {
+        getStyle = this.getPatternColors
+      } else if (this.acsmap2style === 'pattern2') {
+        getStyle = this.getPatternColors
+      }
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
-        let color
-        if (data[this.currentacsvariable2] === -999.99) {
-          color = getPattern('rgba(91, 95, 99, 0.65)')
-        } else if (data[this.currentacsvariable2] < 15) {
-          color = getPattern('rgba(252, 210, 211, 0.65)')
-        } else if (data[this.currentacsvariable2] >= 15 && data[this.currentacsvariable2] < 30) {
-          color = getPattern('rgba(252, 109, 114, 0.65)')
-        } else if (data[this.currentacsvariable2] >= 30 && data[this.currentacsvariable2] < 45) {
-          color = getPattern('rgba(247, 59, 66, 0.65)')
-        } else if (data[this.currentacsvariable2] >= 45 && data[this.currentacsvariable2] < 60) {
-          color = getPattern('rgba(250, 2, 11, 0.65)')
-        } else if (data[this.currentacsvariable2] >= 60 && data[this.currentacsvariable2] < 75) {
-          color = getPattern('rgba(181, 2, 6, 0.65)')
-        } else if (data[this.currentacsvariable2] >= 75) {
-          color = getPattern('rgba(140, 1, 5, 0.65)')
-        }
+        let values = [-999.99, 15, 30, 45, 60, 75]
+        let variable = this.currentacsvariable2
+        getStyle(data, values, this.acscolors, variable, 'acslayer2')
         return [
           new Style({
             stroke: new Stroke({
@@ -3303,202 +3025,59 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
           })
-          /* createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 8.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel',
-            fillColor: color
-          }) */
         ]
       }
     },
     getejscreenStyle2: function () {
-      let getPattern = this.getPattern2
-      // let zoom = this.getZoom2() // this.zoom
+      let getStyle
+      if (this.ejsmap2style === 'nopattern') {
+        getStyle = this.getColors
+      } else if (this.ejsmap2style === 'pattern1') {
+        getStyle = this.getPatternColors
+      } else if (this.ejsmap2style === 'pattern2') {
+        getStyle = this.getPatternColors
+      }
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
-        let color
-        if (this.currentejsvariable2 === 'd_ldpnt_2') {
-          if (data[this.currentejsvariable2] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable2] < -200.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -200.0 && data[this.currentejsvariable2] < 0.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 0.0 && data[this.currentejsvariable2] < 200.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 200.0 && data[this.currentejsvariable2] < 400.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 400.0 && data[this.currentejsvariable2] < 600.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 600.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable2 === 'd_dslpm_2') {
-          if (data[this.currentejsvariable2] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable2] < -300.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -300.0 && data[this.currentejsvariable2] < 0.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 0.0 && data[this.currentejsvariable2] < 280.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 280.0 && data[this.currentejsvariable2] < 580.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 580.0 && data[this.currentejsvariable2] < 850.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 850.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable2 === 'd_cancr_2') {
-          if (data[this.currentejsvariable2] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable2] < -45000.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -45000.0 && data[this.currentejsvariable2] < -20000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -20000.0 && data[this.currentejsvariable2] < 5000.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 5000.0 && data[this.currentejsvariable2] < 30000.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 30000.0 && data[this.currentejsvariable2] < 55000.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 55000.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable2 === 'd_resp_2') {
-          if (data[this.currentejsvariable2] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable2] < -600.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -600.0 && data[this.currentejsvariable2] < -250) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -250.0 && data[this.currentejsvariable2] < 100.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 100.0 && data[this.currentejsvariable2] < 450.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 450.0 && data[this.currentejsvariable2] < 800.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 800.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable2 === 'd_ptraf_2') {
-          if (data[this.currentejsvariable2] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable2] < 800000.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 800000.0 && data[this.currentejsvariable2] < 1700000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 1700000.0 && data[this.currentejsvariable2] < 1700000.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 2600000.0 && data[this.currentejsvariable2] < 2600000.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 3500000.0 && data[this.currentejsvariable2] < 4400000.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 4400000.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable2 === 'd_pwdis_2') {
-          if (data[this.currentejsvariable2] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable2] < -47000.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -47000.0 && data[this.currentejsvariable2] < -35000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -35000.0 && data[this.currentejsvariable2] < -22000.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -22000.0 && data[this.currentejsvariable2] < -10000.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -10000.0 && data[this.currentejsvariable2] < 200.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 200.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable2 === 'd_pnpl_2') {
-          if (data[this.currentejsvariable2] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable2] < -400.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -400.0 && data[this.currentejsvariable2] < -120.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -120.0 && data[this.currentejsvariable2] < 150.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 150.0 && data[this.currentejsvariable2] < 420.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 420.0 && data[this.currentejsvariable2] < 690.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 690.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable2 === 'd_prmp_2') {
-          if (data[this.currentejsvariable2] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable2] < -450.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -450.0 && data[this.currentejsvariable2] < 1000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 1000.0 && data[this.currentejsvariable2] < 2450.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 2450.0 && data[this.currentejsvariable2] < 3900.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 3900.0 && data[this.currentejsvariable2] < 5350.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 5350.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable2 === 'd_ptsdf_2') {
-          if (data[this.currentejsvariable2] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable2] < -3200.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -3200.0 && data[this.currentejsvariable2] < -1000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -1000.0 && data[this.currentejsvariable2] < 1800.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 1800.0 && data[this.currentejsvariable2] < 4600.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 4600.0 && data[this.currentejsvariable2] < 7300.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 7300.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable2 === 'd_ozone_2') {
-          if (data[this.currentejsvariable2] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable2] < -58000.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -58000.0 && data[this.currentejsvariable2] < -28000.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -28000.0 && data[this.currentejsvariable2] < 600.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 600.0 && data[this.currentejsvariable2] < 38000.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 38000.0 && data[this.currentejsvariable2] < 70000.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 70000.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
-        } else if (this.currentejsvariable2 === 'd_pm25_2') {
-          if (data[this.currentejsvariable2] === -99999.9999) {
-            color = getPattern('rgba(91, 95, 99, 0.65)')
-          } else if (data[this.currentejsvariable2] < -11000.0) {
-            color = getPattern('rgba(235, 252, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -11000.0 && data[this.currentejsvariable2] < -5500.0) {
-            color = getPattern('rgba(252, 227, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= -5500.0 && data[this.currentejsvariable2] < 1000.0) {
-            color = getPattern('rgba(252, 186, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 1000.0 && data[this.currentejsvariable2] < 7500.0) {
-            color = getPattern('rgba(252, 128, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 7500.0 && data[this.currentejsvariable2] < 15000.0) {
-            color = getPattern('rgba(252, 82, 3, 0.65)')
-          } else if (data[this.currentejsvariable2] >= 15000.0) {
-            color = getPattern('rgba(140, 1, 5, 0.65)')
-          }
+        let values
+        let variable = this.currentejsvariable2
+        if (variable === 'd_ldpnt_2') {
+          values = [-99999.9999, -200.0, 0.0, 200.0, 400.0, 600.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer2')
+        } else if (variable === 'd_dslpm_2') {
+          values = [-99999.9999, -300.0, 0.0, 280.0, 580.0, 850.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer2')
+        } else if (variable === 'd_cancr_2') {
+          values = [-99999.9999, -45000.0, -20000.0, 5000.0, 30000.0, 55000.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer2')
+        } else if (variable === 'd_resp_2') {
+          values = [-99999.9999, -600.0, -250.0, 100.0, 450.0, 800.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer2')
+        } else if (variable === 'd_ptraf_2') {
+          values = [-99999.9999, 800000.0, 1700000.0, 2600000.0, 3500000.0, 4400000.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer2')
+        } else if (variable === 'd_pwdis_2') {
+          values = [-99999.9999, -47000.0, -35000.0, -22000.0, -10000.0, 200.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer2')
+        } else if (variable === 'd_pnpl_2') {
+          values = [-99999.9999, -400.0, -120.0, 150.0, 420.0, 690.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer2')
+        } else if (variable === 'd_prmp_2') {
+          values = [-99999.9999, -450.0, 1000.0, 2450.0, 3900.0, 5350.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer2')
+        } else if (variable === 'd_ptsdf_2') {
+          values = [-99999.9999, -3200.0, -1000.0, 1800.0, 4600.0, 7300.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer2')
+        } else if (variable === 'd_ozone_2') {
+          values = [-99999.9999, -58000.0, -28000.0, 600.0, 38000.0, 70000.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer2')
+        } else if (variable === 'd_pm25_2') {
+          values = [-99999.9999, -11000.0, -5500.0, 1000.0, 7500.0, 15000.0]
+          getStyle(data, values, this.ejscolors, variable, 'ejslayer2')
         }
         return [
           new Style({
@@ -3507,89 +3086,30 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
           })
-          /* createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 8.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel',
-            fillColor: color
-          }) */
         ]
       }
     },
     getcovid19Style2: function () {
-      // let zoom = this.getZoom2() // this.zoom
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
-        let color
-        if (this.currentradiovariable2 === 'cases') {
-          if (data[this.currentradiovariable2] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < 1328) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 1328 && data[this.currentradiovariable2] < 2656) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 2656 && data[this.currentradiovariable2] < 3984) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 3984 && data[this.currentradiovariable2] < 5416) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 5416 && data[this.currentradiovariable2] < 6644) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 6644) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
-        } else if (this.currentradiovariable2 === 'cases_per_10000_res') {
-          if (data[this.currentradiovariable2] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < 586.0) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 586.0 && data[this.currentradiovariable2] < 1172.0) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 1172.0 && data[this.currentradiovariable2] < 1758.0) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 1758.0 && data[this.currentradiovariable2] < 2344.0) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 2344.0 && data[this.currentradiovariable2] < 2930.0) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 2930.0) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
-        } else if (this.currentradiovariable2 === 'cases_per_100000_res') {
-          if (data[this.currentradiovariable2] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < 5859.0) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 5859.0 && data[this.currentradiovariable2] < 11718.0) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 11718.0 && data[this.currentradiovariable2] < 17577.0) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 17577.0 && data[this.currentradiovariable2] < 23436.0) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 23436.0 && data[this.currentradiovariable2] < 29295.0) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 29295.0) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
-        } else if (this.currentradiovariable2 === 'deaths') {
-          if (data[this.currentradiovariable2] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentradiovariable2] < 17) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 17 && data[this.currentradiovariable2] < 34) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 34 && data[this.currentradiovariable2] < 51) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 51 && data[this.currentradiovariable2] < 65) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 65 && data[this.currentradiovariable2] < 85) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentradiovariable2] >= 85) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
+        let values
+        let variable = this.currentradiovariable2
+        if (variable === 'cases') {
+          values = [-999.99, 1328, 2656, 3984, 5416, 6644]
+          this.getColors(data, values, this.covidcolors, variable, 'covidlayer2')
+        } else if (variable === 'cases_per_10000_res') {
+          values = [-999.99, 586.0, 1172.0, 1758.0, 2344.0, 2930.0]
+          this.getColors(data, values, this.covidcolors, variable, 'covidlayer2')
+        } else if (variable === 'cases_per_100000_res') {
+          values = [-999.99, 5859.0, 11718.0, 17577.0, 23436.0, 29295.0]
+          this.getColors(data, values, this.covidcolors, variable, 'covidlayer2')
+        } else if (variable === 'deaths') {
+          values = [-999.99, 17, 34, 51, 65, 85]
+          this.getColors(data, values, this.covidcolors, variable, 'covidlayer2')
         }
         return [
           new Style({
@@ -3598,14 +3118,13 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
           })
-
         ]
       }
     },
-    getNCCountiesStyle2: function () {
+    getNCCountiesStyle: function () {
       // let zoom = this.getZoom2() // this.zoom
       return feature => {
         return [
@@ -4206,15 +3725,15 @@ export default {
         layer = this.layers1.find(layer => layer.id === 'ncwellwise_layer1')
         for (i = 0; i < this.$refs.layer1Style.length; i++) { this.$refs.layer1Style[i].refresh() }
         // this.$refs.layer1Style.refresh()
-      } else if (this.currentradiovariable1 === 'ncwellwise_mng_med') {
+      } else if (this.currentradiovariable1 === 'ncwellwise_manganese_med') {
         layer = this.layers1.find(layer => layer.id === 'ncwellwise_layer1')
         for (i = 0; i < this.$refs.layer1Style.length; i++) { this.$refs.layer1Style[i].refresh() }
         // this.$refs.layer1Style.refresh()
-      } else if (this.currentradiovariable1 === 'ncwellwise_mng_mean') {
+      } else if (this.currentradiovariable1 === 'ncwellwise_manganese_mean') {
         layer = this.layers1.find(layer => layer.id === 'ncwellwise_layer1')
         for (i = 0; i < this.$refs.layer1Style.length; i++) { this.$refs.layer1Style[i].refresh() }
         // this.$refs.layer1Style.refresh()
-      } else if (this.currentradiovariable1 === 'ncwellwise_mng_prcast') {
+      } else if (this.currentradiovariable1 === 'ncwellwise_manganese_prcast') {
         layer = this.layers1.find(layer => layer.id === 'ncwellwise_layer1')
         for (i = 0; i < this.$refs.layer1Style.length; i++) { this.$refs.layer1Style[i].refresh() }
         // this.$refs.layer1Style.refresh()
@@ -4288,15 +3807,15 @@ export default {
         layer = this.layers2.find(layer => layer.id === 'ncwellwise_layer2')
         for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
         // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'ncwellwise_mng_med') {
+      } else if (this.currentradiovariable2 === 'ncwellwise_manganese_med') {
         layer = this.layers2.find(layer => layer.id === 'ncwellwise_layer2')
         for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
         // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'ncwellwise_mng_mean') {
+      } else if (this.currentradiovariable2 === 'ncwellwise_manganese_mean') {
         layer = this.layers2.find(layer => layer.id === 'ncwellwise_layer2')
         for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
         // this.$refs.layer2Style.refresh()
-      } else if (this.currentradiovariable2 === 'ncwellwise_mng_prcast') {
+      } else if (this.currentradiovariable2 === 'ncwellwise_manganese_prcast') {
         layer = this.layers2.find(layer => layer.id === 'ncwellwise_layer2')
         for (i = 0; i < this.$refs.layer2Style.length; i++) { this.$refs.layer2Style[i].refresh() }
         // this.$refs.layer2Style.refresh()

@@ -372,9 +372,9 @@
                   <td>% of Standard</td>
                 </tr>
                 <tr>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_mng_med" v-model="currentvariable" color="teal" /></td>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_mng_mean" v-model="currentvariable" color="teal" /></td>
-                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_mng_prcast" v-model="currentvariable" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_manganese_med" v-model="currentvariable" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_manganese_mean" v-model="currentvariable" color="teal" /></td>
+                  <td><q-radio v-on:input="showMapPanelRadioLayer" val="ncwellwise_manganese_prcast" v-model="currentvariable" color="teal" /></td>
                 </tr>
               </table>
             </q-item>
@@ -1727,6 +1727,22 @@ export default {
       longitude: null,
       latitude: null,
       pid: undefined,
+      // variable colors
+      varcolor: null,
+      arsncolors: ['rgba(91, 95, 99, 0.65)', 'rgba(235, 52, 220, 0.65)', 'rgba(186, 52, 235, 0.65)', 'rgba(165, 52, 235, 0.65)',
+        'rgba(143, 52, 235, 0.65)', 'rgba(119, 52, 235, 0.65)'],
+      cadmcolors: ['rgba(91, 95, 99, 0.65)', 'rgba(223, 235, 52, 0.65)', 'rgba(235, 192, 52, 0.65)', 'rgba(235, 162, 52, 0.65)',
+        'rgba(235, 131, 52, 0.65)', 'rgba(235, 89, 52, 0.65)'],
+      leadcolors: ['rgba(50, 110, 219, 0.65)', 'rgba(196, 200, 207, 0.65)', 'rgba(156, 162, 173, 0.65)', 'rgba(116, 121, 130, 0.65)',
+        'rgba(79, 82, 89, 0.65)', 'rgba(39, 40, 43, 0.65)'],
+      mngncolors: ['rgba(91, 95, 99, 0.65)', 'rgba(194, 232, 190, 0.65)', 'rgba(81, 222, 67, 0.65)', 'rgba(25, 128, 11, 0.65)',
+        'rgba(14, 82, 5, 0.65)', 'rgba(5, 97, 76, 0.65)'],
+      acscolors: ['rgba(91, 95, 99, 0.65)', 'rgba(252, 210, 211, 0.65)', 'rgba(252, 109, 114, 0.65)', 'rgba(247, 59, 66, 0.65)',
+        'rgba(250, 2, 11, 0.65)', 'rgba(181, 2, 6, 0.65)', 'rgba(140, 1, 5, 0.65)'],
+      ejscolors: ['rgba(91, 95, 99, 0.65)', 'rgba(235, 252, 3, 0.65)', 'rgba(252, 227, 3, 0.65)', 'rgba(252, 186, 3, 0.65)',
+        'rgba(252, 128, 3, 0.65)', 'rgba(252, 82, 3, 0.65)', 'rgba(140, 1, 5, 0.65)'],
+      covidcolors: ['rgba(91, 95, 99, 0.65)', 'rgba(34, 240, 219, 0.65)', 'rgba(34, 223, 240, 0.65)', 'rgba(34, 185, 240, 0.65)',
+        'rgba(22, 141, 245, 0.65)', 'rgba(22, 74, 245, 0.65)', 'rgba(23, 2, 247, 0.65)'],
       // ncwellwise features
       selectedFeature: [],
       selectedFeatureMeanBarBox: [],
@@ -1928,181 +1944,80 @@ export default {
           break
       }
     }, */
+    getColors: function (data, values, colors) {
+      if (colors.length === 7) {
+        if (data[this.currentvariable] === values[0]) {
+          this.varcolor = colors[0]
+        } else if (data[this.currentvariable] < values[1]) {
+          this.varcolor = colors[1]
+        } else if (data[this.currentvariable] >= values[1] && data[this.currentvariable] < values[2]) {
+          this.varcolor = colors[2]
+        } else if (data[this.currentvariable] >= values[2] && data[this.currentvariable] < values[3]) {
+          this.varcolor = colors[3]
+        } else if (data[this.currentvariable] >= values[3] && data[this.currentvariable] < values[4]) {
+          this.varcolor = colors[4]
+        } else if (data[this.currentvariable] >= values[4] && data[this.currentvariable] < values[5]) {
+          this.varcolor = colors[5]
+        } else if (data[this.currentvariable] >= values[5]) {
+          this.varcolor = colors[6]
+        }
+      } else if (colors.length === 6) {
+        if (data[this.currentvariable.substring(11)] === values[0]) {
+          this.varcolor = colors[0]
+        } else if (data[this.currentvariable.substring(11)] < values[1]) {
+          this.varcolor = colors[1]
+        } else if (data[this.currentvariable.substring(11)] >= values[1] && data[this.currentvariable.substring(11)] < values[2]) {
+          this.varcolor = colors[2]
+        } else if (data[this.currentvariable.substring(11)] >= values[2] && data[this.currentvariable.substring(11)] < values[3]) {
+          this.varcolor = colors[3]
+        } else if (data[this.currentvariable.substring(11)] >= values[3] && data[this.currentvariable.substring(11)] < values[4]) {
+          this.varcolor = colors[4]
+        } else if (data[this.currentvariable.substring(11)] >= values[4]) {
+          this.varcolor = colors[5]
+        }
+      }
+    },
     getncwellwiseStyle: function () {
-      // console.log(this.currentvariable)
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
-        // console.log(selected)
         let data = feature.getProperties()
-        let color
+        let values
         if (this.currentvariable === 'ncwellwise_arsenic_med') {
-          if (data.arsenic_med === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data.arsenic_med < 6.83) {
-            color = 'rgba(235, 52, 220, 0.65)'
-          } else if (data.arsenic_med >= 6.83 && data.arsenic_med < 10.12) {
-            color = 'rgba(186, 52, 235, 0.65)'
-          } else if (data.arsenic_med >= 10.12 && data.arsenic_med < 13.42) {
-            color = 'rgba(165, 52, 235, 0.65)'
-          } else if (data.arsenic_med >= 13.42 && data.arsenic_med < 16.71) {
-            color = 'rgba(143, 52, 235, 0.65)'
-          } else if (data.arsenic_med >= 16.71) {
-            color = 'rgba(119, 52, 235, 0.65)'
-          }
+          values = [-999.99, 6.83, 10.12, 13.42, 16.71]
+          this.getColors(data, values, this.arsncolors)
         } else if (this.currentvariable === 'ncwellwise_arsenic_mean') {
-          if (data.arsenic_mean === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data.arsenic_mean < 8.95) {
-            color = 'rgba(235, 52, 220, 0.65)'
-          } else if (data.arsenic_mean >= 8.95 && data.arsenic_mean < 14.93) {
-            color = 'rgba(186, 52, 235, 0.65)'
-          } else if (data.arsenic_mean >= 14.93 && data.arsenic_mean < 20.93) {
-            color = 'rgba(165, 52, 235, 0.65)'
-          } else if (data.arsenic_mean >= 20.93 && data.arsenic_mean < 26.9) {
-            color = 'rgba(143, 52, 235, 0.65)'
-          } else if (data.arsenic_mean >= 26.9) {
-            color = 'rgba(119, 52, 235, 0.65)'
-          }
+          values = [-999.99, 8.95, 14.93, 20.93, 26.9]
+          this.getColors(data, values, this.arsncolors)
         } else if (this.currentvariable === 'ncwellwise_arsenic_prcast') {
-          if (data.arsenic_prcast === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data.arsenic_prcast < 16.0) {
-            color = 'rgba(235, 52, 220, 0.65)'
-          } else if (data.arsenic_prcast >= 16.0 && data.arsenic_prcast < 32.0) {
-            color = 'rgba(186, 52, 235, 0.65)'
-          } else if (data.arsenic_prcast >= 32.0 && data.arsenic_prcast < 48.0) {
-            color = 'rgba(165, 52, 235, 0.65)'
-          } else if (data.arsenic_prcast >= 48.0 && data.arsenic_prcast < 64.0) {
-            color = 'rgba(143, 52, 235, 0.65)'
-          } else if (data.arsenic_prcast >= 64.0) {
-            color = 'rgba(119, 52, 235, 0.65)'
-          }
+          values = [-999.99, 16.0, 32.0, 48.0, 64.0]
+          this.getColors(data, values, this.arsncolors)
         } else if (this.currentvariable === 'ncwellwise_cadmium_med') {
-          if (data.cadmium_med === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data.cadmium_med < 0.74) {
-            color = 'rgba(223, 235, 52, 0.65)'
-          } else if (data.cadmium_med >= 0.74 && data.cadmium_med < 77.0) {
-            color = 'rgba(235, 192, 52, 0.65)'
-          } else if (data.cadmium_med >= 0.77 && data.cadmium_med < 0.79) {
-            color = 'rgba(235, 162, 52, 0.65)'
-          } else if (data.cadmium_med >= 0.79 && data.cadmium_med < 0.82) {
-            color = 'rgba(235, 131, 52, 0.65)'
-          } else if (data.cadmium_med >= 0.82) {
-            color = 'rgba(235, 89, 52, 0.65)'
-          }
+          values = [-999.99, 0.74, 0.77, 0.79, 0.82]
+          this.getColors(data, values, this.cadmcolors)
         } else if (this.currentvariable === 'ncwellwise_cadmium_mean') {
-          if (data.cadmium_mean === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data.cadmium_mean < 2.71) {
-            color = 'rgba(223, 235, 52, 0.65)'
-          } else if (data.cadmium_mean >= 2.71 && data.cadmium_mean < 4.72) {
-            color = 'rgba(235, 192, 52, 0.65)'
-          } else if (data.cadmium_mean >= 4.72 && data.cadmium_mean < 6.72) {
-            color = 'rgba(235, 162, 52, 0.65)'
-          } else if (data.cadmium_mean >= 6.71 && data.cadmium_mean < 8.73) {
-            color = 'rgba(235, 131, 52, 0.65)'
-          } else if (data.cadmium_mean >= 8.73) {
-            color = 'rgba(235, 89, 52, 0.65)'
-          }
+          values = [-999.99, 2.71, 4.72, 6.71, 8.73]
+          this.getColors(data, values, this.cadmcolors)
         } else if (this.currentvariable === 'ncwellwise_cadmium_prcast') {
-          if (data.cadmium_prcast === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data.cadmium_prcast < 4.0) {
-            color = 'rgba(223, 235, 52, 0.65)'
-          } else if (data.cadmium_prcast >= 4.0 && data.cadmium_prcast < 8.0) {
-            color = 'rgba(235, 192, 52, 0.65)'
-          } else if (data.cadmium_prcast >= 8.0 && data.cadmium_prcast < 12.0) {
-            color = 'rgba(235, 162, 52, 0.65)'
-          } else if (data.cadmium_prcast >= 12.0 && data.cadmium_prcast < 16.0) {
-            color = 'rgba(235, 131, 52, 0.65)'
-          } else if (data.cadmium_prcast >= 16.0) {
-            color = 'rgba(235, 89, 52, 0.65)'
-          }
+          values = [-999.99, 4.0, 8.0, 12.0, 16.0]
+          this.getColors(data, values, this.cadmcolors)
         } else if (this.currentvariable === 'ncwellwise_lead_med') {
-          if (data.lead_med === -999.99) {
-            color = 'rgba(50, 110, 219, 0.65)'
-          } else if (data.lead_med < 11.69) {
-            color = 'rgba(196, 200, 207, 0.65)'
-          } else if (data.lead_med >= 11.69 && data.lead_med < 30.0) {
-            color = 'rgba(156, 162, 173, 0.65)'
-          } else if (data.lead_med >= 19.83 && data.lead_med < 50.0) {
-            color = 'rgba(116, 121, 130, 0.65)'
-          } else if (data.lead_med >= 27.98 && data.lead_med < 80.0) {
-            color = 'rgba(79, 82, 89, 0.65)'
-          } else if (data.lead_med >= 36.12) {
-            color = 'rgba(39, 40, 43, 0.65)'
-          }
+          values = [-999.99, 11.69, 19.83, 27.98, 36.12]
+          this.getColors(data, values, this.leadcolors)
         } else if (this.currentvariable === 'ncwellwise_lead_mean') {
-          if (data.lead_mean === -999.99) {
-            color = 'rgba(50, 110, 219, 0.65)'
-          } else if (data.lead_mean < 39.22) {
-            color = 'rgba(196, 200, 207, 0.65)'
-          } else if (data.lead_mean >= 39.22 && data.lead_mean < 75.53) {
-            color = 'rgba(156, 162, 173, 0.65)'
-          } else if (data.lead_mean >= 75.53 && data.lead_mean < 111.83) {
-            color = 'rgba(116, 121, 130, 0.65)'
-          } else if (data.lead_mean >= 111.93 && data.lead_mean < 148.14) {
-            color = 'rgba(79, 82, 89, 0.65)'
-          } else if (data.lead_mean >= 148.14) {
-            color = 'rgba(39, 40, 43, 0.65)'
-          }
+          values = [-999.99, 39.22, 75.53, 111.93, 148.14]
+          this.getColors(data, values, this.leadcolors)
         } else if (this.currentvariable === 'ncwellwise_lead_prcast') {
-          if (data.lead_prcast === -999.99) {
-            color = 'rgba(50, 110, 219, 0.65)'
-          } else if (data.lead_prcast < 20.0) {
-            color = 'rgba(196, 200, 207, 0.65)'
-          } else if (data.lead_prcast >= 20.0 && data.lead_prcast < 40.0) {
-            color = 'rgba(156, 162, 173, 0.65)'
-          } else if (data.lead_prcast >= 40.0 && data.lead_prcast < 60.0) {
-            color = 'rgba(116, 121, 130, 0.65)'
-          } else if (data.lead_prcast >= 60.0 && data.lead_prcast < 80.0) {
-            color = 'rgba(79, 82, 89, 0.65)'
-          } else if (data.lead_prcast >= 80.0) {
-            color = 'rgba(39, 40, 43, 0.65)'
-          }
-        } else if (this.currentvariable === 'ncwellwise_mng_med') {
-          if (data.manganese_med === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data.manganese_med < 184.4) {
-            color = 'rgba(194, 232, 190, 0.65)'
-          } else if (data.manganese_med >= 184.4 && data.manganese_med < 350.8) {
-            color = 'rgba(81, 222, 67, 0.65)'
-          } else if (data.manganese_med >= 350.8 && data.manganese_med < 517.2) {
-            color = 'rgba(25, 128, 11, 0.65)'
-          } else if (data.manganese_med >= 517.2 && data.manganese_med < 683.6) {
-            color = 'rgba(14, 82, 5, 0.65)'
-          } else if (data.manganese_med >= 683.6) {
-            color = 'rgba(5, 97, 76, 0.65)'
-          }
-        } else if (this.currentvariable === 'ncwellwise_mng_mean') {
-          if (data.manganese_mean === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data.manganese_mean < 213.09) {
-            color = 'rgba(194, 232, 190, 0.65)'
-          } else if (data.manganese_mean >= 213.09 && data.manganese_mean < 404.97) {
-            color = 'rgba(81, 222, 67, 0.65)'
-          } else if (data.manganese_mean >= 404.97 && data.manganese_mean < 596.85) {
-            color = 'rgba(25, 128, 11, 0.65)'
-          } else if (data.manganese_mean >= 596.85 && data.manganese_mean < 788.73) {
-            color = 'rgba(14, 82, 5, 0.65)'
-          } else if (data.manganese_mean >= 788.73) {
-            color = 'rgba(5, 97, 76, 0.65)'
-          }
-        } else if (this.currentvariable === 'ncwellwise_mng_prcast') {
-          if (data.manganese_prcast === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data.manganese_prcast < 20.0) {
-            color = 'rgba(194, 232, 190, 0.65)'
-          } else if (data.manganese_prcast >= 20.0 && data.manganese_prcast < 40.0) {
-            color = 'rgba(81, 222, 67, 0.65)'
-          } else if (data.manganese_prcast >= 40.0 && data.manganese_prcast < 60.0) {
-            color = 'rgba(25, 128, 11, 0.65)'
-          } else if (data.manganese_prcast >= 60.0 && data.manganese_prcast < 80.0) {
-            color = 'rgba(14, 82, 5, 0.65)'
-          } else if (data.manganese_prcast >= 80.0) {
-            color = 'rgba(5, 97, 76, 0.65)'
-          }
+          values = [-999.99, 20.0, 40.0, 60.0, 80.0]
+          this.getColors(data, values, this.leadcolors)
+        } else if (this.currentvariable === 'ncwellwise_manganese_med') {
+          values = [-999.99, 184.4, 350.8, 517.2, 683.6]
+          this.getColors(data, values, this.mngncolors)
+        } else if (this.currentvariable === 'ncwellwise_manganese_mean') {
+          values = [-999.99, 213.09, 404.97, 596.85, 788.73]
+          this.getColors(data, values, this.mngncolors)
+        } else if (this.currentvariable === 'ncwellwise_manganese_prcast') {
+          values = [-999.99, 20.0, 40.0, 60.0, 80.0]
+          this.getColors(data, values, this.mngncolors)
         }
         return [
           new Style({
@@ -2111,16 +2026,9 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
           })
-          /* createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 8.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel',
-            fillColor: color
-          }) */
         ]
       }
     },
@@ -2129,22 +2037,8 @@ export default {
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
-        let color
-        if (data[this.currentvariable] === -999.99) {
-          color = 'rgba(91, 95, 99, 0.65)'
-        } else if (data[this.currentvariable] < 15) {
-          color = 'rgba(252, 210, 211, 0.65)'
-        } else if (data[this.currentvariable] >= 15 && data[this.currentvariable] < 30) {
-          color = 'rgba(252, 109, 114, 0.65)'
-        } else if (data[this.currentvariable] >= 30 && data[this.currentvariable] < 45) {
-          color = 'rgba(247, 59, 66, 0.65)'
-        } else if (data[this.currentvariable] >= 45 && data[this.currentvariable] < 60) {
-          color = 'rgba(250, 2, 11, 0.65)'
-        } else if (data[this.currentvariable] >= 60 && data[this.currentvariable] < 75) {
-          color = 'rgba(181, 2, 6, 0.65)'
-        } else if (data[this.currentvariable] >= 75) {
-          color = 'rgba(140, 1, 5, 0.65)'
-        }
+        let values = [-999.99, 15, 30, 45, 60, 75]
+        this.getColors(data, values, this.acscolors)
         return [
           new Style({
             stroke: new Stroke({
@@ -2152,16 +2046,9 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
           })
-          /* createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 8.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel',
-            fillColor: color
-          }) */
         ]
       }
     },
@@ -2170,183 +2057,40 @@ export default {
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
-        let color
+        let values
         if (this.currentvariable === 'd_ldpnt_2') {
-          if (data[this.currentvariable] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < -200.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -200.0 && data[this.currentvariable] < 0.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 0.0 && data[this.currentvariable] < 200.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 200.0 && data[this.currentvariable] < 400.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 400.0 && data[this.currentvariable] < 600.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 600.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
-          }
+          values = [-99999.9999, -200.0, 0.0, 200.0, 400.0, 600.0]
+          this.getColors(data, values, this.ejscolors)
         } else if (this.currentvariable === 'd_dslpm_2') {
-          if (data[this.currentvariable] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < -300.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -300.0 && data[this.currentvariable] < 0.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 0.0 && data[this.currentvariable] < 280.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 280.0 && data[this.currentvariable] < 580.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 580.0 && data[this.currentvariable] < 850.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 850.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
-          }
+          values = [-99999.9999, -300.0, 0.0, 280.0, 580.0, 850.0]
+          this.getColors(data, values, this.ejscolors)
         } else if (this.currentvariable === 'd_cancr_2') {
-          if (data[this.currentvariable] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < -45000.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -45000.0 && data[this.currentvariable] < -20000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -20000.0 && data[this.currentvariable] < 5000.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 5000.0 && data[this.currentvariable] < 30000.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 30000.0 && data[this.currentvariable] < 55000.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 55000.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
-          }
+          values = [-99999.9999, -45000.0, -20000.0, 5000.0, 30000.0, 55000.0]
+          this.getColors(data, values, this.ejscolors)
         } else if (this.currentvariable === 'd_resp_2') {
-          if (data[this.currentvariable] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < -600.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -600.0 && data[this.currentvariable] < -250) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -250.0 && data[this.currentvariable] < 100.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 100.0 && data[this.currentvariable] < 450.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 450.0 && data[this.currentvariable] < 800.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 800.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
-          }
+          values = [-99999.9999, -600.0, -250.0, 100.0, 450.0, 800.0]
+          this.getColors(data, values, this.ejscolors)
         } else if (this.currentvariable === 'd_ptraf_2') {
-          if (data[this.currentvariable] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < 800000.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 800000.0 && data[this.currentvariable] < 1700000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 1700000.0 && data[this.currentvariable] < 1700000.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 2600000.0 && data[this.currentvariable] < 2600000.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 3500000.0 && data[this.currentvariable] < 4400000.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 4400000.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
-          }
+          values = [-99999.9999, 800000.0, 1700000.0, 2600000.0, 3500000.0, 4400000.0]
+          this.getColors(data, values, this.ejscolors)
         } else if (this.currentvariable === 'd_pwdis_2') {
-          if (data[this.currentvariable] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < -47000.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -47000.0 && data[this.currentvariable] < -35000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -35000.0 && data[this.currentvariable] < -22000.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -22000.0 && data[this.currentvariable] < -10000.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -10000.0 && data[this.currentvariable] < 200.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 200.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
-          }
+          values = [-99999.9999, -47000.0, -35000.0, -22000.0, -10000.0, 200.0]
+          this.getColors(data, values, this.ejscolors)
         } else if (this.currentvariable === 'd_pnpl_2') {
-          if (data[this.currentvariable] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < -400.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -400.0 && data[this.currentvariable] < -120.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -120.0 && data[this.currentvariable] < 150.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 150.0 && data[this.currentvariable] < 420.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 420.0 && data[this.currentvariable] < 690.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 690.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
-          }
+          values = [-99999.9999, -400.0, -120.0, 150.0, 420.0, 690.0]
+          this.getColors(data, values, this.ejscolors)
         } else if (this.currentvariable === 'd_prmp_2') {
-          if (data[this.currentvariable] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < -450.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -450.0 && data[this.currentvariable] < 1000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 1000.0 && data[this.currentvariable] < 2450.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 2450.0 && data[this.currentvariable] < 3900.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 3900.0 && data[this.currentvariable] < 5350.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 5350.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
-          }
+          values = [-99999.9999, -450.0, 1000.0, 2450.0, 3900.0, 5350.0]
+          this.getColors(data, values, this.ejscolors)
         } else if (this.currentvariable === 'd_ptsdf_2') {
-          if (data[this.currentvariable] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < -3200.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -3200.0 && data[this.currentvariable] < -1000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -1000.0 && data[this.currentvariable] < 1800.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 1800.0 && data[this.currentvariable] < 4600.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 4600.0 && data[this.currentvariable] < 7300.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 7300.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
-          }
+          values = [-99999.9999, -3200.0, -1000.0, 1800.0, 4600.0, 7300.0]
+          this.getColors(data, values, this.ejscolors)
         } else if (this.currentvariable === 'd_ozone_2') {
-          if (data[this.currentvariable] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < -58000.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -58000.0 && data[this.currentvariable] < -28000.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -28000.0 && data[this.currentvariable] < 600.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 600.0 && data[this.currentvariable] < 38000.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 38000.0 && data[this.currentvariable] < 70000.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 70000.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
-          }
+          values = [-99999.9999, -58000.0, -28000.0, 600.0, 38000.0, 70000.0]
+          this.getColors(data, values, this.ejscolors)
         } else if (this.currentvariable === 'd_pm25_2') {
-          if (data[this.currentvariable] === -99999.9999) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < -11000.0) {
-            color = 'rgba(235, 252, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -11000.0 && data[this.currentvariable] < -5500.0) {
-            color = 'rgba(252, 227, 3, 0.65)'
-          } else if (data[this.currentvariable] >= -5500.0 && data[this.currentvariable] < 1000.0) {
-            color = 'rgba(252, 186, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 1000.0 && data[this.currentvariable] < 7500.0) {
-            color = 'rgba(252, 128, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 7500.0 && data[this.currentvariable] < 15000.0) {
-            color = 'rgba(252, 82, 3, 0.65)'
-          } else if (data[this.currentvariable] >= 15000.0) {
-            color = 'rgba(140, 1, 5, 0.65)'
-          }
+          values = [-99999.9999, -11000.0, -5500.0, 1000.0, 7500.0, 15000.0]
+          this.getColors(data, values, this.ejscolors)
         }
         return [
           new Style({
@@ -2355,16 +2099,9 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
           })
-          /* createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 8.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel',
-            fillColor: color
-          }) */
         ]
       }
     },
@@ -2373,71 +2110,19 @@ export default {
       return feature => {
         let selected = !!this.vtSelection[feature.get(this.vtIdProp)]
         let data = feature.getProperties()
-        let color
+        let values
         if (this.currentvariable === 'cases') {
-          if (data[this.currentvariable] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < 1328) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentvariable] >= 1328 && data[this.currentvariable] < 2656) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentvariable] >= 2656 && data[this.currentvariable] < 3984) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentvariable] >= 3984 && data[this.currentvariable] < 5416) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentvariable] >= 5416 && data[this.currentvariable] < 6644) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentvariable] >= 6644) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
+          values = [-999.99, 1328, 2656, 3984, 5416, 6644]
+          this.getColors(data, values, this.covidcolors)
         } else if (this.currentvariable === 'cases_per_10000_res') {
-          if (data[this.currentvariable] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < 586.0) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentvariable] >= 586.0 && data[this.currentvariable] < 1172.0) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentvariable] >= 1172.0 && data[this.currentvariable] < 1758.0) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentvariable] >= 1758.0 && data[this.currentvariable] < 2344.0) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentvariable] >= 2344.0 && data[this.currentvariable] < 2930.0) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentvariable] >= 2930.0) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
+          values = [-999.99, 586.0, 1172.0, 1758.0, 2344.0, 2930.0]
+          this.getColors(data, values, this.covidcolors)
         } else if (this.currentvariable === 'cases_per_100000_res') {
-          if (data[this.currentvariable] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < 5859.0) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentvariable] >= 5859.0 && data[this.currentvariable] < 11718.0) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentvariable] >= 11718.0 && data[this.currentvariable] < 17577.0) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentvariable] >= 17577.0 && data[this.currentvariable] < 23436.0) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentvariable] >= 23436.0 && data[this.currentvariable] < 29295.0) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentvariable] >= 29295.0) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
+          values = [-999.99, 5859.0, 11718.0, 17577.0, 23436.0, 29295.0]
+          this.getColors(data, values, this.covidcolors)
         } else if (this.currentvariable === 'deaths') {
-          if (data[this.currentvariable] === -999.99) {
-            color = 'rgba(91, 95, 99, 0.65)'
-          } else if (data[this.currentvariable] < 17) {
-            color = 'rgba(34, 240, 219, 0.65)'
-          } else if (data[this.currentvariable] >= 17 && data[this.currentvariable] < 34) {
-            color = 'rgba(34, 223, 240, 0.65)'
-          } else if (data[this.currentvariable] >= 34 && data[this.currentvariable] < 51) {
-            color = 'rgba(34, 185, 240, 0.65)'
-          } else if (data[this.currentvariable] >= 51 && data[this.currentvariable] < 65) {
-            color = 'rgba(22, 141, 245, 0.65)'
-          } else if (data[this.currentvariable] >= 65 && data[this.currentvariable] < 85) {
-            color = 'rgba(22, 74, 245, 0.65)'
-          } else if (data[this.currentvariable] >= 85) {
-            color = 'rgba(23, 2, 247, 0.65)'
-          }
+          values = [-999.99, 17, 34, 51, 65, 85]
+          this.getColors(data, values, this.covidcolors)
         }
         return [
           new Style({
@@ -2446,16 +2131,9 @@ export default {
               width: selected ? 2 : (this.zoom / 8.0)
             }),
             fill: new Fill({
-              color: selected ? 'rgba(200,20,20,0.2)' : color
+              color: selected ? 'rgba(200,20,20,0.2)' : this.varcolor
             })
           })
-          /* createStyle({
-            strokeColor: '#000',
-            strokeWidth: (this.zoom / 8.0),
-            strokeLineCap: 'round',
-            strokeLineJoin: 'bevel',
-            fillColor: color
-          }) */
         ]
       }
     },
@@ -2586,15 +2264,15 @@ export default {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentvariable === 'ncwellwise_mng_med') {
+      } else if (this.currentvariable === 'ncwellwise_manganese_med') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentvariable === 'ncwellwise_mng_mean') {
+      } else if (this.currentvariable === 'ncwellwise_manganese_mean') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
-      } else if (this.currentvariable === 'ncwellwise_mng_prcast') {
+      } else if (this.currentvariable === 'ncwellwise_manganese_prcast') {
         layer = this.layers.find(layer => layer.id === 'ncwellwise')
         for (i = 0; i < this.$refs.layerStyle.length; i++) { this.$refs.layerStyle[i].refresh() }
         // this.$refs.layerStyle.refresh()
